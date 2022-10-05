@@ -1,0 +1,19 @@
+html{
+    scroll-behavior: smooth;
+}
+*, body  {
+    box-sizing : border-box;
+    margin : 0;
+    padding : 0;
+}
+
+body{
+    width : 100vw;
+    overflow-x : hidden;
+    background-color : #E8E8E8;
+    background-color : white;
+}
+
+a{
+    text-decoration : none;
+}
