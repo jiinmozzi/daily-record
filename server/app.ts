@@ -1,12 +1,14 @@
 import { Application } from "express";
 
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const app : Application= express();
 
 const mongoose = require('mongoose');
 const cors = require('cors');
 
 app.use(express.urlencoded({extended : true}));
+app.use(cookieParser());
 app.use(express.json());
 
 app.use(cors({

@@ -15,6 +15,10 @@ const UserSchema = new Schema({
     diaries : [{ type : Schema.Types.ObjectId, ref : "Diary" }],
     terminals : [{type : Schema.Types.ObjectId, ref : "Terminal"}],
     wishLists : [{type : Schema.Types.ObjectId, ref : "WishList"}],
+    followers : [{type : Schema.Types.ObjectId, ref : "User"}],
+    followings : [{type : Schema.Types.ObjectId, ref : "USer"}],
+    refreshToken : String,
+    sessionId : String,
 })
 
 const User = mongoose.model('User', UserSchema);
