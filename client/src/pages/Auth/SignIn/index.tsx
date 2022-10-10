@@ -4,7 +4,11 @@ import {useNavigate} from "react-router-dom";
 import signin from "../../../api/signin";
 import DoneRoundedIcon from '@mui/icons-material/DoneRounded';
 
+import { useRecoilState } from "recoil";
+import { accessTokenState, userState } from "../../../store/atom";
+
 import "./Signin.scss";
+import { UserType } from "../../../types";
 const SignIn = () => {
     const [id, setId] = useState<string>("");
     const [password, setPassword] = useState<string>("");
@@ -13,6 +17,13 @@ const SignIn = () => {
     const [autoBackgroundColor, setAutoBackgroundColor] = useState<string>("");
     const [autoIconColor, setAutoIconColor] = useState<string>("");
 
+    const [accessToken, setAccessToken] = useRecoilState<string>(accessTokenState);
+    const [user, setUser] = useRecoilState<UserType>(userState);
+    
+    // useEffect(() => {
+    //     console.log("accessToken :", accessToken);
+    //     console.log("user : ", user);
+    // }, [user, accessToken])
     const navigate = useNavigate();
     const onChange = (event : React.ChangeEvent ) => {
         event.preventDefault();
@@ -28,9 +39,13 @@ const SignIn = () => {
     const onSubmit = async(event : React.FormEvent ) => {
         event.preventDefault();
         const res = await signin(id, password, autoLogin);
-        console.log(res);
+        if ( res.data.msg === "OK" ){
+            window.sessionStorage.setItem("isLoggedIn", "true");
+            window.location.href = '/';
+            // window.location.reload();
+        }
     }
-
+    
     useEffect(() => {
         if (autoLogin){
             setAutoBackgroundColor("rgb(173,198,218)");

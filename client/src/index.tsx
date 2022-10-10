@@ -4,16 +4,18 @@ import App from './App';
 import { RecoilRoot } from "recoil";
 import { BrowserRouter as Router }from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
+import Loading from "./components/Loading";
+import PacmanLoader from "react-spinners/PacmanLoader";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <RecoilRoot>  
       <App />
     </RecoilRoot>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

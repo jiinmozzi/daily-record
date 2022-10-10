@@ -8,13 +8,11 @@ const router = express.Router();
 const {User} = require("../models");
 
 import encryptPassword from "../utils/encryptPassword";
-
+import generateRefreshToken from  "../utils/generateRefreshToken";
+import generateAccessToken from  "../utils/generateAccessToken";
 
 router.post('/signin', async(req : Request, res : Response) => {
     const {id, password, autoLogin} = req.body;
-    console.log(req.body);  
-    console.log('autoLogin: ', autoLogin);
-    //  req.cookies.sid
     const user = await User.findOne({id : id});
     if ( !user ){
         return res.status(400).send({
@@ -27,22 +25,28 @@ router.post('/signin', async(req : Request, res : Response) => {
         })
     }
     const name = user.name;
-    const email = user.email.slice(0, user.email.indexOf('@'));
-    const accessToken = jwt.sign({}, process.env.JWT_SECRET, {expiresIn : 30 * 60});
-    const refreshToken = jwt.sign({name, email}, process.env.JWT_SECRET, {expiresIn : '90d'})
-    user.refreshToken = user.refreshToken;
+    const email = user.email;
+    const accessToken = generateAccessToken();
+    const fakeRefreshToken = generateRefreshToken(user.name, user.email);
+    const refreshToken = generateRefreshToken(name, email);
+     
+    user.refreshToken = refreshToken;
 
-    let randomSessionId : string = "";
+    res.cookie('refreshToken', refreshToken, {maxAge : 90 * 24 * 60 * 60 * 1000, httpOnly : true});
+    res.cookie('_refreshToken', fakeRefreshToken, {maxAge : 90 * 24 * 60 * 60 * 1000});
+
     if ( autoLogin ){
-        randomSessionId = crypto.randomBytes(16).toString('base64');
+        const randomSessionId = crypto.randomBytes(16).toString('base64');
+        const fakeRandomSessionId = crypto.randomBytes(16).toString('base64');
         user.sessionId = randomSessionId;
-        res.cookie('sid', randomSessionId, { maxAge : 7 * 24 * 60 * 60 * 1000 })
+        res.cookie('sid', randomSessionId, { maxAge : 7 * 24 * 60 * 60 * 1000, httpOnly : true });
+        res.cookie('_sid', fakeRandomSessionId, {maxAge : 7 * 24 * 60 * 60 * 1000});
     }
     await user.save();
     
     return res.status(200).send({
-        data : {accessToken, refreshToken},
-        msg : "success",
+        data : {user, accessToken, refreshToken},
+        msg : "OK",
     })
 })
 
@@ -60,7 +64,8 @@ router.post('/signup', async(req : Request, res : Response) => {
         try {
             await newUser.save();
             return res.status(200).send({
-                msg : "success",
+                data : newUser,
+                msg : "OK",
             }) 
         }   catch (err){
             console.log(err);
@@ -80,6 +85,21 @@ router.post('/signup', async(req : Request, res : Response) => {
         }
     }
 });
+router.get('/signout', async(req : Request, res : Response) => {
+    // const { sid, _sid, refreshToken, _refreshToken } = req.cookies;
+    // console.log(req.cookies.sid);
+    // console.log(req.cookies._sid); 
+    // console.log(req.cookies.refreshToken);
+    // console.log(req.cookies._refreshToken);
+    res.clearCookie('sid')
+    res.clearCookie('_sid')
+    res.clearCookie("_refreshToken");
+    res.clearCookie("refreshToken");
+    res.send({
+        stauts : 200,
+        message : "OK",
+    });
+})
 
 module.exports = router;
 export {}

@@ -1,5 +1,17 @@
 import mongoose from 'mongoose';
+
+const Book = require('./Book');
+const BookWishList = require('./BookWishList');
+const BucketList = require('./BucketList');
+const Diary = require('./Diary');
 const User = require('./User');
+const Schedule = require('./Schedule');
+const Outsourcing = require('./Outsourcing');
+const Portfolio = require('./Portfolio');
+const ProgrammingStudy = require('./ProgrammingStudy');
+const Travel = require('./Travel');
+const TravelWishList = require('./TravelWishList');
+const Fitness = require('./Fitness');
 // import {User} from './User';
 
 require('dotenv').config();
@@ -26,5 +38,5 @@ switch(mongoose.connection.readyState){
 }
 
 
-module.exports = {User};
+module.exports = {Book, BookWishList, BucketList, Diary, Outsourcing, Portfolio, ProgrammingStudy, Schedule, Travel, TravelWishList, User, Fitness};
 // export {}

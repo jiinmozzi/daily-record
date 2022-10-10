@@ -1,0 +1,15 @@
+.world-clock-wrapper {
+  width: 50%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 15%;
+}
+.world-clock-wrapper .location {
+  font-size: 14px;
+  font-weight: bold;
+}
+.world-clock-wrapper .time {
+  font-size: 20px;
+  font-weight: bold;
+}/*# sourceMappingURL=WorldClock.css.map */

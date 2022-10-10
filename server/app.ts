@@ -20,6 +20,7 @@ app.use(cors({
 app.use('/', require('./routes'));
 app.use('/auth', require('./routes/auth'));
 app.use('/book', require('./routes/book'));
+app.use('/user', require('./routes/user'));
 
 require('dotenv').config();
 const port = process.env.PORT;

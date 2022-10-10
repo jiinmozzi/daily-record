@@ -1,1 +1,91 @@
-/*# sourceMappingURL=Footer.css.map */
+.footer-wrapper {
+  width: 100%;
+  height: 35%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+.footer-wrapper .detail {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(199, 199, 199);
+  display: flex;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
+.footer-wrapper .detail .detail-content {
+  height: 100%;
+  padding-top: 2%;
+  display: flex;
+  justify-content: center;
+}
+.footer-wrapper .detail .world-clock {
+  width: 35%;
+  display: flex;
+  flex-flow: row wrap;
+  background-color: rgb(255, 255, 255);
+  background-color: gray;
+  border-top-left-radius: 25px;
+}
+.footer-wrapper .detail .navigations {
+  width: 40%;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  background-color: gray;
+  padding-left: 10%;
+  padding-right: 5%;
+  padding-bottom: 5%;
+  display: flex;
+  flex-flow: wrap;
+  gap: 10px;
+}
+.footer-wrapper .detail .navigations .navs {
+  width: 40%;
+  height: 10%;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+}
+.footer-wrapper .detail .project-name {
+  width: 25%;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  background-color: gray;
+  border-top-right-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+}
+.footer-wrapper .detail .project-name .project-title {
+  height: 10%;
+  font-size: 20px;
+  font-weight: bold;
+}
+.footer-wrapper .detail .project-name .project-subtitle {
+  height: 10%;
+  font-size: 18px;
+}
+.footer-wrapper .detail .project-name .arrow-down {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+}
+.footer-wrapper .detail .project-name .arrow-down:hover {
+  cursor: pointer;
+}
+.footer-wrapper .short {
+  width: 100%;
+  height: 10%;
+  position: fixed;
+  bottom: 0;
+  background-color: black;
+  display: flex;
+}
+.footer-wrapper .short .arrow-up {
+  fill: rgb(199, 199, 199);
+}
+.footer-wrapper .short .arrow-up:hover {
+  cursor: pointer;
+}/*# sourceMappingURL=Footer.css.map */

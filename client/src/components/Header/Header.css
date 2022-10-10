@@ -1,5 +1,8 @@
 .header-wrapper {
   width: 100%;
-  height: 10vh;
-  background-color: black;
+  height: 10%;
+  border-bottom: 1px solid #717171;
+}
+.header-wrapper #logo {
+  height: 50px;
 }/*# sourceMappingURL=Header.css.map */

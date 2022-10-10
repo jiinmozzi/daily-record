@@ -11,7 +11,7 @@ router.get('/', (req : Request, res : Response) => {
     console.log("router is on");
     return res.send({
         status : 200,
-        message : "connection success",
+        message : "OK",
     })
 })
 

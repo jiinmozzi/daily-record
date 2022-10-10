@@ -12,6 +12,7 @@ const BookSchema = new Schema({
     to : Number,
     createdAt : { type : Date, default : Date.now() }, 
     rating : Number,
+    isCompleted : {type : Boolean, default : false},
 })
 
 const Book = mongoose.model('Book', BookSchema);
