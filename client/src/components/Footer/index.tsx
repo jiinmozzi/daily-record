@@ -4,6 +4,7 @@ import {useNavigate} from "react-router-dom";
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import MailRoundedIcon from '@mui/icons-material/MailRounded';
+import CallRoundedIcon from '@mui/icons-material/CallRounded';
 
 import WorldClock from "../WorldClock";
 import github from "../../assets/github.png";
@@ -55,12 +56,19 @@ const Footer = () => {
                     
                     <div className="project-contact">
                         <span className="project-github">
-                            <img src={github} alt="github" style={{width : "20px"}}/>
-                            &nbsp;&nbsp;  https://github.com/jiinmozzi
+                            <img src={github} alt="github" style={{width : "18px", paddingLeft: "2px"}}/>
+                            &nbsp;&nbsp;  
+                            <span className="developer-detail" onClick={() => window.open("https://www.github.com/jiinmozzi")}>https://github.com/jiinmozzi</span>
                         </span>
                         <span className="project-developer">
-                            <MailRoundedIcon />
-                            &nbsp;&nbsp;jho378@naver.com
+                            <MailRoundedIcon className="email-icon"/>
+                            &nbsp;&nbsp;
+                            <span className="developer-detail">jho378@naver.com</span>
+                        </span>
+                        <span className="project-phone">
+                            <CallRoundedIcon className="call-icon" />
+                            &nbsp;
+                            <span className="developer-detail">(+82)10-2795-6947</span>
                         </span>
                     </div>
                     

@@ -15,6 +15,7 @@ import SignUp from "./pages/Auth/SignUp";
 
 import getAutoLoginUser from "./api/getAutoLoginUser";
 import getRefTokenUser from "./api/getRefTokenUser";
+import reIssueAccessToken from "./api/reIssueAccessToken";
 import { useRecoilState } from "recoil";
 import { accessTokenState, refreshTokenState, sidState, userState, isLoggedInState } from "./store/atom";
 
@@ -28,6 +29,12 @@ function App() {
   const [refreshToken, setRefreshToken] = useRecoilState<string>(refreshTokenState);
   const [accessToken, setAccessToken] = useRecoilState<string>(accessTokenState);
   const [isLoggedIn, setIsLoggedIn] = useRecoilState<boolean>(isLoggedInState);
+  // useEffect(() => {
+  //   const test = async() => {
+  //     return await axios.get('http://localhost:3002');
+  //   }
+  //   console.log(test());
+  // }, [])
   useEffect(():any => {
     const isLoggedIn = sessionStorage.getItem("isLoggedIn");
     if ( isLoggedIn === "true" ){
@@ -84,12 +91,36 @@ function App() {
       })
     }
   }, [])
+
+  // periodically re-issue access token
+  useEffect(() => {
+    
+    const reIssueUserAccessToken = async() => {
+      return await reIssueAccessToken(accessToken);
+    }
+    if ( accessToken ){
+      const timer = setInterval(() => {
+        reIssueUserAccessToken().then(res => {
+          if (res.data.status === 401 || res.data.stauts === 400){
+            return;
+          } else {
+            setAccessToken(res.data.data.accessToken);
+          }
+        })
+      }, 29.5 * 60 * 1000)
+      return () => clearInterval(timer);
+    }
+  }, [accessToken])
+
+
+
   useEffect(() => {
     console.log("access", accessToken);
-    console.log("refresh", refreshToken);
-    console.log("sid", sid);
-    console.log("user", user);
+    // console.log("refresh", refreshToken);
+    // console.log("sid", sid);
+    // console.log("user", user);
   }, [accessToken, refreshToken, user, sid]);
+
   return (
     <div className="App">
         <BrowserRouter>

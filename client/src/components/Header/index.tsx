@@ -9,6 +9,8 @@ import "./Header.scss";
 import { useRecoilState } from "recoil";
 import { isLoggedInState } from "../../store/atom";
 
+import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
+
 const Header = () => {
     const [isLoggedIn, setIsLoggedIn] = useRecoilState<boolean>(isLoggedInState);
 

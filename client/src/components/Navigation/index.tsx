@@ -17,44 +17,44 @@ const Navigation = () => {
     return (
         <div className="nav">
             <>
-                <div className="icon-wrapper">
-                    <HomeRoundedIcon className="main-icon" onClick={() => navigate('/home')}/>
+                <div className="icon-wrapper"  onClick={() => navigate('/')}>
+                    <HomeRoundedIcon className="main-icon"/>
                     <span className="icon-span">Home</span>
                 </div>
-                <div className="icon-wrapper">
-                    <CalendarMonthRoundedIcon className="main-icon" onClick={() => navigate('/home')}/>
+                <div className="icon-wrapper"  onClick={() => navigate('/home')}>
+                    <CalendarMonthRoundedIcon className="main-icon"/>
                     <span className="icon-span">Calendar</span>
                 </div>
-                <div className="icon-wrapper">
-                    <FlightTakeoffRoundedIcon className="main-icon" onClick={() => navigate('/travel')}/>
+                <div className="icon-wrapper"  onClick={() => navigate('/travel')}>
+                    <FlightTakeoffRoundedIcon className="main-icon"/>
                     <span className="icon-span">Travel</span>
                 </div>
-                <div className="icon-wrapper">
-                    <TerminalRoundedIcon className="main-icon" onClick={() => navigate('/terminal')}/>
+                <div className="icon-wrapper"  onClick={() => navigate('/terminal')}>
+                    <TerminalRoundedIcon className="main-icon"/>
                     <span className="icon-span">Terminal</span>
                 </div>
-                <div className="icon-wrapper">
-                    <LocalAtmRoundedIcon className="main-icon" onClick={() => navigate('/terminal')}/>
+                <div className="icon-wrapper" onClick={() => navigate('/terminal')}>
+                    <LocalAtmRoundedIcon className="main-icon"/>
                     <span className="icon-span">Asset</span>
                 </div>
-                <div className="icon-wrapper">
-                    <FitnessCenterRoundedIcon className="main-icon" onClick={() => navigate('/fitness')}/>
+                <div className="icon-wrapper" onClick={() => navigate('/fitness')}>
+                    <FitnessCenterRoundedIcon className="main-icon"/>
                     <span className="icon-span">Fitness</span>
                 </div>
-                <div className="icon-wrapper">
-                    <AutoStoriesRoundedIcon className="main-icon" onClick={() => navigate('/book')}/>
+                <div className="icon-wrapper" onClick={() => navigate('/book')}>
+                    <AutoStoriesRoundedIcon className="main-icon"/>
                     <span className="icon-span">Book</span>
                 </div>
-                <div className="icon-wrapper">
-                    <CreateRoundedIcon className="main-icon" onClick={() => navigate('/diary')}/>
+                <div className="icon-wrapper" onClick={() => navigate('/diary')}>
+                    <CreateRoundedIcon className="main-icon"/>
                     <span className="icon-span">Diary</span>
                 </div>
-                <div className="icon-wrapper">
-                    <FlagRoundedIcon className="main-icon" onClick={() => navigate('/bucketlist')}/>
+                <div className="icon-wrapper" onClick={() => navigate('/bucketlist')}>
+                    <FlagRoundedIcon className="main-icon"/>
                     <span className="icon-span">Bucketlist</span>
                 </div>
-                <div className="icon-wrapper">
-                    <SearchRoundedIcon className="main-icon" onClick={() => navigate('/')}/>
+                <div className="icon-wrapper" onClick={() => navigate('/')}>
+                    <SearchRoundedIcon className="main-icon"/>
                     <span className="icon-span">Search</span>
                 </div>            
             </>

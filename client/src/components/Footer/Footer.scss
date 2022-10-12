@@ -83,7 +83,15 @@
                 flex-direction : column;
                 justify-content : flex-start;
                 margin-bottom : 10%;
-                
+                .developer-detail{
+                    font-size : 14px;
+                }
+                .email-icon{
+                    width : 18px;
+                }
+                .call-icon{
+                    width : 18px;
+                }
             }
             // .arrow-down-div{ 
             //     width : 100%;

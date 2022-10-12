@@ -9,6 +9,7 @@ import { accessTokenState, userState } from "../../../store/atom";
 
 import "./Signin.scss";
 import { UserType } from "../../../types";
+import sendRequest from "../../../api/sendRequest";
 const SignIn = () => {
     const [id, setId] = useState<string>("");
     const [password, setPassword] = useState<string>("");
@@ -38,8 +39,9 @@ const SignIn = () => {
     
     const onSubmit = async(event : React.FormEvent ) => {
         event.preventDefault();
-        const res = await signin(id, password, autoLogin);
-        if ( res.data.msg === "OK" ){
+        const res = await sendRequest('auth/signin', "POST", {id, password, autoLogin}, false);
+        
+        if ( res.msg === "OK" ){
             window.sessionStorage.setItem("isLoggedIn", "true");
             window.location.href = '/';
             // window.location.reload();
