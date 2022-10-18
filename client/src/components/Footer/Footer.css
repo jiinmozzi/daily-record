@@ -41,10 +41,13 @@
 }
 .footer-wrapper .detail .navigations .navs {
   width: 40%;
-  height: 10%;
+  height: 18%;
   font-size: 20px;
   font-weight: bold;
   display: flex;
+}
+.footer-wrapper .detail .navigations .navs:hover {
+  cursor: pointer;
 }
 .footer-wrapper .detail .project-name {
   width: 25%;
@@ -55,17 +58,35 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: space-between;
   position: relative;
 }
-.footer-wrapper .detail .project-name .project-title {
-  height: 10%;
+.footer-wrapper .detail .project-name .project-name-upper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.footer-wrapper .detail .project-name .project-name-upper .project-title {
   font-size: 20px;
   font-weight: bold;
 }
-.footer-wrapper .detail .project-name .project-subtitle {
-  height: 10%;
+.footer-wrapper .detail .project-name .project-name-upper .project-subtitle {
   font-size: 18px;
+}
+.footer-wrapper .detail .project-name .project-contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 10%;
+}
+.footer-wrapper .detail .project-name .project-contact .developer-detail {
+  font-size: 14px;
+}
+.footer-wrapper .detail .project-name .project-contact .email-icon {
+  width: 18px;
+}
+.footer-wrapper .detail .project-name .project-contact .call-icon {
+  width: 18px;
 }
 .footer-wrapper .detail .project-name .arrow-down {
   position: absolute;

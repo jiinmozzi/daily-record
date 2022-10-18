@@ -1,0 +1,70 @@
+.calendar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.calendar-container .calendar-wrapper {
+  width: 1000px;
+  max-width: 1000px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 10vh;
+  padding-bottom: 10%;
+}
+.calendar-container .calendar-wrapper .prev .date-text {
+  opacity: 0.3;
+}
+.calendar-container .calendar-wrapper .post .date-text {
+  opacity: 0.15;
+}
+.calendar-container .calendar-wrapper .day {
+  background-color: rgb(136, 151, 168);
+  color: #fff;
+  width: 140px;
+  height: 25px;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+}
+.calendar-container .calendar-wrapper .day:nth-child(7n+1) {
+  border-left: 1px solid black;
+}
+.calendar-container .calendar-wrapper .date {
+  width: 140px;
+  height: 120px;
+  padding: auto;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+}
+.calendar-container .calendar-wrapper .date .date-text {
+  margin-left: 5px;
+  padding-top: 10px;
+  font-size: 13px;
+}
+.calendar-container .calendar-wrapper .date:nth-child(7n+1) {
+  border-left: 1px solid black;
+}
+.calendar-container .calendar-wrapper .date:nth-child(7n+1) .date-text {
+  color: #f1617d;
+}
+.calendar-container .calendar-wrapper .date:nth-child(7n) .date-text {
+  color: #8997A8;
+}
+.calendar-container .calendar-wrapper .date:nth-last-child(-n+7) {
+  border-bottom: 1px solid black;
+}
+.calendar-container .arrow {
+  font-size: 50px;
+  margin: 0 50px;
+}
+.calendar-container .arrow:hover {
+  cursor: pointer;
+  fill: orange;
+}/*# sourceMappingURL=Calendar.css.map */

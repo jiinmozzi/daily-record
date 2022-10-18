@@ -1,6 +1,14 @@
 let now = new Date();
 const month = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-const renderCalendar = (year ?: number, month ?: number) : number[] => {
+
+type renderCalendarType = {
+    dates : number[],
+    prevDates : number[],
+    thisDates : number[],
+    nextDates : number[]
+}
+
+const renderCalendar = (year ?: number, month ?: number) : renderCalendarType => {
     let currentYear : number, currentMonth : number;
     year !== undefined ? currentYear = year : currentYear = now.getFullYear();
     month !== undefined ? currentMonth = month : currentMonth = now.getMonth();
@@ -29,7 +37,7 @@ const renderCalendar = (year ?: number, month ?: number) : number[] => {
         nextDates.push(i);
     }
     const dates : number[] = prevDates.concat(thisDates, nextDates);
-    return dates;
+    return {dates, prevDates, thisDates, nextDates};
 }
 
 export default renderCalendar;

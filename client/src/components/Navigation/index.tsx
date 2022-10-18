@@ -21,7 +21,7 @@ const Navigation = () => {
                     <HomeRoundedIcon className="main-icon"/>
                     <span className="icon-span">Home</span>
                 </div>
-                <div className="icon-wrapper"  onClick={() => navigate('/home')}>
+                <div className="icon-wrapper"  onClick={() => navigate('/planner')}>
                     <CalendarMonthRoundedIcon className="main-icon"/>
                     <span className="icon-span">Calendar</span>
                 </div>

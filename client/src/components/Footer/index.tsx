@@ -29,7 +29,7 @@ const Footer = () => {
             <div className="detail">
                 <div className="world-clock detail-content">
                     <WorldClock location={"Porto"} timeDiff={-8 * 3600}/>
-                    <WorldClock location={"Lahahk"} timeDiff={-8 * 3600 -30 * 60}/>
+                    <WorldClock location={"Leh"} timeDiff={-8 * 3600 -30 * 60}/>
                     <WorldClock location={"Ulaanbaatar"} timeDiff={-3600}/>
                     <WorldClock location={"Hochimin"} timeDiff={-2 * 3600}/>
                     <WorldClock location={"Munich"} timeDiff={-7 * 3600}/>

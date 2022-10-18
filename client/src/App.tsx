@@ -3,7 +3,7 @@ import React from 'react';
 import {useState, useEffect} from "react";
 import Layout from "./containers/Layout";
 import Main from "./pages/Main";
-import Home from "./pages/Home";
+import Planner from "./pages/Planner";
 import Book from "./pages/Book";
 import Travel from "./pages/Travel";
 import Terminal from "./pages/Terminal";
@@ -12,14 +12,14 @@ import Diary from "./pages/Diary";
 import NotFound from "./pages/NotFound";
 import SignIn from "./pages/Auth/SignIn";
 import SignUp from "./pages/Auth/SignUp";
-
+import Test from "./pages/Test";
 import getAutoLoginUser from "./api/getAutoLoginUser";
 import getRefTokenUser from "./api/getRefTokenUser";
 import reIssueAccessToken from "./api/reIssueAccessToken";
 import { useRecoilState } from "recoil";
 import { accessTokenState, refreshTokenState, sidState, userState, isLoggedInState } from "./store/atom";
 
-
+import sendRequest from "./api/sendRequest";
 import { UserType } from "./types";
 import axios from "axios";
 
@@ -29,12 +29,7 @@ function App() {
   const [refreshToken, setRefreshToken] = useRecoilState<string>(refreshTokenState);
   const [accessToken, setAccessToken] = useRecoilState<string>(accessTokenState);
   const [isLoggedIn, setIsLoggedIn] = useRecoilState<boolean>(isLoggedInState);
-  // useEffect(() => {
-  //   const test = async() => {
-  //     return await axios.get('http://localhost:3002');
-  //   }
-  //   console.log(test());
-  // }, [])
+  
   useEffect(():any => {
     const isLoggedIn = sessionStorage.getItem("isLoggedIn");
     if ( isLoggedIn === "true" ){
@@ -52,19 +47,21 @@ function App() {
         return await getAutoLoginUser();
       }
       getUserWithSid().then(res => {
-        if (res.data.status === 404)  return;
+        
+        if (res.status === 404)  return;
         else {
-          setAccessToken(res.data.data.accessToken);
-          setRefreshToken(res.data.data.refreshToken);
-          setSid(res.data.data.randomSessionId);
+          setAccessToken(res.data.accessToken);
+          setRefreshToken(res.data.refreshToken);
+          setSid(res.data.randomSessionId);
           setUser({
-            uid : res.data.data.user._id,
-            name : res.data.data.user.name,
-            id : res.data.data.user.id,
-            email : res.data.data.user.email,
-            birthday : res.data.data.user.birthday
+            uid : res.data.user._id,
+            name : res.data.user.name,
+            id : res.data.user.id,
+            email : res.data.user.email,
+            birthday : res.data.user.birthday
           })
           window.sessionStorage.setItem("isLoggedIn", "true");
+          setIsLoggedIn(true);
         }
       })
     }
@@ -74,19 +71,21 @@ function App() {
         return await getRefTokenUser();
       }
       getUserWithRefreshToken().then(res => {
-        if (res.data.status === 404){
+        console.log(res);
+        if (res.status === 404){
           return;
         } else {
-          setAccessToken(res.data.data.accessToken);
-          setRefreshToken(res.data.data.refreshToken);
+          setAccessToken(res.data.accessToken);
+          setRefreshToken(res.data.refreshToken);
           setUser({
-            uid : res.data.data.user._id,
-            name : res.data.data.user.name,
-            id : res.data.data.user.id,
-            email : res.data.data.user.email,
-            birthday : res.data.data.user.birthday
+            uid : res.data.user._id,
+            name : res.data.user.name,
+            id : res.data.user.id,
+            email : res.data.user.email,
+            birthday : res.data.user.birthday
           })
           window.sessionStorage.setItem("isLoggedIn", "true");
+          setIsLoggedIn(true);
         }
       })
     }
@@ -101,10 +100,10 @@ function App() {
     if ( accessToken ){
       const timer = setInterval(() => {
         reIssueUserAccessToken().then(res => {
-          if (res.data.status === 401 || res.data.stauts === 400){
+          if (res.status === 401 || res.status === 400){
             return;
           } else {
-            setAccessToken(res.data.data.accessToken);
+            setAccessToken(res.data.accessToken);
           }
         })
       }, 29.5 * 60 * 1000)
@@ -112,7 +111,15 @@ function App() {
     }
   }, [accessToken])
 
-
+  useEffect(() => {  
+    console.log("accessToken client : ", accessToken)
+    const test = async() => {
+      return await sendRequest('', "GET", {accessToken : accessToken}, true, accessToken);
+    }
+    if (accessToken !== ""){
+      test().then(res => console.log(res));
+    }
+  }, [accessToken])
 
   useEffect(() => {
     console.log("access", accessToken);
@@ -126,14 +133,16 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route element={<Layout />}>
-              <Route path="/home" element={<Home />}></Route>
-              <Route path="/home/:year/:month" element={<Home />}></Route>
+              <Route path="/planner" element={<Planner />}></Route>
+              <Route path="/planner/:year/:month" element={<Planner />}></Route>
               <Route path="/diary" element={<Diary />}></Route>
               <Route path="/book" element={<Book />}></Route>
               <Route path="/travel" element={<Travel />}></Route>
               <Route path="/terminal" element={<Terminal />}></Route>
               <Route path="/fitness" element={<Fitness /> }></Route>
+              <Route path="/test" element={<Test />}></Route>
             </Route>
+
             <Route path="/" element={<Main />}></Route>
             <Route path="/signin" element={<SignIn/>}></Route>
             <Route path="/signup" element={<SignUp/>}></Route>

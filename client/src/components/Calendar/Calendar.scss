@@ -1,0 +1,86 @@
+$width : 140px;
+$dateHeight : 120px;
+$dayHeight : 25px;
+.date-indicator{
+    
+}
+.calendar-container{      
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    
+    .calendar-wrapper{
+        width : 1000px;
+        max-width : 1000px;
+        display : flex;
+        flex-wrap : wrap;
+        flex-grow : 1;
+        justify-content : center;
+        align-items : center;    
+        margin : 0 auto; 
+        margin-top : 10vh;
+        padding-bottom : 10%;
+        
+        .prev{
+            .date-text{
+                opacity : 0.3;
+            }
+        }
+        .post{
+            .date-text{
+                opacity : 0.15;
+            }
+        }
+        .day{
+            background-color : rgb(136,151,168);
+            color : #fff;
+            width : $width;
+            height : $dayHeight;
+            border-top : 1px solid black;
+            border-right : 1px solid black;
+            display : flex;
+            justify-content: center;
+            align-items: center;
+            font-size : 13px;
+        }
+        .day:nth-child(7n+1){
+            border-left : 1px solid black;
+        }
+        .date{
+            width : $width;
+            height : $dateHeight;
+            padding : auto;
+            border-top : 1px solid black;
+            border-right : 1px solid black;
+            .date-text{
+                margin-left : 5px;
+                padding-top : 10px;
+                font-size : 13px;
+            }
+        }
+        .date:nth-child(7n+1){
+            border-left : 1px solid black;
+            .date-text{
+                color : #f1617d;
+            }
+        }
+        .date:nth-child(7n){
+            .date-text{
+                color : #8997A8;
+            }
+        }
+        .date:nth-last-child(-n+7){
+            border-bottom : 1px solid black;
+        }
+    }
+    
+    .arrow {
+        font-size : 50px;
+        margin : 0 50px;
+        &:hover{
+            cursor : pointer;
+            fill : orange;
+        }
+    }
+    
+}

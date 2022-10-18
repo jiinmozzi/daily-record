@@ -6,28 +6,37 @@ const baseHeaders = {};
 type RequestParamsType = {
     url : string,
     method : string,
-    data : any
-    loginRequired : boolean
+    data : any,
+    loginRequired : boolean,
+    accessToken : string | "",
 }
-const sendRequest = (url : string, method : string, data : any, loginRequired = false) => {
-    let queryString : string = "";
-    if (method === "GET"){
-        queryString += Object.entries(data).filter(e => e[0] !== "accessToken")
-                        .map(e => e.join("=")).join("&");
+const sendRequest = (url : string, method : string, data : any, loginRequired = false, accessToken = "") => {
+    // let queryString : string = "";
+    // let finalUrl = baseUrl;
+    // if ( url !== "" ){
+    //     finalUrl += "/" + url;
+    // }
+    const finalUrl = `${baseUrl}/${url}`;
+
+    // if (loginRequired) {
+    //     return axios({ url : finalUrl , method : method, data : data, withCredentials : true}).then((res) => res.data);
+    // }
+    if (loginRequired === true){
+        return axios({
+            url : finalUrl,
+            method : method,
+            data : data, 
+            headers : {
+                Authorization : `Bearer ${accessToken}`,
+            },
+            withCredentials : true,
+
+        }).then(res => res.data);
     }
-    
-    const finalUrl = queryString ? `${baseUrl}/${url}?${queryString}` : `${baseUrl}/${url}`;
-
-    const methodType = method === "POST" || method === "PUT";
-
-    if (loginRequired) {
-        return axios({ url : finalUrl , method : method, data : methodType ? data : {accessToken : data.accessToken}, withCredentials : true}).then((res) => res.data);
-    }
-
     return axios({
             url : finalUrl,
             method : method,
-            data : methodType ? data : "",
+            data : data,
             withCredentials : true,
     }).then(res => res.data);
 }

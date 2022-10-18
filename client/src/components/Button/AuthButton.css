@@ -1,0 +1,13 @@
+.auth-button {
+  width: 80px;
+  height: 30px;
+  background-color: black;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.auth-button:hover {
+  cursor: pointer;
+}/*# sourceMappingURL=AuthButton.css.map */

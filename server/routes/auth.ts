@@ -57,7 +57,7 @@ router.post('/signin', async(req : Request, res : Response) => {
             msg : "no user",
         })
     }
-    if ( user.password === encryptPassword(password) ){
+    if ( user.password !== encryptPassword(password) ){
         return res.status(403).send({
             msg : "wrong password",
         })

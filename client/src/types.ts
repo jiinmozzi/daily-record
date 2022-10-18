@@ -13,3 +13,13 @@ export type SignUpFormType = {
     email : string,
     birthday : string
 }
+
+export type ScheduleType = {
+    user : string,
+    dateForm : Date,
+    dateTo : Date,
+    title : string,
+    content : string,
+    createdAt : Date,
+    isCompleted : boolean
+}

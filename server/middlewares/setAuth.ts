@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 import generateAccessToken from "../utils/generateAccessToken";
-const User = require('../models');
+const {User} = require('../models');
 // const jwt = require('jsonwebtoken');
-
+// import User from "../models/User";
 import verify from "../utils/verify";
 require('dotenv').config();
 
@@ -11,13 +11,28 @@ interface IUserRequest extends Request {
 }
 
 const setAuth = async(req : IUserRequest, res : Response, next : NextFunction) => {
-    const accessToken = req.body.accessToken;
+    const bearer = req.headers.authorization?.split(' ')[0];
+    const accessToken = req.headers.authorization?.split(' ')[1];
+    // const accessToken = req.body.accessToken;
     const refreshToken = req.cookies.refreshToken;
-
+    if (bearer !== 'Bearer'){
+        return res.status(401).send({
+            status : 401,
+            message : "no Bearer symbol in headers",
+            redirectUrl : "/signin"
+        })
+    }
+    if (!accessToken){
+        return res.status(401).send({
+            status : 401,
+            message : "no access token in headers",
+            redirectUrl : "/signin",
+        })
+    }
     // access token is not expired
     // refresh token is not expired
-    // console.log("access: ", accessToken);
-    // console.log("verify(accessToken): ", verify(accessToken));
+    console.log("access: ", accessToken);
+    console.log("verify(accessToken): ", verify(accessToken));
     // const x = verify(accessToken);
 
     const accessIsValid : boolean = verify(accessToken).exp >= Date.now()/1000;
@@ -35,6 +50,7 @@ const setAuth = async(req : IUserRequest, res : Response, next : NextFunction) =
     // access token is here but expired
     
     if ( !accessIsValid ){
+        // access token이 만료되지 않을 것임을 가정하였음 reference : JWT memo
         return res.status(401).send({
             status : 401,
             message : "access token expired",
@@ -48,8 +64,8 @@ const setAuth = async(req : IUserRequest, res : Response, next : NextFunction) =
         return;
     }
     // setAuth passed.
-    req.user = await User.findOne({refreshToken : refreshToken})
-    console.log(req.user);
+    const user = await User.findOne({refreshToken : refreshToken})
+    req.user = user;
     return next();
 }
 

@@ -21,6 +21,7 @@ app.use('/', require('./routes'));
 app.use('/auth', require('./routes/auth'));
 app.use('/book', require('./routes/book'));
 app.use('/user', require('./routes/user'));
+app.use('/schedule', require('./routes/schedule'));
 
 require('dotenv').config();
 const port = process.env.PORT;

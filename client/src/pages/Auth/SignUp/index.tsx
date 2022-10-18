@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {useNavigate} from "react-router-dom";
+import signin from "../../../api/signin";
 import signup from "../../../api/signup";
 import "./Signup.scss";
 
@@ -58,7 +59,18 @@ const SignUp = () => {
             }, 5000)
             return;
         }   else {
+            console.log(password);
             const res = await signup({name, id, password, email, birthday})
+            if ( res.msg === "OK"){
+                console.log(password);
+                const _res = await signin(id, password, false);
+
+                console.log(_res);
+                if ( _res.msg === "OK" ){
+                    window.sessionStorage.setItem("isLoggedIn", "true");
+                    window.location.href = '/';   
+                }
+            }
             console.log(res);
         }
         

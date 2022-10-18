@@ -39,8 +39,8 @@ const SignIn = () => {
     
     const onSubmit = async(event : React.FormEvent ) => {
         event.preventDefault();
-        const res = await sendRequest('auth/signin', "POST", {id, password, autoLogin}, false);
-        
+        // const res = await sendRequest('auth/signin', "POST", {id, password, autoLogin}, false);
+        const res = await signin(id, password, autoLogin);
         if ( res.msg === "OK" ){
             window.sessionStorage.setItem("isLoggedIn", "true");
             window.location.href = '/';
