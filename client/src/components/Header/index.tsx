@@ -10,6 +10,7 @@ import { useRecoilState } from "recoil";
 import { isLoggedInState } from "../../store/atom";
 
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const Header = () => {
     const [isLoggedIn, setIsLoggedIn] = useRecoilState<boolean>(isLoggedInState);
@@ -24,7 +25,8 @@ const Header = () => {
                 </div>
                 {isLoggedIn ?   (
                 <div className="auth-nav">
-                    <AuthButton type="Sign out"/>
+                    <LogoutIcon />
+                    {/* <AuthButton type="Sign out"/> */}
                     {/* <SocialDropDown /> */}
                 </div>) : ( 
                 <div className="auth-nav">

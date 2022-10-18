@@ -1,15 +1,15 @@
 import React, {useState, useEffect} from "react";
 import renderCalendar from "../../utils/renderCalender";
 import { useParams } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 import KeyboardArrowLeftRoundedIcon from '@mui/icons-material/KeyboardArrowLeftRounded';
 import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRightRounded';
 import ScheduleCreateModal from "../Modal/ScheduleCreateModal";
 import "./Calendar.scss";
 
 const Calendar = () => {
+    const navigate = useNavigate();
     const monthlyText = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-
     const params = useParams();
     const [dates, setDates] = useState<number[]>([]);
     const [year, setYear] = useState<number>(0);
@@ -45,11 +45,21 @@ const Calendar = () => {
 
     return (
         <>
-            <div className="date-indicator">
-                <span>
-                    2022 {monthText}
-                </span>
-            </div> 
+            <div className="month-indicator">
+                <div className="date-indicator">
+                    <span className="month-text-span">
+                        {year} {monthText}
+                    </span>
+                </div> 
+                {monthlyText.map((mth) => {
+                    return (
+                        <div className="month-nav-container">
+                            <span className="month-nav" onClick={() => navigate(`/planner/${year}/${monthlyText.indexOf(mth) + 1}`)}>{mth}</span>
+                        </div>
+                    )}
+                )}
+                
+            </div>
             <div className="calendar-container">
                 <KeyboardArrowLeftRoundedIcon className="arrow"/>
                 <div className="calendar-wrapper">

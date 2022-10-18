@@ -1,26 +1,77 @@
 $width : 140px;
 $dateHeight : 120px;
 $dayHeight : 25px;
-.date-indicator{
-    
+
+.month-indicator{
+    display : flex;
+    .date-indicator{
+        width : 150px;
+        height : 40px;
+        border : 1px solid white;
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+        background-color : #fff;
+        border-radius : 20px;
+        display : flex;
+        justify-content : center;
+        align-items : center;
+        position : relative;
+        right : 55px;    
+        top : 30px;
+        .month-text-span{
+            font-size : 20px;
+            color : rgb(136,151,168);
+        }
+    }
+    .month-nav-container{
+        width : 60px;
+        height : 30px;
+        border : 1px solid white;
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+        background-color : #fff;
+        border-radius : 20px;
+        display : flex;
+        justify-content : center;
+        align-items : center;
+        position : relative;
+        top : 35px;
+        left : 55px;
+        color : rgb(136,151,168);
+        margin-left : 1px;
+        &:hover{
+            cursor : pointer;
+            background-color : rgb(136,151,168);
+            color : #fff;
+        }
+        .month-nav{
+            font-size :14px;
+            
+        }
+    }
 }
+
+
 .calendar-container{      
     display : flex;
     justify-content : center;
     align-items : center;
     
     .calendar-wrapper{
-        width : 1000px;
-        max-width : 1000px;
+        width : 1100px;
+        max-width : 1100px;
+        border : 1px solid white;
+        border-radius : 30px;
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+        background-color : rgb(246,246,246);
         display : flex;
         flex-wrap : wrap;
         flex-grow : 1;
         justify-content : center;
         align-items : center;    
         margin : 0 auto; 
-        margin-top : 10vh;
-        padding-bottom : 10%;
-        
+        padding-top : 50px;
+        margin-top : 10px;
+        padding-bottom : 50px;
+        margin-bottom : 10%;
         .prev{
             .date-text{
                 opacity : 0.3;
@@ -36,22 +87,23 @@ $dayHeight : 25px;
             color : #fff;
             width : $width;
             height : $dayHeight;
-            border-top : 1px solid black;
-            border-right : 1px solid black;
+            border-top : 1px solid #A7AAAA;
+            border-right : 1px solid #A7AAAA;
             display : flex;
             justify-content: center;
             align-items: center;
             font-size : 13px;
         }
         .day:nth-child(7n+1){
-            border-left : 1px solid black;
+            border-left : 1px solid #A7AAAA;
         }
         .date{
             width : $width;
             height : $dateHeight;
             padding : auto;
-            border-top : 1px solid black;
-            border-right : 1px solid black;
+            border-top : 1px solid #A7AAAA;
+            border-right : 1px solid #A7AAAA;
+            background-color : #fff;
             .date-text{
                 margin-left : 5px;
                 padding-top : 10px;
@@ -59,7 +111,7 @@ $dayHeight : 25px;
             }
         }
         .date:nth-child(7n+1){
-            border-left : 1px solid black;
+            border-left : 1px solid #A7AAAA;
             .date-text{
                 color : #f1617d;
             }
@@ -70,13 +122,15 @@ $dayHeight : 25px;
             }
         }
         .date:nth-last-child(-n+7){
-            border-bottom : 1px solid black;
+            border-bottom : 1px solid #A7AAAA;
         }
     }
     
     .arrow {
         font-size : 50px;
-        margin : 0 50px;
+        margin : 0 20px;
+        position : relative;
+        bottom : 180px;
         &:hover{
             cursor : pointer;
             fill : orange;
