@@ -6,9 +6,12 @@ import KeyboardArrowLeftRoundedIcon from '@mui/icons-material/KeyboardArrowLeftR
 import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRightRounded';
 import NoteAddRoundedIcon from '@mui/icons-material/NoteAddRounded';
 import ScheduleCreateModal from "../Modal/ScheduleCreateModal";
+import { accessTokenState } from "../../store/atom";
+import getSchedules from "../../api/getSchedules";
 import "./Calendar.scss";
 import NoteAddRounded from "@mui/icons-material/NoteAddRounded";
-
+import { useRecoilState } from "recoil";
+import { ScheduleType } from "../../types";
 const Calendar = () => {
     const navigate = useNavigate();
     const monthlyText : string[] = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
@@ -21,6 +24,42 @@ const Calendar = () => {
     const [prevDates, setPrevDates] = useState<number[]>([]);
     const [postDates, setPostDates] = useState<number[]>([]);
     const [currDates, setCurrDates] = useState<number[]>([]);
+    const [modalShow, setModalShow] = useState<string>("none");
+    const [schedules, setSchedules] = useState<ScheduleType[]>([]);
+    
+    const [accessToken, setAccessToken] = useRecoilState<string>(accessTokenState);
+    useEffect(() => {
+        if (accessToken){
+            const _getSchedules = async () => {
+                return await getSchedules(accessToken);
+            }
+            _getSchedules().then(res => setSchedules(res.data));
+        }
+    }, [accessToken])
+
+    useEffect(() => {
+        if (schedules[0]){
+            console.log(schedules[0].dateFrom);
+            console.log(schedules[0].dateTo)
+        }
+    }, [schedules])
+
+    const onClickRight = (e : React.MouseEvent) => {
+        if ( month === 11 ){
+            setYear(year + 1);
+            setMonth(0);
+        }   else {
+            setMonth((prev) => prev + 1);
+        }
+    }
+    const onClickLeft = (e : React.MouseEvent) => {
+        if (month === 0){
+            setYear(year - 1);
+            setMonth(11);
+        }   else {
+            setMonth((prev) => prev - 1); 
+        }
+    }
 
     useEffect(() => {
         if ( params.year ){
@@ -47,6 +86,10 @@ const Calendar = () => {
 
     return (
         <>
+            <div className="schedule-modal-conditional">
+                <ScheduleCreateModal modalShow={modalShow} setModalShow={setModalShow}/>
+            </div>
+            
             <div className="month-indicator">
                 <div className="date-indicator">
                     <span className="month-text-span">
@@ -64,10 +107,10 @@ const Calendar = () => {
                 
             </div>
             <div className="calendar-container">
-                <KeyboardArrowLeftRoundedIcon className="arrow"/>
+                <KeyboardArrowLeftRoundedIcon className="arrow" onClick={onClickLeft}/>
                 <div className="calendar-wrapper">
-                    <div className="create-icon-wrapper" onClick={() => navigate('/test')}>
-                        <NoteAddRoundedIcon className="create-icon" />
+                    <div className="create-icon-wrapper">
+                        <NoteAddRoundedIcon className="create-icon" onClick={() => setModalShow("")}/>
                     </div>
                     <div className="day">Sunday</div>
                     <div className="day">Monday</div>
@@ -88,6 +131,13 @@ const Calendar = () => {
                         return (
                         <div className="date curr">
                             <span className="date-text">{date}</span>
+                            {schedules.map((e : ScheduleType) => {
+                                return ( 
+                                    new Date(e.dateFrom).getMonth() === month 
+                                    && new Date(e.dateFrom).getDate() === date 
+                                    &&  <div className="schedule">{e.title}</div>) 
+                                })
+                            }
                         </div>
                         )}
                     )} 
@@ -100,7 +150,7 @@ const Calendar = () => {
                         )}
                     )}
                 </div>
-                <KeyboardArrowRightRoundedIcon className="arrow"/>
+                <KeyboardArrowRightRoundedIcon className="arrow" onClick={onClickRight}/>
             </div>
         </>
     )

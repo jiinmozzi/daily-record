@@ -17,15 +17,6 @@ const Planner = () => {
     const [sid, setSid] = useRecoilState<string>(sidState);
     const [user, setUser] = useRecoilState<UserType>(userState);
     const [accessToken, setAccessToken] = useRecoilState<string>(accessTokenState);
-    useEffect(() => {
-        if (accessToken){
-            const _getSchedules = async () => {
-                return await getSchedules(accessToken);
-            }
-            _getSchedules().then(res => console.log(res));
-            
-        }
-    }, [accessToken])
 
     useEffect(()=> {
         setLoading(true);

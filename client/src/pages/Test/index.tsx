@@ -3,8 +3,8 @@ import ScheduleCreateModal from "../../components/Modal/ScheduleCreateModal";
 const Test = () => {
     return (
         <>
-        <ScheduleCreateModal />
-        {/* <TravelCard /> */}
+        {/* <ScheduleCreateModal /> */}
+        <TravelCard />
         </>
     )
 }

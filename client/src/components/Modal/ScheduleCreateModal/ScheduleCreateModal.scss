@@ -2,24 +2,65 @@
     width : 100vw;
     height : 100vh;
     position : absolute;
+    top : 0;
+    left : 0;
     display : flex;
     justify-content : center;
     align-items : center;
     background-color : rgba(0,0,0,0.2);
+    z-index : 10;
     .schedule-create-inner-wrapper{
         width : 600px;
-        height : 400px;
+        height : 660px;
         background-color : #fff;
         border-radius :  30px;
         box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
         display : flex;
         flex-direction : column;
-        justify-content : center;
+        position : absolute;
         align-items : center;
         #schedule-modal-header{
             font-size : 20px;
             font-weight : bolder;
-            margin-bottom : 20px;
+            margin :15px 0 15px 0;
+            position : relative;
+            left : 24px;
+            .close-icon{
+                position : relative;
+                left : 200px;
+                &:hover{
+                    cursor : pointer;
+                    fill : rgb(136,150,167);
+                }
+            }
+        }
+        .form-label{
+            font-weight : bold;
+        }
+        .form-control{
+            width : 300px;
+        }
+        
+        .completed-span{
+            font-size : 16px;
+            margin-top : 10px;
+            color : #212529;
+        }
+        .public-span{
+            margin-top : 10px;
+            font-size : 16px;
+            
+            color : #212529;
+        }
+        .MuiFormControlLabel-label{
+            font-size : 14px;
+        }
+        .submit-btn{
+            margin-top : 20px;
+            width : 300px;
+            &:hover{
+                cursor : pointer;
+            }
         }
     }
 }

@@ -9,14 +9,15 @@ interface IUserRequest extends Request {
 }
 
 type ScheduleType = {
-    
+    _id : string,    
     user : string,
-    dateForm : Date,
+    dateFrom : Date,
     dateTo : Date,
     title : string,
     content : string,
     createdAt : Date,
-    isCompleted : boolean
+    isCompleted : boolean,
+    isPublic : boolean,
 }
 
 router.get('/', setAuth, async(req : IUserRequest, res : Response) => {
@@ -24,10 +25,18 @@ router.get('/', setAuth, async(req : IUserRequest, res : Response) => {
     
     const userSchedules = user.schedules;
     const schedules : ScheduleType[] = [];
-    userSchedules?.forEach((schedule : string) => {
-        schedules.push(Schedule.findById(schedule));
-    })
-    return res.send({
+    
+    for (let i=0; i<userSchedules.length; i++){
+        schedules.push(await Schedule.findById(userSchedules[i]));
+    }
+    // await userSchedules?.forEach(async(schedule : string) => {
+    //     const _userSchedule : ScheduleType = await Schedule.findById(schedule);
+    //     console.log(_userSchedule);
+    //     schedules.push(_userSchedule);
+    // })
+    console.log(schedules);
+    // console.log(schedules);
+    return res.status(200).send({
         status : 200,
         message : "OK",
         data : schedules,
@@ -36,7 +45,7 @@ router.get('/', setAuth, async(req : IUserRequest, res : Response) => {
 
 router.post('/create', setAuth, async(req : IUserRequest, res : Response) => {
     const user = req.user;
-    const {dateFrom, dateTo, title, content, isCompleted} = req.body;
+    const {dateFrom, dateTo, title, content, isCompleted, isPublic} = req.body;
     try {
         const newSchedule = new Schedule({
             user : user._id,
@@ -45,9 +54,13 @@ router.post('/create', setAuth, async(req : IUserRequest, res : Response) => {
             title,
             content,
             isCompleted,
+            isPublic,
             createdAt : Date.now(),
         })
         await newSchedule.save();
+
+        user.schedules.push(newSchedule._id);
+        await user.save();  
         return res.status(200).send({
             status : 200,
             message : "OK",
