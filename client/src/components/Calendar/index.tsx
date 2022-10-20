@@ -4,18 +4,20 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import KeyboardArrowLeftRoundedIcon from '@mui/icons-material/KeyboardArrowLeftRounded';
 import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRightRounded';
+import NoteAddRoundedIcon from '@mui/icons-material/NoteAddRounded';
 import ScheduleCreateModal from "../Modal/ScheduleCreateModal";
 import "./Calendar.scss";
+import NoteAddRounded from "@mui/icons-material/NoteAddRounded";
 
 const Calendar = () => {
     const navigate = useNavigate();
-    const monthlyText = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+    const monthlyText : string[] = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+
     const params = useParams();
     const [dates, setDates] = useState<number[]>([]);
     const [year, setYear] = useState<number>(0);
     const [month, setMonth] = useState<number>(0);
     const [monthText, setMonthText] = useState<string>("");
-    
     const [prevDates, setPrevDates] = useState<number[]>([]);
     const [postDates, setPostDates] = useState<number[]>([]);
     const [currDates, setCurrDates] = useState<number[]>([]);
@@ -51,10 +53,11 @@ const Calendar = () => {
                         {year} {monthText}
                     </span>
                 </div> 
-                {monthlyText.map((mth) => {
+                
+                {monthlyText.map((mth, idx) => {
                     return (
-                        <div className="month-nav-container">
-                            <span className="month-nav" onClick={() => navigate(`/planner/${year}/${monthlyText.indexOf(mth) + 1}`)}>{mth}</span>
+                        <div className="month-nav-container" style={{ backgroundColor : monthlyText.indexOf(mth) === month ? "rgb(136,151,168)" :  "#fff", color : monthlyText.indexOf(mth) === month ? "#fff" : "rgb(136,151,168)"}} onClick={() => navigate(`/planner/${year}/${monthlyText.indexOf(mth) + 1}`)}>
+                            <span className="month-nav">{mth}</span>
                         </div>
                     )}
                 )}
@@ -63,6 +66,9 @@ const Calendar = () => {
             <div className="calendar-container">
                 <KeyboardArrowLeftRoundedIcon className="arrow"/>
                 <div className="calendar-wrapper">
+                    <div className="create-icon-wrapper" onClick={() => navigate('/test')}>
+                        <NoteAddRoundedIcon className="create-icon" />
+                    </div>
                     <div className="day">Sunday</div>
                     <div className="day">Monday</div>
                     <div className="day">Tuesday</div>

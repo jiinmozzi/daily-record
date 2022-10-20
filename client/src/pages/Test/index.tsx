@@ -1,7 +1,11 @@
 import TravelCard from "../../components/Card/TravelCard";
+import ScheduleCreateModal from "../../components/Modal/ScheduleCreateModal";
 const Test = () => {
     return (
-        <TravelCard />
+        <>
+        <ScheduleCreateModal />
+        {/* <TravelCard /> */}
+        </>
     )
 }
 

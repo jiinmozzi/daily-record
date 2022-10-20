@@ -1,133 +1,154 @@
-.footer-wrapper{
-    width : 100%;
-    height : 35%;
-    position : fixed;
-    
-    left : 0;
-    bottom : 0;
-    // background-color : black;
-    .detail{
+
+.footer-outer-wrapper{  
+    .footer-wrapper{
         width : 100%;
-        height : 100%;
-        background-color : rgb(199,199,199);
-        display : flex;
-        border-top-left-radius: 25px;
-        border-top-right-radius : 25px;
-        
-        // display : none;
-        .detail-content{
+        height : 250px;
+        position : fixed;
+        left : 0;
+        bottom : 0;
+        // background-color : black;
+        .detail{
+            width : 100%;
             height : 100%;
-            padding-top : 2%;
+            background-color : #f6f6f6;
             display : flex;
-            justify-content: center;
-            // align-items: center;
-        }
-        .world-clock{
-            width : 35%;
-            display : flex;
-            flex-flow : row wrap;
-            
-            background-color : rgb(255,255,255);
-            background-color : gray;
             border-top-left-radius: 25px;
-        }
-        .navigations{
-            width : 40%;
-            height : 100%;
-            background-color : rgb(255,255,255);
-            background-color : gray;
-            padding-left : 10%;
-            padding-right : 5%;
-            padding-bottom : 5%;
-            display : flex;
-            flex-flow : wrap;
-            gap : 10px;
-            .navs{
-                width : 40%;
-                height : 18%;
-                font-size : 20px;
-                font-weight : bold;
-                display : flex;
-                &:hover{
-                    cursor : pointer;
-                }                    
-                // align-items : center;
-            }
-        }
-        .project-name{
-            width : 25%;
-            height : 100%;
-            background-color : rgb(255,255,255);
-            background-color : gray;
             border-top-right-radius : 25px;
-            display : flex;
-            flex-direction : column;
-            align-items : flex-start;
-            justify-content : space-between;
-            position : relative;
-            .project-name-upper{
+            transition : 0.5s ease-in;
+            // display : none;
+            .detail-content{
+                height : 100%;
+                padding-top : 2%;
                 display : flex;
-                flex-direction : column;
-                justify-content : flex-start;
-                .project-title{
-                    // height : 10%;
+                justify-content: center;
+                // align-items: center;
+            }
+            .world-clock{
+                width : 35%;
+                display : flex;
+                flex-flow : row wrap;
+                
+                background-color : rgb(255,255,255);
+                background-color : #f6f6f6;
+                border-top-left-radius: 25px;
+            }
+            .navigations{
+                width : 40%;
+                height : 100%;
+                background-color : rgb(255,255,255);
+                background-color : #f6f6f6;
+                padding-left : 10%;
+                padding-right : 5%;
+                padding-bottom : 5%;
+                display : flex;
+                flex-flow : wrap;
+                gap : 10px;
+                .navs{
+                    width : 40%;
+                    height : 18%;
                     font-size : 20px;
                     font-weight : bold;
-                }
-                .project-subtitle{
-                    // height : 10%;
-                    font-size : 18px;
+                    display : flex;
+                    &:hover{
+                        cursor : pointer;
+                    }                    
+                    // align-items : center;
                 }
             }
-            .project-contact{
+            .project-name{
+                width : 25%;
+                height : 100%;
+                background-color : rgb(255,255,255);
+                background-color : #f6f6f6;
+                border-top-right-radius : 25px;
                 display : flex;
                 flex-direction : column;
-                justify-content : flex-start;
-                margin-bottom : 10%;
-                .developer-detail{
-                    font-size : 14px;
+                align-items : flex-start;
+                justify-content : space-between;
+                position : relative;
+                .project-name-upper{
+                    display : flex;
+                    flex-direction : column;
+                    justify-content : flex-start;
+                    .project-title{
+                        // height : 10%;
+                        font-size : 20px;
+                        font-weight : bold;
+                    }
+                    .project-subtitle{
+                        // height : 10%;
+                        font-size : 18px;
+                    }
                 }
-                .email-icon{
-                    width : 18px;
+                .project-contact{
+                    display : flex;
+                    flex-direction : column;
+                    justify-content : flex-start;
+                    margin-bottom : 10%;
+                    .developer-detail{
+                        font-size : 14px;
+                    }
+                    .email-icon{
+                        width : 18px;
+                    }
+                    .call-icon{
+                        width : 18px;
+                    }
                 }
-                .call-icon{
-                    width : 18px;
+                // .arrow-down-div{ 
+                //     width : 100%;
+                //     display : flex;
+                //     justify-content : flex-end;
+                //     .arrow-down{
+                //         max-width : 200px;
+                //         margin-right : 10%;
+                //     }
+                // }
+                .arrow-down{
+                    position : absolute;
+                    top : 10%;
+                    right : 10%;
+                    &:hover{
+                        cursor: pointer;
+                    }
                 }
             }
-            // .arrow-down-div{ 
-            //     width : 100%;
-            //     display : flex;
-            //     justify-content : flex-end;
-            //     .arrow-down{
-            //         max-width : 200px;
-            //         margin-right : 10%;
-            //     }
-            // }
-            .arrow-down{
-                position : absolute;
-                top : 10%;
-                right : 10%;
+        }
+        
+        
+        .short{
+            width : 100%;
+            height : 10%;
+            position : fixed;
+            bottom : 0;
+            background-color : #f6f6f6;
+            display : flex;
+            justify-content : space-between;
+            color : rgba(13,15,69, 0.7);;
+            .short-footer-span{
+                display : flex;
+                flex-direction : column;
+                justify-content : center;
+                position : relative;
+                left : 20px;
+                .footer-github-link{
+                    color : rgb(13,15,69);
+                    &:hover{
+                        cursor : pointer;
+                    }
+                }
+            }
+            .arrow-up{
+                position : relative;
+                right : 30px;
+                top : 20px;
+                fill : rgb(13,15,69);
                 &:hover{
-                    cursor: pointer;
+                    cursor : pointer;
                 }
             }
+            // display : none;
         }
-    }
-    
-    
-    .short{
-        width : 100%;
-        height : 10%;
-        position : fixed;
-        bottom : 0;
-        background-color : black;
-        display : flex;
-        .arrow-up{
-            fill : rgb(199,199,199);
-            &:hover{
-                cursor : pointer;
-            }
-        }
-        // display : none;
     }
 }
+    

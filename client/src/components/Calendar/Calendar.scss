@@ -39,8 +39,9 @@ $dayHeight : 25px;
         margin-left : 1px;
         &:hover{
             cursor : pointer;
-            background-color : rgb(136,151,168);
-            color : #fff;
+            transition : 0.5s ease-in-out;
+            background-color : rgb(136,151,168) !important;
+            color : #fff !important ;
         }
         .month-nav{
             font-size :14px;
@@ -55,7 +56,9 @@ $dayHeight : 25px;
     justify-content : center;
     align-items : center;
     
-    .calendar-wrapper{
+    // padding-top : 100px;
+    // background-color : rgb(246,246,246);
+    .calendar-wrapper{        
         width : 1100px;
         max-width : 1100px;
         border : 1px solid white;
@@ -72,6 +75,26 @@ $dayHeight : 25px;
         margin-top : 10px;
         padding-bottom : 50px;
         margin-bottom : 10%;
+        .create-icon-wrapper{
+            width : 100%;
+            display : flex;
+            justify-content : flex-end;
+            padding-bottom : 10px;
+            // align-items : center;
+            .create-icon{
+                width : 30px;
+                height : 30px;
+                position : relative;
+                right : 55px;
+                // material-ui icon small 5px padding default;
+                fill : rgb(136,151,167);
+                transition : 0.5s ease-in-out;
+                &:hover{
+                    fill : rgb(13,15,69);
+                    cursor : pointer;
+                }
+            }
+        }
         .prev{
             .date-text{
                 opacity : 0.3;
@@ -110,7 +133,7 @@ $dayHeight : 25px;
                 font-size : 13px;
             }
         }
-        .date:nth-child(7n+1){
+        .date:nth-child(7n+2){
             border-left : 1px solid #A7AAAA;
             .date-text{
                 color : #f1617d;
@@ -130,7 +153,8 @@ $dayHeight : 25px;
         font-size : 50px;
         margin : 0 20px;
         position : relative;
-        bottom : 180px;
+        fill : #8897a8;
+        // bottom : 180px;
         &:hover{
             cursor : pointer;
             fill : orange;

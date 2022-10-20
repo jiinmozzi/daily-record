@@ -9,6 +9,7 @@ interface IUserRequest extends Request {
 }
 
 type ScheduleType = {
+    
     user : string,
     dateForm : Date,
     dateTo : Date,
@@ -20,7 +21,7 @@ type ScheduleType = {
 
 router.get('/', setAuth, async(req : IUserRequest, res : Response) => {
     const user = req.user;
-    const refreshToken = req.cookies.refreshToken;
+    
     const userSchedules = user.schedules;
     const schedules : ScheduleType[] = [];
     userSchedules?.forEach((schedule : string) => {
@@ -33,18 +34,39 @@ router.get('/', setAuth, async(req : IUserRequest, res : Response) => {
     })
 })
 
-router.post('/', setAuth, async(req : IUserRequest, res : Response) => {
-    //
-    return;
+router.post('/create', setAuth, async(req : IUserRequest, res : Response) => {
+    const user = req.user;
+    const {dateFrom, dateTo, title, content, isCompleted} = req.body;
+    try {
+        const newSchedule = new Schedule({
+            user : user._id,
+            dateFrom,
+            dateTo,
+            title,
+            content,
+            isCompleted,
+            createdAt : Date.now(),
+        })
+        await newSchedule.save();
+        return res.status(200).send({
+            status : 200,
+            message : "OK",
+            data : newSchedule,
+        });
+    }   catch ( err ){
+        console.error("creating schedule found error : ", err);
+        return;
+    }
 })
 
-router.delete('/', setAuth, async(req : IUserRequest, res : Response) => {
-    
+router.delete('/:id', setAuth, async(req : IUserRequest, res : Response) => {
+    const {id} = req.params;
     const user = req.user;
-    const _id = req.body._id;
-    user.schedules = user.schedules.filter((e : string )=> e!== _id);
+    
+    user.schedules = user.schedules.filter((e : string )=> e !== id);
+    
     try {
-        await Schedule.findByIdAndDelete(_id);
+        await Schedule.findByIdAndDelete(id);
         await user.save();
     }   catch (err) {
         return res.status(500).send({

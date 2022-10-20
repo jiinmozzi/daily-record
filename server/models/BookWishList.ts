@@ -9,6 +9,7 @@ const BookWishListSchema = new Schema({
     imageUrl : String,
     createdAt : { type : Date, default : Date.now() }, 
     isCompleted : {type : Boolean, default : false},
+    isPublic : {type : Boolean, default : true},
 })
 
 const BookWishList = mongoose.model('BookWishList', BookWishListSchema);

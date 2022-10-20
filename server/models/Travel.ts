@@ -12,7 +12,7 @@ const TravelSchema = new Schema({
     departureDate : Date,
     arrivalDate : Date,
     duration : Number,
-    
+    isPublic : {type : Boolean, default : true},  
 })
 
 const Travel = mongoose.model('Travel', TravelSchema);

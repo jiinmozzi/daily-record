@@ -8,7 +8,7 @@ const DiarySchema = new Schema({
     content : {type : String},
     imageUrl : String,
     createdAt : { type : Date, default : Date.now() }, 
-
+    isPublic : {type : Boolean, default : true},
 })
 
 const Diary = mongoose.model('Diary', DiarySchema);

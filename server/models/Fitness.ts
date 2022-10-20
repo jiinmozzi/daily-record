@@ -10,7 +10,7 @@ const FitnessSchema = new Schema({
     content : {type : String},
     imageUrl : String,
     createdAt : { type : Date, default : Date.now() }, 
-
+    isPublic : {type : Boolean, default : true},
 })
 
 const Fitness = mongoose.model('Fitness', FitnessSchema);

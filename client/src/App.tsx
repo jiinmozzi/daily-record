@@ -30,7 +30,7 @@ function App() {
   const [accessToken, setAccessToken] = useRecoilState<string>(accessTokenState);
   const [isLoggedIn, setIsLoggedIn] = useRecoilState<boolean>(isLoggedInState);
   
-  useEffect(():any => {
+  useEffect(():void => {
     const isLoggedIn = sessionStorage.getItem("isLoggedIn");
     if ( isLoggedIn === "true" ){
       setIsLoggedIn(true);
@@ -42,7 +42,7 @@ function App() {
     const fakeRefreshCookieArray = cookies?.filter(e => e[0] === "_refreshToken");
     
     console.log(sessionStorage.getItem("isLoggedIn"));
-    if (fakeSidCookieArray.length > 0 && !user.uid){    
+    if (fakeSidCookieArray.length > 0 && !isLoggedIn ){    
       const getUserWithSid = async() => {
         return await getAutoLoginUser();
       }

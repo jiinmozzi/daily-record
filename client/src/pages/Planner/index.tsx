@@ -4,7 +4,6 @@ import axios from "axios";
 // import PacmanLoader from "react-spinners/PacmanLoader";
 import Loading from "../../components/Loading";
 import Calendar from "../../components/Calendar";
-import Modal from "../../components/Modal";
 import Header from "../../components/Header";
 import { useRecoilState } from "recoil";
 import { sidState, userState, accessTokenState } from "../../store/atom";

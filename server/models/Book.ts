@@ -13,6 +13,7 @@ const BookSchema = new Schema({
     createdAt : { type : Date, default : Date.now() }, 
     rating : Number,
     isCompleted : {type : Boolean, default : false},
+    isPublic : {type : Boolean, default : true},
 })
 
 const Book = mongoose.model('Book', BookSchema);

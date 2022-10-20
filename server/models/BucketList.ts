@@ -8,6 +8,7 @@ const BucketListSchema = new Schema({
     title : String,
     comment : String,
     isCompleted : {type : Boolean, default : false},
+    isPublic : {type : Boolean, default : true},
 })
 
 const BucketList = mongoose.model('BucketList', BucketListSchema);

@@ -9,6 +9,7 @@ const TravelWishListSchema = new Schema({
     createdAt : { type : Date, default : Date.now() },
     title : String,
     comment : String,
+    isPublic : {type : Boolean, default : true},
 })
 
 const TravelWishList = mongoose.model('TravelWishList', TravelWishListSchema);

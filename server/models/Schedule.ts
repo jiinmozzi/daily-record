@@ -9,6 +9,7 @@ const ScheduleSchema = new Schema({
     content : {type : String},
     createdAt : { type : Date, default : Date.now() }, 
     isCompleted : {type : Boolean, default : false},
+    isPublic : {type : Boolean, default : true},
 })
 
 const Schedule = mongoose.model('Schedule', ScheduleSchema);

@@ -7,9 +7,11 @@ const router = express.Router();
 const {User} = require("../models");
 // const router = express.Router();
 
-router.get('/', setAuth, (req : Request, res : Response) => {
+interface IUserRequest extends Request {
+    user: any
+}
 
-    
+router.get('/', setAuth, (req : IUserRequest, res : Response) => {
     return res.send({
         status : 200,
         message : "OK",

@@ -1,0 +1,25 @@
+.schedule-create-outer-wrapper{
+    width : 100vw;
+    height : 100vh;
+    position : absolute;
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    background-color : rgba(0,0,0,0.2);
+    .schedule-create-inner-wrapper{
+        width : 600px;
+        height : 400px;
+        background-color : #fff;
+        border-radius :  30px;
+        box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+        display : flex;
+        flex-direction : column;
+        justify-content : center;
+        align-items : center;
+        #schedule-modal-header{
+            font-size : 20px;
+            font-weight : bolder;
+            margin-bottom : 20px;
+        }
+    }
+}

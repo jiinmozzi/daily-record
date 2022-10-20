@@ -11,6 +11,7 @@ router.get('/sid', async(req : Request, res : Response) => {
     if (!req.cookies.sid){
         return;
     }
+
     const user = await User.findOne({sessionId : req.cookies.sid});
     
     if (!user){

@@ -16,6 +16,7 @@ const ProgrammingStudySchema = new Schema({
         content : String,
         createdAt : Date
     },
+    isPublic : {type : Boolean, default : true},
 })
 
 const ProgrammingStudy = mongoose.model('ProgrammingStudy', ProgrammingStudySchema);

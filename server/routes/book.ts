@@ -15,5 +15,9 @@ router.get('/', (req : Request, res : Response) => {
     })
 })
 
+router.get('/:query', (req : Request, res : Response) => {
+    return;
+})
+
 module.exports = router;
 export {}
