@@ -22,10 +22,6 @@ const Main = () => {
     const [user, setUser] = useRecoilState<UserType>(userState);
     const [accessToken, setAccessToken] = useRecoilState<string>(accessTokenState);
     const [isLoggedIn, setIsLoggedIn] = useRecoilState<boolean>(isLoggedInState); 
-    useEffect(() => {
-        console.log(user);
-        console.log(accessToken);
-    }, [user, accessToken])
 
     const onClickSignout = async() => {
         sessionStorage.removeItem("isLoggedIn");

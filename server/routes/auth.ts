@@ -31,7 +31,6 @@ router.post('/signup', async(req : Request, res : Response) => {
                 msg : "OK",
             }) 
         }   catch (err){
-            console.log(err);
             return res.status(503).send({
                 msg : "server or network error",
             })

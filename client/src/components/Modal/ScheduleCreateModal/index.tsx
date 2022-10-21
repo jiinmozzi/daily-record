@@ -41,8 +41,6 @@ const ScheduleCreateModal = ({modalShow, setModalShow} : ScheduleCreateModalProp
 
 
     const onClickOutsideModal = ({target} : any) => { 
-        console.log(!modalRef.current?.contains(target))
-        console.log(target);
         if (modalShow === "" && !modalRef.current?.contains(target)){
             setModalShow("none");
         } 
@@ -77,7 +75,6 @@ const ScheduleCreateModal = ({modalShow, setModalShow} : ScheduleCreateModalProp
             _dateTo = new Date(dateTo.toString());
         }
         const res = await createSchedule(accessToken, {dateFrom : _dateFrom, dateTo : _dateTo, title, content, isCompleted, isPublic})
-        console.log(res);
     }
 
     return (

@@ -31,8 +31,6 @@ const setAuth = async(req : IUserRequest, res : Response, next : NextFunction) =
     }
     // access token is not expired
     // refresh token is not expired
-    console.log("access: ", accessToken);
-    console.log("verify(accessToken): ", verify(accessToken));
     // const x = verify(accessToken);
 
     const accessIsValid : boolean = verify(accessToken).exp >= Date.now()/1000;
@@ -65,7 +63,6 @@ const setAuth = async(req : IUserRequest, res : Response, next : NextFunction) =
     }
     // setAuth passed.
     const user = await User.findOne({refreshToken : refreshToken})
-    console.log("user : ", user);
     req.user = user;
     return next();
 }

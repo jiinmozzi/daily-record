@@ -8,7 +8,6 @@ const {Book, User} = require("../models");
 // const router = express.Router();
 
 router.get('/', (req : Request, res : Response) => {
-    console.log("router is on");
     return res.send({
         status : 200,
         message : "OK",

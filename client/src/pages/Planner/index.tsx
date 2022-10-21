@@ -20,7 +20,6 @@ const Planner = () => {
 
     useEffect(()=> {
         setLoading(true);
-        console.log('heelo')
         setTimeout(() => {
             setLoading(false);
             setInit(true);

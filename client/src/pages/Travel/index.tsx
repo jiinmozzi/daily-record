@@ -1,8 +1,12 @@
 import {useState, useEffect} from "react";
+import Map from "../../components/Map";
+import "./Travel.scss";
 
 const Travel = () => {
     return (
-        <div>Travel</div>
+        <div className="travel-wrapper">
+            <Map />
+        </div>
     )
 }
 

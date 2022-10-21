@@ -41,7 +41,6 @@ function App() {
     const refreshCookieArray = cookies?.filter(e => e[0] === "refreshToken");
     const fakeRefreshCookieArray = cookies?.filter(e => e[0] === "_refreshToken");
     
-    console.log(sessionStorage.getItem("isLoggedIn"));
     if (fakeSidCookieArray.length > 0 && !isLoggedIn ){    
       const getUserWithSid = async() => {
         return await getAutoLoginUser();
@@ -71,7 +70,6 @@ function App() {
         return await getRefTokenUser();
       }
       getUserWithRefreshToken().then(res => {
-        console.log(res);
         if (res.status === 404){
           return;
         } else {
@@ -112,7 +110,6 @@ function App() {
   }, [accessToken])
 
   useEffect(() => {  
-    console.log("accessToken client : ", accessToken)
     const test = async() => {
       return await sendRequest('', "GET", {accessToken : accessToken}, true, accessToken);
     }
@@ -121,12 +118,7 @@ function App() {
     }
   }, [accessToken])
 
-  useEffect(() => {
-    console.log("access", accessToken);
-    // console.log("refresh", refreshToken);
-    // console.log("sid", sid);
-    // console.log("user", user);
-  }, [accessToken, refreshToken, user, sid]);
+  
 
   return (
     <div className="App">
