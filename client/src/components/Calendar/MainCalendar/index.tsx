@@ -1,18 +1,19 @@
 import React, {useState, useEffect} from "react";
-import renderCalendar from "../../utils/renderCalender";
+import renderCalendar from "../../../utils/renderCalender";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import KeyboardArrowLeftRoundedIcon from '@mui/icons-material/KeyboardArrowLeftRounded';
 import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRightRounded';
 import NoteAddRoundedIcon from '@mui/icons-material/NoteAddRounded';
-import ScheduleCreateModal from "../Modal/ScheduleCreateModal";
-import { accessTokenState } from "../../store/atom";
-import getSchedules from "../../api/getSchedules";
-import "./Calendar.scss";
+import ScheduleCreateModal from "../../Modal/ScheduleCreateModal";
+import ScheduleDetailModal from "../../Modal/ScheduleDetailModal";
+import { accessTokenState } from "../../../store/atom";
+import getSchedules from "../../../api/getSchedules";
+import "./MainCalendar.scss";
 import NoteAddRounded from "@mui/icons-material/NoteAddRounded";
 import { useRecoilState } from "recoil";
-import { ScheduleType } from "../../types";
-const Calendar = () => {
+import { ScheduleType } from "../../../types";
+const MainCalendar = () => {
     const navigate = useNavigate();
     const monthlyText : string[] = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 
@@ -25,8 +26,9 @@ const Calendar = () => {
     const [postDates, setPostDates] = useState<number[]>([]);
     const [currDates, setCurrDates] = useState<number[]>([]);
     const [modalShow, setModalShow] = useState<string>("none");
+    const [detailModalShow, setDetailModalShow] = useState<string>("none");
     const [schedules, setSchedules] = useState<ScheduleType[]>([]);
-    
+    const [target, setTarget] = useState<string>("");
     const [accessToken, setAccessToken] = useRecoilState<string>(accessTokenState);
     useEffect(() => {
         if (accessToken){
@@ -52,6 +54,26 @@ const Calendar = () => {
         }   else {
             setMonth((prev) => prev - 1); 
         }
+    }
+    const onClickPrevDate = ( e : React.MouseEvent ) => {
+        const target = e.target as HTMLDivElement;
+        const span = target.firstChild as HTMLSpanElement;
+        setTarget(String(year) + String(month - 1).padStart(2, '0') + span.innerText.padStart(2, '0') )
+        setDetailModalShow("");
+    }
+
+    const onClickCurrDate = ( e : React.MouseEvent ) => {
+        const target = e.target as HTMLDivElement;
+        const span = target.firstChild as HTMLSpanElement;
+        setTarget(String(year) + String(month).padStart(2, '0') + span.innerText.padStart(2, '0') )    
+        setDetailModalShow("");
+    }
+    const onClickPostDate = ( e : React.MouseEvent ) => {
+        const target = e.target as HTMLDivElement;
+        const span = target.firstChild as HTMLSpanElement;
+        
+        setTarget(String(year) + String(month + 1).padStart(2, '0') + span.innerText.padStart(2, '0') )
+        setDetailModalShow("");
     }
 
     useEffect(() => {
@@ -80,7 +102,8 @@ const Calendar = () => {
     return (
         <>
             <div className="schedule-modal-conditional">
-                <ScheduleCreateModal modalShow={modalShow} setModalShow={setModalShow}/>
+                <ScheduleCreateModal modalShow={modalShow} setModalShow={setModalShow} schedules={schedules} setSchedules={setSchedules}/>
+                { detailModalShow !== "none" && <ScheduleDetailModal detailModalShow={detailModalShow} setDetailModalShow={setDetailModalShow} schedules={schedules} setSchedules={setSchedules} target={target}/> }
             </div>
             
             <div className="month-indicator">
@@ -114,7 +137,7 @@ const Calendar = () => {
                     <div className="day">Saturday</div>
                     { prevDates.map((date) => {
                             return (
-                                <div className="date prev">
+                                <div className="date prev" onClick={onClickPrevDate}>
                                     <span className="date-text">{date}</span>
                                 </div>
                             )}
@@ -122,7 +145,7 @@ const Calendar = () => {
                     
                     { currDates.map((date) => {
                         return (
-                        <div className="date curr">
+                        <div className="date curr" onClick={onClickCurrDate}>
                             <span className="date-text">{date}</span>
                             {schedules.map((e : ScheduleType) => {
                                 return ( 
@@ -137,7 +160,7 @@ const Calendar = () => {
 
                     { postDates.map((date) => {
                         return (
-                        <div className="date post">
+                        <div className="date post" onClick={onClickPostDate}>
                             <span className="date-text">{date}</span>
                         </div>
                         )}
@@ -149,4 +172,4 @@ const Calendar = () => {
     )
 }
 
-export default Calendar;
+export default MainCalendar;

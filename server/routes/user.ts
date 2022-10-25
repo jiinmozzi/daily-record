@@ -30,9 +30,9 @@ router.get('/sid', async(req : Request, res : Response) => {
 
     user.sessionId = randomSessionId;
     user.refreshToken = refreshToken;
-    res.cookie('sid', randomSessionId, { maxAge : 7 * 24 * 60 * 60 * 1000, httpOnly : true });
+    res.cookie('sid', randomSessionId, { maxAge :  7 * 24 * 60 * 60 * 1000, httpOnly : true });
     res.cookie('_sid', fakeRandomSessionId, {maxAge : 7 * 24 * 60 * 60 * 1000});
-
+    
     await user.save();
     return res.send({
         data : {user, accessToken, refreshToken, randomSessionId},

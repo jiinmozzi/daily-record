@@ -87,6 +87,7 @@ router.post('/signin', async(req : Request, res : Response) => {
     })
 })
 router.post('/reissue/access', async(req : Request, res : Response) => {
+    
     if ( !req.cookies.refreshToken ){
         return res.status(401).send({
             status : 401, 
@@ -100,9 +101,11 @@ router.post('/reissue/access', async(req : Request, res : Response) => {
             message : "no access token",
         })
     }
+    
     // accessToken too far away from now
-    if ( Date.now()/1000 - verify(req.body.accessToken).exp > 7 * 24 * 60 * 60){
-        return res.status(400).send({
+    if ( !verify(req.body.accessToken) ){
+        
+        return res.send({
             status : 400,
             message : "access token too old",
         })

@@ -1,7 +1,8 @@
 .schedule-create-outer-wrapper{
-    width : 100vw;
-    height : 100vh;
+    width : 100%;
+    height : 100%;
     position : absolute;
+    position : fixed;
     top : 0;
     left : 0;
     display : flex;
@@ -18,6 +19,7 @@
         display : flex;
         flex-direction : column;
         position : absolute;
+        position : fixed;
         align-items : center;
         #schedule-modal-header{
             font-size : 20px;

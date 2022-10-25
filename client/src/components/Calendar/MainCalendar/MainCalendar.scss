@@ -127,16 +127,22 @@ $dayHeight : 25px;
             border-top : 1px solid #A7AAAA;
             border-right : 1px solid #A7AAAA;
             background-color : #fff;
+            &:hover{
+                cursor : pointer;
+                background-color : rgb(242, 242, 242);
+            }
             .date-text{
                 margin-left : 5px;
                 padding-top : 10px;
                 font-size : 13px;
+                
             }
             .schedule{
                 font-size : 12px;
                 padding-left : 5px;
                 color : #448b69;
                 font-weight : bold;
+                pointer-events: none;
             }
         }
         .date:nth-child(7n+2){

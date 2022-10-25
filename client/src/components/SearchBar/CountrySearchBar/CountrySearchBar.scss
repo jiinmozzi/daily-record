@@ -1,0 +1,31 @@
+.country-search-bar-wrapper{
+    display : flex;
+    flex-direction : column;
+    .country-add-nav{
+        margin-left : 5px;
+        display : flex;
+        flex-direction : column;
+        margin-top : 20px;
+        .country-visit-boolean{
+            display : flex;
+            gap : 30px;
+            margin-bottom : 5px;
+        }
+        .tour-icon{
+            fill : orange;
+            &:hover{
+                cursor : pointer;
+            }
+        }
+        .wish-icon{
+            fill : rgb(136,150,166);
+            &:hover{
+                cursor : pointer;
+            }
+        }
+        .add-nav-span{
+            font-size : 16px;
+            margin-left : 15px;
+        }
+    }
+}

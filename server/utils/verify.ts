@@ -5,7 +5,6 @@ const verify = (token : string) : any => {
         return verified;
     }   catch ( err : any ) {
         if ( err.message === "jwt expired"){
-            
             console.log("TOKEN EXPIRED");
             return;
         }   else if ( err.message === "invalid token"){

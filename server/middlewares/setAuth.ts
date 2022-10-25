@@ -32,7 +32,8 @@ const setAuth = async(req : IUserRequest, res : Response, next : NextFunction) =
     // access token is not expired
     // refresh token is not expired
     // const x = verify(accessToken);
-
+    console.log(verify(accessToken));
+    
     const accessIsValid : boolean = verify(accessToken).exp >= Date.now()/1000;
     const refreshIsValid : boolean = refreshToken && verify(refreshToken).exp >= Date.now()/1000;
     

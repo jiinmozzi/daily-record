@@ -25,9 +25,11 @@ import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 type ScheduleCreateModalPropsType = {
     modalShow : any,
     setModalShow : any,
+    schedules : any,
+    setSchedules : any,
 }
 
-const ScheduleCreateModal = ({modalShow, setModalShow} : ScheduleCreateModalPropsType) => {
+const ScheduleCreateModal = ({modalShow, setModalShow, schedules, setSchedules} : ScheduleCreateModalPropsType) => {
     const [accessToken, setAccessToken] = useRecoilState<string>(accessTokenState);
     const [dateFrom, setDateFrom] = React.useState<Dayjs | null>( dayjs(Date.now()) );
     const [dateTo, setDateTo] = React.useState<Dayjs | null>( dayjs(Date.now()) );
@@ -75,6 +77,14 @@ const ScheduleCreateModal = ({modalShow, setModalShow} : ScheduleCreateModalProp
             _dateTo = new Date(dateTo.toString());
         }
         const res = await createSchedule(accessToken, {dateFrom : _dateFrom, dateTo : _dateTo, title, content, isCompleted, isPublic})
+        if (res.message==="OK"){
+            setSchedules([...schedules, res.data]);
+            setTitle("");
+            setContent("");
+            setIsCompleted(false);
+            setIsPublic(true);
+            setModalShow("none");
+        }
     }
 
     return (

@@ -34,7 +34,6 @@ router.get('/', setAuth, async(req : IUserRequest, res : Response) => {
     //     console.log(_userSchedule);
     //     schedules.push(_userSchedule);
     // })
-    console.log(schedules);
     // console.log(schedules);
     return res.status(200).send({
         status : 200,
@@ -71,7 +70,17 @@ router.post('/create', setAuth, async(req : IUserRequest, res : Response) => {
         return;
     }
 })
-
+router.post('/complete', setAuth, async( req : IUserRequest, res : Response ) => {
+    const {_id} = req.body;
+    console.log(_id);
+    const schedule = await Schedule.findById(_id);
+    schedule.isCompleted = !schedule.isCompleted;
+    await schedule.save();
+    return res.send({
+        status : 200,
+        message : "OK",
+    })
+})
 router.delete('/:id', setAuth, async(req : IUserRequest, res : Response) => {
     const {id} = req.params;
     const user = req.user;

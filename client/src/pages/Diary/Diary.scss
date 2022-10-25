@@ -1,0 +1,15 @@
+.diary-wrapper{
+    margin-top : 80px;
+    display : flex;
+    flex-direction : column;
+    justify-content : center;
+    align-items : center;
+    .diary-span{
+        display : flex;
+        width : 690px;
+        margin-bottom : 10px;
+        font-size : 18px;
+        font-weight : 600;
+        color : #272e56;
+    }
+}

@@ -1,4 +1,3 @@
-import { string } from "yargs";
 import sendRequest from "./sendRequest";
 
 type ScheduleFormType = {

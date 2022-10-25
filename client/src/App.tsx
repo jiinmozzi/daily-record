@@ -1,6 +1,7 @@
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import React from 'react';
 import {useState, useEffect} from "react";
+
 import Layout from "./containers/Layout";
 import Main from "./pages/Main";
 import Planner from "./pages/Planner";
@@ -9,6 +10,7 @@ import Travel from "./pages/Travel";
 import Terminal from "./pages/Terminal";
 import Fitness from "./pages/Fitness";
 import Diary from "./pages/Diary";
+import BucketList from "./pages/BucketList";
 import NotFound from "./pages/NotFound";
 import SignIn from "./pages/Auth/SignIn";
 import SignUp from "./pages/Auth/SignUp";
@@ -91,7 +93,8 @@ function App() {
 
   // periodically re-issue access token
   useEffect(() => {
-    
+    console.log('set access token') 
+    console.log('accessToken : ', accessToken);
     const reIssueUserAccessToken = async() => {
       return await reIssueAccessToken(accessToken);
     }
@@ -99,24 +102,27 @@ function App() {
       const timer = setInterval(() => {
         reIssueUserAccessToken().then(res => {
           if (res.status === 401 || res.status === 400){
+            
             return;
           } else {
+            console.log('set access token') 
             setAccessToken(res.data.accessToken);
           }
         })
       }, 29.5 * 60 * 1000)
+      
       return () => clearInterval(timer);
     }
   }, [accessToken])
 
-  useEffect(() => {  
-    const test = async() => {
-      return await sendRequest('', "GET", {accessToken : accessToken}, true, accessToken);
-    }
-    if (accessToken !== ""){
-      test().then(res => console.log(res));
-    }
-  }, [accessToken])
+  // useEffect(() => {  
+  //   const test = async() => {
+  //     return await sendRequest('', "GET", {accessToken : accessToken}, true, accessToken);
+  //   }
+  //   if (accessToken !== ""){
+  //     test().then(res => console.log(res));
+  //   }
+  // }, [accessToken])
 
   
 
@@ -130,6 +136,7 @@ function App() {
               <Route path="/diary" element={<Diary />}></Route>
               <Route path="/book" element={<Book />}></Route>
               <Route path="/travel" element={<Travel />}></Route>
+              <Route path="/bucketlist" element={<BucketList />}></Route>
               <Route path="/terminal" element={<Terminal />}></Route>
               <Route path="/fitness" element={<Fitness /> }></Route>
               <Route path="/test" element={<Test />}></Route>

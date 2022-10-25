@@ -1,28 +1,68 @@
 .map-wrapper{
     width : 900px;
-    max-width : 900px;
-    height : 450px;
-    max-height : 450px;
     display : flex;
-    flex-flow : wrap;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-    &:hover{
-        cursor : pointer;
+    flex-direction : column;
+    justify-content : center;
+    align-items : center;
+    .world-map-indicator{
+        display : flex;
+        justify-content : center;
+        align-items : center;
+        margin-bottom : 15px;
+        .visited{
+            width : 10px;
+            height : 10px;
+            border-radius : 5px;
+            background-color : #fcb662;
+        }
+        .wishlist{
+            width : 10px;
+            height : 10px;
+            border-radius : 5px;
+            
+            background-color : #cdabff;
+        }
+        .selected{
+            width : 10px;
+            height : 10px;
+            border-radius : 5px;
+            
+            background-color : rgb(136, 150, 167);
+        }
+        
     }
-    .Sea{
-        width : 5px;
-        max-width : 5px;
-        height : 5px;
-        max-height : 5px;
-        border-radius : 2.5px;
-        background-color : rgb(252,252,252);
+    .world-map-wrapper{
+        width : 900px;
+        max-width : 900px;
+        height : 450px;
+        max-height : 450px;
+        display : flex;
+        flex-flow : wrap;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        &:hover{
+            cursor : pointer;
+        }
+        .Sea{
+            width : 5px;
+            max-width : 5px;
+            height : 5px;
+            max-height : 5px;
+            border-radius : 2.5px;
+            background-color : rgb(252,252,252);
+        }
+        .country{
+            width : 5px;
+            max-width : 5px;
+            height : 5px;
+            max-height : 5px;
+            border-radius : 2.5px;
+            background-color: rgb(196,204,215);
+        }
     }
-    .country{
-        width : 5px;
-        max-width : 5px;
-        height : 5px;
-        max-height : 5px;
-        border-radius : 2.5px;
-        background-color: rgb(196,204,215);
+    .activated-country{
+        margin-top : 10px;
+        color : rgb(136,150,167);
+        font-weight : bold;
     }
+
 }
