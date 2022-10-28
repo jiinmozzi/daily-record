@@ -14,6 +14,33 @@ export type SignUpFormType = {
     birthday : string
 }
 
+export type BookType = {
+    authors : string[],
+    title : string,
+    contents : string,
+    datetime : string,
+    price : number,
+    thumbnail : string,
+}
+
+export type UsersBookType = {
+    title : string,
+    author : string[],
+    genre : string
+    imageUrl : string,
+    contetns : string,
+    comment : string,
+    from : Number,
+    to : Number,
+    createdAt : Date,
+    datetime : string,
+    rating : Number,
+    isCompleted : {type : Boolean, default : false},
+    isPublic : {type : Boolean, default : true},
+    price : Number,
+    
+}
+
 export type ScheduleType = {
     _id : string,    
     user : string,

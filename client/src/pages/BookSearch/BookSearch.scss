@@ -1,0 +1,14 @@
+.book-search-wrapper{
+    display : flex;
+    flex-direction : column;
+    justify-content : center;
+    align-items : center;
+    .book-search-page-explanation{
+        display : flex;
+        height : 80px;
+        justify-content: center;
+        align-items: center;
+        font-size : 18px;
+        font-weight : 900;
+    }
+}

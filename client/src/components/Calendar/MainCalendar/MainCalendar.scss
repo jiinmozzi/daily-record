@@ -151,7 +151,7 @@ $dayHeight : 25px;
                 color : #f1617d;
             }
         }
-        .date:nth-child(7n){
+        .date:nth-child(7n+1){
             .date-text{
                 color : #8997A8;
             }

@@ -151,7 +151,7 @@ const MainCalendar = () => {
                                 return ( 
                                     new Date(e.dateFrom).getMonth() === month 
                                     && new Date(e.dateFrom).getDate() === date 
-                                    &&  <div className="schedule">{e.title}</div>) 
+                                    &&  <div className="schedule" style={{opacity : e.isCompleted ? 0.4 : 1}}>{e.title}</div>) 
                                 })
                             }
                         </div>

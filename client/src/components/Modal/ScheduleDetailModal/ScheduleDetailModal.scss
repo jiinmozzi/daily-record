@@ -20,7 +20,12 @@
         display : flex;
         flex-direction : column;
         align-items : center;
-        overflow-y : auto;      
+        overflow-y : auto;
+        .schedule-detail-date-indicator{
+            margin-top : 15px;
+            font-size : 18px;
+            font-weight : bold;
+        }      
     }
 }
 

@@ -6,6 +6,7 @@ import Layout from "./containers/Layout";
 import Main from "./pages/Main";
 import Planner from "./pages/Planner";
 import Book from "./pages/Book";
+import BookSearch from "./pages/BookSearch";
 import Travel from "./pages/Travel";
 import Terminal from "./pages/Terminal";
 import Fitness from "./pages/Fitness";
@@ -140,6 +141,7 @@ function App() {
               <Route path="/terminal" element={<Terminal />}></Route>
               <Route path="/fitness" element={<Fitness /> }></Route>
               <Route path="/test" element={<Test />}></Route>
+              <Route path="/book/:bookTitle" element={<BookSearch />}></Route>
             </Route>
 
             <Route path="/" element={<Main />}></Route>

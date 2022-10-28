@@ -4,16 +4,19 @@ const {Schema} = mongoose;
 const BookSchema = new Schema({
     user : {type : Schema.Types.ObjectId, ref : "User"},
     title : {type : String, required : true},
-    author : {type : String, required : true},
-    genre : {type : String, required : true},
+    authors : [{type : String, required : true}],
+    genre : String,
     imageUrl : String,
     comment : String,
     from : Number,
     to : Number,
     createdAt : { type : Date, default : Date.now() }, 
+    datetime : String,
+    contents : String,
     rating : Number,
     isCompleted : {type : Boolean, default : false},
     isPublic : {type : Boolean, default : true},
+    price : Number,
 })
 
 const Book = mongoose.model('Book', BookSchema);

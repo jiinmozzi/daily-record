@@ -30,27 +30,29 @@ const ScheduleDetailCard = ({schedule} : any) => {
     const onClickDelete = ( e : React.MouseEvent ) => {}
     return (
         <div className="schedule-detail-card-wrapper">
-            <div className="schedule-detail-date schedule-detail-item" >
-                <span>From : {new Date(schedule.dateFrom).toLocaleDateString('en-ko')}</span>
-                <span>To : {new Date(schedule.dateTo).toLocaleDateString('en-ko')} </span>
-            </div>
-            <div className="schedule-detail-main schedule-detail-item">
-                <span className="schedule-detail-title">title : {schedule.title}</span>
-                <span>content : {schedule.content }</span>
-            </div>
-            <div className="schedule-detail-nav schedule-detail-item">
-                <div className="schedule-icon-wrapper" onClick={onClickDone}>
-                    <DoneRoundedIcon className="icon-done schedule-detail-icon"/>
-                    <span>완료</span>
+            
+                <div className="schedule-detail-date schedule-detail-item" >
+                    <span>From : {new Date(schedule.dateFrom).toLocaleDateString('en-ko')}</span>
+                    <span>To : {new Date(schedule.dateTo).toLocaleDateString('en-ko')} </span>
                 </div>
-                <div className="schedule-icon-wrapper" onClick={onClickEdit}>
-                    <EditRoundedIcon className="icon-edit schedule-detail-icon"/>
-                    <span>수정</span>
+                <div className="schedule-detail-main schedule-detail-item">
+                    <span className="schedule-detail-title">title : {schedule.title}</span>
+                    <span>content : {schedule.content }</span>
                 </div>
-                <div className="schedule-icon-wrapper" onClick={onClickDelete}>
-                    <DeleteRoundedIcon className="icon-delete schedule-detail-icon"/>
-                    <span>삭제</span>
-                </div>
+                <div className="schedule-detail-nav schedule-detail-item">
+                    <div className="schedule-icon-wrapper" onClick={onClickDone}>
+                        <DoneRoundedIcon className="icon-done schedule-detail-icon"/>
+                        <span>완료</span>
+                    </div>
+                    <div className="schedule-icon-wrapper" onClick={onClickEdit}>
+                        <EditRoundedIcon className="icon-edit schedule-detail-icon"/>
+                        <span>수정</span>
+                    </div>
+                    <div className="schedule-icon-wrapper" onClick={onClickDelete}>
+                        <DeleteRoundedIcon className="icon-delete schedule-detail-icon"/>
+                        <span>삭제</span>
+                    </div>
+                
             </div>
         </div>
     )
