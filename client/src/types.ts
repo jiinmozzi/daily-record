@@ -40,6 +40,17 @@ export type UsersBookType = {
     price : Number,
     
 }
+export type UsersBookWishListType = {
+    title : string,
+    authors : string[],
+    contents : string,
+    datetime : string,
+    genre : string,
+    imageUrl : string,
+    createdAt : string,
+    isCompleted : {type : Boolean, default : false},
+    ispublic : {type : Boolean, default : true},
+}
 
 export type ScheduleType = {
     _id : string,    

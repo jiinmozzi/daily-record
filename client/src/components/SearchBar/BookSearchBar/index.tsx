@@ -32,7 +32,9 @@ const BookSearchBar = () => {
         const target = e.target as HTMLInputElement;
         setBookTitle(target.value);
     }
-
+    useEffect(() => {
+        console.log(suggestions); 
+    }, [suggestions])
     return (
         <div className="book-search-bar-wrapper" style={{ backgroundImage : `url(${books})`}}>
             <Paper

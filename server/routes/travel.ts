@@ -14,6 +14,7 @@ router.get('/', (req : Request, res : Response) => {
         message : "OK",
     })
 })
+
 router.get('/history', setAuth, (req : IUserRequest, res : Response) => {
     const user = req.user;
     const {visitedCountries, wishListCountries} = user;
@@ -28,6 +29,7 @@ router.get('/history', setAuth, (req : IUserRequest, res : Response) => {
         }
     })
 })
+
 router.post('/history/toggle', setAuth, async(req : IUserRequest, res : Response) => {
     const user = req.user;
     const {country, type} = req.body;
@@ -52,6 +54,9 @@ router.post('/history/toggle', setAuth, async(req : IUserRequest, res : Response
         message : "OK",
         
     })
+})
+router.post('/create/story', setAuth, async(req : IUserRequest, res : Response) => {
+    return;
 })
 
 router.get('/:query', (req : Request, res : Response) => {
