@@ -55,8 +55,12 @@ router.post('/history/toggle', setAuth, async(req : IUserRequest, res : Response
         
     })
 })
-router.post('/create/story', setAuth, async(req : IUserRequest, res : Response) => {
+router.post('/story/create', setAuth, async(req : IUserRequest, res : Response) => {
     return;
+})
+
+router.delete('/story/delete/:id', setAuth, async(req : IUserRequest, res : Response) => {
+    
 })
 
 router.get('/:query', (req : Request, res : Response) => {

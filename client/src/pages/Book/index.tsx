@@ -12,6 +12,7 @@ const Book = () => {
     return (
         // 나중에 search modal hidden 관련 로직은 다 book-search-wrapper 쪽으로 빼세요.
         <div className="book-wrapper">
+                
                 <BookSearchBar />
                 <MyBookCard />
         </div>
