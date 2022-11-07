@@ -21,9 +21,15 @@ app.use('/', require('./routes'));
 app.use('/auth', require('./routes/auth'));
 app.use('/asset', require('./routes/asset'));
 app.use('/book', require('./routes/book'));
-app.use('/user', require('./routes/user'));
-app.use('/travel', require('./routes/travel'));
+app.use('/bucketlist', require('./routes/bucketlist'));
+app.use('/diary', require('./routes/diary'));
 app.use('/schedule', require('./routes/schedule'));
+app.use('/terminal', require('./routes/terminal'));
+app.use('/travel', require('./routes/travel'));
+app.use('/user', require('./routes/user'));
+app.use('/fitness', require('./routes/fitness'));
+
+
 
 require('dotenv').config();
 const port = process.env.PORT;
