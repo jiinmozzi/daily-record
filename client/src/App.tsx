@@ -5,6 +5,7 @@ import {useState, useEffect} from "react";
 import Layout from "./containers/Layout";
 import Main from "./pages/Main";
 import Planner from "./pages/Planner";
+import Asset from "./pages/Asset";
 import Book from "./pages/Book";
 import BookSearch from "./pages/BookSearch";
 import Travel from "./pages/Travel";
@@ -136,6 +137,7 @@ function App() {
               <Route path="/planner/:year/:month" element={<Planner />}></Route>
               <Route path="/diary" element={<Diary />}></Route>
               <Route path="/book" element={<Book />}></Route>
+              <Route path="/asset" element={<Asset />}></Route>
               <Route path="/travel" element={<Travel />}></Route>
               <Route path="/bucketlist" element={<BucketList />}></Route>
               <Route path="/terminal" element={<Terminal />}></Route>

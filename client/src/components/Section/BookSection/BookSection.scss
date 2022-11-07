@@ -1,0 +1,13 @@
+.book-section-wrapper{
+    height : 250px;
+    display : flex;
+    width : 100%;
+    padding : 0 10%;
+    margin : 10px 0 10px 0;
+    // background-color : black;
+    .book-adventure{
+        width : 400px;
+        height : 100%;
+        object-fit : contain;
+    }
+}

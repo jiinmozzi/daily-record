@@ -33,7 +33,7 @@ const Navigation = () => {
                     <TerminalRoundedIcon className="main-icon"/>
                     <span className="icon-span">Terminal</span>
                 </div>
-                <div className="icon-wrapper" onClick={() => navigate('/terminal')}>
+                <div className="icon-wrapper" onClick={() => navigate('/asset')}>
                     <LocalAtmRoundedIcon className="main-icon"/>
                     <span className="icon-span">Asset</span>
                 </div>

@@ -14,6 +14,7 @@ type ScheduleType = {
     dateFrom : Date,
     dateTo : Date,
     title : string,
+    periodLength : Number,
     content : string,
     createdAt : Date,
     isCompleted : boolean,

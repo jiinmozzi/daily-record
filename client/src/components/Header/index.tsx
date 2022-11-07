@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import SocialDropDown from "../Dropdown/SocialDropDown";
+import SocialDropDown from "../DropDown/SocialDropDown";
 import logo from "../../assets/logo.png";
 import Navigation from "../Navigation";
 import AuthButton from "../Button/AuthButton";
@@ -35,9 +35,6 @@ const Header = () => {
                     <SocialDropDown />
                 </div> 
                 )}
-                
-                
-                
             </div>
             <div className="header-lower">
                 <Navigation />

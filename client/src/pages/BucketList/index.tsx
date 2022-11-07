@@ -1,6 +1,13 @@
+import BucketListSection from "../../components/Section/BucketListSection";
+
+import "./BucketList.scss"
+
 const BucketList = () => {
     return (
-        <div>BucketList</div>
+        <div className="bucket-list-wrapper">
+            <BucketListSection />
+            <div>BucketList</div>
+        </div>
     )
 }
 

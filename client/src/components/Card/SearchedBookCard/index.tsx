@@ -24,8 +24,8 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 const SearchedBookCard = ({authors, title, contents, datetime, price, thumbnail} : Book) => {
     const [accessToken, setAccessToken] = useRecoilState<string>(accessTokenState);
     const onClickToLibrary = async(e : React.MouseEvent) => {
-        const res = setBookToLibrary(accessToken, {authors, title, contents, datetime, price, thumbnail});
-        
+        setBookToLibrary(accessToken, {authors, title, contents, datetime, price, thumbnail}).then(res => console.log(res));
+       
     }
     return (
         <div className="searched-book-card-wrapper">

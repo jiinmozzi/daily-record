@@ -21,6 +21,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
+import e from "express";
 
 type ScheduleCreateModalPropsType = {
     modalShow : any,
@@ -40,10 +41,12 @@ const ScheduleCreateModal = ({modalShow, setModalShow, schedules, setSchedules} 
     // const [showModal, setShowModal] = useState<string>("");
     const outerModalRef = useRef<HTMLDivElement>(null);
     const modalRef = useRef<HTMLDivElement>(null);
+    const fromDatePickerRef = useRef<HTMLDivElement>(null);
+    const toDatePickerRef = useRef<HTMLDivElement>(null);
 
-
-    const onClickOutsideModal = ({target} : any) => { 
-        if (modalShow === "" && !modalRef.current?.contains(target)){
+    const onClickOutsideModal = ({e, target} : any) => { 
+        e.stopPropagation();
+        if (modalShow === "" && (!modalRef.current?.contains(target))){
             setModalShow("none");
         } 
     } 
@@ -59,6 +62,7 @@ const ScheduleCreateModal = ({modalShow, setModalShow, schedules, setSchedules} 
     }
 
     const onChangeFromDate = (newValue: Dayjs | null) => {
+        
         setDateFrom(newValue);
     };
     const onChangeToDate = (newValue: Dayjs | null) => {
@@ -120,6 +124,7 @@ const ScheduleCreateModal = ({modalShow, setModalShow, schedules, setSchedules} 
                         value={dateFrom}
                         onChange={onChangeFromDate}
                         renderInput={(params) => <TextField {...params} />}
+                        className="date-picker"
                         />
                         <DesktopDatePicker
                         label="Date desktop"
@@ -127,6 +132,7 @@ const ScheduleCreateModal = ({modalShow, setModalShow, schedules, setSchedules} 
                         value={dateTo}
                         onChange={onChangeToDate}
                         renderInput={(params) => <TextField {...params} />}
+                        className="date-picker"
                         />
                         {/* <MobileDatePicker
                         label="Date mobile"

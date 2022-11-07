@@ -38,7 +38,9 @@ const MainCalendar = () => {
             _getSchedules().then(res => setSchedules(res.data));
         }
     }, [accessToken])
-
+    useEffect(() => {
+        console.log(schedules);
+    }, [schedules])
     const onClickRight = (e : React.MouseEvent) => {
         if ( month === 11 ){
             setYear(year + 1);

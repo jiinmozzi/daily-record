@@ -36,6 +36,7 @@
     "tslib": "^2.4.0",
     "wrap-ansi": "^7.0.0",
     "y18n": "^5.0.8",
+    "yahoo-finance": "^0.3.7",
     "yargs": "^17.5.1",
     "yargs-parser": "^21.1.1"
   },

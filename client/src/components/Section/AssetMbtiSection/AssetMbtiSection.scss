@@ -1,0 +1,103 @@
+.asset-mbti-section-wrapper{
+    width : 100%;
+    height : 260px;
+    background-color : #eaf5ff;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    .text-content{
+        width : 350px;
+        display : flex;
+        flex-direction : column;   
+        .text-question{
+            font-size : 24px;
+        }
+        .text-mbti{
+            font-size : 28px;
+            font-weight : bold;
+            margin-bottom : 10px;
+        }
+        .text-span{
+            font-size : 16px;
+        }
+        .mbti-button{
+            margin-top : 10px;
+            background-color : #eaf5ff;
+            border : 1px solid #007bff;
+            color : #007bff;
+            outline : none;
+            width : 140px;
+            height : 40px;
+            border-radius : 7px;
+            &:hover{
+                background-color : #007bff;
+                color : #eaf5ff;
+            }
+        }
+    }
+    .image-content{
+        width : 450px;
+        display : flex;
+        justify-content : center;
+        
+        flex-flow : wrap;
+        .company-logo{
+            width : 100%;
+            height : 100%;
+            margin-right : 25px;
+        }
+
+        .apple-logo{
+            width : 80px;
+            height : 60px;
+            max-width : 80px;
+            max-height : 60px;
+            margin-right : 10px;
+        }
+        .ethereum-logo{
+            width : 60px;
+            height : 60px;
+            max-width : 70px;
+            max-height : 70px;
+        }
+        .google-logo{
+            width : 60px;
+            height : 60px;
+            max-width : 60px;
+            max-height : 60px;
+        }
+        .starbucks-logo{
+            width : 60px;
+            height : 60px;
+            max-width : 60px;
+            max-height : 60px;
+        }
+        .tesla-logo{
+            width : 60px;
+            height : 60px;
+            max-width : 60px;
+            max-height : 60px;
+        }
+        .airbnb-logo{
+            width : 140px;
+            max-height : 60px;
+            max-width : 140px;
+            max-height : 60px;
+            margin-top : 5px;
+        }
+        .costco-logo{
+            width : 140px;
+            max-height : 80px;
+            max-width : 140px;
+            max-height : 80px;
+            margin-top : 10px;
+        }
+        .cocacola-logo{
+            width : 140px;
+            max-height : 55px;
+            max-width : 140px;
+            max-height : 55px;
+            margin-top : 10px;
+        }
+    }
+}
