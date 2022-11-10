@@ -82,11 +82,13 @@ router.post('/complete', setAuth, async( req : IUserRequest, res : Response ) =>
         message : "OK",
     })
 })
-router.delete('/:id', setAuth, async(req : IUserRequest, res : Response) => {
+router.delete('/delete/:id', setAuth, async(req : IUserRequest, res : Response) => {
     const {id} = req.params;
     const user = req.user;
+    console.log(id);
     
-    user.schedules = user.schedules.filter((e : string )=> e !== id);
+    
+    user.schedules = user.schedules.filter((e : any )=> e.toString() !== id);
     
     try {
         await Schedule.findByIdAndDelete(id);

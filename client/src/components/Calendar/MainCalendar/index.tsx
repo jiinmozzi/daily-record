@@ -150,6 +150,7 @@ const MainCalendar = () => {
                         <div className="date curr" onClick={onClickCurrDate}>
                             <span className="date-text">{date}</span>
                             {schedules.map((e : ScheduleType) => {
+                                console.log(schedules);
                                 return ( 
                                     new Date(e.dateFrom).getMonth() === month 
                                     && new Date(e.dateFrom).getDate() === date 

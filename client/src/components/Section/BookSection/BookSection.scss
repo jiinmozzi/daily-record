@@ -1,13 +1,84 @@
 .book-section-wrapper{
-    height : 250px;
-    display : flex;
     width : 100%;
-    padding : 0 10%;
-    margin : 10px 0 10px 0;
-    // background-color : black;
-    .book-adventure{
-        width : 400px;
+    height : 300px;
+    display : flex;
+    align-items : center;
+    padding-left : 10%;
+    
+    margin : 0 auto;
+    background-color : rgb(87,46,32);
+    #popular-book{
+        width : 20%;
         height : 100%;
-        object-fit : contain;
+        display : flex;
+        flex-direction : column;
+        justify-content : center;
+        #hot-book{
+            color : #fff;
+            font-size : 18px;
+            letter-spacing: 2px;
+        }
+        #popular-book-image{
+            margin-top : 30px;
+            max-width : 110px;
+            filter : drop-shadow(2px 2px 2px rgb(201,209,219));
+            object-fit : cover;
+            overflow : hidden;
+            border-radius : 5px;
+            &:hover{
+                // max-width : 110px;
+                transform : scale(1.1);
+                transition: 0.3s ease-in-out;
+                overflow : hidden;
+            }
+        }
+    }
+    #book-recommendation{
+        width : 30%;
+        display : flex;
+        // flex-flow : wrap;
+        // margin-left : 10%;
+        gap : 30px;
+        .recommended-book{
+            width : 90px;
+            max-width : 90px;
+            height : 145px;
+            max-height : 145px;
+            border-radius : 4px;
+        }
+        .odd{
+            animation-duration : 3s;
+            animation-name : oddMove;
+            animation-iteration-count: infinite;
+        }
+        .even{
+            animation-duration : 3s;
+            animation-name : evenMove;
+            animation-iteration-count: infinite;
+        }
+    }
+}
+
+@keyframes oddMove {
+    0% { 
+        margin-bottom : 10%;
+    }
+    50% {
+        margin-top : 20%;
+    }
+    100% {
+        margin-bottom : 10%;
+    }
+}
+
+@keyframes evenMove {
+    0% { 
+        margin-top : 10%;
+    }
+    50% {
+        margin-bottom : 20%;
+    }
+    100% {
+        margin-top : 10%;
     }
 }

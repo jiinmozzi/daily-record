@@ -1,14 +1,16 @@
 // @import url("../../../assets/books.jpeg")
 .book-search-bar-wrapper{
-    width : 100%;
-    height: 200px;
-    background : linear-gradient(90deg, #E0EAFC, #CFDEF3); 
-    display : flex;
-    flex-direction : column;
-    justify-content : center;
-    align-items : center;
+    // width : 100%;
+    // height: 200px;
+    // background : linear-gradient(90deg, #E0EAFC, #CFDEF3); 
+    // display : flex;
+    // flex-direction : column;
+    // justify-content : center;
+    // align-items : center;
     .paper{
         position : absolute;
+        bottom : 10px;
+        border : 4px solid rgb(190,170,148);
     }
     .suggestion-dropdowns{
         position : relative;

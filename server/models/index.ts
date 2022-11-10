@@ -1,8 +1,12 @@
 import mongoose from 'mongoose';
 
+const Asset = require('./Asset');
+const AssetTradeHistory = require('./AssetTradeHistory');
 const Book = require('./Book');
 const BookWishList = require('./BookWishList');
 const BucketList = require('./BucketList');
+const Coin = require('./Coin');
+const CoinTradeHistory = require('./CoinTradeHistory');
 const Diary = require('./Diary');
 const User = require('./User');
 const Schedule = require('./Schedule');
@@ -38,5 +42,5 @@ switch(mongoose.connection.readyState){
 }
 
 
-module.exports = {Book, BookWishList, BucketList, Diary, Outsourcing, Portfolio, ProgrammingStudy, Schedule, Travel, TravelWishList, User, Fitness};
+module.exports = {Asset, Book, BookWishList, BucketList, Diary, Outsourcing, Portfolio, ProgrammingStudy, Schedule, Travel, TravelWishList, User, Fitness};
 // export {}

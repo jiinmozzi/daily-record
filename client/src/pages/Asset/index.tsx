@@ -2,6 +2,9 @@ import axios from "axios";
 import {useState, useEffect} from "react";
 import AssetSearchBar from "../../components/SearchBar/AssetSearchBar";
 import AssetMbtiSection from "../../components/Section/AssetMbtiSection";
+import AssetIndexSection from "../../components/Section/AssetIndexSection";
+import AssetMarketCapSection from "../../components/Section/AssetMarketCapSection";
+import AssetDividendSection from "../../components/Section/AssetDividendSection";
 import "./Asset.scss";
 
 const portfolios = ['AAPL', 'TSLA', 'NKE', 'IONQ'];
@@ -34,7 +37,10 @@ const Asset = () => {
                 </div>
                 <AssetSearchBar />
             </div>
-            <AssetMbtiSection/>
+            <AssetMbtiSection />
+            <AssetIndexSection />
+            <AssetMarketCapSection />
+            <AssetDividendSection />
         </div>
     )
 }

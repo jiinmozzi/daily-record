@@ -81,13 +81,14 @@ const ScheduleCreateModal = ({modalShow, setModalShow, schedules, setSchedules} 
             _dateTo = new Date(dateTo.toString());
         }
         const res = await createSchedule(accessToken, {dateFrom : _dateFrom, dateTo : _dateTo, title, content, isCompleted, isPublic})
+        console.log(res);
         if (res.message==="OK"){
             setSchedules([...schedules, res.data]);
-            setTitle("");
-            setContent("");
-            setIsCompleted(false);
-            setIsPublic(true);
-            setModalShow("none");
+            setTitle((prev) => "");
+            setContent((prev) =>"");
+            setIsCompleted((prev) => false);
+            setIsPublic((prev) => true);
+            setModalShow((prev : string) => "none");
         }
     }
 

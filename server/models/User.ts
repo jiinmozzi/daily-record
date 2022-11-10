@@ -13,6 +13,7 @@ const UserSchema = new Schema({
     bookWishLists : [{type : Schema.Types.ObjectId, ref : "BookWishList"}],
     outsourcings : [{type : Schema.Types.ObjectId, ref : "Outsourcing"}],
     portfolios : [{type : Schema.Types.ObjectId, ref : "Portfolio"}],
+    
     programmingStudies : [{type : Schema.Types.ObjectId, ref : "ProgrammingStudy"}],
     workouts : [{type : Schema.Types.ObjectId, ref : "Workout"}],
     visitedCountries : [{type : String}],

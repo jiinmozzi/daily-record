@@ -43,9 +43,10 @@ const BookSearchBar = () => {
     return (
         <div className="book-search-bar-wrapper" style={{ backgroundImage : `url(${books})`}}>
             <Paper
+                id="input-paper"
                 component="form"
                 className="paper"
-                sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
+                sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 500 }}
                 onSubmit={() => navigate(`/book/${bookTitle ? bookTitle : "empty-result"}`)}
                 // onSubmit={onSubmit}
             >

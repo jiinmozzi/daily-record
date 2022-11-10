@@ -7,7 +7,7 @@ import completeSchedule from '../../../api/completeSchedule';
 import "./ScheduleDetailCard.scss";
 import { useRecoilState } from 'recoil';
 import { accessTokenState } from '../../../store/atom';
-
+import deleteSchedule from '../../../api/deleteSchedule';
 export type ScheduleType = {
     _id : string,    
     user : string,
@@ -20,14 +20,17 @@ export type ScheduleType = {
     isPublic : boolean,
 }
 
-const ScheduleDetailCard = ({schedule} : any) => {
+const ScheduleDetailCard = ({schedule, setSchedules} : any) => {
     const [accessToken, setAccessToken] = useRecoilState<string>(accessTokenState);
     const onClickDone = async( e : React.MouseEvent ) => {
         completeSchedule(accessToken, schedule._id);
         console.log(schedule._id); 
     }
     const onClickEdit = ( e : React.MouseEvent ) => {}
-    const onClickDelete = ( e : React.MouseEvent ) => {}
+    const onClickDelete = async( e : React.MouseEvent ) => {
+        await deleteSchedule(accessToken, schedule._id);
+        
+    }
     return (
         <div className="schedule-detail-card-wrapper">
             

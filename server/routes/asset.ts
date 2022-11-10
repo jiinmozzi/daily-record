@@ -12,9 +12,6 @@ interface IUserRequest extends Request {
 
 router.get('/:stock', (req : Request, res : Response) => {
     const {stock} = req.params
-    
-    // const fetch = async() => await axios.get(`https://finance.yahoo.com/quote/${stock}?p=${stock}`).then(res => console.log(res.data));
-    // fetch();
     yahooFinance.historical(
     {
         symbol : stock,
@@ -34,12 +31,11 @@ router.get('/:stock', (req : Request, res : Response) => {
             })
         }
     })
-    // return res.send({
-    //     status : 200,
-    //     message : "OK",
-    //     data : stock,
-    // })
 }) 
+router.get('/portfolio', setAuth, (req : IUserRequest, res : Response) => {
+    const user = req.user;
 
+    const userPortfolio = user.asset;
+})
 
 module.exports = router;
