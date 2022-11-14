@@ -1,8 +1,20 @@
-.spinner{
-    width : 200px;
-    position : absolute;
-    margin : auto;
-    margin-top : 10%;
-    color : #fff;
-    
+.spinner-wrapper{
+    display : flex;
+    justify-content: center;
+    align-items : center;
+
+    .spinner{
+        width : 200px;
+        position : absolute;
+        margin : auto;
+        padding-right : 80px;
+        margin-top : 10%;
+    }
+    .loading-text{
+        width : 200px;
+        position : absolute;
+        margin-top : 20%;        
+        margin-left : 160px;
+        font-size : 20px;
+    }
 }
