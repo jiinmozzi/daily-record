@@ -6,6 +6,8 @@ import Layout from "./containers/Layout";
 import Main from "./pages/Main";
 import Planner from "./pages/Planner";
 import Asset from "./pages/Asset";
+import AssetPortfolio from "./pages/AssetPortfolio";
+import AssetDetail from "./pages/AssetDetail";
 import Book from "./pages/Book";
 import BookSearch from "./pages/BookSearch";
 import Travel from "./pages/Travel";
@@ -26,6 +28,7 @@ import { accessTokenState, refreshTokenState, sidState, userState, isLoggedInSta
 import sendRequest from "./api/sendRequest";
 import { UserType } from "./types";
 import axios from "axios";
+
 
 function App() {
   const [sid, setSid] = useRecoilState<string>(sidState);
@@ -138,6 +141,8 @@ function App() {
               <Route path="/diary" element={<Diary />}></Route>
               <Route path="/book" element={<Book />}></Route>
               <Route path="/asset" element={<Asset />}></Route>
+              <Route path="/asset/portfolio" element={<AssetPortfolio />}></Route>
+              <Route path="/asset/:ticker" element={<AssetDetail />}></Route>
               <Route path="/travel" element={<Travel />}></Route>
               <Route path="/bucketlist" element={<BucketList />}></Route>
               <Route path="/terminal" element={<Terminal />}></Route>

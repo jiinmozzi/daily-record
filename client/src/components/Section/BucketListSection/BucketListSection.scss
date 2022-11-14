@@ -1,7 +1,110 @@
 .bucket-list-section-wrapper{
-    height : 300px;
+    position : relative;
+    height : 350px;
     width : 100%;
-    background-color : blue;
     display : flex;
-    align-items : center;
+    
+    gap : 10px;
+    background-color : rgba(0,0,0, 0.1);
+    background : linear-gradient(90deg, #E0EAFC, #CFDEF3);
+    // background : linear-gradient(90deg, #E0EAFC, #CFDEF3); 
+    // align-items : center;
+    overflow : hidden;
+    #bucket-list-text{
+        width : 40%;
+        height : 100%;
+        display : flex;
+        flex-direction: column;
+        padding-top : 40px;
+        padding-left : 100px;
+        position : relative;
+        .bucketlist-text{
+            height : 40px;
+            font-size : 24px;
+            font-weight : bold;
+            letter-spacing: 1px;
+            transition : cubic-bezier(0.075, 0.82, 0.165, 1);
+            color : rgba(0,0,0,0.7);
+            .bucket-text-emphasis{
+                color : black;
+            }
+        }
+        #bucketlist-nav-card-container{
+            width : 380px;
+            height : 200px;
+            overflow : hidden;
+            border-radius : 15px;
+            animation-name : fadein;
+            animation-duration : 2s;
+            animation-iteration-count: initial;
+        }
+        
+        .bucketlist-nav-card{
+            transition : 0.5s ease-in-out;
+            width : 100%;
+            height : 100%;
+            
+            margin : auto 0;
+            margin-bottom : 30px;
+            
+            border-radius : 15px;
+            
+            background-color : black;
+            background-size : cover;
+            overflow : hidden;
+            transform: translateZ(0);
+            #bucketlist-nav-btn{
+                position : relative;
+                top : 160px;
+                left : 250px;
+                border : none;
+                // background : none;
+                border-radius : 15px;
+                width : 120px;
+                font-size : 12px;
+                height : 25px;
+            }
+        }
+        
+        // #bucket-list-text::nth-child(1){
+        //     animation : popdown;
+        //     animation-duration: 2s;
+        //     animation-iteration-count: initial;
+        // }
+        #bucketlist-first-text:nth-child(1){
+            animation : popdown;
+            animation-duration: 2s;
+            animation-iteration-count: initial;
+        }
+    }
+    
+    .bucketlist-main-pic{
+        border-radius : 5px;
+        margin-top : 60px;
+        height : 60%;
+        position : absolute;
+        right : 80px;   
+                     
+    }
+}
+
+@keyframes popdown {
+    0% {
+        margin-top : -100px;
+    }
+    80% {
+        margin-top : 10px;
+    }
+    100% {
+        margin-top : 0px;
+    }
+}
+
+@keyframes fadein {
+    0% {
+        opacity : 0;
+    }
+    100% {
+        opacity : 1;
+    }
 }

@@ -17,16 +17,20 @@ const BookSection = () => {
                 <span id="hot-book">가장 HOT한 책</span>
                 <img id="popular-book-image" src={book1} alt="노르웨이의 숲" />
             </div>
-            <div id="book-recommendation">
-                <img className="recommended-book odd" src={book2} alt="" />
-                <img className="recommended-book even" src={book3} alt="" />
-                <img className="recommended-book odd" src={book4} alt="" />
-                <img className="recommended-book even" src={book5} alt="" />
-                <img className="recommended-book odd" src={book6} alt="" />
-                <img className="recommended-book even" src={book7} alt="" />
-                <img className="recommended-book odd" src={book8} alt="" />
-                <img className="recommended-book even" src={book9} alt="" />
+            <div id="book-weekly-section">
+                <span id="weekly-books">주간 베스트 EIGHT</span>
+                <div id="book-recommendation">
+                    <img className="recommended-book odd" src={book2} alt="" />
+                    <img className="recommended-book even" src={book3} alt="" />
+                    <img className="recommended-book odd" src={book4} alt="" />
+                    <img className="recommended-book even" src={book5} alt="" />
+                    <img className="recommended-book odd" src={book6} alt="" />
+                    <img className="recommended-book even" src={book7} alt="" />
+                    <img className="recommended-book odd" src={book8} alt="" />
+                    <img className="recommended-book even" src={book9} alt="" />
+                </div>
             </div>
+            
             {/* <img className="book-adventure" src={bookAdventure} alt="book-main" /> */}
         </div>
     )

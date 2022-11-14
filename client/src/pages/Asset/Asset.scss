@@ -11,6 +11,26 @@
         flex-direction : column;
         justify-content : center;
         align-items : center;
+        #my-portfolio-nav{
+            position : absolute;
+            right : 40px; 
+            // color : white;
+            bottom : 20px;
+            border-radius : 15px;
+            background-color :white;
+            color : blueviolet;
+            font-weight: bold;
+            width : 140px;
+            height : 27px;
+            padding : 10px;
+            display : flex;
+            align-items : center;
+            justify-content: center;
+            &:hover{
+                cursor : pointer;
+                background-color : rgb(207, 205, 218);
+            }
+        }
         .proverb-container{
             text-align : center;
             margin-bottom : 20px;

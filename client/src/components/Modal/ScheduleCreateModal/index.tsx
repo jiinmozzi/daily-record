@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, FormEvent} from "react";
 import { useRef } from "react";
 import "./ScheduleCreateModal.scss";
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
@@ -39,10 +39,8 @@ const ScheduleCreateModal = ({modalShow, setModalShow, schedules, setSchedules} 
     const [isCompleted, setIsCompleted] = useState<boolean>(false);
     const [isPublic, setIsPublic] = useState<boolean>(true);
     // const [showModal, setShowModal] = useState<string>("");
-    const outerModalRef = useRef<HTMLDivElement>(null);
+
     const modalRef = useRef<HTMLDivElement>(null);
-    const fromDatePickerRef = useRef<HTMLDivElement>(null);
-    const toDatePickerRef = useRef<HTMLDivElement>(null);
 
     const onClickOutsideModal = ({e, target} : any) => { 
         e.stopPropagation();
@@ -82,16 +80,14 @@ const ScheduleCreateModal = ({modalShow, setModalShow, schedules, setSchedules} 
         }
         const res = await createSchedule(accessToken, {dateFrom : _dateFrom, dateTo : _dateTo, title, content, isCompleted, isPublic})
         console.log(res);
-        if (res.message==="OK"){
-            setSchedules([...schedules, res.data]);
-            setTitle((prev) => "");
-            setContent((prev) =>"");
-            setIsCompleted((prev) => false);
-            setIsPublic((prev) => true);
-            setModalShow((prev : string) => "none");
-        }
+        setSchedules([...schedules, res.data]);
+        setTitle((prev) => "");
+        setContent((prev) =>"");
+        setIsCompleted((prev) => false);
+        setIsPublic((prev) => true);
+        setModalShow((prev : string) => "none");
     }
-
+    
     return (
         <div className="schedule-create-outer-wrapper" onClick={onClickOutsideModal} style={{display : modalShow}}>
             <div className="schedule-create-inner-wrapper" ref={modalRef}>
@@ -103,7 +99,7 @@ const ScheduleCreateModal = ({modalShow, setModalShow, schedules, setSchedules} 
                 <Form>
                     <Form.Group className="mb-3" controlId="title">
                         <Form.Label>Title</Form.Label>
-                        <Form.Control type="text" placeholder="Enter title" onChange={onChange}/>
+                        <Form.Control type="text" placeholder="Enter title" onChange={onChange} value={title}/>
                         <Form.Text className="text-muted">
                         Your schedule will be shown as above.
                         </Form.Text>
@@ -111,7 +107,7 @@ const ScheduleCreateModal = ({modalShow, setModalShow, schedules, setSchedules} 
 
                     <Form.Group className="mb-3" controlId="content">
                         <Form.Label>Content</Form.Label>
-                        <Form.Control type="text" placeholder="Content" onChange={onChange}/>
+                        <Form.Control type="text" placeholder="Content" onChange={onChange} value={content}/>
                         <Form.Text className="text-muted">
                         Write content detail here.
                         </Form.Text>

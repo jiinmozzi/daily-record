@@ -13,6 +13,7 @@ import "./MainCalendar.scss";
 import NoteAddRounded from "@mui/icons-material/NoteAddRounded";
 import { useRecoilState } from "recoil";
 import { ScheduleType } from "../../../types";
+import Loading from "../../Loading";
 const MainCalendar = () => {
     const navigate = useNavigate();
     const monthlyText : string[] = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
@@ -30,6 +31,7 @@ const MainCalendar = () => {
     const [schedules, setSchedules] = useState<ScheduleType[]>([]);
     const [target, setTarget] = useState<string>("");
     const [accessToken, setAccessToken] = useRecoilState<string>(accessTokenState);
+
     useEffect(() => {
         if (accessToken){
             const _getSchedules = async () => {
@@ -38,9 +40,11 @@ const MainCalendar = () => {
             _getSchedules().then(res => setSchedules(res.data));
         }
     }, [accessToken])
+    
     useEffect(() => {
         console.log(schedules);
     }, [schedules])
+
     const onClickRight = (e : React.MouseEvent) => {
         if ( month === 11 ){
             setYear(year + 1);
@@ -149,8 +153,7 @@ const MainCalendar = () => {
                         return (
                         <div className="date curr" onClick={onClickCurrDate}>
                             <span className="date-text">{date}</span>
-                            {schedules.map((e : ScheduleType) => {
-                                console.log(schedules);
+                            {schedules.map((e : ScheduleType) => { 
                                 return ( 
                                     new Date(e.dateFrom).getMonth() === month 
                                     && new Date(e.dateFrom).getDate() === date 

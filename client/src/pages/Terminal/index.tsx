@@ -1,13 +1,16 @@
 import {useState, useEffect} from "react";
 
-import TerminalSection from "../../components/Section/TerminalSection";
-
+import TerminalMainSection from "../../components/Section/TerminalMainSection";
+import TerminalNavSection from "../../components/Section/TerminalNavSection";
+import TerminalKeyBoardSection from "../../components/Section/TerminalKeyBoardSection";
 import "./Terminal.scss";
 
 const Terminal = () => {
     return (
         <div className="terminal-wrapper">
-            <TerminalSection />
+            <TerminalMainSection />
+            <TerminalNavSection />
+            <TerminalKeyBoardSection />
         </div>
     )
 }

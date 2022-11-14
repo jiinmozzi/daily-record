@@ -7,7 +7,9 @@ const Loading = () => {
     }, [])
     
     return (
-        <PacmanLoader className="spinner"/>
+        <div className="spinner-wrapper">
+            <PacmanLoader color="#6b5ce7" className="spinner"/>
+        </div>
     )
 }
 

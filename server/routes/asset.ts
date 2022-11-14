@@ -11,12 +11,17 @@ interface IUserRequest extends Request {
 }
 
 router.get('/:stock', (req : Request, res : Response) => {
-    const {stock} = req.params
+    const {stock} = req.params;
+    const year = new Date().getFullYear();
+    const month = new Date().getMonth() + 1;
+    const date = new Date().getDate(); 
     yahooFinance.historical(
     {
         symbol : stock,
-        from : '2021-11-07',
-        to : '2022-11-07',
+        
+        from : `${year-1}-${month}-${date}`,
+        to : `${year}-${month}-${date}`, 
+        
     }, (err : any, quotes : any) => {
         if (err){
             return res.send({

@@ -17,8 +17,14 @@ const Planner = () => {
     const [sid, setSid] = useRecoilState<string>(sidState);
     const [user, setUser] = useRecoilState<UserType>(userState);
     const [accessToken, setAccessToken] = useRecoilState<string>(accessTokenState);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
 
+    useEffect(() => {
+        setTimeout(()=> setIsLoading(false), 3000)
+    }, [])
+    
     return (
+        // isLoading ? <Loading /> :  
         <div className="planner-wrapper">
            <MainCalendar />
         </div>

@@ -41,7 +41,7 @@ const BookSearchBar = () => {
         console.log(suggestions); 
     }, [suggestions])
     return (
-        <div className="book-search-bar-wrapper" style={{ backgroundImage : `url(${books})`}}>
+        <div className="book-search-bar-wrapper">
             <Paper
                 id="input-paper"
                 component="form"
@@ -64,7 +64,7 @@ const BookSearchBar = () => {
             </Paper>
             {suggestions && 
                 <div className="suggestion-dropdowns">
-                    {suggestions.map((e : BookType) => <div className="book-suggestion">{e.title}</div> ) }
+                    {suggestions.map((e : BookType) => <div className="book-suggestionon" onClick={() => navigate(`/book/${bookTitle ? bookTitle : "empty-result"}`)}>{e.title}</div> ) }
                 </div>
             }
         </div>

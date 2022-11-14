@@ -1,0 +1,32 @@
+.terminal-keyboard-section-wrapper{
+    width : 100%;
+    height : 400px;
+    background-color : rgba(180, 205, 230, 0.4);
+    margin-bottom : 200px; 
+    display : flex;
+    flex-direction : column;
+    align-items : center;
+    #terminal-keyboard-section-text{
+        width : 90%;
+        font-size : 24px;
+        padding-top : 20px;
+        font-weight : bold;
+        letter-spacing : 1px;
+        .keyboard-text:nth-child(1){
+            
+            color : #8479E1;
+            color : rgb(246,148,28);
+            
+        }
+        .keyboard-text:nth-child(2){
+            // color : rgb(245,148,0);
+            color : #FF8C32;color : rgb(255,205,221);
+            color : rgb(2,89,171)
+        }
+        .keyboard-text:nth-child(3){
+            // color : rgb(196,239,255);
+            color : rgb(255,205,221);
+            color : rgb(255,222,1);
+        }
+    }
+}

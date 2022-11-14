@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from "react";
+import { useNavigate } from "react-router-dom";
 import "./AssetSearchBar.scss";
 import getAssetInfo from "../../../api/getStock";
 
 const AssetSearchBar = () => {
+    const navigate = useNavigate();
     const [asset, setAsset] = useState<string>("");
     const onChange = ( e : React.ChangeEvent ) => {
         const target = e.target as HTMLInputElement;
@@ -10,6 +12,7 @@ const AssetSearchBar = () => {
     }
     const onSubmit = async( e : React.FormEvent ) => {
         e.preventDefault();
+        navigate(`/asset/${asset}`)
         const res = await getAssetInfo(asset);
         console.log(res);
     }

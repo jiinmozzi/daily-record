@@ -1,5 +1,6 @@
 import axios from "axios";
 import {useState, useEffect} from "react";
+import { useNavigate } from "react-router-dom";
 import AssetSearchBar from "../../components/SearchBar/AssetSearchBar";
 import AssetMbtiSection from "../../components/Section/AssetMbtiSection";
 import AssetIndexSection from "../../components/Section/AssetIndexSection";
@@ -10,6 +11,7 @@ import "./Asset.scss";
 const portfolios = ['AAPL', 'TSLA', 'NKE', 'IONQ'];
 
 const Asset = () => {
+    const navigate = useNavigate();
     const [assets, setAssets] = useState<any[]>([]);
     // useEffect(() => {
     //     const fetch = async(ticker : string) => {
@@ -30,12 +32,14 @@ const Asset = () => {
     // }, [])
     return (
         <div className="asset-wrapper">
-            <div className="asset-proverb">
+            <div className="asset-proverb" style={{position : "relative"}}>
+                <div id="my-portfolio-nav" onClick={() => navigate('/asset/portfolio')}>내 자산 보러가기</div>
                 <div className="proverb-container">
                     <span className="proverb-text">"&nbsp;두툼한 지갑이 무조건 좋다고 말할 수 없다.</span><br></br>
                     <span className="proverb-text">그러나 텅빈 지갑은 확실히 나쁘다." &nbsp;</span>
                 </div>
                 <AssetSearchBar />
+                
             </div>
             <AssetMbtiSection />
             <AssetIndexSection />

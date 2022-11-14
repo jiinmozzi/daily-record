@@ -8,13 +8,14 @@
     // justify-content : center;
     // align-items : center;
     .paper{
-        position : absolute;
-        bottom : 10px;
+        position : relative;
+        bottom : 30px;
         border : 4px solid rgb(190,170,148);
+        border : 4px solid rgba(246,151,54, 0.5);
     }
     .suggestion-dropdowns{
         position : relative;
-        top : 274px;
+        // top : 274px;
         display : flex;
         flex-direction : column;
         background-color : white;

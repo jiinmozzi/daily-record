@@ -35,17 +35,7 @@ const Main = () => {
     return (
         <div className="main-wrapper">
             <img className="main-logo" src={logo} alt="logo" />
-            
             <Navigation />
-            {/* <div className="nav">
-                <HomeRoundedIcon className="main-icon" onClick={() => navigate('/home')}/>
-                <CalendarMonthRoundedIcon className="main-icon" onClick={() => navigate('/home')}/>
-                <FlightTakeoffRoundedIcon className="main-icon" onClick={() => navigate('/travel')}/>
-                <TerminalRoundedIcon className="main-icon" onClick={() => navigate('/terminal')}/>
-                <FitnessCenterRoundedIcon className="main-icon" onClick={() => navigate('/fitness')}/>
-                <AutoStoriesRoundedIcon className="main-icon" onClick={() => navigate('/book')}/>
-                <CreateRoundedIcon className="main-icon" onClick={() => navigate('/diary')}/>
-            </div> */}
             <div className="main-background"></div>
 
             {!isLoggedIn && <div className="main-auth-nav">

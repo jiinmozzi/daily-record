@@ -1,0 +1,70 @@
+.terminal-nav-section-wrapper{
+    width : 100%;
+    height : 450px;
+    background-color : #EDEDED;
+    display : flex;
+    flex-direction : column;
+    align-items : center;
+    #terminal-nav-introduction{
+        display : flex;
+        justify-content: space-between;
+        height : 80px;
+        width : 90%;
+        padding-top : 30px;
+        
+        #terminal-nav-introduction-text{
+            font-size : 24px;
+            font-weight : bold;
+            letter-spacing : 1px;
+        }
+        #terminal-main-button{
+            width : 240px;
+            height : 50px;
+            background-color : black;
+            color : #fff;
+            border-radius : 25px;            
+            display : flex;
+            justify-content: center;
+            align-items: center;
+            letter-spacing: 1px;
+            font-size : 18px;
+            &:hover{
+                cursor : pointer;
+                opacity : 0.9;
+            }
+        }
+    }
+    #terminal-navigations{
+        display : flex;
+        justify-content : center;
+        gap : 3%;
+        margin-top : 30px;
+        height : 340px;
+        width : 100%;
+        
+        .terminal-nav-card{
+            flex-basis : 30%;
+            height : 95%;
+            border-radius : 10px;
+            background-color : black;
+            display : flex;
+            flex-direction : column;
+            padding-left : 20px;
+            flex-shrink : 0;
+            transition : all 0.5s;
+            .terminal-nav-summary{
+                color : white;
+                margin-top : 10px;
+            }
+            .terminal-nav-description{
+                font-size : 12px;
+                color : rgb(164,167,171);
+            }
+            &:hover{
+                cursor : pointer;
+                flex-basis : 33%;
+                opacity : 0.9;
+            }
+        }
+    }
+}

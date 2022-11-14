@@ -6,7 +6,6 @@ const BucketList = () => {
     return (
         <div className="bucket-list-wrapper">
             <BucketListSection />
-            <div>BucketList</div>
         </div>
     )
 }

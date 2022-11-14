@@ -3,10 +3,11 @@
     height : 300px;
     display : flex;
     align-items : center;
-    padding-left : 10%;
+    padding-left : 8%;
     
     margin : 0 auto;
     background-color : rgb(87,46,32);
+    background-color : rgb(246,151,54);
     #popular-book{
         width : 20%;
         height : 100%;
@@ -15,6 +16,8 @@
         justify-content : center;
         #hot-book{
             color : #fff;
+            color : black;
+            font-weight : bold;
             font-size : 18px;
             letter-spacing: 2px;
         }
@@ -33,52 +36,71 @@
             }
         }
     }
-    #book-recommendation{
-        width : 30%;
+    #book-weekly-section{
+        width : 80%; 
         display : flex;
-        // flex-flow : wrap;
-        // margin-left : 10%;
-        gap : 30px;
-        .recommended-book{
-            width : 90px;
-            max-width : 90px;
-            height : 145px;
-            max-height : 145px;
-            border-radius : 4px;
+        flex-direction: column;
+        justify-content: center;
+        #weekly-books{
+            
+            width : 100%;
+            color : black;
+            font-weight : bold;
+            font-size : 17px;
+            letter-spacing: 2px;
         }
-        .odd{
-            animation-duration : 3s;
-            animation-name : oddMove;
-            animation-iteration-count: infinite;
-        }
-        .even{
-            animation-duration : 3s;
-            animation-name : evenMove;
-            animation-iteration-count: infinite;
+        #book-recommendation{
+            width : 30%;
+            display : flex;
+            margin-top : 45px;
+            // flex-flow : wrap;
+            // margin-left : 10%;
+            gap : 30px;
+            .recommended-book{
+                width : 90px;
+                max-width : 90px;
+                height : 145px;
+                max-height : 145px;
+                border-radius : 4px;
+            }
+            .odd{
+                animation-duration : 3s;
+                animation-name : oddMove;
+                animation-iteration-count: infinite;
+            }
+            .even{
+                animation-duration : 3s;
+                animation-name : evenMove;
+                animation-iteration-count: infinite;
+            }
         }
     }
+    
 }
 
 @keyframes oddMove {
     0% { 
-        margin-bottom : 10%;
+        // margin-top : 30px;
+        transform : translateY(-20px);
     }
     50% {
-        margin-top : 20%;
+        // margin-top : 50px;
+        transform : translateY(10px);
     }
     100% {
-        margin-bottom : 10%;
+        // margin-bottom : 30px;
+        transform : translateY(-20px);
     }
 }
 
 @keyframes evenMove {
     0% { 
-        margin-top : 10%;
+        transform : translateY(10px);
     }
     50% {
-        margin-bottom : 20%;
+        transform : translateY(-10px);
     }
     100% {
-        margin-top : 10%;
+        transform : translateY(10px);
     }
 }
