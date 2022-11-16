@@ -29,6 +29,7 @@
     "react-router-dom": "^6.4.1",
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.4",
+    "react-ts-tradingview-widgets": "^1.0.12",
     "recoil": "^0.7.5",
     "typescript": "^4.8.4",
     "web-vitals": "^2.1.4"

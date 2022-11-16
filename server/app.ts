@@ -28,6 +28,7 @@ app.use('/terminal', require('./routes/terminal'));
 app.use('/travel', require('./routes/travel'));
 app.use('/user', require('./routes/user'));
 app.use('/fitness', require('./routes/fitness'));
+app.use('/test', require('./routes/test'));
 
 
 

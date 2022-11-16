@@ -48,6 +48,7 @@ function App() {
     const refreshCookieArray = cookies?.filter(e => e[0] === "refreshToken");
     const fakeRefreshCookieArray = cookies?.filter(e => e[0] === "_refreshToken");
     
+    // 
     if (fakeSidCookieArray.length > 0 && !isLoggedIn ){    
       const getUserWithSid = async() => {
         return await getAutoLoginUser();
@@ -95,7 +96,7 @@ function App() {
       })
     }
   }, [])
-
+  
   // periodically re-issue access token
   useEffect(() => {
     console.log('set access token') 

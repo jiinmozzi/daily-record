@@ -2,16 +2,17 @@
     width : 90%;
     margin-left : 2vw;
     display : flex;
-    justify-content : space-between;
+    flex-direction : column;
     margin : 0 auto;
     margin-top : 30px;
     .map-info{
         display : flex;
-        flex-direction : column;
-        justify-content : center;
-        align-items : center;
+        justify-content : space-between;
     }
     .country-search-section-wrapper{
-        margin-top : 36px;
-    }
+        
+        width : 100%;
+        margin-bottom : 300px;
+        
+    }    
 }

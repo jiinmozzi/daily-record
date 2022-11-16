@@ -15,7 +15,7 @@ const AssetMbtiSection = () => {
         <div className="asset-mbti-section-wrapper">
             <div className="text-content">
                 <div className="text-question">나는 어떤 투자자일까?</div>
-                <div className="text-mbti">개발자 MBTI</div>
+                <div className="text-mbti">투자자 MBTI</div>
                 <div className="text-span">주식 투자자라면 꼭 해야 할 테스트</div>
                 <div className="text-span">자신의 투자 성향을 알아보세요!</div>
                 <button className="mbti-button">테스트 하러가기</button>

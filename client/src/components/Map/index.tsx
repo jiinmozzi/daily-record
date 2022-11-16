@@ -78,13 +78,13 @@ const Map = ({selectedCountry, setSelectedCountry, usersTravelHistory, setUsersT
                             className={e} 
                             onMouseOver={onMouseOverCountry} 
                             onClick={onClickCountry} 
-                            style={{ backgroundColor : ( usersTravelHistory.visitedCountries.indexOf(country) !== -1  || country === clickedCountry || country === hoveredCountry ) ? "#fcb662" 
+                            style={{ backgroundColor : country === hoveredCountry || country === clickedCountry ? "rgb(75,102,112)" : ( usersTravelHistory.visitedCountries.indexOf(country) !== -1  ) ? "#fcb662" 
                             : country === selectedCountry ? "rgb(136, 150, 166)" 
                             : usersTravelHistory.wishListCountries.indexOf(country) !== -1 ? "#cdabff"
                             : "" }}></div>
                 })}
             </div>
-            <span className="activated-country">{hoveredCountry ? hoveredCountry : clickedCountry ? clickedCountry : null}</span>
+            <span className="activated-country">{hoveredCountry ? hoveredCountry : clickedCountry ? clickedCountry : ""}</span>
         </div>
     )
 }

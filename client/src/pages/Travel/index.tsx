@@ -33,10 +33,11 @@ const Travel = () => {
         <div className="travel-wrapper">
             <div className="map-info">
                 <Map selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry} usersTravelHistory={usersTravelHistory} setUsersTravelHistory={setUsersTravelHistory}/>
-                <UserTravelHistory />
+                <CountrySearchBar selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry} usersTravelHistory={usersTravelHistory} setUsersTravelHistory={setUsersTravelHistory}/>
+                
             </div>
             <div className="country-search-section-wrapper">
-                <CountrySearchBar selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry} usersTravelHistory={usersTravelHistory} setUsersTravelHistory={setUsersTravelHistory}/>
+                <UserTravelHistory />
             </div>
         </div>
     )

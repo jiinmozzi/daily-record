@@ -10,7 +10,7 @@ const AssetSearchSection = () => {
     useEffect(() => {
         const path = window.location.pathname.split('/');
         console.log(path)
-        if (path.length < 3 || path[2] !== 'portfolio'){
+        if (path.length < 3 && path[2] !== 'portfolio'){
             setIsPortfolioPage(false);
         }   else {
             setIsPortfolioPage(true);

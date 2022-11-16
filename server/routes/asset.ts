@@ -15,10 +15,11 @@ router.get('/:stock', (req : Request, res : Response) => {
     const year = new Date().getFullYear();
     const month = new Date().getMonth() + 1;
     const date = new Date().getDate(); 
+    
     yahooFinance.historical(
     {
         symbol : stock,
-        
+        period : "v",
         from : `${year-1}-${month}-${date}`,
         to : `${year}-${month}-${date}`, 
         
