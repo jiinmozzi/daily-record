@@ -1,7 +1,7 @@
 import sendRequest from "./sendRequest"
 
-const getUserPortfolio = async(token : string) => {
+const getUserAssetPortfolio = async(token : string) => {
     return await sendRequest(`asset/portfolio`, "GET", {}, true, token);
 }
 
-export default getUserPortfolio;
+export default getUserAssetPortfolio;

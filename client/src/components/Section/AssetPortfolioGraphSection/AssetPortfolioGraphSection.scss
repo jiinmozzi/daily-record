@@ -1,6 +1,59 @@
 .asset-portfolio-graph-section-wrapper{
     width : 100%;
-    height : 300px;
-    background-color : red;
+    height : 600px;
     color : white;    
+    padding : 0 5% 0 10%;
+    background-color : rgb(19, 23, 34);
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    #asset-portfolio-graph-section-inner{
+        width : 90%;
+        height : 90%;
+        background-color : rgb(27,31,44);
+        #asset-portfolio-donut-wrapper{
+            display : flex;
+            width : 100%;
+            height : 60%;
+            #asset-portfolio-donut-graph{
+                height : 100%;
+                width : 45%;
+                padding-top : 15px;
+                padding-left : 20px;
+                // background-color : aliceblue;
+                #asset-portfolio-donut-toggle-btn{
+                    display : flex;
+                    gap : 20px;
+                    .donut-toggle-btn-text{
+                        padding : 7px 10px 7px 10px;
+                        border-radius : 5px;
+                        font-size : 14px;
+                        transition : all 1s;
+                        &:hover{
+                            cursor : pointer;
+                        }
+                    }
+                }
+                #asset-portfolio-actual-donut{
+                    width : 100%;
+                    margin-top : 10%;
+                    height : 70%;
+                    background-color: red;
+                }
+            }
+            #asset-portfolio-weight-graph{
+                height : 100%;
+                width : 55%;
+                // background-color : salmon;
+                display : flex;
+                flex-direction : column;
+            }   
+        }
+        #asset-portfolio-expected-dividend{
+            height : 40%;
+            width : 100%;
+            // background-color : violet;
+        }
+    }
+    
 }

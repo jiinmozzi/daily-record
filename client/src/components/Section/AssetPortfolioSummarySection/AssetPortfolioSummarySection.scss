@@ -1,6 +1,84 @@
 .asset-portfolio-summary-section-wrapper{
+    padding : 0 5% 0 10%;
     width : 100%;
-    height : 250px;
+    height : 320px;
     background-color : blue;
+    background-color : rgb(19, 23, 34);
     color : white;
+    display : flex;
+    flex-direction : column;
+    justify-content : center;
+    align-items : center;
+    border-bottom : 1px solid rgb(39,47,67);
+    .asset-portfolio-summary-section-inner{
+        width : 90%;
+        height : 90%;
+        background-color : rgb(27,31,44);
+        display : flex;
+        flex-direction: column;
+        padding-left : 20px;
+        #asset-portfolio-user-name{
+            margin-top : 20px;
+            color : rgb(114,125,134);
+        }
+        #current-total-asset{
+            display : flex;
+            flex-direction : column;
+            margin-top : 20px;
+            #total-asset-text{
+                font-size : 12px;
+                color : rgb(114,125,134);
+                font-weight : 800;
+                letter-spacing: 1px;
+            }
+            #total-asset-value{
+                margin-top : 7px;
+                font-size : 20px;
+                letter-spacing : 2px;
+            }
+        }
+        #total-investment{
+            margin-top : 20px;
+            display : flex;
+            flex-direction : column;
+            #total-investment-text{
+                font-size : 12px;
+                color : rgb(114,125,134);
+                font-weight : 800;
+                letter-spacing: 1px;
+            }
+            #total-investment-value{
+                margin-top : 7px;
+                font-size : 14px;
+                letter-spacing : 2px;
+            }
+        }
+        
+        
+        #current-index-asset{
+            margin-top : 30px;
+            display : flex;
+            gap : 50px;
+
+            .current-indexes{
+                display : flex;
+                
+                flex-direction : column;
+                border-left : 2px solid white;
+                padding-left : 10px;
+                .current-indexes-text{
+                    font-size : 11px;
+                    color : rgb(114,125,134);
+                    font-weight : 600;
+                    letter-spacing : 1px;
+                }
+                .currnet-indexes-value{
+                    margin-top : 7px;
+                    letter-spacing : 2px; 
+                    font-size : 11px;
+                }
+            }
+        }
+    }
+    
 }

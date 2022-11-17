@@ -11,7 +11,8 @@ const UserTravelHistory = () => {
     const [user, setUser] = useRecoilState<UserType>(userState);
     return (
         <div className="user-travel-history-wrapper">
-            <span>{user.name ? `${user.name}님의 여행 기록` : null }</span>
+            <span id="username-travel-history-span">{user.name ? `${user.name}님의 여행 기록` : null }</span>
+            
         </div>
     )
 }

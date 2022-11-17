@@ -73,10 +73,10 @@ const Map = ({selectedCountry, setSelectedCountry, usersTravelHistory, setUsersT
                 {worldMap.map((e) => {
                     const country = e.split(' ')[1];
                     return e === "Sea" ? (
-                        <div className={e} onMouseOver={onMouseOverSea}></div>
+                        <div className={e} onMouseEnter={onMouseOverSea}></div>
                     ) : <div 
                             className={e} 
-                            onMouseOver={onMouseOverCountry} 
+                            onMouseEnter={onMouseOverCountry} 
                             onClick={onClickCountry} 
                             style={{ backgroundColor : country === hoveredCountry || country === clickedCountry ? "rgb(75,102,112)" : ( usersTravelHistory.visitedCountries.indexOf(country) !== -1  ) ? "#fcb662" 
                             : country === selectedCountry ? "rgb(136, 150, 166)" 

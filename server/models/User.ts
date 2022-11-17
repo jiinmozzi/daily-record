@@ -4,6 +4,7 @@ const {Schema} = mongoose;
 const UserSchema = new Schema({
     name : { type : String, required : true },
     id : { type : String, required : true, unique : true },
+    asset : [{ type : Schema.Types.ObjectId, ref : "Asset"}],
     password : {type : String, required : true },
     email : { type : String, required : true },
     birthday : {type : String, required : true},

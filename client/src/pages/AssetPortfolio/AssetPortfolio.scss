@@ -1,0 +1,19 @@
+.asset-portfolio-wrapper{
+    width : 100%;
+    
+    #asset-portfolio-bottom-wrapper{
+        width : 100%;
+        display : flex;
+        background-color : rgb(19,23,34);
+        #asset-portfolio-bottom-left-wrapper{
+            display : flex;
+            width : 50%;
+            flex-direction : column;
+        }
+        #asset-portfolio-bottom-right-wrapper{
+            display : flex;
+            width : 50%;
+            flex-direction : column;
+        }
+    }
+}

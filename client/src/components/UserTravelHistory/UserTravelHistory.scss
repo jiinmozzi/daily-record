@@ -1,5 +1,14 @@
 .user-travel-history-wrapper{
+    
     height : 300px;
     width : 100%;
     background-color : green;
+    #username-travel-history-span{
+        font-weight : bold;
+        font-size : 18px;
+        letter-spacing : 1px;
+        margin-top : 20px;
+        margin-left : 20px;
+        color : #fff;
+    }
 }

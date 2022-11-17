@@ -65,6 +65,7 @@ const setAuth = async(req : IUserRequest, res : Response, next : NextFunction) =
     // setAuth passed.
     const user = await User.findOne({refreshToken : refreshToken})
     req.user = user;
+    console.log(user);
     return next();
 }
 
