@@ -2,11 +2,31 @@ const express = require('express');
 import {Request, Response} from "express";
 const router = express.Router();
 const {Travel, TravelWishList, User} = require("../models");
+const path = require('path');
+const multer = require('multer');
+const AWS = require('aws-sdk');
+const multerS3 = require('multer-s3');
+
 import setAuth from "../middlewares/setAuth";
 
 interface IUserRequest extends Request {
     user: any
 }
+
+interface PhotoRequest extends IUserRequest {
+    file : any
+}
+
+const upload = multer({
+    storage : multerS3({
+        s3 : new AWS.S3(),
+        bucket : 'daily-record',
+        key(req : any, file : any, cb : any){
+            cb(null, `original/${Date.now()}${path.basename(file.originalname)}`);
+        },
+    }),
+    limits : {fileSize : 5 * 1024 * 1024},
+});
 
 router.get('/', (req : Request, res : Response) => {
     return res.send({
@@ -55,8 +75,37 @@ router.post('/history/toggle', setAuth, async(req : IUserRequest, res : Response
         
     })
 })
-router.post('/story/create', setAuth, async(req : IUserRequest, res : Response) => {
-    return;
+router.post('/story/create', setAuth, async(req : PhotoRequest, res : Response) => {
+    const user = req.user;
+    const {country, city, createdAt, title, comment, departureDate, arrivalDate, duration, isPublic, imageUrl} = req.body;
+    
+    try {
+        const newTravelHistory = new Travel({
+            user : user._id,
+            country,
+            city,
+            createdAt,
+            title,
+            comment,
+            imageUrl,
+            departureDate,
+            arrivalDate,
+            duration,
+            isPublic
+        })
+        await newTravelHistory.save();
+        user.travels.push(newTravelHistory._id);
+        user.save();
+        return res.send({
+            message : "OK",
+            status : 200,
+        });
+    }   catch (err){
+        return res.send({
+            message : "FAIL",
+            status : 500,
+        })
+    }
 })
 
 router.delete('/story/delete/:id', setAuth, async(req : IUserRequest, res : Response) => {
@@ -68,4 +117,4 @@ router.get('/:query', (req : Request, res : Response) => {
 })
 
 module.exports = router;
-export {}
+

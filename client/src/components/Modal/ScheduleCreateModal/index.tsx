@@ -66,6 +66,9 @@ const ScheduleCreateModal = ({modalShow, setModalShow, schedules, setSchedules} 
     const onChangeToDate = (newValue: Dayjs | null) => {
         setDateTo(newValue);
     };
+    useEffect(() => {
+        setDateTo(dateFrom);
+    }, [dateFrom]);
 
     const onClickBtn = async( e : React.MouseEvent ) => {
         e.preventDefault();

@@ -25,6 +25,8 @@ import reIssueAccessToken from "./api/reIssueAccessToken";
 import { useRecoilState } from "recoil";
 import { accessTokenState, refreshTokenState, sidState, userState, isLoggedInState } from "./store/atom";
 
+import ScrollToTop from "./components/ScrollToTop";
+
 import sendRequest from "./api/sendRequest";
 import { UserType } from "./types";
 import axios from "axios";
@@ -135,6 +137,7 @@ function App() {
   return (
     <div className="App">
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route element={<Layout />}>
               <Route path="/planner" element={<Planner />}></Route>

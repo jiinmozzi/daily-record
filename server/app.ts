@@ -4,8 +4,17 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const app : Application= express();
 
+
+const AWS = require('aws-sdk');
+
 const mongoose = require('mongoose');
 const cors = require('cors');
+
+AWS.config.update({
+    accessKeyId : process.env.S3_ACCESS_KEY_ID,
+    secretAccessKey : process.env.S3_SECRET_ACCESS_KEY,
+    region : 'ap-northeast-2',
+});
 
 app.use(express.urlencoded({extended : true}));
 app.use(cookieParser());
@@ -29,6 +38,7 @@ app.use('/travel', require('./routes/travel'));
 app.use('/user', require('./routes/user'));
 app.use('/fitness', require('./routes/fitness'));
 app.use('/test', require('./routes/test'));
+app.use('/image', require('./routes/image'));
 
 
 

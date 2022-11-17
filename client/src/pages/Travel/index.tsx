@@ -37,8 +37,9 @@ const Travel = () => {
                 
             </div>
             <div className="country-search-section-wrapper">
-                <UserTravelHistory />
+                <UserTravelHistory usersTravelHistory={usersTravelHistory}/>
             </div>
+            
         </div>
     )
 }

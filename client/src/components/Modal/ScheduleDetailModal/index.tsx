@@ -39,6 +39,7 @@ const ScheduleDetailModal = ({detailModalShow, setDetailModalShow, schedules, se
     useEffect(() => {
         console.log(currentSchedules);
     }, [currentSchedules])
+
     const detailModalRef = useRef<HTMLDivElement>(null);
     const onClickOutsideModal = ({target} : any) => { 
         if (detailModalShow === "" && !detailModalRef.current?.contains(target)){
@@ -49,7 +50,7 @@ const ScheduleDetailModal = ({detailModalShow, setDetailModalShow, schedules, se
         <div className="schedule-detail-modal-outer-wrapper" style={{display : detailModalShow}} onClick={onClickOutsideModal}>
             <div className="schedule-detail-modal-inner-wrapper" ref={detailModalRef}>
                 <span className="schedule-detail-date-indicator">{target.substr(0, 4)}/{target.substr(4, 2)}/{target.substr(6, 2)} </span>
-                {currentSchedules.map(e => <ScheduleDetailCard schedule={e} setSchedules={setSchedules}/>)}    
+                {currentSchedules.map(e => <ScheduleDetailCard schedule={e} schedules={schedules} setSchedules={setSchedules}/>)}    
             </div>
         </div>
     )

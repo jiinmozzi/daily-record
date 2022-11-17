@@ -13,13 +13,6 @@ interface PhotoRequest extends Request {
     file : any
 }
 
-try {
-    fs.readdirSync('uploads');
-}   catch (error){
-    console.error('uploads 폴더가 없어 uploads 폴더를 생성합니다.');
-    fs.mkdirSync('uploads');
-}
-
 AWS.config.update({
     accessKeyId : process.env.S3_ACCESS_KEY_ID,
     secretAccessKey : process.env.S3_SECRET_ACCESS_KEY,
@@ -37,7 +30,7 @@ const upload = multer({
     limits : {fileSize : 5 * 1024 * 1024},
 });
 
-router.post('/img', upload.single('img'), ( req : PhotoRequest, res : Response ) => {
+router.post('/create', upload.single('img'), ( req : PhotoRequest, res : Response ) => {
     console.log(req.file);
     res.json({ url : req.file.location });
 })

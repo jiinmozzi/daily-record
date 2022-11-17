@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const {Schema} = mongoose;
 
 const BucketListSchema = new Schema({
-    user : {type : String, required : true},
+    user : {type : Schema.Types.ObjectId, required : true},
     imageUrl : [{type : String}],
     createdAt : { type : Date, default : Date.now() },
     title : String,

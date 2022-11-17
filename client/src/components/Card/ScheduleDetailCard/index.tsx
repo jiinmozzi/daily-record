@@ -20,11 +20,11 @@ export type ScheduleType = {
     isPublic : boolean,
 }
 
-const ScheduleDetailCard = ({schedule, setSchedules} : any) => {
+const ScheduleDetailCard = ({schedule, schedules, setSchedules} : any) => {
     const [accessToken, setAccessToken] = useRecoilState<string>(accessTokenState);
     const onClickDone = async( e : React.MouseEvent ) => {
         completeSchedule(accessToken, schedule._id);
-        console.log(schedule._id); 
+        setSchedules((prev : ScheduleType[]) => [...prev.filter(e => e._id !== schedule._id), {...schedule, isCompleted : !schedule.isCompleted}]);
     }
     const onClickEdit = ( e : React.MouseEvent ) => {}
     const onClickDelete = async( e : React.MouseEvent ) => {

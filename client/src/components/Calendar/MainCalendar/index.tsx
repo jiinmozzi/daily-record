@@ -104,7 +104,7 @@ const MainCalendar = () => {
         setMonthText(monthlyText[month]);
         // setDates(datesArray);
     }, [year, month])    
-
+    
     return (
         <>
             <div className="schedule-modal-conditional">

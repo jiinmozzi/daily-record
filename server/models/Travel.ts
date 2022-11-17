@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const {Schema} = mongoose;
 
 const TravelSchema = new Schema({
-    user : {type : String, required : true},
+    user : {type : Schema.Types.ObjectId, required : true},
     country : {type : String, required : true},
     city : {type : String, required : true},
     imageUrl : [{type : String}],
