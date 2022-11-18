@@ -5,6 +5,7 @@ const CoinSchema = new Schema({
     user : {type : Schema.Types.ObjectId, ref : "User"},
     name : String,
     ticker : String,
+    averagePrice : Number,
     balance : Number,
 })
 

@@ -1,0 +1,14 @@
+.terminal-collection-card-wrapper{
+    width : 300px;
+    height : 200px;
+    border-radius : 5px;
+    border : 1px solid rgb(229, 229, 229);
+    box-shadow: rgba(0, 0, 0, 0.15) 1.25px 1.25px 2px;
+    margin-bottom : 10px;
+    // box-shadow : 0px 4px 18px rgb(0 0 0 / 4%), 0px 2.025px 7.84688px rgb(0 0 0 / 3%), 0px 0.8px 2.925px rgb(0 0 0 / 2%), 0px 0.175px 1.04062px rgb(0 0 0 / 1%);
+    &:hover{
+        cursor : pointer;
+        background-color : rgba(0, 0, 1, 0.05);
+        box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+    }
+}

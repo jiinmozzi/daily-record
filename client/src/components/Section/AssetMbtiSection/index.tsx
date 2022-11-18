@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react";
-
+import { useNavigate } from "react-router-dom";
 import airbnb from "../../../assets/airbnb.png";
 import apple from "../../../assets/apple.png";
 import costco from "../../../assets/costco.png";
@@ -11,6 +11,7 @@ import cocacola from "../../../assets/cocacola.png";
 import "./AssetMbtiSection.scss";
 
 const AssetMbtiSection = () => {
+    const navigate = useNavigate();
     return (
         <div className="asset-mbti-section-wrapper">
             <div className="text-content">
@@ -18,7 +19,7 @@ const AssetMbtiSection = () => {
                 <div className="text-mbti">투자자 MBTI</div>
                 <div className="text-span">주식 투자자라면 꼭 해야 할 테스트</div>
                 <div className="text-span">자신의 투자 성향을 알아보세요!</div>
-                <button className="mbti-button">테스트 하러가기</button>
+                <button className="mbti-button" onClick={() => navigate('/asset/mbti')}>테스트 하러가기</button>
             </div>
             <div className="image-content">
                 <img src={apple} className="apple-logo company-logo" alt="apple" />

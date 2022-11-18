@@ -8,7 +8,7 @@ const multerS3 = require('multer-s3');
 import {Request, Response} from "express";
 
 const router = express.Router();
-
+import getExchangeRate from '../utils/getExchangeRate';
 interface PhotoRequest extends Request {
     file : any
 }
@@ -41,5 +41,16 @@ router.post('/img', upload.single('img'), ( req : PhotoRequest, res : Response )
     console.log(req.file);
     res.json({ url : req.file.location });
 })
+
+// router.get('/rate', async(req : Request, res : Response) => {
+    
+//     const response = await getExchangeRate();
+//     console.log(response);
+    
+//     return res.send({
+//         message : "OK",
+//         data : response[0].adjClose,
+//     }) 
+// })
 
 module.exports = router;

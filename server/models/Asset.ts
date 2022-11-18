@@ -5,8 +5,11 @@ const AssetSchema = new Schema({
     user : {type : Schema.Types.ObjectId, ref : "User"},
     name : String,
     ticker : String,
+    averagePrice : Number,
     sector : String,
     balance : Number,
+    exchangeRate : Number,
+    currency : String
 })
 
 AssetSchema.index({name: 1, user: 1}, {unique : true});

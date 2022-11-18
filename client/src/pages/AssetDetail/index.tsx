@@ -6,7 +6,7 @@ import axios from "axios";
 import Loading from "../../components/Loading";
 import { useCallback } from "react";
 import {AdvancedRealTimeChart, FundamentalData, TechnicalAnalysis, SingleTicker, SymbolInfo} from "react-ts-tradingview-widgets";
-
+import getTodayExchangeRate from "../../api/getTodayExchangeRate";
 import AssetSearchBar from "../../components/SearchBar/AssetSearchBar";
 import AssetSearchSection from "../../components/Section/AssetSearchSection";
 
@@ -15,6 +15,7 @@ import "./AssetDetail.scss";
 const AssetDetail = () => {
     const [assetData, setAssetData] = useState<any[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [exchangeRate, setExchangeRate] = useState<number>(1);
     const navigate = useNavigate();
     const {ticker} = useParams();
 
@@ -29,11 +30,19 @@ const AssetDetail = () => {
         }
     }, [ticker])
 
+    useCallback(() => {
+        const fetchExchangeRate = async() => await getTodayExchangeRate();
+        fetchExchangeRate().then(res => setExchangeRate(res.data.data));
+    }, [])
+
+    useEffect(() => {
+        console.log(exchangeRate);
+    }, [exchangeRate])
+
     const onKeyDown = (e : React.KeyboardEvent) => {
         if (e.key === "Tab"){
             e.preventDefault();
         }   
-        
     }
     return (
          <div className="asset-detail-wrapper" onKeyDown={onKeyDown}>

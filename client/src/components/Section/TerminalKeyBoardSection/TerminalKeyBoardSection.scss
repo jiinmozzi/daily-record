@@ -1,15 +1,16 @@
 .terminal-keyboard-section-wrapper{
     width : 100%;
-    height : 400px;
+    height : 480px;
     background-color : rgba(180, 205, 230, 0.4);
     margin-bottom : 200px; 
     display : flex;
     flex-direction : column;
-    align-items : center;
+    
     #terminal-keyboard-section-text{
-        width : 90%;
+        
         font-size : 24px;
-        padding-top : 20px;
+        padding-left : 5%;
+        padding-top : 30px;    
         font-weight : bold;
         letter-spacing : 1px;
         .keyboard-text:nth-child(1){
@@ -29,4 +30,318 @@
             color : rgb(255,222,1);
         }
     }
+    #keyboard-wrapper{
+        margin-left : 5%;
+        margin-top : 30px;
+        // display : flex;
+        // justify-content: center;
+        // align-items: center;
+        width : 840px;
+        height : 350px;
+        background-color : rgb(235,235,235);
+        // background: #f8f8f8;
+        
+        #keyboard{
+            
+            margin: 10px auto 20px;
+            z-index: 20;
+            width: 800px;
+            height: 315px;
+            background: #bbb;
+            background: -webkit-gradient(linear, left bottom, left top, color-stop(0.27, rgb(212,216,219)), color-stop(0.64, rgb(213,217,220)), color-stop(0.95, rgb(230,233,235)), color-stop(1, rgb(191,191,191)));
+            background-image: -moz-linear-gradient(center bottom, rgb(212,216,219) 27%, rgb(213,217,220) 64%, rgb(230,233,235) 95%, rgb(191,191,191) 100%);
+            -moz-border-radius-topleft: 7px 21px;
+            -moz-border-radius-topright: 7px 21px;
+            -moz-border-radius-bottomright: 10px;
+            -moz-border-radius-bottomleft: 10px;
+            border-top-left-radius: 7px 21px;
+            border-top-right-radius: 7px 21px;
+            border-bottom-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+            padding: 10px 0 0 20px;
+            -webkit-box-shadow:  
+                inset 0 0 8px #bbb,
+                0 1px 0 #aaa,
+                0 4px 0 #bbb,
+                0 10px 30px #ddd;
+            -moz-box-shadow:  
+                inset 0 0 8px #bbb,
+                0 1px 0 #aaa,
+                0 4px 0 #bbb,
+                0 10px 30px #ddd;
+            box-shadow:  
+                inset 0 0 8px #bbb,
+                0 1px 0 #aaa,
+                0 4px 0 #bbb,
+                0 10px 30px #ddd;
+        }        
+        .keyboard-row{
+            width : 768px;
+            display : flex;
+            .keyboard-key{
+                
+                display: block;
+                color: #aaa;
+                font: bold 9pt arial;
+                text-decoration: none;
+                text-align: center;
+                width: 44px;
+                height: 41px;
+                margin: 5px;
+                background: #eff0f2;
+                -moz-border-radius: 4px;
+                border-radius: 4px;
+                border-top: 1px solid #f5f5f5;
+                -webkit-box-shadow: 
+                    inset 0 0 25px #e8e8e8,
+                    0 1px 0 #c3c3c3,
+                    0 2px 0 #c9c9c9,
+                    0 2px 3px #333;
+                -moz-box-shadow: 
+                    inset 0 0 25px #e8e8e8,
+                    0 1px 0 #c3c3c3,
+                    0 2px 0 #c9c9c9,
+                    0 2px 3px #333;
+                box-shadow: 
+                    inset 0 0 25px #e8e8e8,
+                    0 1px 0 #c3c3c3,
+                    0 2px 0 #c9c9c9,
+                    0 2px 3px #333;
+                text-shadow: 0px 1px 0px #f5f5f5;
+                filter: dropshadow(color=#f5f5f5, offx=0, offy=1);
+            }
+            
+            .fn span{
+                display: block;
+                margin: 14px 5px 0 0;
+                text-align: right;
+                font: bold 6pt arial;
+                text-transform: uppercase;
+            }
+            #esc {
+                margin: 6px 15px 0 0;
+                font-size: 7.5pt;
+                text-transform: lowercase;
+            }
+            .fn{
+                height: 26px; width: 46px;
+            }
+            
+            
+        }
+        #numbers{
+            #delete {width: 72px;}
+            .keyboard-key{
+                b{
+                    margin: 3px 0 3px;
+                    display: block;
+                }
+                span{
+                    display : block;
+                }
+            }
+            .alt{
+                b{
+                    display: block;
+                    margin: 0 0 3px;
+                }
+            }
+            #delete{
+                span{
+                    text-align: right;
+                    margin: 23px 10px 0 0;
+                    font-size: 7.5pt;
+                    text-transform: lowercase;
+                }
+            }
+        }
+        #qwerty{
+            #tab {width: 72px;}
+            .keyboard-key{
+                span {
+                    display: block;
+                    margin: 13px 0 0;
+                    text-transform: uppercase;
+                }
+            }
+            #tab span {
+                text-align: left;
+                margin: 23px 0 0 10px;
+                font-size: 7.5pt;
+                text-transform: lowercase;
+            }
+            .alt{
+                b {
+                    display: block; margin: 3px 0 0;
+                }
+                span {
+                    margin: 2px 0 0;
+                }
+            }
+        }
+        #asdf{
+            #caps span{
+                text-transform: lowercase;
+            }
+            .keyboard-key{
+                span {
+                    display: block;
+                    margin: 13px 0 0;
+                    text-transform: uppercase;
+                }
+                
+            }
+            
+            .alt{
+                span {
+                    margin: 0; text-transform: lowercase;
+                }
+                b {
+                    display: block; margin: 3px 0 0;
+                }
+            }
+            #caps{
+                width: 85px;
+                
+                b {
+                    display: block;
+                    background: #999;
+                    width: 4px;
+                    height: 4px;
+                    border-radius: 10px;
+                    margin: 9px 0 0 10px;
+                    -webkit-box-shadow: inset 0 1px 0 #666;
+                    -moz-box-shadow:inset 0 1px 0 #666;
+                    box-shadow:inset 0 1px 0 #666;
+                }
+                span{
+                    text-align: left;
+                    margin: 10px 0 0 10px;
+                    font-size: 7.5pt;
+                }
+            }
+            #enter{
+                width: 85px;
+                span{
+                    text-align: right;
+                    margin: 23px 10px 0 0;
+                    font-size: 7.5pt;
+                }
+            }
+        }
+        #zxcv{
+            
+            
+            .keyboard-key{
+                span{
+                    display: block;
+                    margin: 13px 0 0;
+                    text-transform: uppercase;
+                }
+            }
+            .alt{
+                b{
+                    display: block;margin: 4px 0 0;
+                }
+                span{
+                    margin: 0;
+                }
+            }
+            .shiftleft, .shiftright {width: 112px;}
+            .shiftleft{
+                    
+                span{
+                    text-align: left;
+                    margin: 23px 0 0 10px;
+                    font-size: 7.5pt;
+                    text-transform: lowercase;
+                }
+            }
+            .shiftright{
+                span{
+                    text-align: right;
+                    margin: 23px 10px 0 0;
+                    font-size: 7.5pt;
+                    text-transform: lowercase;
+                }
+            }
+        }
+        #bottomrow{
+            #optionright{
+                margin-right : 8px;
+            }
+            #fn span, #control span, #optionleft span, #commandleft span{
+                display: block;
+                text-align: left;
+                margin: 31px 0 0 8px;
+                font-size: 7.5pt;
+                text-transform: lowercase;
+            }
+            #optionright span, #commandright span{
+                display: block;
+                text-align: right;
+                margin: 31px 8px 0 0;
+                font-size: 7.5pt;
+                text-transform: lowercase;
+            }
+            #left span,#right span, #up span, #down span {
+                display: block;
+                margin: 2px 0 0;
+                padding-top : 3px;
+            }
+            
+            .fn {
+                height: 26px; width: 46px;
+            }
+            #fn, #control, .option, .command, #spacebar {height: 49px;}
+            #control {width: 56px;}
+            #spacebar {width: 226px;}
+            .option {width: 46px;}
+            .command {width: 67px;}
+            #left, #up, #down, #right {border: none;}
+            #left, #right {margin: 30px 5px 5px 0px;}
+            #down {height: 23px; font-size: 8px; }
+            #up, #left, #right {height: 24px; font-size: 8px; }
+            
+            #left:active, #right:active {margin: 32px 5px 3px;}
+            #up {margin: 5px 5px 1px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px;}
+            #up:active {margin: 8px 5px -2px;}
+            #down {margin: 0 5px 5px; border-top-left-radius: 0px; border-top-right-radius: 0px;}
+            #down:Active {margin: 3px 5px 4px;}
+            #right {
+                margin-left : 6px;
+            }
+        }
+        
+    }
 }
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+// .key:active, .keydown {
+//     color: #888;
+//     background: #ebeced;
+//     margin: 7px 5px 3px;
+//     -webkit-box-shadow:
+//       inset 0 0 25px #ddd,
+//       0 0 3px #333;
+//     -moz-box-shadow: 
+//       inset 0 0 25px #ddd,
+//       0 0 3px #333;
+//     box-shadow: 
+//       inset 0 0 25px #ddd,
+//       0 0 3px #333;
+//     border-top: 1px solid #eee;}

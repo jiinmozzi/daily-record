@@ -14,7 +14,6 @@ const FileButton = () => {
     
     const onChange = (e : React.ChangeEvent) => {
         if (imageRef && imageRef.current && imageRef.current.files){
-            // console.log(imageRef.current.files[0].name);
             setFileName(imageRef.current.files[0].name);
         }
     }
