@@ -79,7 +79,7 @@ const CountrySearchBar = ({selectedCountry, setSelectedCountry, usersTravelHisto
             disablePortal
             id="combo-box-demo"
             options={countryList}
-            sx={{ width: 300 }}
+            sx={{ width: 300}}
             renderInput={(params) => <TextField {...params} label="Search Country..." />}
             onChange={onChange}
             />

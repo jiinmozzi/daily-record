@@ -1,14 +1,28 @@
 .user-travel-history-wrapper{
-    
-    height : 300px;
+    height : 200px;
     width : 100%;
-    background-color : green;
-    #username-travel-history-span{
+    display : flex;
+    flex-direction : column;
+    background-color : mistyrose;
+    .username-travel-lists{
         font-weight : bold;
         font-size : 18px;
         letter-spacing : 1px;
         margin-top : 20px;
         margin-left : 20px;
-        color : #fff;
+        // color : #fff;
     }
+    .flags-image{
+        margin-left :20px;
+        display : flex;
+        gap : 20;
+        .visited-countries-flags{
+            font-size : 28px;
+        }
+        .wishlist-countries-flags{
+            font-size : 28px;
+        }
+    }
+    
+    #username-travel-wishlist{}
 }

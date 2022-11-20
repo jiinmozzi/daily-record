@@ -6,6 +6,7 @@ import DiarySection from "../../components/Section/DiarySection";
 import DiaryNavigation from "../../components/Navigation/DiaryNavigation";
 
 import "./Diary.scss";
+import DiarySentimentSection from "../../components/Section/DiarySentimentSection";
 
 const Diary = () => {
     return (
@@ -14,6 +15,7 @@ const Diary = () => {
                 {/* <span className="diary-span">jino's calendar</span> */}
                 <DiarySection />
                 <DiaryNavigation />
+                <DiarySentimentSection />
                 <DiaryCalendar />
                 Diary
             </div>

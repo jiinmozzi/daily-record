@@ -8,6 +8,7 @@ const AssetTradeHistorySchema = new Schema({
     price : Number,
     quantity : Number,
     isPurchase : Boolean,
+    market : String,
 })
 
 const AssetTradeHistory = mongoose.model('AssetTradeHistory', AssetTradeHistorySchema);

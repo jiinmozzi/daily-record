@@ -9,11 +9,12 @@
         display : flex;
         justify-content : space-between;
         margin-bottom : 30px;
+        #map-controller{
+            .country-search-section-wrapper{
+                width : 100%;
+                margin-bottom : 300px;
+            }    
+        }
     }
-    .country-search-section-wrapper{
-        
-        width : 100%;
-        margin-bottom : 300px;
-        
-    }    
+    
 }

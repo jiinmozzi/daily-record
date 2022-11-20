@@ -35,18 +35,17 @@ const TerminalCollection = () => {
                         <BlurOnIcon style={{ color : "rgb(145,145,141)"}}/>
                         <span className="collection-box-title" id="collection-not-yet">시작 전</span>
                     </div>
-                    
                     <TerminalCollectionCard />
+                    <span className="create-collection-navs" id="create-not-you">+ 새로 만들기</span>
                 </div>
                 <div className="collection-on-process collection-box">
                     <div className="collection-box-header">
                         <PlayCircleOutlineIcon style={{ color : "rgb(99,155,191)" }}/>
                         <span className="collection-box-title" id="collection-process">진행 중</span>
-
                     </div>
                     <TerminalCollectionCard />
                     <TerminalCollectionCard />
-                    
+                    <span className="create-collection-navs" id="create-on-process">+ 새로 만들기</span>
                 </div>
                 <div className="collection-done collection-box">
                     <div className="collection-box-header">
@@ -54,6 +53,7 @@ const TerminalCollection = () => {
                         <span className="collection-box-title" id="collection-done">완료</span>
                     </div>
                     <TerminalCollectionCard />
+                    <span className="create-collection-navs" id="create-done">+ 새로 만들기</span>
                 </div>
             </div>
             

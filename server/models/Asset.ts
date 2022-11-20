@@ -9,7 +9,8 @@ const AssetSchema = new Schema({
     sector : String,
     balance : Number,
     exchangeRate : Number,
-    currency : String
+    currency : String,
+    market : String,
 })
 
 AssetSchema.index({name: 1, user: 1}, {unique : true});

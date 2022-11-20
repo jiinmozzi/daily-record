@@ -75,6 +75,36 @@ router.post('/history/toggle', setAuth, async(req : IUserRequest, res : Response
         
     })
 })
+
+router.get('/stories', setAuth, async(req : IUserRequest, res : Response) => {
+    const user = req.user;
+    const {travels, travelWishLists} = user;
+
+    const visitedTravelStories : any[] = [];
+    const wishListTravelStories : any[] = [];
+    try {
+        for (let i=0; i<travels.length; i++){
+            visitedTravelStories.push(await Travel.findById(travels[i].toString()));
+        }
+        for (let i=0; i<travelWishLists.length; i++){
+            wishListTravelStories.push(await TravelWishList.findById(travelWishLists[i].toString()));
+        }
+        return res.send({
+            message : "OK",
+            status : 200,
+            data : {
+                visitedTravelStories,
+                wishListTravelStories
+            }
+        })
+    }   catch (err){
+        return res.send({
+            message : "FAIL",
+            status : 400,
+        })
+    }
+})
+
 router.post('/story/create', setAuth, async(req : PhotoRequest, res : Response) => {
     const user = req.user;
     const {country, city, createdAt, title, comment, departureDate, arrivalDate, duration, isPublic, imageUrl} = req.body;

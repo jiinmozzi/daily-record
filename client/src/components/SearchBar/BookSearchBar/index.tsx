@@ -13,7 +13,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import DirectionsIcon from '@mui/icons-material/Directions';
-
+import BookDropDown from "../../DropDown/BookDropDown";
 import { BookType } from "../../../types";
 import books from "../../../assets/books.jpeg";
 
@@ -37,9 +37,7 @@ const BookSearchBar = () => {
         const target = e.target as HTMLInputElement;
         setBookTitle(target.value);
     }
-    useEffect(() => {
-        console.log(suggestions); 
-    }, [suggestions])
+    
     return (
         <div className="book-search-bar-wrapper">
             <Paper
@@ -62,11 +60,8 @@ const BookSearchBar = () => {
             </IconButton>
                 
             </Paper>
-            {suggestions && 
-                <div className="suggestion-dropdowns">
-                    {suggestions.map((e : BookType) => <div className="book-suggestionon" onClick={() => navigate(`/book/${bookTitle ? bookTitle : "empty-result"}`)}>{e.title}</div> ) }
-                </div>
-            }
+            <BookDropDown suggestions={suggestions} bookTitle={bookTitle}/>
+            
         </div>
     )
 }

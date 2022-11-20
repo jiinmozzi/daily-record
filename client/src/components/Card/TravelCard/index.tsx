@@ -1,7 +1,7 @@
 import {useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import "./TravelCard.scss";
-import mongol from "../../assets/mongol.jpeg";
+import mongol from "../../../assets/mongol.jpeg";
 const TravelCard = () => {
     const navigate = useNavigate();
 

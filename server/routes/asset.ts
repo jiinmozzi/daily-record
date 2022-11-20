@@ -101,13 +101,14 @@ router.post('/add/stock', setAuth, async( req : IUserRequest, res : Response ) =
         else {
             const newAsset = new Asset({
                 user : user._id,
-                name : getAssetFullName(ticker),
+                name : getAssetFullName(ticker)?.stockName,
                 ticker,
                 averagePrice : price,            
                 sector : "",
                 balance : quantity,
                 exchangeRate,
                 currency,
+                marget : getAssetFullName(ticker)?.market,
             });
             await newAsset.save();
 
@@ -115,16 +116,25 @@ router.post('/add/stock', setAuth, async( req : IUserRequest, res : Response ) =
             await user.save();
         }  
         // both has to be recorded in history 
+        
         const newAssetHistory = new AssetTradeHistory({
             user : user._id,
-            name : getAssetFullName(ticker),
+            name : getAssetFullName(ticker)?.stockName,
             ticker,
             price,
             quantity,
             isPurchase : true,
+            market : getAssetFullName(ticker)?.market
         })
         await newAssetHistory.save();
-
+        return res.send({
+            message : "OK",
+            status : 200,
+            data : {
+                asset : user.asset,
+                newAssetHistory
+            }
+        })
     }   catch (err){
         return res.send({
             message : "FAIL",
@@ -134,15 +144,62 @@ router.post('/add/stock', setAuth, async( req : IUserRequest, res : Response ) =
 })
 
 // what if exchange rates are not there ? 
-router.post('/sell/stock', ( req : IUserRequest, res : Response ) => {
+router.post('/sell/stock', async( req : IUserRequest, res : Response ) => {
     const user = req.user;
+    const userAsset = user.asset;
+    const {ticker, quantity, price, currency, exchangeRate} = req.body;
+    const assets : any[] = [];
+    
+    for (let i=0; i<userAsset.lenght; i++){
+        assets.push(await Asset.findById(userAsset[i].toString()));
+    }
 
+    const asset = assets.find((e : AssetType) => e.ticker === ticker);
+    
+    if (!asset || asset.balance < quantity){
+        return res.send({
+            message : "FAIL",
+            status : 400,
+        })
+    }
+    try {
+        asset.balance -= quantity;
+        await asset.save();
+
+        const newAssetHistory = new AssetTradeHistory({
+            user : user._id,
+            name : getAssetFullName(ticker)?.stockName,
+            ticker,
+            price,
+            quantity,
+            isPurchase : false,
+            market : getAssetFullName(ticker)?.market
+        })
+        await newAssetHistory.save();
+        return res.send({
+            message : "OK",
+            status : 200,
+            data : {
+                asset : user.asset,
+                newAssetHistory
+            }
+        })
+    }   catch (err){
+        return res.send({
+            message : "FAIL",
+            status : 500,
+        })
+    }
+    
+    // adjust balance ;    
 })
 
 router.get('/portfolio', setAuth, (req : IUserRequest, res : Response) => {
     const user = req.user;
-
     const userPortfolio = user.asset;
+    
+    // send portfolio and prices
+    
 })
 
 
