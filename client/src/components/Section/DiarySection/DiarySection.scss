@@ -32,6 +32,22 @@
         
         // align-items: center;
     }
+    #diary-section-monthly-controller{
+        position : absolute;
+        margin-top : 300px;
+        left : 6.5%;
+        display : flex;
+        width : 73%;
+        justify-content : space-between;
+        align-items : center;
+        #diary-section-year{
+            font-size : 18px;
+            font-weight : bold;
+        }
+        .diary-section-months{
+            font-size : 16px;
+        }
+    }
 }
 
 // .not-found-wrapper::before{

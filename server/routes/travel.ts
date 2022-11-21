@@ -105,7 +105,7 @@ router.get('/stories', setAuth, async(req : IUserRequest, res : Response) => {
     }
 })
 
-router.post('/story/create', setAuth, async(req : PhotoRequest, res : Response) => {
+router.post('/story/visited/create', setAuth, async(req : PhotoRequest, res : Response) => {
     const user = req.user;
     const {country, city, createdAt, title, comment, departureDate, arrivalDate, duration, isPublic, imageUrl} = req.body;
     
@@ -129,6 +129,7 @@ router.post('/story/create', setAuth, async(req : PhotoRequest, res : Response) 
         return res.send({
             message : "OK",
             status : 200,
+            data : newTravelHistory,
         });
     }   catch (err){
         return res.send({
@@ -140,10 +141,6 @@ router.post('/story/create', setAuth, async(req : PhotoRequest, res : Response) 
 
 router.delete('/story/delete/:id', setAuth, async(req : IUserRequest, res : Response) => {
     
-})
-
-router.get('/:query', (req : Request, res : Response) => {
-    return;
 })
 
 module.exports = router;

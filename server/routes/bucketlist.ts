@@ -8,5 +8,9 @@ interface IUserRequest extends Request {
     user: any
 }
 
+router.get('/bucketlists', setAuth, (req : IUserRequest, res : Request) => {
+    const user = req.user;
+    
+});
 module.exports = router;
 export {}

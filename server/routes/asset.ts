@@ -58,7 +58,7 @@ router.get('/:stock', (req : Request, res : Response) => {
     {
         symbol : stock,
         period : "v",
-        from : `${year-1}-${month}-${date}`,
+        from : `${year-5}-${month}-${date}`,
         to : `${year}-${month}-${date}`, 
         
     }, (err : any, quotes : any) => {

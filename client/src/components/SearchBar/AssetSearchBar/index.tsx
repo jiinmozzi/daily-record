@@ -17,7 +17,14 @@ const AssetSearchBar = () => {
         console.log(res);
     }
     useEffect(() => {
-        console.log(asset);
+        if (asset.length === 4){
+            const fetch = async() => {
+                const res = await getAssetInfo(asset);
+                return res;
+            }
+            fetch().then(res => console.log(res));
+        }
+        
     }, [asset])
     return (
         <div className="asset-search-bar-wrapper">

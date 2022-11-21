@@ -8,6 +8,7 @@ import "./ScheduleDetailCard.scss";
 import { useRecoilState } from 'recoil';
 import { accessTokenState } from '../../../store/atom';
 import deleteSchedule from '../../../api/deleteSchedule';
+import patchSchedule from '../../../api/patchSchedule';
 export type ScheduleType = {
     _id : string,    
     user : string,
@@ -26,11 +27,16 @@ const ScheduleDetailCard = ({schedule, schedules, setSchedules} : any) => {
         completeSchedule(accessToken, schedule._id);
         setSchedules((prev : ScheduleType[]) => [...prev.filter(e => e._id !== schedule._id), {...schedule, isCompleted : !schedule.isCompleted}]);
     }
-    const onClickEdit = ( e : React.MouseEvent ) => {}
+    const onClickEdit = async( e : React.MouseEvent ) => {
+        
+        // needs to be implemented ;
+
+        // make modal show or input focus and after change, submit;
+    }
     const onClickDelete = async( e : React.MouseEvent ) => {
         await deleteSchedule(accessToken, schedule._id);
-        
     }
+
     return (
         <div className="schedule-detail-card-wrapper">
             

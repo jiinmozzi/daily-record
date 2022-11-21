@@ -11,6 +11,7 @@ import { UserType } from "../../types";
 import getSchedules from "../../api/getSchedules";
 
 import "./Planner.scss";
+import WeeklyCalendar from "../../components/Calendar/WeeklyCalendar";
 const Planner = () => {
     // const [loading, setLoading] = useState<boolean>(false);
     const [init, setInit] = useState<boolean>(false);
@@ -26,7 +27,8 @@ const Planner = () => {
     return (
         // isLoading ? <Loading /> :  
         <div className="planner-wrapper">
-           <MainCalendar />
+            <MainCalendar />
+            <WeeklyCalendar />
         </div>
     )
 }

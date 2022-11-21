@@ -5,7 +5,9 @@ import "./DiaryNavigation.scss";
 
 const DiaryNavigation = () => {
     return (
-        <div className="diary-navigation-wrapper"></div>
+        <div className="diary-navigation-wrapper">
+            
+        </div>
     )
 }
 

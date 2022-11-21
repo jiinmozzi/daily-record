@@ -18,6 +18,7 @@ import TerminalStudy from "./pages/TerminalStudy";
 import TerminalDaily from "./pages/TerminalDaily";
 import Fitness from "./pages/Fitness";
 import Diary from "./pages/Diary";
+import CreateDiary from "./pages/CreateDiary"
 import BucketList from "./pages/BucketList";
 import NotFound from "./pages/NotFound";
 import SignIn from "./pages/Auth/SignIn";
@@ -147,6 +148,7 @@ function App() {
               <Route path="/planner" element={<Planner />}></Route>
               <Route path="/planner/:year/:month" element={<Planner />}></Route>
               <Route path="/diary" element={<Diary />}></Route>
+              <Route path="/diary/create" element={<CreateDiary />}></Route>
               <Route path="/book" element={<Book />}></Route>
               <Route path="/asset" element={<Asset />}></Route>
               <Route path="/asset/mbti" element={<AssetMBTI />}></Route>

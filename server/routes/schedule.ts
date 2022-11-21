@@ -1,7 +1,7 @@
 const express = require('express');
 import {Request, Response} from "express";
 const router = express.Router();
-const {Schedule, User} = require("../models");
+const {WeeklySchedule, Schedule} = require("../models");
 import setAuth from "../middlewares/setAuth";
 
 interface IUserRequest extends Request {
@@ -21,7 +21,7 @@ type ScheduleType = {
     isPublic : boolean,
 }
 
-router.get('/', setAuth, async(req : IUserRequest, res : Response) => {
+router.get('/schedules', setAuth, async(req : IUserRequest, res : Response) => {
     const user = req.user;
     
     const userSchedules = user.schedules;
@@ -42,8 +42,30 @@ router.get('/', setAuth, async(req : IUserRequest, res : Response) => {
         data : schedules,
     })
 })
+router.get('/weekly', setAuth, async(req : IUserRequest, res : Response) => {
+    const user = req.user;
+    const userWeeklySchedules = user.weeklySchedules;
 
-router.post('/create', setAuth, async(req : IUserRequest, res : Response) => {
+    const weeklySchedules : any[] = [];
+    try {
+        for (let i=0; i<userWeeklySchedules.length; i++){
+            weeklySchedules.push(await WeeklySchedule.findById(userWeeklySchedules[i]));
+        }
+        
+        return res.status(200).send({
+            message : "OK",
+            status : 200,
+            data : weeklySchedules,
+        })
+    }   catch (err){
+        return res.status(400).send({
+            message : "FAIL",
+            status : 400,
+        })
+    }
+})
+
+router.post('/schedule', setAuth, async(req : IUserRequest, res : Response) => {
     const user = req.user;
     const {dateFrom, dateTo, title, content, isCompleted, isPublic} = req.body;
     try {
@@ -71,6 +93,38 @@ router.post('/create', setAuth, async(req : IUserRequest, res : Response) => {
         return;
     }
 })
+
+router.post('/weekly', setAuth, async(req : IUserRequest, res : Response) => {
+    const user = req.user;
+    const {day, title, startTime, endTime, isPublic} = req.body
+    
+    try {
+        const newWeeklySchedule = new WeeklySchedule({
+            user : user._id,
+            day,
+            title,
+            startTime,
+            endTime,
+            isPublic
+        });
+        await newWeeklySchedule.save();
+
+        user.weeklySchedules.push(newWeeklySchedule._id);
+        await user.save();
+
+        return res.status(200).send({
+            status : 200,
+            message : "OK",
+            data : newWeeklySchedule,
+        })
+    }   catch (err) {
+        return res.status(400).send({
+            status : 400,
+            message : "FAIL",
+        })
+    }
+})
+
 router.post('/complete', setAuth, async( req : IUserRequest, res : Response ) => {
     const {_id} = req.body;
     console.log(_id);
@@ -82,11 +136,38 @@ router.post('/complete', setAuth, async( req : IUserRequest, res : Response ) =>
         message : "OK",
     })
 })
-router.delete('/delete/:id', setAuth, async(req : IUserRequest, res : Response) => {
+
+router.patch('/schedule/:id', setAuth, async(req : IUserRequest, res : Response) => {
+    const {id} = req.params;
+    const {title, content} = req.body;
+    // const user = req.user;
+    
+    try {
+        const schedule = await Schedule.findById(id.toString());
+        
+        schedule.title = title;
+        schedule.content = content;
+        await schedule.save();
+        return res.status(200).send({
+            status : 200,
+            message : "OK",
+            data : schedule,
+        })
+    }   catch (err) {
+        return res.send({
+            message : "FAIL",
+            status : 400,
+            err,
+        })
+    }
+    
+
+
+})
+
+router.delete('/schedule/:id', setAuth, async(req : IUserRequest, res : Response) => {
     const {id} = req.params;
     const user = req.user;
-    console.log(id);
-    
     
     user.schedules = user.schedules.filter((e : any )=> e.toString() !== id);
     
@@ -100,6 +181,27 @@ router.delete('/delete/:id', setAuth, async(req : IUserRequest, res : Response) 
         })
     }
     
+    return res.status(200).send({
+        status : 200,
+        message : "OK",
+    })
+})
+
+router.delete('/weekly/:id', setAuth, async(req : IUserRequest, res : Response) => {
+    const {id} = req.params;
+    const user = req.user;
+
+    user.weeklySchedules = user.WeeklySchedules.filter((e : any) => e.toString() !== id);
+
+    try {
+        await WeeklySchedule.findByIdAndDelete(id);
+        await user.save();
+    }   catch (err) {
+        return res.status(500).send({
+            status : 500,
+            message : "FAIL"
+        })
+    }
     return res.status(200).send({
         status : 200,
         message : "OK",

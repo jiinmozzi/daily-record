@@ -12,12 +12,10 @@ const Diary = () => {
     return (
         <>
             <div className="diary-wrapper">
-                {/* <span className="diary-span">jino's calendar</span> */}
                 <DiarySection />
                 <DiaryNavigation />
-                <DiarySentimentSection />
                 <DiaryCalendar />
-                Diary
+                <DiarySentimentSection />
             </div>
             
         </>
