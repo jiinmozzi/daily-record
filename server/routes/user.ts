@@ -46,7 +46,7 @@ router.get('/refresh', async(req : Request, res : Response) => {
     }
     const refreshToken = req.cookies.refreshToken;
     const user = await User.findOne({refreshToken : req.cookies.refreshToken});
-    console.log(user);
+    // console.log(user);
     if (!user){
         return res.status(404).send({
             message : "no user",

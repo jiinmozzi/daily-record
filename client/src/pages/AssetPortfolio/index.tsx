@@ -1,4 +1,6 @@
-import {useState, useEffect} from "react";
+import axios from "axios";
+
+import {useState, useEffect, useCallback} from "react";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../store/atom";
 import AssetSearchSection from "../../components/Section/AssetSearchSection";
@@ -18,15 +20,27 @@ export type AssetPortfolioType = {
 const AssetPortfolio = () => {
     const [accessToken, setAccessToken] = useRecoilState<string>(accessTokenState);
     const [assetPortfolio, setAssetPortfolio] = useState<AssetPortfolioType[]>([]);
+    const [ticker, setTicker] = useState<string>("MSFT"); // needs to be deleted;
     useEffect(() => {
-        if (!accessToken) return;
-        const fetch = async() => {
-            return await getUserAssetPortfolio(accessToken);
+        if ( ticker && ticker.length > 0 ){
+            const fetch = async() => {
+                const res = await axios.get(`http://localhost:3002/asset/${ticker}`);
+                // setAssetData(res.data.data);
+                console.log(res);
+            }
+            fetch();
         }
-        fetch().then(res => {
-            if (res.message === "OK") setAssetPortfolio(res.data);
-        })
-    }, [accessToken]);
+    }, [ticker])
+    
+    // useEffect(() => {
+    //     if (!accessToken) return;
+    //     const fetch = async() => {
+    //         return await getUserAssetPortfolio(accessToken);
+    //     }
+    //     fetch().then(res => {
+    //         if (res.message === "OK") setAssetPortfolio(res.data);
+    //     })
+    // }, [accessToken]);
 
     return (
         <div className="asset-portfolio-wrapper">

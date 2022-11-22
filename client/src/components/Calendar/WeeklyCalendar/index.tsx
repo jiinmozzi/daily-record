@@ -1,5 +1,8 @@
 import React, {useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import getWeeklySchedules from "../../../api/getWeeklySchedules";
+import { accessTokenState } from "../../../store/atom";
 import WeeklyTimerCreateModal from "../../Modal/WeeklyTimerCreateModal";
 
 import "./WeeklyCalendar.scss";
@@ -8,10 +11,19 @@ const WeeklyCalendar = () => {
     const times = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23];
     const [showModal, setShowModal] = useState<boolean>(false);
     const days = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
-
+    const [accessToken, setAccessToken] = useRecoilState<string>(accessTokenState);
     const showCreateModal = (e : React.MouseEvent) => {
         setShowModal(true);
     }
+    useEffect(() => {
+        if (accessToken){
+            const fetchSchedules = async() => {
+                return await getWeeklySchedules(accessToken);
+            }
+            fetchSchedules().then(res => console.log(res));
+        }
+        
+    }, [accessToken])
     return (
         <div className="weekly-calendar-wrapper">
             {showModal && <WeeklyTimerCreateModal setShowModal={setShowModal}/>}

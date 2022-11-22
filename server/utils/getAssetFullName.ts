@@ -15,30 +15,35 @@ const getAssetFullName = (ticker : string) => {
 
     let kospiExists = kospiJson.find((e:any) => e[0] === ticker);
     if (kospiExists) return {
+        ticker : ticker,
         stockName : kospiExists[1],
         market : "KOSPI",
     }
         
     let kosdaqExists = kosdaqJson.find((e:any) => e[0] === ticker);
     if (kosdaqExists) return {
+        ticker : ticker,
         stockName : kosdaqExists[1],
         market : "KOSDAQ"
     }
 
     let nyseExists = nyseJson.find((e:any) => e[0] === ticker);
     if (nyseExists) return {
+        ticker : ticker,
         stockName : nyseExists[1],
         market : "NYSE"
     }
 
     let nasdaqExists = nasdaqJson.find((e:any) => e[0] === ticker);
     if (nasdaqExists) return {
+        ticker : ticker,
         stockName : nasdaqExists[1],
         market : "NASDAQ",
     }
     
     let amexExists = amexJson.find((e:any) => e[0] === ticker);
     if (amexExists) return {
+        ticker : ticker,
         stockName : amexExists[1],
         market : "AMEX"
     }

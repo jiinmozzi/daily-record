@@ -8,13 +8,49 @@ interface IUserRequest extends Request {
     user: any
 }
 
-router.get('/', (req : Request, res : Response) => {
-    
-    return res.send({
-        status : 200,
-        message : "OK",
-    })
+router.get('/books', setAuth, async(req : IUserRequest, res : Response) => {
+    const user = req.user;
+    const userBooks = user.books;
+    const books : any[] = [];
+    try {
+        for (let i=0; i<userBooks.length; i++){
+            books.push(await Book.findById(userBooks[i].toString()));
+        }
+        return res.status(200).send({
+            status : 200,
+            message : "OK",
+            data : books,
+        })
+    }   catch (err) {
+        return res.status(400).send({
+            message : "FAIL",
+            status : 400
+        })
+    }
+});
+
+router.get('/books/wishlists', setAuth, async(req : IUserRequest, res : Response) => {
+    const user = req.user;
+    const userBookWishlists = user.bookWishLists;
+
+    const bookWishlists : any[] = [];
+    try {
+        for (let i=0; i<userBookWishlists.length; i++){
+            bookWishlists.push(await Book.findById(userBookWishlists[i].toString()));
+        }
+        return res.status(200).send({
+            status : 200,
+            message : "OK",
+            data : bookWishlists,
+        })
+    }   catch (err) {
+        return res.status(400).send({
+            message : "FAIL",
+            status : 400
+        })
+    }
 })
+
 // title : string,
 // authors : string[],
 // genre : string,
@@ -56,7 +92,7 @@ router.post('/create/bookmark', setAuth, async(req : IUserRequest, res : Respons
     
 router.post('/create/library', setAuth, async(req : IUserRequest, res : Response) => {
     const user = req.user;
-    console.log(user);
+    // console.log(user);
     const {title, authors, contents, datetime, price, thumbnail} = req.body;
     try {
         const newBook = new Book({

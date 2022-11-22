@@ -35,11 +35,10 @@ router.get('/', (req : Request, res : Response) => {
     })
 })
 
+//for flags and coloring
 router.get('/history', setAuth, (req : IUserRequest, res : Response) => {
     const user = req.user;
     const {visitedCountries, wishListCountries} = user;
-    // const visitedCountries = user.visitedCountries;
-    // const wishlistCountries = user.wishlistCountries
     
     return res.status(200).send({
         status : 200,
@@ -47,32 +46,6 @@ router.get('/history', setAuth, (req : IUserRequest, res : Response) => {
         data : {
             visitedCountries, wishListCountries
         }
-    })
-})
-
-router.post('/history/toggle', setAuth, async(req : IUserRequest, res : Response) => {
-    const user = req.user;
-    const {country, type} = req.body;
-    if (type === "VISITED"){
-        if (user.visitedCountries.indexOf(country) !== -1){
-            user.visitedCountries = user.visitedCountries.filter((e:string) => e !== country);
-        }   else {
-            user.visitedCountries.push(country);
-        }
-        await user.save();
-    }   
-    else if (type === "WISHLIST"){
-        if (user.wishListCountries.indexOf(country) !== -1){
-            user.wishListCountries = user.wishListCountries.filter((e:string) => e !== country);
-        }   else {
-            user.wishListCountries.push(country);
-        }
-        await user.save();
-    }
-    return res.status(200).send({
-        status : 200,
-        message : "OK",
-        
     })
 })
 
@@ -104,6 +77,33 @@ router.get('/stories', setAuth, async(req : IUserRequest, res : Response) => {
         })
     }
 })
+
+router.post('/history/toggle', setAuth, async(req : IUserRequest, res : Response) => {
+    const user = req.user;
+    const {country, type} = req.body;
+    if (type === "VISITED"){
+        if (user.visitedCountries.indexOf(country) !== -1){
+            user.visitedCountries = user.visitedCountries.filter((e:string) => e !== country);
+        }   else {
+            user.visitedCountries.push(country);
+        }
+        await user.save();
+    }   
+    else if (type === "WISHLIST"){
+        if (user.wishListCountries.indexOf(country) !== -1){
+            user.wishListCountries = user.wishListCountries.filter((e:string) => e !== country);
+        }   else {
+            user.wishListCountries.push(country);
+        }
+        await user.save();
+    }
+    return res.status(200).send({
+        status : 200,
+        message : "OK",
+        
+    })
+})
+
 
 router.post('/story/visited/create', setAuth, async(req : PhotoRequest, res : Response) => {
     const user = req.user;

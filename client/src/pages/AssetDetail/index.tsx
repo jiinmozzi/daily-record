@@ -25,11 +25,13 @@ const AssetDetail = () => {
             const fetch = async() => {
                 const res = await axios.get(`http://localhost:3002/asset/${ticker}`);
                 setAssetData(res.data.data);
+                console.log(res);
             }
             fetch();
         }
     }, [ticker])
 
+    
     useCallback(() => {
         const fetchExchangeRate = async() => await getTodayExchangeRate();
         fetchExchangeRate().then(res => setExchangeRate(res.data.data));
