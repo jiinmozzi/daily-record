@@ -9,7 +9,29 @@ const DiarySentimentSection = () => {
             </div>
             <div id="sentiment-accumulative-histories">
                 <span id="diary-total-count-text">지금까지 총 {}번의 일기를 적었습니다.</span>
-                
+                <div className="sentiment-container">
+                    <div className="sentiment-drop">
+                        <div className="sentiment-content">
+                            <h2 id="first-sentiment">01</h2>
+                            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quia laudantium ex quam et obcaecati aperiam exercitationem asperiores illo ut? Ipsum distinctio nobis aut hic doloremque rem autem eius error?</span>
+                            <nav id="first-nav">일기 보기</nav>
+                        </div>
+                    </div>
+                    <div className="sentiment-drop">
+                        <div className="sentiment-content">
+                            <h2 id="second-sentiment">02</h2>
+                            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quia laudantium ex quam et obcaecati aperiam exercitationem asperiores illo ut? Ipsum distinctio nobis aut hic doloremque rem autem eius error?</span>
+                            <nav id="second-nav">일기 보기</nav>
+                        </div>
+                    </div>
+                    <div className="sentiment-drop">
+                        <div className="sentiment-content">
+                            <h2 id="third-sentiment">03</h2>
+                            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quia laudantium ex quam et obcaecati aperiam exercitationem asperiores illo ut? Ipsum distinctio nobis aut hic doloremque rem autem eius error?</span>
+                            <nav id="third-nav">일기 보기</nav>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     )

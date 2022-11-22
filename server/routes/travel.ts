@@ -125,12 +125,35 @@ router.post('/story/visited/create', setAuth, async(req : PhotoRequest, res : Re
         })
         await newTravelHistory.save();
         user.travels.push(newTravelHistory._id);
-        user.save();
+        await user.save();
         return res.send({
             message : "OK",
             status : 200,
             data : newTravelHistory,
         });
+    }   catch (err){
+        return res.send({
+            message : "FAIL",
+            status : 500,
+        })
+    }
+})
+
+router.post('/story/wishlist/create', setAuth, async(req : PhotoRequest, res : Response) => {
+    const user = req.user;
+    const {country, city, imageUrl, createdAt, title, comment, isPublic} = req.body;
+    try {
+        const newTravelWishList = new TravelWishList({
+            user, country, city, imageUrl, createdAt, title, comment, isPublic
+        })
+        await newTravelWishList.save();
+        user.travelWishLists.push(newTravelWishList._id);
+        await user.save();
+        return res.send({
+            message : "OK",
+            status : 200,
+            data : newTravelWishList,
+        })
     }   catch (err){
         return res.send({
             message : "FAIL",

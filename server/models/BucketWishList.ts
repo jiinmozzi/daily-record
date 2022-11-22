@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const {Schema} = mongoose;
 
-const BucketListSchema = new Schema({
+const BucketWishListSchema = new Schema({
     user : {type : Schema.Types.ObjectId, required : true},
     imageUrl : [{type : String}],
     createdAt : { type : Date, default : Date.now() },
@@ -12,6 +12,6 @@ const BucketListSchema = new Schema({
     isPublic : {type : Boolean, default : true},
 })
 
-const BucketList = mongoose.model('BucketList', BucketListSchema);
-module.exports = BucketList;
+const BucketWishList = mongoose.model('BucketWishList', BucketWishListSchema);
+module.exports = BucketWishList;
 export {}

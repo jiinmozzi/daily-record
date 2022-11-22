@@ -29,6 +29,7 @@ const UserSchema = new Schema({
     weeklySchedules : [{type : Schema.Types.ObjectId, ref : "WeeklySchedule"}],
     diaries : [{ type : Schema.Types.ObjectId, ref : "Diary" }],
     bucketLists : [{type : Schema.Types.ObjectId, ref : "BucketList"}],
+    bucketWishLists : [{type : Schema.Types.ObjectId, ref : "BucketWishList"}],
     followers : [{type : Schema.Types.ObjectId, ref : "User"}],
     followings : [{type : Schema.Types.ObjectId, ref : "User"}],
     publicSections  : [{type : String}],

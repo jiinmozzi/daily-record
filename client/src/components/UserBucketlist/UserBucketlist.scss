@@ -1,0 +1,12 @@
+.user-bucketlist-wrapper{
+    width : 100%;
+    height : 400px;
+    background-color : black;
+    margin-bottom : 200px;
+    display : flex;
+    flex-direction: column;
+    align-items : center;
+    #bucketlist-nav{
+        display : flex;
+    }
+}

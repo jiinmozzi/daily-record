@@ -61,9 +61,12 @@
                 // background : none;
                 border-radius : 15px;
                 width : 120px;
+                max-width : 120px;
+
                 font-size : 12px;
                 height : 25px;
-            }
+                max-height : 25px;
+            }    
         }
         
         // #bucket-list-text::nth-child(1){

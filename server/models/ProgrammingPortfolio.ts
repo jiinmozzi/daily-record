@@ -3,7 +3,7 @@ const {Schema} = mongoose;
 
 const ProgrammingPortfolioSchema = new Schema({
     user : {type : Schema.Types.ObjectId, ref : "User"},
-    dateFrom : {type : Date, required : true},
+    dateFrom : {type : Date},
     dateTo : {type : Date},
     title : {type : String, required : true},
     content : {type : String},
@@ -12,12 +12,12 @@ const ProgrammingPortfolioSchema = new Schema({
     imageUrl : String,
     createdAt : { type : Date, default : Date.now() }, 
     isCompleted : {type : Boolean, default : false},
-    
-    history : { 
+    onProcess : {type : Boolean, default : false},
+    histories : [{ 
         title : String,
         content : String,
         createdAt : Date
-    },
+    }],
     isPublic : {
         type : Boolean,
         default : true,
