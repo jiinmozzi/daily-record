@@ -3,7 +3,7 @@ const {Schema} = mongoose;
 
 const ProgrammingStudySchema = new Schema({
     user : {type : Schema.Types.ObjectId, ref : "User"},
-    type : String,
+    classification : String,
     title : {type : String, required : true},
     content : {type : String},
     githubLink : String,
@@ -11,7 +11,7 @@ const ProgrammingStudySchema = new Schema({
     imageUrl : String,
     createdAt : { type : Date, default : Date.now() }, 
     isCompleted : {type : Boolean, default : false},
-    history : { 
+    histories : { 
         title : String,
         content : String,
         createdAt : Date

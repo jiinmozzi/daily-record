@@ -92,5 +92,41 @@ router.post('/emoji', setAuth, async(req : IUserRequest, res : Response) => {
     }
 })  
 
+router.get('/diary/image', setAuth, async(req : IUserRequest, res : Response) => {
+    const user = req.user;
+    if (!user.diaryImage){
+        return res.status(400).send({
+            message : "FAIL",
+            data : null,
+            status : 400,
+        })
+    }
+    return res.status(200).send({
+        data : user.diaryImage,
+        stauts : 200,
+        message : "OK",
+    })
+})
+
+router.post('/diray/image', setAuth, async(req : IUserRequest, res : Response) => {
+    const user = req.user;
+    const {imageUrl} = req.body;
+    user.diaryImage = imageUrl;
+    try {
+        await user.save();
+        return res.status(200).send({
+            data : imageUrl,
+            message : "OK",
+            status : 200,
+        })
+    }   catch (err){
+        return res.status(400).send({
+            message : "FAIL",
+            status : 400,
+        })
+    }
+    
+})
+
 module.exports = router;
 export {}

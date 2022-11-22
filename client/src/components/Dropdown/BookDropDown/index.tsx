@@ -19,7 +19,7 @@ const BookDropDown = ({suggestions, bookTitle} : BookDropDownType) => {
             {suggestions && 
                 <div className="suggestion-dropdowns">
                     
-                    {suggestions.map((e : BookType) => <div className="book-suggestionon" onClick={() => navigate(`/book/${bookTitle ? bookTitle : "empty-result"}`)}>{e.title}</div> ) }
+                    {suggestions.map((e : BookType) => <div className="book-suggestionon" onClick={() => navigate(`/book/${e.isbn ? e.isbn : "empty-result"}`)}>{e.title}</div> ) }
                 </div>
             }
         </div>

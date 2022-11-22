@@ -11,8 +11,8 @@ import {UsersBookType} from "../types";
 // }
 
 
-const setBookToLibrary = async(token : string, {authors, title, contents, datetime, price, thumbnail} : BookType ) => {
-    return await sendRequest('book/create/library', "POST", {authors, title, contents, datetime, price, thumbnail}, true, token);
+const setBookToLibrary = async(token : string, {authors, title, contents, datetime, price, thumbnail, isbn} : BookType ) => {
+    return await sendRequest('book/library', "POST", {authors, title, contents, datetime, price, thumbnail, isbn}, true, token);
 }
 
 export default setBookToLibrary;

@@ -142,6 +142,47 @@ router.post('/wishlist', setAuth, async(req : IUserRequest, res : Response) => {
         })
     }
 })
+
+router.delete('/bucketlist/:id', setAuth, async(req : IUserRequest, res : Response) => {
+    const {id} = req.params;
+    const user = req.user;
+
+    try {
+        user.bucketLists = user.bucketLists.filter((e:any) => e.toString() !== id);
+        await user.save();
+        await BucketList.findByIdAndDelete(id);
+        return res.status(200).send({
+            message : "OK",
+            status : 200,
+        })
+    }   catch (err){
+        return res.status(400).send({
+            message : "FAIL",
+            status : 400,
+        })
+    }
+})
+
+router.delete('/wishlist/:id', setAuth, async(req : IUserRequest, res : Response) => {
+    const {id} = req.params;
+    const user = req.user;
+
+    try {
+        user.bucketWishLists = user.bucketWishLists.filter((e:any) => e.toString() !== id);
+        await user.save();
+        await BucketWishList.findByIdAndDelete(id);
+        return res.status(200).send({
+            message : "OK",
+            status : 200,
+        })
+    }   catch (err){
+        return res.status(400).send({
+            message : "FAIL",
+            status : 400,
+        })
+    }
+})
+
 // router.post('/')
 module.exports = router;
 export {}

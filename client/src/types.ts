@@ -18,6 +18,7 @@ export type BookType = {
     authors : string[],
     title : string,
     contents : string,
+    isbn : string,
     datetime : string,
     price : number,
     thumbnail : string,

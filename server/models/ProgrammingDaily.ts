@@ -8,7 +8,7 @@ const ProgrammingDailySchema = new Schema({
     siteUrl : String,
     imageUrl : String,
     createdAt : { type : Date, default : Date.now() }, 
-    history : { 
+    histories : { 
         title : String,
         content : String,
         createdAt : Date

@@ -14,6 +14,7 @@ const FitnessSection = () => {
             <div id="fitness-section-picture-wrapper">
                 <img id="fitness-pic" src={fitnessPic} alt="fitness-pic" />
             </div>
+            <div style={{color : "#fff", marginLeft : "60px", marginTop : "70px", letterSpacing : "1px"}}>빠른 시일 내에 준비하여 좋은 서비스로 찾아뵙겠습니다... 꼬르륵..</div>
         </div>
     )
 }

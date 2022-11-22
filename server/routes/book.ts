@@ -51,6 +51,25 @@ router.get('/books/wishlists', setAuth, async(req : IUserRequest, res : Response
     }
 })
 
+router.get('/history/:id', setAuth, async(req : IUserRequest, res : Response) => {
+    const user = req.user;
+    const {id} = req.params;
+    try {
+        const book = Book.findById(id.toString());
+        return res.status(200).send({
+            data : book,
+            message : "OK",
+            status : 200
+        })
+    }   catch (err){
+        return res.status(400).send({
+            message : "FAIL",
+            status : 400
+        })
+    }
+    
+})
+
 // title : string,
 // authors : string[],
 // genre : string,
@@ -59,7 +78,7 @@ router.get('/books/wishlists', setAuth, async(req : IUserRequest, res : Response
 // isCompleted : {type : Boolean, default : false},
 // ispublic : {type : Boolean, default : true},
 
-router.post('/create/bookmark', setAuth, async(req : IUserRequest, res : Response) => {
+router.post('/bookmark', setAuth, async(req : IUserRequest, res : Response) => {
     const user = req.user;
     
     const {title, authors, contents, datetime, price, thumbnail} = req.body;
@@ -84,13 +103,17 @@ router.post('/create/bookmark', setAuth, async(req : IUserRequest, res : Respons
             data : newBookMarkedBook,
         })
     }   catch (err){
-        console.log(err);
         console.log("creating bookmarked book found error");
+        return res.send({
+            status : 400,
+            message : "FAIL"
+        })
+        
         return;
     }
 })
     
-router.post('/create/library', setAuth, async(req : IUserRequest, res : Response) => {
+router.post('/library', setAuth, async(req : IUserRequest, res : Response) => {
     const user = req.user;
     // console.log(user);
     const {title, authors, contents, datetime, price, thumbnail} = req.body;
@@ -119,14 +142,52 @@ router.post('/create/library', setAuth, async(req : IUserRequest, res : Response
             data : newBook
         })
     }   catch (err) {
-        console.log(err);
         console.log("creating book found error");
-        return;
+        return res.status(400).send({
+            message : "FAIL",
+            status : 400,
+        })
     }
-    
 })
-router.get('/:query', (req : Request, res : Response) => {
-    return;
+
+router.delete('/bookmark/:id', setAuth, async(req : IUserRequest, res : Response) => {
+    const user = req.user;
+    const {id} = req.params;
+    
+    try {
+        user.bookWishLists = user.bookWishLists.filter((e:any) => e.toString() !== id);
+        await user.save();
+        await BookWishList.findByIdAndDelete(id);
+        return res.status(200).send({
+            status : 200,
+            message : "OK",
+        })
+    }   catch (err){
+        return res.status(400).send({
+            status : 400,
+            message : "FAIL",
+        })
+    }
+})
+
+router.delete('/library/:id', setAuth, async(req : IUserRequest, res : Response) => {
+    const user = req.user;
+    const {id} = req.params;
+
+    try {
+        user.books = user.books.filter((e:any) => e.toString() !== id);
+        await user.save();
+        await Book.findByIdAndDelete(id);
+        return res.status(200).send({
+            status : 200,
+            message : "OK",
+        })
+    }   catch (err){
+        return res.status(400).send({
+            status : 400,
+            message : "FAIL",
+        })
+    }    
 })
 
 module.exports = router;

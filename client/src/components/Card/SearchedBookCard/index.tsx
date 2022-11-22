@@ -17,14 +17,15 @@ type Book = {
     datetime : string,
     price : number,
     thumbnail : string,
+    isbn : string,
 }
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
-const SearchedBookCard = ({authors, title, contents, datetime, price, thumbnail} : Book) => {
+const SearchedBookCard = ({authors, title, contents, datetime, price, thumbnail, isbn} : Book) => {
     const [accessToken, setAccessToken] = useRecoilState<string>(accessTokenState);
     const onClickToLibrary = async(e : React.MouseEvent) => {
-        setBookToLibrary(accessToken, {authors, title, contents, datetime, price, thumbnail}).then(res => console.log(res));
+        setBookToLibrary(accessToken, {authors, title, contents, datetime, price, thumbnail, isbn}).then(res => console.log(res));
        
     }
     return (

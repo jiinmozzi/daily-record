@@ -10,7 +10,7 @@ import AssetMBTI from "./pages/AssetMBTI";
 import AssetPortfolio from "./pages/AssetPortfolio";
 import AssetDetail from "./pages/AssetDetail";
 import Book from "./pages/Book";
-import BookSearch from "./pages/BookSearch";
+
 import Travel from "./pages/Travel";
 import Terminal from "./pages/Terminal";
 import TerminalCollection from "./pages/TerminalCollection";
@@ -28,6 +28,7 @@ import getAutoLoginUser from "./api/getAutoLoginUser";
 import getRefTokenUser from "./api/getRefTokenUser";
 import reIssueAccessToken from "./api/reIssueAccessToken";
 import { useRecoilState } from "recoil";
+import BookDetail from "./pages/BookDetail";
 import { accessTokenState, refreshTokenState, sidState, userState, isLoggedInState } from "./store/atom";
 
 import ScrollToTop from "./components/ScrollToTop";
@@ -150,6 +151,7 @@ function App() {
               <Route path="/diary" element={<Diary />}></Route>
               <Route path="/diary/create" element={<CreateDiary />}></Route>
               <Route path="/book" element={<Book />}></Route>
+              <Route path="/book/:isbn" element={<BookDetail />}></Route>
               <Route path="/asset" element={<Asset />}></Route>
               <Route path="/asset/mbti" element={<AssetMBTI />}></Route>
               <Route path="/asset/portfolio" element={<AssetPortfolio />}></Route>
@@ -162,7 +164,7 @@ function App() {
               <Route path="/terminal/daily" element={<TerminalDaily />}></Route>
               <Route path="/fitness" element={<Fitness /> }></Route>
               <Route path="/test" element={<Test />}></Route>
-              <Route path="/book/:bookTitle" element={<BookSearch />}></Route>
+              
             </Route>
 
             <Route path="/" element={<Main />}></Route>

@@ -15,6 +15,7 @@ const Outsourcing = require('./Outsourcing');
 const ProgrammingPortfolio = require('./ProgrammingPortfolio');
 const ProgrammingStudy = require('./ProgrammingStudy');
 const ProgrammingDaily = require('./ProgrammingDaily');
+const Keyboard = require('./Keyboard');
 const Travel = require('./Travel');
 const TravelWishList = require('./TravelWishList');
 const Fitness = require('./Fitness');
@@ -45,5 +46,5 @@ switch(mongoose.connection.readyState){
 }
 
 
-module.exports = {Asset, Book, BookWishList, BucketList, BucketWishList, Coin, CoinTradeHistory, Diary, Outsourcing, ProgrammingPortfolio, ProgrammingStudy, ProgrammingDaily, Schedule, Travel, TravelWishList, User, Fitness, WeeklySchedule};
+module.exports = {Asset, Book, BookWishList, BucketList, BucketWishList, Coin, CoinTradeHistory, Diary, Outsourcing, ProgrammingPortfolio, ProgrammingStudy, ProgrammingDaily, Schedule, Travel, TravelWishList, User, Keyboard, Fitness, WeeklySchedule};
 // export {}

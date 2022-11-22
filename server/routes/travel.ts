@@ -163,6 +163,24 @@ router.post('/story/wishlist/create', setAuth, async(req : PhotoRequest, res : R
 })
 
 router.delete('/story/delete/:id', setAuth, async(req : IUserRequest, res : Response) => {
+    const user = req.user;
+    const {id} = req.params;
+
+    try {
+        user.travels = user.travels.filter((e:any) => e.toString() !== id);
+        await user.save();
+        await Travel.findByIdAndDelete(id);
+        await TravelWishList.findByIdAndDelete(id);
+        return res.status(200).send({
+            status : 200,
+            message : "OK"
+        })
+    }   catch (err){
+        return res.status(400).send({
+            message : "FAIL",
+            status : 400,
+        })
+    }
     
 })
 

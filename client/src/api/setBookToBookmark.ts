@@ -11,7 +11,7 @@ import {UsersBookWishListType} from "../types";
 // }
 
 const setBookToLibrary = async(token : string, {authors, title, contents, datetime, price, thumbnail} : BookType ) => {
-    return await sendRequest('book/create/bookmark', "POST", {authors, title, contents, datetime, price, thumbnail}, true, token);
+    return await sendRequest('book/bookmark', "POST", {authors, title, contents, datetime, price, thumbnail}, true, token);
 }
 
 export default setBookToLibrary;

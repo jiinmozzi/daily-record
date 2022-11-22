@@ -22,7 +22,6 @@ const WeeklyCalendar = () => {
             }
             fetchSchedules().then(res => console.log(res));
         }
-        
     }, [accessToken])
     return (
         <div className="weekly-calendar-wrapper">

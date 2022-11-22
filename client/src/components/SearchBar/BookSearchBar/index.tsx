@@ -21,6 +21,7 @@ import "./BookSearchBar.scss";
 
 const BookSearchBar = () => {
     const [bookTitle, setBookTitle] = useState<string>("");
+    const [isbn, setIsbn] = useState<string>("");
     const [suggestions, setSuggestions] = useState<BookType[]>([]);
     const navigate = useNavigate();
     const bookRef = useRef();
@@ -37,7 +38,11 @@ const BookSearchBar = () => {
         const target = e.target as HTMLInputElement;
         setBookTitle(target.value);
     }
-    
+    useEffect(() => {
+        if (suggestions.length > 0 && suggestions[0] && suggestions[0].isbn)
+        setIsbn(suggestions[0].isbn);
+    }, [suggestions])
+
     return (
         <div className="book-search-bar-wrapper">
             <Paper
@@ -45,7 +50,7 @@ const BookSearchBar = () => {
                 component="form"
                 className="paper"
                 sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 500 }}
-                onSubmit={() => navigate(`/book/${bookTitle ? bookTitle : "empty-result"}`)}
+                onSubmit={() => navigate(`/book/${isbn ? isbn : "empty-result"}`)}
                 // onSubmit={onSubmit}
             >
             <InputBase
@@ -55,7 +60,7 @@ const BookSearchBar = () => {
                 onChange={debounceChangeHandler}
                 onKeyDown={onKeyDown}                
             />
-            <IconButton type="button" sx={{ p: '10px' }} aria-label="search" onClick={() => navigate(`/book/${bookTitle ? bookTitle : "empty-result"}`)}>
+            <IconButton type="button" sx={{ p: '10px' }} aria-label="search" onClick={() => navigate(`/book/${isbn ? isbn : "empty-result"}`)}>
                 <SearchIcon />
             </IconButton>
                 
