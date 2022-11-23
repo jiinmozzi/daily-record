@@ -125,7 +125,28 @@ router.post('/diray/image', setAuth, async(req : IUserRequest, res : Response) =
             status : 400,
         })
     }
+})
+
+router.delete('/diary/:id', setAuth, async(req : IUserRequest, res : Response) => {
+    const user = req.user;
+    const {id} = req.params;
+    try {
+        user.diaries = user.diaries.filter((e : any) => e.toString() !== id);
+        await user.save();
+        await Diary.findByIdAndDelete(id);
+        return res.status(200).send({
+            status : 200,
+            message : "OK"
+        })
+        
+    }   catch (err){
+        return res.status(400).send({
+            message : "FAIL",
+            status : 200,
+        })
+    }
     
+
 })
 
 module.exports = router;

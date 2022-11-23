@@ -78,6 +78,8 @@ router.get('/history/:id', setAuth, async(req : IUserRequest, res : Response) =>
 // isCompleted : {type : Boolean, default : false},
 // ispublic : {type : Boolean, default : true},
 
+
+
 router.post('/bookmark', setAuth, async(req : IUserRequest, res : Response) => {
     const user = req.user;
     
@@ -108,8 +110,6 @@ router.post('/bookmark', setAuth, async(req : IUserRequest, res : Response) => {
             status : 400,
             message : "FAIL"
         })
-        
-        return;
     }
 })
     
@@ -148,6 +148,28 @@ router.post('/library', setAuth, async(req : IUserRequest, res : Response) => {
             status : 400,
         })
     }
+})
+
+router.patch('/book/:id', setAuth, async(req : IUserRequest, res : Response) => {
+    const user = req.user;
+    const {id} = req.params;
+    const {genre, comment, from, to, rating, isCompleted, isPublic} = req.body;
+    const book = Book.findById(id);
+    const patchedBook = {...book, ...req.body};
+    try {
+        await patchedBook.save();
+        return res.status(200).send({
+            status : 200,
+            data : patchedBook,
+            message : "OK"
+        })
+    }   catch (err){
+        return res.status(400).send({
+            message : "FAIL",
+            status : 400,
+        }) 
+    }
+    
 })
 
 router.delete('/bookmark/:id', setAuth, async(req : IUserRequest, res : Response) => {
