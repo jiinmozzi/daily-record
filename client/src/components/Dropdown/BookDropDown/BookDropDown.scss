@@ -1,11 +1,47 @@
 .book-dropdown-wrapper{
     width : 450px;
-    height : 600px;
-    background-color : blue;   
+    height : 400px;
+    border-left : 1px solid black;
+    border-right : 1px solid black;
     display : flex;
     flex-direction : column;
     margin-left : 25px;
     position : relative;
     top : -30px;
-    
+    overflow-y : scroll;
+    .suggestion-dropdowns-wrapper{
+        width : 100%;
+        .book-suggestion{
+            width : 100%;
+            height : 80px;
+            display : flex;
+            align-items : center;
+            // border-bottom : 1px solid black;
+            &:hover{
+                cursor : pointer;
+                background-color : rgba(0,0,0,0.1);
+            }
+            .book-dropdown-img{
+                margin-left : 15px;
+                max-height : 70px;
+                max-width : 70px;
+            }
+            .suggestion-dropdown-main{
+                margin-left : 20px;
+                display : flex;
+                flex-direction: column;
+                justify-content: space-around;
+                .suggestion-dropdown-title{
+                    font-weight : bold;
+                    font-size : 16px;
+                }
+                .suggestion-dropdown-author{
+                    font-size : 14px;
+                }
+                .suggestion-dropdown-price{
+                    font-size : 12px;
+                }
+            }
+        }
+    }
 }

@@ -55,7 +55,7 @@ router.get('/history/:id', setAuth, async(req : IUserRequest, res : Response) =>
     const user = req.user;
     const {id} = req.params;
     try {
-        const book = Book.findById(id.toString());
+        const book = await Book.findById(id.toString());
         return res.status(200).send({
             data : book,
             message : "OK",
@@ -154,7 +154,7 @@ router.patch('/book/:id', setAuth, async(req : IUserRequest, res : Response) => 
     const user = req.user;
     const {id} = req.params;
     const {genre, comment, from, to, rating, isCompleted, isPublic} = req.body;
-    const book = Book.findById(id);
+    const book = await Book.findById(id);
     const patchedBook = {...book, ...req.body};
     try {
         await patchedBook.save();

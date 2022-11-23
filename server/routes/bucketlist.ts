@@ -53,12 +53,14 @@ router.post('/bucketlist', setAuth, async(req : IUserRequest, res : Response) =>
     }
 })
 
+// 다 함 표시
 router.post('/bucketlist/toggle', setAuth, async(req : IUserRequest, res : Response) => {
     const user = req.user;
     const {id} = req.body;
 
-    const targetBucketlist = BucketList.findById(id.toString());
+    
     try {
+        const targetBucketlist = await BucketList.findById(id.toString());
         targetBucketlist.isCompleted = !targetBucketlist.isCompleted;
         await targetBucketlist.save();    
         return res.status(200).send({
@@ -74,13 +76,35 @@ router.post('/bucketlist/toggle', setAuth, async(req : IUserRequest, res : Respo
     }
 })
 
+router.patch('/bucketlist/:id', setAuth, async(req : IUserRequest, res : Response) => {
+    const user = req.user;
+    const {id} = req.params;
+    
+    const {imageUrl, title, comment, field, isPublic} = req.body;
+    try {
+        const bucketlist = await BucketList.findById(id);
+        const patchedBucketlist = {...bucketlist, ...req.body};
+        await patchedBucketlist.save();
+        return res.status(200).send({
+            message : "OK",
+            data : patchedBucketlist,
+            status : 200,
+        }) 
+    }   catch (err){
+        return res.status(400).send({
+            message : "FAIL",
+            status : 400,
+        })
+    }
+})
 
 router.post('/wishlist/toggle', setAuth, async(req : IUserRequest, res : Response) => {
     const user = req.user;
     const {id} = req.body;
 
-    const targetWishlist = BucketWishList.findById(id.toString());
+    
     try {
+        const targetWishlist = await BucketWishList.findById(id.toString());
         targetWishlist.isCompleted = !targetWishlist.isCompleted;
         await targetWishlist.save();    
         return res.status(200).send({
@@ -139,6 +163,28 @@ router.post('/wishlist', setAuth, async(req : IUserRequest, res : Response) => {
         return res.status(400).send({
             status : 400,
             message : "FAIL",
+        })
+    }
+})
+
+router.patch('/wishlist/:id', setAuth, async(req : IUserRequest, res : Response) => {
+    const user = req.user;
+    const {id} = req.params;
+    
+    const {imageUrl, title, comment, field, isPublic} = req.body;
+    try {
+        const wishlist = await BucketWishList.findById(id);
+        const patchedWishlist = {...wishlist, ...req.body};
+        await patchedWishlist.save();
+        return res.status(200).send({
+            message : "OK",
+            data : patchedWishlist,
+            status : 200,
+        }) 
+    }   catch (err){
+        return res.status(400).send({
+            message : "FAIL",
+            status : 400,
         })
     }
 })

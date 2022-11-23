@@ -61,37 +61,6 @@ router.post('/diary', setAuth, async(req : IUserRequest, res : Response) => {
     }
 })
 
-// client가 추가한 이모지
-router.get('/emoji', setAuth, async(req : IUserRequest, res : Response) => {
-    const user = req.user;
-    const userEmojies = user.emoji;
-
-    return res.status(200).send({
-        message : "OK",
-        status : 200,
-        data : userEmojies
-    })
-})
-
-router.post('/emoji', setAuth, async(req : IUserRequest, res : Response) => {
-    const user = req.user;
-    const {emojiCode} = req.body;
-    user.emoji.push(emojiCode);
-    try{
-        await user.save()
-        return res.status(200).send({
-            message : "OK",
-            status : 200,
-            data : emojiCode
-        })
-    }   catch (err){
-        return res.status(400).send({
-            message : "FAIL",
-            status : 400,
-        })
-    }
-})  
-
 router.get('/diary/image', setAuth, async(req : IUserRequest, res : Response) => {
     const user = req.user;
     if (!user.diaryImage){
@@ -145,8 +114,91 @@ router.delete('/diary/:id', setAuth, async(req : IUserRequest, res : Response) =
             status : 200,
         })
     }
-    
+})
 
+// client가 관심 목록에 추가한 이모지
+router.get('/emoji', setAuth, async(req : IUserRequest, res : Response) => {
+    const user = req.user;
+    const userEmojies = user.emoji;
+
+    return res.status(200).send({
+        message : "OK",
+        status : 200,
+        data : userEmojies
+    })
+})
+
+router.post('/emoji', setAuth, async(req : IUserRequest, res : Response) => {
+    const user = req.user;
+    const {emojiCode} = req.body;
+    user.emoji.push(emojiCode);
+    try{
+        await user.save()
+        return res.status(200).send({
+            message : "OK",
+            status : 200,
+            data : emojiCode
+        })
+    }   catch (err){
+        return res.status(400).send({
+            message : "FAIL",
+            status : 400,
+        })
+    }
+})
+router.delete('/emoji/:id', setAuth, async(req : IUserRequest, res : Response) => {
+    const user = req.user;
+    const {id} = req.params;
+    try {
+        user.emoji.filter((e:Number) => e!== Number(id));
+        await user.save();
+        return res.status(200).send({
+            status : 200,
+            message : "OK",
+        })
+    }   catch (err){
+        return res.status(400).send({
+            status : 400,
+            message : "FAIL",
+        })
+    }
+})
+
+router.patch('/diary/image', setAuth, async(req : IUserRequest, res : Response) => {
+    const user = req.user;
+    const {imageUrl} = req.body;
+    user.diaryImage = imageUrl;
+    try {
+        await user.save();
+        return res.status(200).send({
+            message : "OK",
+            data : imageUrl,
+            status : 200
+        })
+    }   catch (err){
+        return res.status(400).send({
+            status : 400,
+            message : "FAIL",
+        }) 
+    }
+})
+
+router.delete('/diary/image', setAuth, async(req : IUserRequest, res : Response) => {
+    const user = req.user;
+    user.diaryImage = "";
+    try {
+        await user.save();
+        return res.status(200).send({
+            message : "OK",
+            status : 200,
+        })
+    }   catch (err){
+        return res.status(400).send({
+            message : "FAIL",
+            status : 400
+        })
+    }
+    
 })
 
 module.exports = router;

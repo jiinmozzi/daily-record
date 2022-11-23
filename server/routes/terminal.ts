@@ -163,7 +163,7 @@ router.get('/keyboard', setAuth, async(req : IUserRequest, res : Response) => {
     const user = req.user;
     const userKeyboard = user.keyboard;
     try {
-        const keyboard = Keyboard.findById(userKeyboard._id);
+        const keyboard = await Keyboard.findById(userKeyboard._id);
         return res.status(200).send({
             message : "OK",
             status : 200,
@@ -205,10 +205,10 @@ router.post('/keyboard', setAuth, async(req : IUserRequest, res : Response) => {
 
 router.post('/portfolio/history/:id', setAuth, async(req : IUserRequest, res : Response) => {
     const {id} = req.params;
-    const portfolio = ProgrammingPortfolio.findById(id);
     const {title, content} = req.body;
     const createdAt = new Date();
     try {
+        const portfolio = await ProgrammingPortfolio.findById(id);
         const history = {title, content, createdAt};
         portfolio.histories.push(history);
         await portfolio.save();
@@ -228,10 +228,10 @@ router.post('/portfolio/history/:id', setAuth, async(req : IUserRequest, res : R
 })
 router.post('/study/history/:id', setAuth, async(req : IUserRequest, res : Response) => {
     const {id} = req.params;
-    const study = ProgrammingStudy.findById(id);
     const {title, content} = req.body;
     const createdAt = new Date();
     try {
+        const study = await ProgrammingStudy.findById(id);
         const history = {title, content, createdAt};
         study.histories.push(history);
         await study.save();
@@ -250,10 +250,10 @@ router.post('/study/history/:id', setAuth, async(req : IUserRequest, res : Respo
 
 router.post('/daily/history/:id', setAuth, async(req : IUserRequest, res : Response) => {
     const {id} = req.params;
-    const daily = ProgrammingDaily.findById(id);
     const {title, content} = req.body;
     const createdAt = new Date();
     try {
+        const daily = await ProgrammingDaily.findById(id);
         const history = {title, content, createdAt};
         daily.histories.push(history);
         await daily.save();
@@ -312,7 +312,7 @@ router.patch('/portfolio/:id', setAuth, async(req : IUserRequest, res : Response
     const user = req.user;
     const {id} = req.params;
     try {
-        let collection = ProgrammingPortfolio.findById(id);
+        let collection = await ProgrammingPortfolio.findById(id);
         collection = {...collection, ...req.body}
         await collection.save();
         return res.status(200).send({
@@ -333,7 +333,7 @@ router.patch('/daily/:id', setAuth, async(req : IUserRequest, res : Response) =>
     const {id} = req.params;
     
     try {
-        let daily = ProgrammingDaily.findById(id);
+        let daily = await ProgrammingDaily.findById(id);
         daily = {...daily, ...req.body};
         await daily.save();
         return res.status(200).send({
@@ -375,7 +375,7 @@ router.patch('/keyboard/:id', setAuth, async(req : IUserRequest, res : Response)
     const {id} = req.params;
 
     try {
-        let keyboard = Keyboard.findById(id);
+        let keyboard = await Keyboard.findById(id);
         keyboard = {...keyboard, ...req.body};
         await keyboard.save();
         return res.status(200).send({

@@ -17,7 +17,7 @@ const BookDetail = () => {
         if (params.isbn) {
             setBookISBN(params.isbn);
         }
-    }, [])    
+    }, [params])    
 
     useEffect(() => {
         console.log(bookISBN)

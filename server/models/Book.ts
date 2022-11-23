@@ -11,7 +11,7 @@ const BookSchema = new Schema({
     from : Number,
     to : Number,
     createdAt : { type : Date, default : Date.now() }, 
-    datetime : String,
+    datetime : String, // 출간일
     contents : String,
     rating : Number,
     isCompleted : {type : Boolean, default : false},

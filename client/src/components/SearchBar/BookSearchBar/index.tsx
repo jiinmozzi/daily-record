@@ -42,7 +42,7 @@ const BookSearchBar = () => {
         if (suggestions.length > 0 && suggestions[0] && suggestions[0].isbn)
         setIsbn(suggestions[0].isbn);
     }, [suggestions])
-
+    const [focused, setFocused] = useState<boolean>(false);
     return (
         <div className="book-search-bar-wrapper">
             <Paper
@@ -54,6 +54,8 @@ const BookSearchBar = () => {
                 // onSubmit={onSubmit}
             >
             <InputBase
+                onFocus={() => setFocused(true)}
+                onBlur={() => setFocused(false)}
                 sx={{ ml: 1, flex: 1 }}
                 placeholder="Search Books"
                 inputProps={{ 'aria-label': 'search books ' }}
@@ -65,7 +67,8 @@ const BookSearchBar = () => {
             </IconButton>
                 
             </Paper>
-            <BookDropDown suggestions={suggestions} bookTitle={bookTitle}/>
+            {/* needs to implement on focus display Only */}
+            {focused && suggestions.length > 0 && bookTitle.length > 0 && <BookDropDown suggestions={suggestions} bookTitle={bookTitle}/>}
             
         </div>
     )
