@@ -18,8 +18,8 @@ const BookDropDown = ({suggestions, bookTitle} : BookDropDownType) => {
     useEffect(() => {}, [])
     return (
         
-        <div className="book-dropdown-wrapper">
-            {suggestions && bookTitle.length > 0 && 
+        <div className="book-dropdown-wrapper" style={{height : suggestions.length > 0 ? "400px" : "100px"}}>
+            {suggestions && 
                 <div className="suggestion-dropdowns-wrapper">
                     {suggestions.map((e : BookType) => 
                         <div className="book-suggestion" onClick={() => navigate(`/book/${e.isbn ? e.isbn : "empty-result"}`)}>
@@ -34,7 +34,7 @@ const BookDropDown = ({suggestions, bookTitle} : BookDropDownType) => {
                         )}
                 </div>
             }
-            
+            {suggestions.length === 0 && <div id="book-suggestion-dropdown-empty">검색결과가 없습니다.</div>}
         </div>
     )
 }

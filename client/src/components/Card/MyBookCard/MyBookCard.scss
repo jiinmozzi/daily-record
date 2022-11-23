@@ -1,5 +1,11 @@
 .my-book-card-wrapper{
-    height : 300px;
-    width : 220px;
+    
+    width : 135px;
+    max-width : 135px;
+    height : 190px;
+    max-height : 190px;
+    border-radius : 10px;
     background-color : black;   
+    margin-bottom : 200px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
 }

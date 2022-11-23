@@ -68,7 +68,7 @@ const BookSearchBar = () => {
                 
             </Paper>
             {/* needs to implement on focus display Only */}
-            {focused && suggestions.length > 0 && bookTitle.length > 0 && <BookDropDown suggestions={suggestions} bookTitle={bookTitle}/>}
+            {focused && <BookDropDown suggestions={suggestions} bookTitle={bookTitle}/>}
             
         </div>
     )

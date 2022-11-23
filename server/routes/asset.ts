@@ -8,6 +8,7 @@ import setAuth from "../middlewares/setAuth";
 import getExchangeRate from "../utils/getExchangeRate";
 import getAssetFullName from "../utils/getAssetFullname";
 import getTodayEightDigitDate from "../utils/getTodayEightDigitDate";
+import filterStocksWithString from "../utils/filterStocksWithString";
 const {Asset, AssetTradeHistory} = require('../models');
 const router = express.Router();
 
@@ -47,6 +48,32 @@ router.get('/portfolio', setAuth, async(req : IUserRequest, res : Response) => {
     const user = req.user;
     const userPortfolio = user.asset;
        
+    // const {stock} = req.params;
+    // const year = new Date().getFullYear();
+    // const month = new Date().getMonth() + 1;
+    // const date = new Date().getDate(); 
+    
+    // yahooFinance.historical(
+    // {
+    //     symbols : [stock,"TSLA","V","IONQ"],
+    //     period : "d",
+    //     from : `${year-3}-${month}-${date}`,
+    //     to : `${year}-${month}-${date}`, 
+        
+    // }, (err : any, quotes : any) => {
+    //     if (err){
+    //         return res.send({
+    //             status : 500,
+    //             message : "NOT GOOD",
+    //         })
+    //     }   else {
+    //         return res.send({
+    //             status : 200,
+    //             message : "OK",
+    //             data : quotes,
+    //         })
+    //     }
+    // })
     const portfolios : any[] = [];
     for (let i=0; i<userPortfolio.length; i++){
         portfolios.push(await Asset.findById(userPortfolio[i].toString()));
@@ -100,30 +127,11 @@ router.get('/today/exchange', async(req : Request, res : Response) => {
 
 router.get('/:stock', (req : Request, res : Response) => {
     const {stock} = req.params;
-    const year = new Date().getFullYear();
-    const month = new Date().getMonth() + 1;
-    const date = new Date().getDate(); 
     
-    yahooFinance.historical(
-    {
-        symbols : [stock,"TSLA","V","IONQ"],
-        period : "d",
-        from : `${year-3}-${month}-${date}`,
-        to : `${year}-${month}-${date}`, 
-        
-    }, (err : any, quotes : any) => {
-        if (err){
-            return res.send({
-                status : 500,
-                message : "NOT GOOD",
-            })
-        }   else {
-            return res.send({
-                status : 200,
-                message : "OK",
-                data : quotes,
-            })
-        }
+    return res.status(200).send({
+        message : "OK",
+        data : filterStocksWithString(stock),
+        status : 200,
     })
 }) 
 router.post('/purchase/stock', setAuth, async( req : IUserRequest, res : Response ) => {
