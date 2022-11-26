@@ -11,26 +11,26 @@ const FileButton = () => {
     const [accessToken, setAccessToken] = useRecoilState<string>(accessTokenState);
     const [fileName, setFileName] = useState<string>("");
     const imageRef = useRef<HTMLInputElement>(null);
-    
+
     const onChange = (e : React.ChangeEvent) => {
         if (imageRef && imageRef.current && imageRef.current.files){
+            console.log(imageRef.current.files[0])
             setFileName(imageRef.current.files[0].name);
         }
     }
     const onSubmit = async(e : React.FormEvent) => {
         e.preventDefault();
-        
-        
         const formData = new FormData();
         let data = null;
+        let imageUrl : string = "";
         if (imageRef && imageRef.current && imageRef.current.files){
             data = imageRef.current.files[0];
         }
         if (data){
             formData.append('img', data);
+            const imageRes = await axios.post('http://localhost:3002/test/img', formData);
+            imageUrl = imageRes.data.url;
         }
-        const imageRes = await axios.post('http://localhost:3002/test/img', formData);
-        const imageUrl = imageRes.data.url;
 
         const res = await createTravelHistory(accessToken, {country : 'EXAMPLE', city : 'EXAMPLE', createdAt : new Date(), title : 'Example', comment : 'Example', departureDate: new Date(), arrivalDate : new Date()  , duration : 1, isPublic : true, imageUrl})
         // const res = await axios.post('http://localhost:3002/test/img', formData);

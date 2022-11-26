@@ -1,22 +1,31 @@
 .diary-sentiment-section-wrapper{
-    height : 420px;
     width : 100%;
     background-color : #eff0f4;
-    // background-color : blue;
     display : flex;
     flex-direction : column;
     align-items : center;
-    margin-bottom : 300px;
+    margin-top : 20px;
     #create-sentiment-section{
         width : 80%;
-        height : 60px;
+        // height : 60px;
         display : flex;
         align-items : center;
-        flex-direction: row-reverse;
+        // flex-direction: row-reverse;
+        justify-content: space-between;
+        border-bottom : 3px solid rgb(119,94,226);
+        padding-bottom : 20px;
+        #diary-total-count-text{
+            height : 40px;
+            font-size : 16px;
+            font-weight : bold;
+            letter-spacing: 1px;
+            display : flex;
+            flex-direction: column-reverse;
+        }
         #create-sentiment-box{
             width : 100px;
             height : 40px;
-            background-color : black;
+            background-color : rgb(119,94,226);
             display : flex;
             font-size : 14px;
             border-radius : 20px;
@@ -25,7 +34,7 @@
             color : #fff;
             transition : 0.3s;
             &:hover{
-                background-color : #fff;
+                background-color : rgba(119,94,226, 0.7);
                 color : black;
                 cursor : pointer;
             }
@@ -37,10 +46,7 @@
         display : flex;
         margin-top : 10px;
         flex-direction : column;
-        #diary-total-count-text{
-            font-size : 16px;
-            font-weight : bold;
-        }
+        
         .sentiment-container{
             position : relative;
             display : flex;

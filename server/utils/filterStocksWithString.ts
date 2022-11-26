@@ -48,5 +48,4 @@ const filterStocksWithString = (input : string) => {
     return {'NASDAQ' : [...nasdaqResult], 'NYSE' : [...nyseResult], 'KOSPI' : [...kospiResult], 'KOSDAQ': [...kosdaqResult], 'AMEX' : [...amexResult]};
 }
 
-filterStocksWithString('삼성');
 export default filterStocksWithString;

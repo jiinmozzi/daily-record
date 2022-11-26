@@ -1,7 +1,7 @@
 .bucketlist-card-wrapper{
-    margin : 40px auto;
-    width : 270px;
-    height : 300px;
+    
+    width : 230px;
+    height : 280px;
     border : 1px solid rgb(228,229,233);
     display : flex;
     flex-direction : column;
@@ -21,17 +21,17 @@
     #bucketlist-content-wrapper{
         width : 100%;
         padding : 10px 20px 0 20px;
-        height : 90px;
+        height : 70px;
         
         #bucketlist-field{
             width : 100%;
-            height : 30px;
+            height : 25px;
             font-size : 14px;
             display : flex;
             justify-content : space-between;
         }
         #bucketlist-title{
-            height : 50px;
+            height : 45px;
             font-size : 18px;
             font-weight : bold;
             
@@ -42,10 +42,11 @@
         display : flex;
         height : 50px;
         border-top : 1px solid black;
+        align-items : center;
         #bucketlist-done-controller{
             display : flex;
             align-items : center;
-            width : 110px;
+            width : 100px;
             padding-left : 20px;
             &:hover{
                 cursor : pointer;
@@ -60,7 +61,7 @@
             }
         }
         .bucketlist-fix-icon-wrapper{
-            margin-left : 80px;
+            margin-left : 60px;
             display : flex;
             align-items: center;
             width : 30px;
@@ -74,7 +75,7 @@
             }
         }
         .bucketlist-delete-icon-wrapper{
-            margin-left : 10px;
+            margin-left : 5px;
             display : flex;
             align-items: center;
             #bucketlist-fix-icon{

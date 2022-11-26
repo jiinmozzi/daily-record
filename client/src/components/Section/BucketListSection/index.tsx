@@ -21,7 +21,7 @@ const BucketListSection = () => {
                 <div id="bucketlist-nav-card-container">
                     <div className="bucketlist-nav-card" style={{ transform : isHovered ? "scale(1.1)" : "", backgroundImage : `url(${testing})`}}>
                         <div id="bucketlist-nav-text"></div>
-                        <button id="bucketlist-nav-btn" onClick={onClickBtn} onMouseEnter={() => setIsHovered((prev) => true)} onMouseLeave={() => setIsHovered((prev) => false)}>버킷리스트 추가하기</button>
+                        {/* <button id="bucketlist-nav-btn" onClick={onClickBtn} onMouseEnter={() => setIsHovered((prev) => true)} onMouseLeave={() => setIsHovered((prev) => false)}>버킷리스트 추가하기</button> */}
                     </div>
                 </div>
                 

@@ -23,12 +23,13 @@ type WeeklyScheduleFormType = {
 const WeeklyTimerCreateModal = ({setShowModal} : WeeklyTimerCreateModalPropsType) => {
     const hours = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23];
     const minutes = [0, 30];
-    const [day, setDay] = useState<string>("월");
+    const [day, setDay] = useState<string>("MON");
     const [startHour, setStartHour] = useState<number>(0);
     const [startMin, setStartMin] = useState<number>(0);
     const [endHour, setEndHour] = useState<number>(0);
     const [endMin, setEndMin] = useState<number>(0);
     const days = ["월", "화", "수", "목", "금", "토", "일"];
+    const daysForDB = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"]
     const [title, setTitle] = useState<string>("");
     const [accessToken, setAccessToken] = useRecoilState<string>(accessTokenState);
     const onSubmitWeekly = async( e : React.MouseEvent ) => {
@@ -82,7 +83,7 @@ const WeeklyTimerCreateModal = ({setShowModal} : WeeklyTimerCreateModalPropsType
                         <div className="time-modal-days">
                             {days.map((e,idx) => {
                                 return (
-                                    <div onClick={() => setDay(e)} style={{ color : day=== e ? "#fff": "#a6a6a6", backgroundColor : day=== e ? "#8897a8": "#fff"}} className="time-modal-day">{e}</div>
+                                    <div onClick={() => setDay(daysForDB[idx])} style={{ color : daysForDB.indexOf(day)=== idx ? "#fff": "#a6a6a6", backgroundColor :  daysForDB.indexOf(day)=== idx ? "#8897a8": "#fff"}} className="time-modal-day">{e}</div>
                                 )
                             })}
                         </div>

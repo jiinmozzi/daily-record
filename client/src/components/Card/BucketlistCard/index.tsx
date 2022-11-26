@@ -9,7 +9,6 @@ const BucketlistCard = () => {
     return (
         <div className="bucketlist-card-wrapper">
             <div id="bucketlist-image-wrapper"></div>
-
             <div id="bucketlist-content-wrapper">
                 <div id="bucketlist-field">
                     <span>Life Style</span>

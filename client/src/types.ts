@@ -14,6 +14,15 @@ export type SignUpFormType = {
     birthday : string
 }
 
+export type DiaryType = {
+    date : Date,
+    title : string,
+    content : string,
+    emojiCode : number,
+    createdAt : Date,
+    isPublic : boolean
+}
+
 export type BookType = {
     authors : string[],
     title : string,

@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 
 import "./BookDropDown.scss";
@@ -15,10 +15,12 @@ const BookDropDown = ({suggestions, bookTitle} : BookDropDownType) => {
     useEffect(() => {
         console.log(suggestions);
     }, [suggestions])
-    useEffect(() => {}, [])
+    const onMouseDown = (e : React.MouseEvent) => {
+        e.preventDefault();
+    }
     return (
         
-        <div className="book-dropdown-wrapper" style={{height : suggestions.length > 0 ? "400px" : "100px"}}>
+        <div className="book-dropdown-wrapper" onMouseDown={onMouseDown} style={{height : suggestions.length > 0 ? "400px" : "100px"}}>
             {suggestions && 
                 <div className="suggestion-dropdowns-wrapper">
                     {suggestions.map((e : BookType) => 

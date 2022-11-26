@@ -41,9 +41,9 @@ const MainCalendar = () => {
         }
     }, [accessToken])
     
-    useEffect(() => {
-        console.log(schedules);
-    }, [schedules])
+    // useEffect(() => {
+    //     console.log(schedules);
+    // }, [schedules])
 
     const onClickRight = (e : React.MouseEvent) => {
         if ( month === 11 ){

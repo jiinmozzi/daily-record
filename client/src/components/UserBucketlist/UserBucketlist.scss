@@ -1,12 +1,92 @@
 .user-bucketlist-wrapper{
     width : 100%;
-    height : 400px;
-    background-color : black;
     margin-bottom : 200px;
+    margin-top : 40px;
     display : flex;
     flex-direction: column;
     align-items : center;
-    #bucketlist-nav{
+    
+    #user-bucketlist-profile-image{
+        font-size : 80px;
+        fill : #c9d7f0;
+        &:hover{
+            cursor : pointer;
+        }
+    }
+    #user-bucketlist-profile-name{
+        margin-bottom : 30px;
+        color : rgb(160,160,160);
+    }
+    #create-bucketlist-btn{
+        width : 120px;
+        height : 30px;
+        border-radius : 15px;
+        font-size : 13px;
+        background : #c9d7f0;
+        border : none;
+        outline : none;
+        margin-bottom : 10px;
+        margin-left : 80%;
+        transform : translateX(-50%);
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    }
+    #user-bucketlist-display-criterion{
+        width : 80%;
+        margin-bottom : 5px;
+        letter-spacing: 1px;
+        color : rgb(160, 160, 160);
         display : flex;
+        #user-bucketlist-wishlist-toggleBtn{
+            border-right : 1px solid gray;
+            padding-right : 10px;
+            &:hover{
+                cursor : pointer;
+                color : rgb(6, 196, 182);
+            }
+        }
+        #user-bucketlist-criterion-toggleBtn{
+            padding-left : 10px;
+            width : 150px;
+            &:hover{
+                cursor : pointer;
+                color : rgb(6, 196, 182);
+            }
+        }
+    }
+    #user-bucketlist-navs{
+        width : 80%;
+        height : 40px;
+        background-color : #E0EAFC;
+        display : flex;
+        justify-content : center;
+        align-items: center;
+        border : 4px solid #c9d7f0;
+        #entire-bucketlist-nav{
+            border-left : 1px solid rgb(30,34,45);
+        }
+        .user-bucketlist-nav{
+            border-right : 1px solid rgb(30,34,45);
+            width : 120px;    
+            height : 100%;
+            display : flex;
+            justify-content: center;
+            align-items: center;
+            font-weight : bold;
+            color : #9fa1ac;
+            &:hover{
+                cursor : pointer;
+                color : black;
+                border-bottom : 4px solid black;
+            }
+        }
+    }
+    #bucketlist-cards-wrapper{
+        margin-top : 40px;
+        display : flex;
+        width : 80%;
+        flex-wrap : wrap;
+        gap : 72px;
+        // justify-content : space-between;
+        // justify-content : cetner;
     }
 }

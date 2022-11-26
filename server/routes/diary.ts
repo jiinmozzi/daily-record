@@ -32,8 +32,9 @@ router.get('/diaries', setAuth, async(req : IUserRequest, res : Response) => {
 })
 router.post('/diary', setAuth, async(req : IUserRequest, res : Response) => {
     const user = req.user;
-    const {date, title, content, emojiCode, imageUrl, createdAt, isPublic} = req.body;
-
+    const {date, title, content, emojiCode, isPublic} = req.body;
+    console.log(req.body)
+    const createdAt = new Date();
     try {
         const newDiary = new Diary({
             user,
@@ -41,7 +42,6 @@ router.post('/diary', setAuth, async(req : IUserRequest, res : Response) => {
             title,
             content,
             emojiCode,
-            imageUrl,
             createdAt,
             isPublic,
         })
@@ -54,7 +54,9 @@ router.post('/diary', setAuth, async(req : IUserRequest, res : Response) => {
             data : newDiary,
         })
     }   catch (err){
+        console.log(err);
         return res.status(400).send({
+            
             message : "FAIL",
             status : 400,
         })

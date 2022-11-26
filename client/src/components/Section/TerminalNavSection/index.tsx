@@ -8,7 +8,7 @@ const TerminalNavSection = () => {
         <div className="terminal-nav-section-wrapper">
             <div id="terminal-nav-introduction">
                 <span id="terminal-nav-introduction-text">당신의 개발 기록을 "<span style={{color : "rgb(255,165,86)"}}>한 공간</span>"에</span>
-                <div id="terminal-main-button" onClick={() => navigate('/')}>내 작업물 보러가기</div>
+                <div id="terminal-main-button" onClick={() => navigate('/terminal/collection')}>내 작업물 보러가기</div>
             </div>
             <div id="terminal-navigations">
                 <div className="terminal-nav-card" onClick={() => navigate('/terminal/collection')}>

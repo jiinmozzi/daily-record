@@ -107,8 +107,8 @@ function App() {
   
   // periodically re-issue access token
   useEffect(() => {
-    console.log('set access token') 
-    console.log('accessToken : ', accessToken);
+    // console.log('set access token') 
+    // console.log('accessToken : ', accessToken);
     const reIssueUserAccessToken = async() => {
       return await reIssueAccessToken(accessToken);
     }
@@ -119,7 +119,7 @@ function App() {
             
             return;
           } else {
-            console.log('set access token') 
+            // console.log('set access token') 
             setAccessToken(res.data.accessToken);
           }
         })

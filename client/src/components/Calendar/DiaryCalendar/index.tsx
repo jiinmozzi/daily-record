@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import renderCalendar from "../../../utils/renderCalender";
 
 import "./DiaryCalendar.scss";
-const DiaryCalendar = () => {
+const DiaryCalendar = ({diaries} : any) => {
     const dayList = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
     const [dates, setDates] = useState<number[]>([]);
     const [year, setYear] = useState<number>(0);

@@ -7,7 +7,6 @@ const DiarySchema = new Schema({
     title : {type : String, required : true},
     content : {type : String},
     emojiCode : Number,
-    imageUrl : String,
     createdAt : { type : Date, default : Date.now() }, 
     isPublic : {type : Boolean, default : true},
 })

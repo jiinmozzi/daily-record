@@ -60,7 +60,6 @@ const ScheduleCreateModal = ({modalShow, setModalShow, schedules, setSchedules} 
     }
 
     const onChangeFromDate = (newValue: Dayjs | null) => {
-        
         setDateFrom(newValue);
     };
     const onChangeToDate = (newValue: Dayjs | null) => {
