@@ -10,6 +10,8 @@ import getWeeklySchedules from "../../../api/getWeeklySchedules";
 
 type WeeklyTimerCreateModalPropsType = {
     setShowModal : (bool : boolean) => void
+    weeklySchedules : any,
+    setWeeklySchedules : any,
 }
 
 type WeeklyScheduleFormType = {
@@ -20,7 +22,7 @@ type WeeklyScheduleFormType = {
     isPublic : boolean,
 }
 
-const WeeklyTimerCreateModal = ({setShowModal} : WeeklyTimerCreateModalPropsType) => {
+const WeeklyTimerCreateModal = ({setShowModal, weeklySchedules, setWeeklySchedules} : WeeklyTimerCreateModalPropsType) => {
     const hours = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23];
     const minutes = [0, 30];
     const [day, setDay] = useState<string>("MON");
@@ -36,7 +38,9 @@ const WeeklyTimerCreateModal = ({setShowModal} : WeeklyTimerCreateModalPropsType
         e.preventDefault();
         const startTime = startHour * 100 + startMin;
         const endTime = endHour * 100 + endMin;
-        createWeeklySchedule(accessToken, {day, title, startTime, endTime, isPublic : true});
+        const res = await createWeeklySchedule(accessToken, {day, title, startTime, endTime, isPublic : true});
+        setWeeklySchedules([...weeklySchedules, res.data])
+        setShowModal(false);
     }
 
     const onChangeTitle = ( e : React.ChangeEvent ) => {
@@ -52,13 +56,13 @@ const WeeklyTimerCreateModal = ({setShowModal} : WeeklyTimerCreateModalPropsType
                 setStartHour(val);
                 break;
             case "start-min":
-                setStartMin(val);
+                setStartMin(val === 0 ? 0 : 50);
                 break;
             case "end-hour":
                 setEndHour(val);
                 break;
             case "end-min":
-                setEndMin(val);
+                setEndMin(val === 0 ? 0 : 50);
                 break;
             default:
                 break;

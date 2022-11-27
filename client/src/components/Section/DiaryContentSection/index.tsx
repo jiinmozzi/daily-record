@@ -10,9 +10,10 @@ type DiaryType = {
     date : Date,
     title : string,
     content : string,
-    emojiCode : number,
+    emojiCode : string,
     createdAt : Date,
     isPublic : boolean
+    _id : string,
 }
 type DiaryContentSectionPropsType = {
     diaries : DiaryType[],
@@ -40,7 +41,7 @@ const DiaryContentSection = ({diaries} : DiaryContentSectionPropsType) => {
                 </div>
                 { diaries.length === 0 ? <div id="diaries-empty-text">기록된 일기가 없습니다. &nbsp;&nbsp;&nbsp;<span id="empty-create-diary-nav" onClick={() => navigate('/diary/create')} style={{ fontWeight : "bold", color : "rgb(119,94,226)"}}>추가하러 가기</span></div>
                 :  diaries.map((diary : DiaryType) => 
-                    <div className="diary-display">
+                    <div className="diary-display" onClick={() => navigate(`/diary/${diary._id}`)}>
                         <div className="diary-title">{diary.title.length > 14 ? diary.title.slice(0, 14) + '...' : diary.title}</div>
                         <div className="diary-content">{diary.content.length > 40 ? diary.content.slice(0, 40) + "..." : diary.content}</div>
                         <div className="diary-created-at">{diary.createdAt.toString().slice(0, diary.createdAt.toString().indexOf('T'))}</div>

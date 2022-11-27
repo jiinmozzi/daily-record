@@ -15,7 +15,7 @@ const DiaryCreateTemplate = () => {
     const titleRef = useRef<HTMLInputElement>(null);
     const contentRef = useRef<HTMLTextAreaElement>(null);
     const [date, setDate] = useState<Date>();
-    const [emojiCode, setEmojiCode] = useState<number>(-1);
+    const [emojiCode, setEmojiCode] = useState<string>("");
     const [isPublic, setIsPublic] = useState<boolean>(true);
     const [value, setValue] = React.useState<Dayjs | null>(dayjs(Date.now()));
 

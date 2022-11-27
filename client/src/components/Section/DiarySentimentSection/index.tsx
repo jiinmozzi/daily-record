@@ -5,7 +5,7 @@ const DiarySentimentSection = ({diaries} : any) => {
     return (
         <div className="diary-sentiment-section-wrapper">
             <div id="create-sentiment-section">
-                <span id="diary-total-count-text">지금까지 총 {}번의 일기를 적었습니다.</span>
+                <span id="diary-total-count-text">지금까지 총 {diaries.length}&nbsp;번의 일기를 적었습니다.</span>
                 <div id="create-sentiment-box">EMOJI 관리</div>
             </div>
             <div id="sentiment-accumulative-histories">

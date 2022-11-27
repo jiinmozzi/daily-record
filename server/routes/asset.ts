@@ -125,6 +125,18 @@ router.get('/today/exchange', async(req : Request, res : Response) => {
     }) 
 })
 
+router.get('/marketcap', async(req : Request, res : Response) => {
+    const fetchData = async() => await axios.get('https://companiesmarketcap.com?download=csv');
+    fetchData().then(response => {
+        const datas = response.data.split('\n').slice(1, 31).map((e : string) => e.split(','))
+        return res.status(200).send({
+            data : datas,
+            messsage : "OK",
+            status : 200,
+        })
+    });
+}) 
+
 router.get('/:stock', (req : Request, res : Response) => {
     const {stock} = req.params;
     
@@ -134,6 +146,9 @@ router.get('/:stock', (req : Request, res : Response) => {
         status : 200,
     })
 }) 
+
+
+
 router.post('/purchase/stock', setAuth, async( req : IUserRequest, res : Response ) => {
     const user = req.user;
     const userAsset = user.asset;

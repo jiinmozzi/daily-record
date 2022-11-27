@@ -10,7 +10,7 @@ import AssetMBTI from "./pages/AssetMBTI";
 import AssetPortfolio from "./pages/AssetPortfolio";
 import AssetDetail from "./pages/AssetDetail";
 import Book from "./pages/Book";
-
+import BookMarked from "./pages/BookMarked"
 import Travel from "./pages/Travel";
 import Terminal from "./pages/Terminal";
 import TerminalCollection from "./pages/TerminalCollection";
@@ -18,6 +18,7 @@ import TerminalStudy from "./pages/TerminalStudy";
 import TerminalDaily from "./pages/TerminalDaily";
 import Fitness from "./pages/Fitness";
 import Diary from "./pages/Diary";
+import DiaryDetail from "./pages/DiaryDetail";
 import CreateDiary from "./pages/CreateDiary"
 import BucketList from "./pages/BucketList";
 import NotFound from "./pages/NotFound";
@@ -149,8 +150,10 @@ function App() {
               <Route path="/planner" element={<Planner />}></Route>
               <Route path="/planner/:year/:month" element={<Planner />}></Route>
               <Route path="/diary" element={<Diary />}></Route>
+              <Route path="/diary/:id" element={<DiaryDetail />}></Route>
               <Route path="/diary/create" element={<CreateDiary />}></Route>
               <Route path="/book" element={<Book />}></Route>
+              <Route path="/book/bookmarked" element={<BookMarked />}></Route>
               <Route path="/book/:isbn" element={<BookDetail />}></Route>
               <Route path="/asset" element={<Asset />}></Route>
               <Route path="/asset/mbti" element={<AssetMBTI />}></Route>
@@ -164,7 +167,6 @@ function App() {
               <Route path="/terminal/daily" element={<TerminalDaily />}></Route>
               <Route path="/fitness" element={<Fitness /> }></Route>
               <Route path="/test" element={<Test />}></Route>
-              
             </Route>
 
             <Route path="/" element={<Main />}></Route>

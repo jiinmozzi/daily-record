@@ -7,6 +7,15 @@ module.exports = function(app : any){
           changeOrigin: true
       })
   )
+  // app.use(
+  //   createProxyMiddleware('/marketrank', {
+  //     target : "https://companiesmarketcap.com?download=csv",
+  //     changeOrigin: true,
+  //     pathRewrite: {
+  //       "^/marketrank": "",
+  //     },
+  //   })
+  // )
 };
 
 export default createProxyMiddleware;

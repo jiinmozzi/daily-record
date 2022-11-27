@@ -42,7 +42,7 @@ const WeeklyCalendar = () => {
 
     return (
         <div className="weekly-calendar-wrapper">
-            {showModal && <WeeklyTimerCreateModal setShowModal={setShowModal}/>}
+            {showModal && <WeeklyTimerCreateModal setShowModal={setShowModal} weeklySchedules={weeklySchedules} setWeeklySchedules={setWeeklySchedules}/>}
             <div id="weekly-calendar-header">
                 <span id="weekly-planner">Weekly planner</span>
                 <div id="time-create-btn" onClick={showCreateModal}>타임라인 추가</div>
@@ -69,7 +69,8 @@ const WeeklyCalendar = () => {
                                     
                                     <>
                                     {weeklySchedules.filter((e : WeeklyScheduleType) => e.day === day).map(schedule => {
-                                        return time <= schedule.startTime/100 && time + 1 > schedule.startTime/100 && <div style={{ position : "relative", top : 0, left : 0, width : "100%", height : "100%", backgroundColor : "black"}}>{schedule.title}</div>
+                                        return time <= schedule.startTime/100 && time + 1 > schedule.startTime/100 && 
+                                        <div className="weekly-schedule-entity" style={{ top : schedule.startTime % 100 === 0 ? "0px" : "25px", height : `${(schedule.endTime - schedule.startTime) + 1}%`}}>{schedule.title}</div>
                                     })}
                                     </>
                                 </div>

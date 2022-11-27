@@ -18,9 +18,10 @@ export type DiaryType = {
     date : Date,
     title : string,
     content : string,
-    emojiCode : number,
+    emojiCode : string,
     createdAt : Date,
-    isPublic : boolean
+    isPublic : boolean,
+    _id : string,
 }
 
 export type BookType = {

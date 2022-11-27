@@ -4,7 +4,7 @@ type CreateDiaryFormType = {
     date : Date,
     title : string,
     content : string,
-    emojiCode : number,
+    emojiCode : string,
     isPublic : boolean,
 }
 const createDiary = async(token : string, {date, title, content, emojiCode, isPublic} : CreateDiaryFormType) => {

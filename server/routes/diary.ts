@@ -152,7 +152,7 @@ router.delete('/emoji/:id', setAuth, async(req : IUserRequest, res : Response) =
     const user = req.user;
     const {id} = req.params;
     try {
-        user.emoji.filter((e:Number) => e!== Number(id));
+        user.emoji.filter((e:string) => e!== id);
         await user.save();
         return res.status(200).send({
             status : 200,

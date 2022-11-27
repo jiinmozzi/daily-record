@@ -4,7 +4,7 @@ import "./EmojiModal.scss";
 type EmojiModalPropsType = {
     emojis : any
     setEmoji : () => void,
-    emoji : number,
+    emoji : string,
     shwoEmojiModal : boolean,
     setShowEmojiModal : (bool : boolean) => void,
 }

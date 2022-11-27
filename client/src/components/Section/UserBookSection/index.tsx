@@ -12,14 +12,13 @@ import book3 from "../../../assets/book3.jpeg";
 import "./UserBookSection.scss";
 
 const UserBookSection = () => {
+    const navigate = useNavigate();
     const [user, setUser] = useRecoilState<UserType>(userState);
-    useEffect(() => {
-        console.log(user);
-    }, [user])
+
     return (
         <div className="user-book-section-wrapper">
             <div id="user-book-bookmark-nav-wrapper">
-                <button id="user-book-bookmark-navbtn" onClick={() => console.log('hi')}>관심 목록 가기</button>
+                <button id="user-book-bookmark-navbtn" onClick={() => navigate('/book/bookmarked')}>관심 목록 가기</button>
             </div>
             
             <div id="user-book-library-collection">

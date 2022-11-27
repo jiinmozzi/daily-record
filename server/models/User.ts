@@ -8,7 +8,7 @@ const UserSchema = new Schema({
     password : {type : String, required : true },
     email : { type : String, required : true },
     birthday : {type : String, required : true},
-    emoji : [{type : Number}],
+    emoji : [{type : String}],
     mbti : String,
     assetMBTI : String,
     diaryImage : String,

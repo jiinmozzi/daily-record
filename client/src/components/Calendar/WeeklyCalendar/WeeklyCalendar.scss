@@ -86,6 +86,18 @@
                 height : 50px;
                 border-right : 1px solid #a7aaaa;       
                 border-bottom : 1px solid #a7aaaa;       
+                .weekly-schedule-entity{
+                    width : 100%;
+                    position : relative;
+                    display : flex;
+                    justify-content : center;
+                    align-items: center;
+                    color : #fff;
+                    background-color : rgb(136,151,167);
+                    left : 0;
+                    font-size : 12px;
+                    
+                }
             }
         }
     }
