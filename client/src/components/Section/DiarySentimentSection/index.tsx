@@ -1,12 +1,18 @@
 import {useState, useEffect} from "react";
+import EmojiModal from "../../Modal/EmojiModal";
 import "./DiarySentimentSection.scss";
 
 const DiarySentimentSection = ({diaries} : any) => {
+    const [showEmojisModal, setShowEmojisModal] = useState<boolean>(false);
     return (
         <div className="diary-sentiment-section-wrapper">
             <div id="create-sentiment-section">
                 <span id="diary-total-count-text">지금까지 총 {diaries.length}&nbsp;번의 일기를 적었습니다.</span>
-                <div id="create-sentiment-box">EMOJI 관리</div>
+                <div id="create-sentiment-box" onClick={() => setShowEmojisModal(true)}>
+                    EMOJI 관리
+                    {showEmojisModal && <EmojiModal />}
+                </div>
+                
             </div>
             <div id="sentiment-accumulative-histories">
                 <div className="sentiment-container">

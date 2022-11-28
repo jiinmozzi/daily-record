@@ -36,8 +36,11 @@ const WeeklyTimerCreateModal = ({setShowModal, weeklySchedules, setWeeklySchedul
     const [accessToken, setAccessToken] = useRecoilState<string>(accessTokenState);
     const onSubmitWeekly = async( e : React.MouseEvent ) => {
         e.preventDefault();
-        const startTime = startHour * 100 + startMin;
-        const endTime = endHour * 100 + endMin;
+
+        const _startMin = startMin === 30 ? 50 : 0;
+        const _endMin = endMin === 30 ? 50 :  0;
+        const startTime = startHour * 100 + _startMin;
+        const endTime = endHour * 100 + _endMin;
         const res = await createWeeklySchedule(accessToken, {day, title, startTime, endTime, isPublic : true});
         setWeeklySchedules([...weeklySchedules, res.data])
         setShowModal(false);
@@ -56,13 +59,13 @@ const WeeklyTimerCreateModal = ({setShowModal, weeklySchedules, setWeeklySchedul
                 setStartHour(val);
                 break;
             case "start-min":
-                setStartMin(val === 0 ? 0 : 50);
+                setStartMin(val);
                 break;
             case "end-hour":
                 setEndHour(val);
                 break;
             case "end-min":
-                setEndMin(val === 0 ? 0 : 50);
+                setEndMin(val);
                 break;
             default:
                 break;
