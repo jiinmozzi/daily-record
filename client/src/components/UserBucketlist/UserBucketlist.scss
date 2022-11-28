@@ -75,12 +75,13 @@
             color : #9fa1ac;
             &:hover{
                 cursor : pointer;
-                color : black;
-                border-bottom : 4px solid black;
+                color : rgb(28,30,33);
+                // border-bottom : 4px solid black;
             }
         }
-        #activated{
-            
+        .activated{
+            border-bottom : 4px solid rgb(28,30,33);
+            color : rgb(28,30,33);
         }
     }
     #current-bucketlist-count-text{

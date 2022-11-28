@@ -56,11 +56,11 @@ router.post('/bucketlist', setAuth, async(req : IUserRequest, res : Response) =>
 // 다 함 표시
 router.post('/bucketlist/toggle', setAuth, async(req : IUserRequest, res : Response) => {
     const user = req.user;
-    const {id} = req.body;
+    const {_id} = req.body;
 
     
     try {
-        const targetBucketlist = await BucketList.findById(id.toString());
+        const targetBucketlist = await BucketList.findById(_id.toString());
         targetBucketlist.isCompleted = !targetBucketlist.isCompleted;
         await targetBucketlist.save();    
         return res.status(200).send({
@@ -100,11 +100,11 @@ router.patch('/bucketlist/:id', setAuth, async(req : IUserRequest, res : Respons
 
 router.post('/wishlist/toggle', setAuth, async(req : IUserRequest, res : Response) => {
     const user = req.user;
-    const {id} = req.body;
+    const {_id} = req.body;
 
     
     try {
-        const targetWishlist = await BucketWishList.findById(id.toString());
+        const targetWishlist = await BucketWishList.findById(_id.toString());
         targetWishlist.isCompleted = !targetWishlist.isCompleted;
         await targetWishlist.save();    
         return res.status(200).send({
@@ -113,6 +113,7 @@ router.post('/wishlist/toggle', setAuth, async(req : IUserRequest, res : Respons
             data : targetWishlist,
         })
     }   catch (err){
+        console.log(err);
         return res.status(400).send({
             message : "FAIL",
             status : 400,
@@ -145,11 +146,11 @@ router.get('/wishlists', setAuth, async(req : IUserRequest, res : Response) => {
 
 router.post('/wishlist', setAuth, async(req : IUserRequest, res : Response) => {
     const user = req.user;
-    const {imageUrl, craetedAt, title, comment, field, isCompleted, isPublic} = req.body;
-
+    const {imageUrl, title, comment, field, isCompleted, isPublic} = req.body;
+    const createdAt = new Date();
     try {
         const newWishlist = new BucketWishList({
-            user, imageUrl, craetedAt, title, comment, field, isCompleted, isPublic
+            user, imageUrl, createdAt, title, comment, field, isCompleted, isPublic
         })
         await newWishlist.save();
         user.bucketWishLists.push(newWishlist._id);

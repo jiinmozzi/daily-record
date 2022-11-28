@@ -3,7 +3,7 @@ const {Schema} = mongoose;
 
 const BucketListSchema = new Schema({
     user : {type : Schema.Types.ObjectId, required : true},
-    imageUrl : [{type : String}],
+    imageUrl : {type : String},
     createdAt : { type : Date, default : Date.now() },
     title : String,
     comment : String,

@@ -22,8 +22,8 @@ const Test = () => {
         {/* <ScheduleCreateModal /> */}
         {/* <TravelCard />
         <FileButton />
-        <Loading /> */}
-        <BucketlistCard />
+        <Loading /> */}s
+        {/* <BucketlistCard /> */}
         {/* <FileButton /> */}
         </>
     )

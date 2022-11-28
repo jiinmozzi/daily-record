@@ -3,7 +3,7 @@ const {Schema} = mongoose;
 
 const BucketWishListSchema = new Schema({
     user : {type : Schema.Types.ObjectId, required : true},
-    imageUrl : [{type : String}],
+    imageUrl : {type : String},
     createdAt : { type : Date, default : Date.now() },
     title : String,
     comment : String,
@@ -15,3 +15,5 @@ const BucketWishListSchema = new Schema({
 const BucketWishList = mongoose.model('BucketWishList', BucketWishListSchema);
 module.exports = BucketWishList;
 export {}
+
+// title, field, comment, imageUrl, isPublic, bucketlist ? 

@@ -30,7 +30,8 @@ const upload = multer({
     limits : {fileSize : 5 * 1024 * 1024},
 });
 
-router.post('/create', upload.single('img'), ( req : PhotoRequest, res : Response ) => {
+router.post('/', upload.single('img'), ( req : PhotoRequest, res : Response ) => {
+    
     console.log(req.file);
     res.json({ url : req.file.location });
 })

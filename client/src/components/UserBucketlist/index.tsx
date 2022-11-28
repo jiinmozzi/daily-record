@@ -78,42 +78,46 @@ const UserBucketlist = () => {
             
             {   criterion === "process" && isBucketlistShow ?
                     <div id="user-bucketlist-navs">
-                        <div className= {`user-bucketlist-nav ${fraction === "entire" ? "activated" : "deactivated"}`} style={{ borderBottom : fraction === "entire" ? "4px solid black" : "none", color : fraction === "entire" ? "black" : "#9a1ac"}} id="entire-bucketlist-nav" onClick={() => setFraction('entire')}>전체</div>
-                        <div className="user-bucketlist-nav" style={{ borderBottom : fraction === "ongoing" ? "4px solid black" : "none", color : fraction === "ongoing" ? "black" : "#9a1ac"}} onClick={() => setFraction('ongoing')}>도전 중</div>
-                        <div className="user-bucketlist-nav" style={{ borderBottom : fraction === "done" ? "4px solid black" : "none", color : fraction === "done" ? "black" : "#9a1ac"}} onClick={() => setFraction('done')}>완료</div>
+                        <div className= {`user-bucketlist-nav ${fraction === "entire" ? "activated" : "no"}`} id="entire-bucketlist-nav" onClick={() => setFraction('entire')}>전체</div>
+                        <div className={`user-bucketlist-nav ${fraction === "ongoing" ? "activated" : "no"}`} onClick={() => setFraction('ongoing')}>도전 중</div>
+                        <div className={`user-bucketlist-nav ${fraction === "done" ? "activated" : "no"}`}  onClick={() => setFraction('done')}>완료</div>
                     </div> 
                 : isBucketlistShow ?
                     <div id="user-bucketlist-navs">
-                        <div className="user-bucketlist-nav" style={{ borderBottom : classification  === "entire" ? "4px solid black" : "none", color : classification  === "entire" ? "black" : "#9a1ac"}} id="entire-bucketlist-nav" onClick={() => setClassification('entire')}>전체</div>
-                        <div className="user-bucketlist-nav" style={{ borderBottom : classification  === "travel" ? "4px solid black" : "none", color : classification  === "travel" ? "black" : "#9a1ac"}} onClick={() => setClassification('travel')}>여행</div>
-                        <div className="user-bucketlist-nav" style={{ borderBottom : classification  === "activity" ? "4px solid black" : "none", color : classification  === "activity" ? "black" : "#9a1ac"}} onClick={() => setClassification('activity')}>엑티비티</div>
-                        <div className="user-bucketlist-nav" style={{ borderBottom : classification  === "self-improvement" ? "4px solid black" : "none", color : classification  === "self-improvement" ? "black" : "#9a1ac"}} onClick={() => setClassification('self-improvement')}>자기계발</div>
-                        <div className="user-bucketlist-nav" style={{ borderBottom : classification  === "hobby" ? "4px solid black" : "none", color : classification  === "hobby" ? "black" : "#9a1ac"}} onClick={() => setClassification('hobby')}>취미</div>
-                        <div className="user-bucketlist-nav" style={{ borderBottom : classification  === "dream" ? "4px solid black" : "none", color : classification  === "dream" ? "black" : "#9a1ac"}} onClick={() => setClassification('dream')}>꿈</div>
+                        <div className= {`user-bucketlist-nav ${classification === "entire" ? "activated" : "no"}`} id="entire-bucketlist-nav" onClick={() => setClassification('entire')}>전체</div>
+                        <div className= {`user-bucketlist-nav ${classification === "travel" ? "activated" : "no"}`} onClick={() => setClassification('travel')}>여행</div>
+                        <div className= {`user-bucketlist-nav ${classification === "activity" ? "activated" : "no"}`} onClick={() => setClassification('activity')}>엑티비티</div>
+                        <div className= {`user-bucketlist-nav ${classification === "self-improvement" ? "activated" : "no"}`} onClick={() => setClassification('self-improvement')}>자기계발</div>
+                        <div className= {`user-bucketlist-nav ${classification === "hobby" ? "activated" : "no"}`} onClick={() => setClassification('hobby')}>취미</div>
+                        <div className= {`user-bucketlist-nav ${classification === "dream" ? "activated" : "no"}`} onClick={() => setClassification('dream')}>꿈</div>
                     </div> 
                 : criterion !== "process" ?
                     <div id="user-bucketlist-navs">
-                        <div className="user-bucketlist-nav" style={{ borderBottom : wishlistClassification === "entire" ? "4px solid black" : "none", color : wishlistClassification === "entire" ? "black" : "#9a1ac"}} id="entire-bucketlist-nav" onClick={() => setWishlistClassification('entire')}>전체</div>
-                        <div className="user-bucketlist-nav" style={{ borderBottom : wishlistClassification === "asset" ? "4px solid black" : "none", color : wishlistClassification === "asset" ? "black" : "#9a1ac"}} onClick={() => setWishlistClassification('asset')}>자산</div>
-                        <div className="user-bucketlist-nav" style={{ borderBottom : wishlistClassification === "lifeStyle" ? "4px solid black" : "none", color : wishlistClassification === "lifeStyle" ? "black" : "#9a1ac"}} onClick={() => setWishlistClassification('lifeStyle')}>라이프스타일</div>
-                        <div className="user-bucketlist-nav" style={{ borderBottom : wishlistClassification === "others" ? "4px solid black" : "none", color : wishlistClassification === "others" ? "black" : "#9a1ac"}} onClick={() => setWishlistClassification('others')}>기타</div>
+                        <div className= {`user-bucketlist-nav ${wishlistClassification === "entire" ? "activated" : "no"}`} id="entire-bucketlist-nav" onClick={() => setWishlistClassification('entire')}>전체</div>
+                        <div className= {`user-bucketlist-nav ${wishlistClassification === "asset" ? "activated" : "no"}`} onClick={() => setWishlistClassification('asset')}>자산</div>
+                        <div className= {`user-bucketlist-nav ${wishlistClassification === "life-style" ? "activated" : "no"}`} onClick={() => setWishlistClassification('life-style')}>라이프스타일</div>
+                        <div className= {`user-bucketlist-nav ${wishlistClassification === "others" ? "activated" : "no"}`} onClick={() => setWishlistClassification('others')}>기타</div>
                     </div>
                     : <div id="user-bucketlist-navs">
-                        <div className="user-bucketlist-nav" style={{ borderBottom : wishlistFraction === "entire" ? "4px solid black" : "none", color : wishlistFraction === "entire" ? "black" : "#9a1ac"}} id="entire-bucketlist-nav" onClick={() => setWishlistFraction('entire')}>전체</div>
-                        <div className="user-bucketlist-nav" style={{ borderBottom : wishlistFraction === "ongoing" ? "4px solid black" : "none", color : wishlistFraction === "ongoing" ? "black" : "#9a1ac"}} onClick={() => setWishlistFraction('ongoing')}>도전 중</div>
-                        <div className="user-bucketlist-nav" style={{ borderBottom : wishlistFraction === "done" ? "4px solid black" : "none", color : wishlistFraction === "done" ? "black" : "#9a1ac"}} onClick={() => setWishlistFraction('done')}>완료</div>
+                        <div className= {`user-bucketlist-nav ${wishlistFraction === "entire" ? "activated" : "no"}`} id="entire-bucketlist-nav" onClick={() => setWishlistFraction('entire')}>전체</div>
+                        <div className= {`user-bucketlist-nav ${wishlistFraction === "ongoing" ? "activated" : "no"}`} onClick={() => setWishlistFraction('ongoing')}>도전 중</div>
+                        <div className= {`user-bucketlist-nav ${wishlistFraction === "done" ? "activated" : "no"}`} onClick={() => setWishlistFraction('done')}>완료</div>
                     </div>
             }
             <span id="current-bucketlist-count-text">
                 <span style={{fontWeight : "bold"}}>{isBucketlistShow ? bucketlists.length : wishlists.length}</span>개의 <span style={{ fontWeight : "bold"}}>{isBucketlistShow ? '버킷리스트' : '위시리스트'}</span>가 있습니다.
             </span>
             <div id="bucketlist-cards-wrapper">
-                <BucketlistCard />
-                <BucketlistCard />
-                <BucketlistCard />
-                <BucketlistCard />
-                <BucketlistCard />
-                <BucketlistCard />
+                {isBucketlistShow && bucketlists.map(item => {
+                    return (
+                        <BucketlistCard isBucketlist={true} _id={item._id} title={item.title} comment={item.comment} field={item.field} createdAt={item.createdAt} isCompleted={item.isCompleted} isPublic={item.isPublic} imageUrl={item.imageUrl}/>
+                    )
+                })}
+                {!isBucketlistShow && wishlists.map(item => {
+                    return (
+                        <BucketlistCard isBucketlist={false} _id={item._id}title={item.title} comment={item.comment} field={item.field} createdAt={item.createdAt} isCompleted={item.isCompleted} isPublic={item.isPublic} imageUrl={item.imageUrl}/>
+                    )
+                })}
             </div>
             {showModal && <BucketlistCreateModal setShowModal={setShowModal}/>}
         </div>

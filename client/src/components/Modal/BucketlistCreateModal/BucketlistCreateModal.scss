@@ -11,7 +11,7 @@
     z-index : 10;
     .bucketlist-create-modal-inner{
         width : 800px;
-        height :600px;
+        height :700px;
         position : relative;
         background-color : #fff;
         box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
@@ -26,6 +26,9 @@
         }
         #bucketlist-title{
             margin-top : 20px;
+            #bucketlist-title-text{
+                font-weight : bold;
+            }
         }
         #bucketlist-title-input{
             margin-top : 5px;
@@ -37,6 +40,9 @@
         }
         #bucketlist-comment{
             margin-top : 20px;
+            #bucketlist-comment-text{
+                font-weight : bold;
+            }
         }
         #bucketlist-comment-textarea{
             margin-top : 5px;
@@ -53,23 +59,55 @@
                 cursor : pointer;
             }
         }
-        #demo-controlled-open-select{
-            width : 150px;
+        #bucketlist-radio-wrapper{
+            display : flex;
+            gap : 15px;
+            margin-top : 5px;
+            width : 250px;
         }
-        .MuiFormControl-root{
-            margin : 0;
+        #bucketlist-rights-wrapper{
+            display : flex;
+            gap : 15px;
+            margin-top : 5px;
+            .radio-input-btn{
+                margin-left : 3px;
+            }
         }
-        #demo-controlled-open-select{
-            padding : 0;
-            height : 40px;
+        #bucketlist-types-wrapper{
+            display : flex;
+            gap : 20px;
+            margin-top : 5px;
+            margin-bottom : 20px;
+            .radio-input-btn{
+                margin-left : 3px;
+            }
         }
-        #demo-controlled-open-select-label{
-            position : relative;
-            top : 15px;
+
+        #bucketlist-create-type-indicator {
+            margin-top : 20px;
+            font-weight : bold;
         }
         #bucketlist-create-modal-field{
-            position : relative;
-            top : 20px;
+            margin-top : 20px;
+            font-weight : bold;
+        }
+        #bucketlist-public-type-indicator {
+            margin-top : 20px;
+            font-weight : bold;
+        }
+
+        #bucketlist-field-select{
+            width : 100px;
+        }
+        #bucketlist-create-submit-btn{
+            border-radius : 5px;
+            margin-top : 20px;
+            width : 120px;
+            height : 40px;
+            background-color : rgb(201,215,240);
+            display : flex;
+            justify-content : center;
+            align-items: center;
         }
     }
 }
