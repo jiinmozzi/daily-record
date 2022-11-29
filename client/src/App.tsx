@@ -37,6 +37,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import sendRequest from "./api/sendRequest";
 import { UserType } from "./types";
 import axios from "axios";
+import CreateTerminalCollection from "./pages/CreateTerminalCollection";
 
 
 function App() {
@@ -162,6 +163,7 @@ function App() {
               <Route path="/travel" element={<Travel />}></Route>
               <Route path="/bucketlist" element={<BucketList />}></Route>
               <Route path="/terminal" element={<Terminal />}></Route>
+              <Route path="/terminal/create/collection" element={<CreateTerminalCollection />}></Route>
               <Route path="/terminal/collection" element={<TerminalCollection />}></Route>
               <Route path="/terminal/study" element={<TerminalStudy />}></Route>
               <Route path="/terminal/daily" element={<TerminalDaily />}></Route>

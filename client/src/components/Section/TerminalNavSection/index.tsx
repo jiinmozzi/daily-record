@@ -16,13 +16,13 @@ const TerminalNavSection = () => {
                     <div className="terminal-nav-description">당신이 진행한 프로젝트들을 보관하세요.</div>
                     
                 </div>
-                <div className="terminal-nav-card">
-                    <div className="terminal-nav-summary" onClick={() => navigate('/terminal/study')}>개발 스터디</div>
-                    <div className="terminal-nav-description">개발 스터디</div>
+                <div className="terminal-nav-card" onClick={() => navigate('/terminal/study')}>
+                    <div className="terminal-nav-summary">개발 스터디</div>
+                    <div className="terminal-nav-description">당신의 스터디 내역을 저장하세요.</div>
                 </div>
-                <div className="terminal-nav-card">
-                    <div className="terminal-nav-summary" onClick={() => navigate('/terminal/daily')}>데일리</div>
-                    <div className="terminal-nav-description">데일리</div>
+                <div className="terminal-nav-card" onClick={() => navigate('/terminal/daily')}>
+                    <div className="terminal-nav-summary" >데일리</div>
+                    <div className="terminal-nav-description">당신의 일상 코딩을 기록하세요.</div>
                 </div>
             </div>
         </div>

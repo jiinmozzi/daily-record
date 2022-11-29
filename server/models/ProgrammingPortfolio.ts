@@ -6,7 +6,7 @@ const ProgrammingPortfolioSchema = new Schema({
     dateFrom : {type : Date},
     dateTo : {type : Date},
     title : {type : String, required : true},
-    content : {type : String},
+    content : String,
     githubLink : String,
     siteUrl : String,
     imageUrl : String,
