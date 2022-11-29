@@ -1,8 +1,7 @@
 .asset-index-section-wrapper{
     position : relative;
     width : 120%;
-     
-    height : 310px;
+    height : 340px;
     display : flex;
     padding-left : 50px;
     align-items: center;
@@ -21,12 +20,14 @@
         .index-text{
             font-weight : bold;
             letter-spacing: 1.5px;
+            margin-bottom : 10px;
         }
         .index-box{
             width : 270px;
             height : 200px;
             background-color : black;
             margin-top : 10px;
+            
         }
     }
 }

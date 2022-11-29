@@ -147,6 +147,7 @@ function App() {
         <BrowserRouter>
           <ScrollToTop />
           <Routes>
+            <Route path="/asset/mbti" element={<AssetMBTI />}></Route>
             <Route element={<Layout />}>
               <Route path="/planner" element={<Planner />}></Route>
               <Route path="/planner/:year/:month" element={<Planner />}></Route>
@@ -157,7 +158,6 @@ function App() {
               <Route path="/book/bookmarked" element={<BookMarked />}></Route>
               <Route path="/book/:isbn" element={<BookDetail />}></Route>
               <Route path="/asset" element={<Asset />}></Route>
-              <Route path="/asset/mbti" element={<AssetMBTI />}></Route>
               <Route path="/asset/portfolio" element={<AssetPortfolio />}></Route>
               <Route path="/asset/:ticker" element={<AssetDetail />}></Route>
               <Route path="/travel" element={<Travel />}></Route>

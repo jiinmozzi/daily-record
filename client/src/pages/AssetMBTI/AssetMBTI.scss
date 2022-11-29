@@ -1,3 +1,44 @@
 .asset-mbti-wrapper{
-    
+    width : 100vw;
+    height : 100vh;
+    background-color : rgb(234,245,255);
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    #mbti-questionnaire{
+        width : 400px;
+        height : 600px;
+        display : flex; 
+        flex-direction: column;
+        align-items: center;
+        background-color : #fff;
+        border-radius : 25px;
+        #mbti-questionnaire-title{
+            font-weight : bold;
+            margin-top : 20px;
+            font-size : 20px; 
+        }
+        #mbti-progress-indicator{
+            display : flex;
+            flex-direction : column;
+            width : 80%;
+            margin-top : 5px;
+            #mbti-progress-span{
+                display : flex;
+                flex-direction: row-reverse;
+            }
+            #mbti-progress-bar{
+                width : 100%;
+                height : 5px;
+                margin-top : 5px;
+                background-color : gray;
+            }
+        }
+        #mbti-question-number{}
+        #mbti-question{}
+        #mbti-answers-wrapper{
+             .mbti-answer{}
+        }
+    }
 }
+

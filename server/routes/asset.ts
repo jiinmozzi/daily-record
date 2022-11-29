@@ -262,8 +262,26 @@ router.post('/sell/stock', async( req : IUserRequest, res : Response ) => {
             status : 500,
         })
     }
-    
     // adjust balance ;    
+})
+
+router.post('/mbti', setAuth, (req : IUserRequest, res : Response) => {
+    const user = req.user;
+    const {assetMBTI} = req.body;
+    user.assetMBTI = assetMBTI;
+    try {
+        user.save();
+        return res.status(200).send({
+            message : "OK",
+            data : assetMBTI,
+            status : 200
+        })
+    }   catch (err){
+        return res.status(500).send({
+            message : "FAIL",
+            status : 500,
+        })
+    }
 })
 
 
