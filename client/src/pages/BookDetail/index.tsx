@@ -10,6 +10,7 @@ import "./BookDetail.scss";
 import getBookWithISBN from "../../api/getBookWithISBN";
 const BookDetail = () => {
     const params = useParams();
+    const [showDropDown, setShowDropDown] = useState<boolean>(false);
     const [bookISBN, setBookISBN] = useState<string>("");
     const [suggestions, setSuggestions] = useState<BookType[]>([]);
     const [book, setBook] = useState<any>(null);
@@ -32,15 +33,28 @@ const BookDetail = () => {
         }
     }, [bookISBN])
     useEffect(() => {
-        console.log(suggestions);
-    }, [suggestions])
-    return (
-        <div className="book-search-wrapper">
-            <BookSearchBar />
-            <span className="book-search-page-explanation">{bookISBN} 검색 결과입니다.</span>
-            { bookISBN !== "" && book && <SearchedBookCard authors={book.authors} title={book.title} contents={book.contents} price={book.price} thumbnail={book.thumbnail} datetime={book.datetime} isbn={book.isbn}/> }
+        console.log(book);
+    }, [book])
+    return book && (
+        <div className="book-detail-wrapper">
+            <BookSearchBar showDropDown={showDropDown} setShowDropDown={setShowDropDown}/>
+            <span className="book-detail-page-explanation">"{book.title}" 검색 결과입니다.</span>
+            <div className="book-detail-contents-container">
+                <img id="book-detail-thumbnail" src={book.thumbnail} alt="thumbnail" />
+                <div id="book-detail-contents">
+                    <div className="book-detail-content" id="book-detail-content-title">
+                        <span className="book-detail-text">제목</span>
+                        <span className="book-detail-info">{book.title}</span>
+                    </div>
+                    <div className="book-detail-content" id="book-detail-content-contents">
+                        <span className="book-detail-text">내용</span>
+                        <span className="book-detail-info">{book.contents}</span>
+                    </div>
+                </div>
+            </div>
+            {/* { bookISBN !== "" && book && <SearchedBookCard authors={book.authors} title={book.title} contents={book.contents} price={book.price} thumbnail={book.thumbnail} datetime={book.datetime} isbn={book.isbn}/> }
+            {(bookISBN === "" || !book) && <div>검색 결과가 없습니다.</div> } */}
             
-            {(bookISBN === "" || !book) && <div>검색 결과가 없습니다.</div> }
        </div>
     )
 }

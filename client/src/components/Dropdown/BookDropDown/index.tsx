@@ -6,10 +6,12 @@ import { BookType } from "../../../types";
 type BookDropDownType = {
     suggestions : BookType[],
     bookTitle : string
+    showDropDown : boolean,
+    setShowDropDown : (bool : boolean) => void,
 }
 
 
-const BookDropDown = ({suggestions, bookTitle} : BookDropDownType) => {
+const BookDropDown = ({suggestions, bookTitle, showDropDown, setShowDropDown} : BookDropDownType) => {
     const navigate = useNavigate();
     
     useEffect(() => {
@@ -18,13 +20,16 @@ const BookDropDown = ({suggestions, bookTitle} : BookDropDownType) => {
     const onMouseDown = (e : React.MouseEvent) => {
         e.preventDefault();
     }
+    const onClickBookDropDown = (event : React.MouseEvent, isbn : string) => {
+        navigate(`/book/${isbn ? isbn : "empty-result"}`)
+        setShowDropDown(false);
+    }
     return (
-        
         <div className="book-dropdown-wrapper" onMouseDown={onMouseDown} style={{height : suggestions.length > 0 ? "400px" : "100px"}}>
             {suggestions && 
                 <div className="suggestion-dropdowns-wrapper">
                     {suggestions.map((e : BookType) => 
-                        <div className="book-suggestion" onClick={() => navigate(`/book/${e.isbn ? e.isbn : "empty-result"}`)}>
+                        <div className="book-suggestion" onClick={(event) => onClickBookDropDown(event, e.isbn)}>
                             <img className="book-dropdown-img"src={e.thumbnail} alt={e.title} />
                             <div className="suggestion-dropdown-main">
                                 <div className="suggestion-dropdown-title">{e.title.length > 20 ? e.title.slice(0, 20) + "..." : e.title}</div>

@@ -9,26 +9,53 @@ import { DesktopDatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { TextField } from "@mui/material";
 import dayjs, { Dayjs } from "dayjs";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import FileButton from "../../FileButton";
+import axios from "axios";
+import createTerminalPortfolio from "../../../api/createTerminalPortfolio";
 
 const TerminalCollectionForm = () => {
     const titleRef = useRef<HTMLInputElement>(null);
     const contentRef = useRef<HTMLTextAreaElement>(null);
     const githubRef = useRef<HTMLInputElement>(null);
     const siteRef = useRef<HTMLInputElement>(null);
+    const [dateTo, setDateTo] = useState<Date>(new Date());
+    const [dateFrom, setDateFrom] = useState<Date>(new Date());
+    const [formData, setFormData] = useState<FormData>(new FormData());
     const [status, setStatus] = useState<string>("notyet");
-    const [value, setValue] = React.useState<Dayjs | null>(dayjs(Date.now()));
+    const [dateToValue, setDateToValue] = React.useState<Dayjs | null>(dayjs(Date.now()));
+    const [dateFromValue, setDateFromValue] = React.useState<Dayjs | null>(dayjs(Date.now()));
+    const [isPublic, setIsPublic] = useState<boolean>(false);
     const [date, setDate] = useState<Date>();
     const [accessToken, setAccessToken] = useRecoilState<string>(accessTokenState);
 
 
-    const onCreateCollection = ( e : React.FormEvent ) => {
+    const onCreateCollection = async( e : React.FormEvent ) => {
         e.preventDefault();
+        const imageRes = await axios.post('http://localhost:3002/image', formData);
+
+        const imageUrl = imageRes.data.url;
+        const title = titleRef?.current?.value ? titleRef.current.value : "";
+        const content = contentRef?.current?.value ? contentRef.current.value : "";
+        const githubLink = githubRef?.current?.value ? githubRef.current.value : "";
+        const siteUrl = siteRef?.current?.value ? siteRef.current.value : "";
+        let isCompleted = false;
+        if (status === "completed"){
+            isCompleted = true;
+        }
+        const res = await createTerminalPortfolio(accessToken, {dateFrom, dateTo, title, content, imageUrl, githubLink, siteUrl, isCompleted, onProcess : status, isPublic})
+        console.log(res);
     }
 
-    const handleChange = (newValue: Dayjs | null) => {
-        setValue(newValue);
+    const handleChangeDateFrom = (newValue: Dayjs | null) => {
+        setDateFromValue(newValue);
         if (newValue){
-        setDate(new Date(newValue.toString()));
+        setDateFrom(new Date(newValue.toString()));
+        }
+    };
+    const handleChangeDateTo = (newValue: Dayjs | null) => {
+        setDateToValue(newValue);
+        if (newValue){
+        setDateTo(new Date(newValue.toString()));
         }
     };
 
@@ -61,8 +88,8 @@ const TerminalCollectionForm = () => {
                         <DesktopDatePicker
                             label="Diary Diary"
                             inputFormat="MM/DD/YYYY"
-                            value={value}
-                            onChange={handleChange}
+                            value={dateFromValue}
+                            onChange={handleChangeDateFrom}
                             renderInput={(params) => <TextField {...params} />}
                         />
                     </LocalizationProvider>
@@ -73,8 +100,8 @@ const TerminalCollectionForm = () => {
                         <DesktopDatePicker
                             label="Diary Diary"
                             inputFormat="MM/DD/YYYY"
-                            value={value}
-                            onChange={handleChange}
+                            value={dateToValue}
+                            onChange={handleChangeDateTo}
                             renderInput={(params) => <TextField {...params} />}
                         />
                     </LocalizationProvider>
@@ -87,11 +114,15 @@ const TerminalCollectionForm = () => {
                     <div className="collection-form-text">Site Url</div>
                     <input id="site-input" type="text" ref={siteRef} />
                 </div>
-                <div className="collection-form-horizontal-wrapper">
-                    <div className="collection-form-text">Site Url</div>
-                    <input id="site-input" type="text" ref={siteRef} />
+                <div className="collection-form-privacy-wrapper">
+                    <div className="collection-form-text">열람 권한</div>
+                    <label htmlFor="private">비공개</label>
+                    <input id="private" type="radio" checked={!isPublic} onClick={() => setIsPublic(false)}/>
+                    <label id="public-label" htmlFor="public">공개</label>
+                    <input id="public" type="radio" checked={isPublic} onClick={() => setIsPublic(true)}/>
                 </div>
-                <button>제출</button>
+                <FileButton formData={formData} setFormData={setFormData} backgroundColor={"rgba(107,102,242, 0.7)"}/>
+                <button id="terminal-collection-submit-btn">제출</button>
             </form>
         </div>
     )

@@ -18,8 +18,11 @@ import { BookType } from "../../../types";
 import books from "../../../assets/books.jpeg";
 
 import "./BookSearchBar.scss";
-
-const BookSearchBar = () => {
+type BookSearchBarPropsType = {
+    showDropDown : boolean,
+    setShowDropDown : (bool : boolean) => void,
+}
+const BookSearchBar = ({showDropDown, setShowDropDown} : BookSearchBarPropsType) => {
     const [bookTitle, setBookTitle] = useState<string>("");
     const [isbn, setIsbn] = useState<string>("");
     const [suggestions, setSuggestions] = useState<BookType[]>([]);
@@ -38,6 +41,11 @@ const BookSearchBar = () => {
         const target = e.target as HTMLInputElement;
         setBookTitle(target.value);
     }
+    const onFocusSearchBar = ( e : React.FocusEvent ) => {
+        setFocused(true);
+        setShowDropDown(true);
+    }
+    
     useEffect(() => {
         if (suggestions.length > 0 && suggestions[0] && suggestions[0].isbn)
         setIsbn(suggestions[0].isbn);
@@ -54,7 +62,7 @@ const BookSearchBar = () => {
                 // onSubmit={onSubmit}
             >
             <InputBase
-                onFocus={() => setFocused(true)}
+                onFocus={onFocusSearchBar}
                 onBlur={() => setFocused(false)}
                 sx={{ ml: 1, flex: 1 }}
                 placeholder="Search Books"
@@ -68,7 +76,7 @@ const BookSearchBar = () => {
                 
             </Paper>
             {/* needs to implement on focus display Only */}
-            {focused && <BookDropDown suggestions={suggestions} bookTitle={bookTitle}/>}
+            {focused && showDropDown && <BookDropDown suggestions={suggestions} bookTitle={bookTitle} showDropDown={showDropDown} setShowDropDown={setShowDropDown}/>}
             
         </div>
     )

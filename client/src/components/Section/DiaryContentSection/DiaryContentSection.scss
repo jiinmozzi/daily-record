@@ -88,6 +88,10 @@
         .diary-display{
             width : 100%;
             display : flex;
+            
+            &:hover{
+                cursor : pointer;
+            }
             .diary-title{
                 width : 20%;
             }

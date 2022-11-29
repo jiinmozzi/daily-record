@@ -12,7 +12,7 @@ const ProgrammingPortfolioSchema = new Schema({
     imageUrl : String,
     createdAt : { type : Date, default : Date.now() }, 
     isCompleted : {type : Boolean, default : false},
-    onProcess : {type : Boolean, default : false},
+    onProcess : {type : String, required : true},
     histories : [{ 
         title : String,
         content : String,

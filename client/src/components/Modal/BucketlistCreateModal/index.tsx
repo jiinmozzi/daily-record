@@ -131,7 +131,7 @@ const BucketlistCreateModal = ({setShowModal} : BucketlistCreateFormType) => {
                     </div>
                 </div>
                 
-                <FileButton formData={formData} setFormData={setFormData}/>
+                <FileButton formData={formData} setFormData={setFormData} backgroundColor={"rgb(201,215,240)"}/>
                 <div id="bucketlist-create-submit-btn" onClick={onSubmit}>제출하기</div>
             </div>
         </div>

@@ -1,17 +1,57 @@
-.book-search-wrapper{
+.book-detail-wrapper{
     display : flex;
     flex-direction : column;
     justify-content : center;
     align-items : center;
+    padding-bottom : 800px;
     .paper{
         margin-top : 50px;
     }
-    .book-search-page-explanation{
+    .book-detail-page-explanation{
         display : flex;
         height : 80px;
+        margin-top : 100px;
         justify-content: center;
         align-items: center;
         font-size : 18px;
         font-weight : 900;
+    }
+    .book-detail-contents-container{
+        width : 80%;
+        display : flex;
+        background-color : black;
+        #book-detail-thumbnail{
+            width : 30%;
+            max-width : 30%;
+        }
+        #book-detail-contents{
+            display : flex;
+            flex-direction: column;
+            background-color : beige;
+            width : 70%;
+            gap : 10px;
+            padding-top : 20px;
+            padding-left : 3%;
+            .book-detail-content{
+                width : 100%;
+                display : flex;
+                flex-wrap : nowrap;
+                align-items : center;
+                .book-detail-text{
+                    font-weight : bold;
+                    font-size : 20px;
+                    margin-right : 20px;
+                    width : 100px;
+                }
+                .book-detail-info{
+                    width : 70%;
+                    color : rgb(89,89,89);
+                }
+            }
+            #book-detail-content-title{
+
+            }
+        }
+        
     }
 }
