@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AssetSummaryItem.scss";
-
+import stockError from "../../../assets/stockError.jpg";
 type AssetSummaryItemPropsType = {
     ticker : string,
     name : string,
@@ -31,9 +31,14 @@ const AssetSummaryItem = ({ticker, name, country} : AssetSummaryItemPropsType) =
     const onMouseDownInner = (e : React.MouseEvent) => {
         e.preventDefault();
     }
+
+    const setImageOnError = (e : React.SyntheticEvent<HTMLImageElement, Event>) => {
+        console.log('hello')
+        e.currentTarget.src = stockError;
+    }
     return (
         <div className="asset-summary-item-wrapper" onMouseDown={onMouseDownInner} onClick={navigateToAssetTicker}>
-            <img className="asset-summary-stock-image" src={stockImageUrl} alt={ticker} />
+            <img className="asset-summary-stock-image" src={stockImageUrl} onError={setImageOnError} alt={ticker} />
             <div className="asset-summary-name-info">
                 <div className="asset-summary-name">{name.length > 25 ? name.slice(0, 25) + "..." : name}</div>
                 <div className="asset-summary-ticker">{ticker}</div>

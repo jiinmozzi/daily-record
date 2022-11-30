@@ -7,7 +7,7 @@ import { redirect, useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import createDiary from "../../../api/createDiary";
 import { accessTokenState } from "../../../store/atom";
-
+import EmojiModal from "../../Modal/EmojiModal";
 import "./DiaryCreateTemplate.scss";
 
 const DiaryCreateTemplate = () => {
@@ -15,9 +15,11 @@ const DiaryCreateTemplate = () => {
     const titleRef = useRef<HTMLInputElement>(null);
     const contentRef = useRef<HTMLTextAreaElement>(null);
     const [date, setDate] = useState<Date>();
-    const [emoji, setEmoji] = useState<string>("");
+    const [emoji, setEmoji] = useState<string>("🧑🏻‍💻");
     const [isPublic, setIsPublic] = useState<boolean>(true);
     const [value, setValue] = React.useState<Dayjs | null>(dayjs(Date.now()));
+    const [showEmojiModal, setShowEmojiModal] = useState<boolean>(false);
+    const emojiManageRef = useRef<HTMLDivElement>(null);
 
     const handleChange = (newValue: Dayjs | null) => {
         setValue(newValue);
@@ -36,7 +38,8 @@ const DiaryCreateTemplate = () => {
         if (date){
             _date = new Date(date)
         }
-        const res = await createDiary(accessToken, {date : _date, title, content, emoji, isPublic})
+        
+        const res = await createDiary(accessToken, {date : _date, title, content, emoji, isPublic});
         
     }
 
@@ -58,7 +61,11 @@ const DiaryCreateTemplate = () => {
                     </div>
                     <div id="diary-emoji-wrapper">
                         <span id="diary-emoji-text">이모지</span>
-                        <div id="selected-emoji-container">🧑🏻‍💻</div>
+                        <div id="selected-emoji-container" ref={emojiManageRef} onClick={() => setShowEmojiModal(true)}>
+                        {emoji}
+                        {showEmojiModal && <EmojiModal showEmojiModal={showEmojiModal} setShowEmojiModal={setShowEmojiModal} emojiManageRef={emojiManageRef} setEmoji={setEmoji}/>}
+                        </div>
+                        
                     </div>
                 </div>
                 <div id="diary-title-wrapper">

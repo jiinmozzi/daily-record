@@ -97,6 +97,11 @@
             }
             .diary-content{
                 width : 70%;
+                filter : blur(5px);
+                transition : 1s ease-out;
+                &:hover{
+                    filter : blur(0px);
+                }
             }
             .diary-created-at{
                 display : flex;

@@ -133,7 +133,9 @@ router.get('/emoji', setAuth, async(req : IUserRequest, res : Response) => {
 router.post('/emoji', setAuth, async(req : IUserRequest, res : Response) => {
     const user = req.user;
     const {emoji} = req.body;
-    user.emoji.push(emoji);
+    if (user.emoji.indexOf(emoji) === -1){
+        user.emoji.push(emoji);
+    }
     try{
         await user.save()
         return res.status(200).send({

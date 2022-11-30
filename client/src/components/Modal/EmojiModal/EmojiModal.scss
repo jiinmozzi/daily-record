@@ -15,12 +15,22 @@
         color : rgba(36,36,36, 0.3);
         font-size : 12px;
     }
-    .my-emojis{
+    .my-emojis-text{
         width : 100%;
         color : black;
         font-weight : bold;
         font-size : 14px;
-        border-bottom : 1px solid #777;
+        
+    }
+    .my-emojis{
+        display : flex;
+        flex-wrap : wrap;
+        width : 100%;
+        gap : 5px;
+        border-bottom : 1px solid #bbb;
+        .my-emoji{
+            font-size : 20px;
+        }
     }
     .emoji{
         font-size : 20px;
@@ -34,4 +44,11 @@
         flex-wrap : wrap;
         gap : 5px;
     }
+}
+#emoji-success-alert{
+    position : absolute;
+    z-index : 20;
+    width : 280px;
+    top : 280px;
+    right : 0;
 }

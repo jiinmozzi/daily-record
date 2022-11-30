@@ -6,6 +6,23 @@ import "./DiarySentimentSection.scss";
 const DiarySentimentSection = ({diaries} : any) => {
     const [showEmojiModal, setShowEmojiModal] = useState<boolean>(false);
     const emojiManageRef = useRef<HTMLDivElement>(null);
+    const [emojiRanks, setEmojiRanks] = useState<any[]>([]);
+    useEffect(() => {
+        const obj : any = {};
+        diaries.forEach((e : any) => {
+            if(obj[e.emoji]){
+                obj[e.emoji] += 1;
+            }   else {
+                obj[e.emoji] = 1;
+            }
+        })
+        const keys = Object.keys(obj);
+        const arr : any = [];
+        keys.forEach(e => arr.push([e, obj[e]]));
+        arr.sort((a : any, b : any) => b[1] - a[1]);
+        setEmojiRanks(arr)
+    }, [diaries])
+
     return (
         <div className="diary-sentiment-section-wrapper">
             <div id="create-sentiment-section">
@@ -21,21 +38,30 @@ const DiarySentimentSection = ({diaries} : any) => {
                     <div className="sentiment-drop">
                         <div className="sentiment-content">
                             <h2 id="first-sentiment">01</h2>
-                            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quia laudantium ex quam et obcaecati aperiam exercitationem asperiores illo ut? Ipsum distinctio nobis aut hic doloremque rem autem eius error?</span>
+                            <span className="sentiment-rank-wrapper">
+                                <span className="sentiment-rank-emoji">{emojiRanks[0] ? emojiRanks[0][0] : null}</span>
+                                <span className="sentiment-rank-counts">총 {emojiRanks[0] ? emojiRanks[0][1] : null}회 기록되었습니다.</span>
+                            </span>
                             <nav id="first-nav">일기 보기</nav>
                         </div>
                     </div>
                     <div className="sentiment-drop">
                         <div className="sentiment-content">
                             <h2 id="second-sentiment">02</h2>
-                            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quia laudantium ex quam et obcaecati aperiam exercitationem asperiores illo ut? Ipsum distinctio nobis aut hic doloremque rem autem eius error?</span>
+                            <span className="sentiment-rank-wrapper">
+                                <span className="sentiment-rank-emoji">{emojiRanks[1] ? emojiRanks[1][0] : null}</span>
+                                <span className="sentiment-rank-counts">총 {emojiRanks[1] ? emojiRanks[1][1] : null}회 기록되었습니다.</span>
+                            </span>
                             <nav id="second-nav">일기 보기</nav>
                         </div>
                     </div>
                     <div className="sentiment-drop">
                         <div className="sentiment-content">
                             <h2 id="third-sentiment">03</h2>
-                            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quia laudantium ex quam et obcaecati aperiam exercitationem asperiores illo ut? Ipsum distinctio nobis aut hic doloremque rem autem eius error?</span>
+                            <span className="sentiment-rank-wrapper">
+                                <span className="sentiment-rank-emoji">{emojiRanks[2] ? emojiRanks[2][0] : "-"}</span>
+                                <span className="sentiment-rank-counts">총 {emojiRanks[2] ? emojiRanks[2][1] : 0}회 기록되었습니다.</span>
+                            </span>
                             <nav id="third-nav">일기 보기</nav>
                         </div>
                     </div>

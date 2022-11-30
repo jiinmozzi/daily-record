@@ -35,6 +35,12 @@
                     width : 50px;
                 }
                 #selected-emoji-container{
+                    position : relative;
+                    .emoji-modal-wrapper{
+                       position : absolute;
+                       top : 30px;
+                       left : 0px; 
+                    }
                     &:hover{
                         cursor : pointer;
                     }
