@@ -23,6 +23,9 @@ const Diary = () => {
             fetchDiaries().then(res => setDiaries(res.data));
         }
     }, [accessToken])
+    useEffect(() => {
+        console.log(diaries);
+    }, [diaries])
     return (
         <>
             <div className="diary-wrapper">

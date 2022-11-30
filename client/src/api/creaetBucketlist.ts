@@ -8,7 +8,7 @@ type BucketlistFormType = {
     isPublic : boolean,
 }
 const createBucketlist = async(token : string, {imageUrl, title, comment, field, isCompleted = false, isPublic = true} : BucketlistFormType) => {
-    return await sendRequest('bucketlist/bucketlist', 'POST', {}, true, token)
+    return await sendRequest('bucketlist/bucketlist', 'POST', {imageUrl, title, comment, field, isCompleted, isPublic}, true, token)
 }
 
 export default createBucketlist;

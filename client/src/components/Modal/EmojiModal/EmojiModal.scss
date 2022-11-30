@@ -1,7 +1,8 @@
 .emoji-modal-wrapper{
-    width : 250px;
-    height : 200px;
-    background-color : rgb(242, 242, 242);
+    width : 280px;
+    padding : 10px;
+    height : 220px;
+    background-color : rgb(249,249,249);
     display : flex;
     flex-wrap : wrap;
     overflow-y : auto;
@@ -10,15 +11,27 @@
     top : 60px;
     right: 0px;
     z-index : 100;
+    .my-emojis-select{
+        color : rgba(36,36,36, 0.3);
+        font-size : 12px;
+    }
     .my-emojis{
+        width : 100%;
         color : black;
+        font-weight : bold;
+        font-size : 14px;
+        border-bottom : 1px solid #777;
     }
     .emoji{
         font-size : 20px;
+        &:hover{
+            opacity : 0.6;
+        }
         // width : 30px;
     }
     .whole-emojis{
         display : flex;
         flex-wrap : wrap;
+        gap : 5px;
     }
 }

@@ -29,9 +29,19 @@
             }
             #mbti-progress-bar{
                 width : 100%;
+                position : relative;
                 height : 5px;
                 margin-top : 5px;
                 background-color : gray;
+                border-radius : 2.5px;
+            }
+            #mbti-progress-percent{
+                position : absolute;
+                height : 5px;
+                border-radius : 2.5px;
+                left : 0; 
+                top : 0;
+                background-color : black;
             }
         }
         #mbti-question-number{}

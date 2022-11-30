@@ -19,7 +19,7 @@ const DiaryDetail = () => {
             <DiaryCalendar />
             { diary && 
             <div className="diary-detail-content-wrapper">
-                <div id="diary-detail-emoji">{diary.emojiCode}</div>
+                <div id="diary-detail-emoji">{diary.emoji}</div>
                 <div id="diary-detail-date">{diary.date.toString().split('T')[0]}</div>
                 <div id="diary-detail-title">{diary.title}</div>
                 <div id="diary-detail-content">{diary.content}</div>

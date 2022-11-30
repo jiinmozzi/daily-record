@@ -14,11 +14,16 @@
         gap : 20px;
         position : relative;
         #diary-detail-emoji{
-            width : 60px;
-            height : 60px;
+            width : 65px;
+            height : 65px;
             // background-color : black;
-            border : 3px solid rgb(126,104,227);
+            border : 3px solid rgb(216,216,216);
+            // background-color : #888;
             border-radius: 50%;
+            display : flex;
+            justify-content : center;
+            align-items: center;
+            font-size : 45px;
         }
         #diary-detail-title{
             font-weight : bold;

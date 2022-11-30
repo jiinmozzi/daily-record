@@ -15,7 +15,7 @@ const DiaryCreateTemplate = () => {
     const titleRef = useRef<HTMLInputElement>(null);
     const contentRef = useRef<HTMLTextAreaElement>(null);
     const [date, setDate] = useState<Date>();
-    const [emojiCode, setEmojiCode] = useState<string>("");
+    const [emoji, setEmoji] = useState<string>("");
     const [isPublic, setIsPublic] = useState<boolean>(true);
     const [value, setValue] = React.useState<Dayjs | null>(dayjs(Date.now()));
 
@@ -36,7 +36,7 @@ const DiaryCreateTemplate = () => {
         if (date){
             _date = new Date(date)
         }
-        const res = await createDiary(accessToken, {date : _date, title, content, emojiCode, isPublic})
+        const res = await createDiary(accessToken, {date : _date, title, content, emoji, isPublic})
         
     }
 

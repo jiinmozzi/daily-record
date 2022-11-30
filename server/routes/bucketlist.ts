@@ -33,6 +33,7 @@ router.post('/bucketlist', setAuth, async(req : IUserRequest, res : Response) =>
     const user = req.user;
     const {imageUrl, title, comment, field, isCompleted, isPublic} = req.body; 
     const createdAt = new Date();
+    console.log(req.body);
     try {
         const newBucketlist = new BucketList({
             user, imageUrl, createdAt, title, comment, field, isCompleted, isPublic,

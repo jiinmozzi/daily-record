@@ -10,7 +10,7 @@ type DiaryType = {
     date : Date,
     title : string,
     content : string,
-    emojiCode : string,
+    emoji : string,
     createdAt : Date,
     isPublic : boolean
     _id : string,
@@ -20,6 +20,9 @@ type DiaryContentSectionPropsType = {
 }
 
 const DiaryContentSection = ({diaries} : DiaryContentSectionPropsType) => {
+    useEffect(() => {
+        console.log(diaries);
+    }, [])
     const navigate = useNavigate();
     const [user, setUser] = useRecoilState<UserType>(userState);
     const [criterion, setCritierion] = useState<string>("date");
@@ -46,7 +49,7 @@ const DiaryContentSection = ({diaries} : DiaryContentSectionPropsType) => {
                     })}>
                         <div className="diary-title">{diary.title.length > 14 ? diary.title.slice(0, 14) + '...' : diary.title}</div>
                         <div className="diary-content">{diary.content.length > 40 ? diary.content.slice(0, 40) + "..." : diary.content}</div>
-                        <div className="diary-created-at">{diary.createdAt.toString().slice(0, diary.createdAt.toString().indexOf('T'))}</div>
+                        <div className="diary-created-at">{diary.date.toString().slice(0, diary.date.toString().indexOf('T'))}</div>
                     </div>
                 )
                 }

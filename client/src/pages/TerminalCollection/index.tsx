@@ -18,12 +18,24 @@ import "./TerminalCollection.scss"
 const TerminalCollection = () => {
     const navigate = useNavigate();
     const [accessToken, setAccessToken] = useRecoilState<string>(accessTokenState);
+    const [completed, setCompleted] = useState<any[]>([]);
+    const [notYet, setNotYet] = useState<any[]>([]);
+    const [ongoing, setOngoing] = useState<any[]>([]);
     useEffect(() => {
         if (accessToken){
             const fetchPortfolios = async() => {
                 return await getUserProgrammingPortfolio(accessToken);
             }
-            fetchPortfolios().then(res => console.log(res));
+            fetchPortfolios().then(res => {
+                console.log(res);
+                if (res.message === "OK"){
+                    setCompleted(res.data.filter((e:any) => e.onProcess === "completed"));
+                    setNotYet(res.data.filter((e:any) => e.onProcess === "notyet"));
+                    setOngoing(res.data.filter((e:any) => e.onProcess === "ongoing"));
+                }
+                
+            });
+
         }
     }, [accessToken])
     return (
@@ -36,7 +48,7 @@ const TerminalCollection = () => {
                         <BlurOnIcon style={{ color : "rgb(145,145,141)"}}/>
                         <span className="collection-box-title" id="collection-not-yet">시작 전</span>
                     </div>
-                    <TerminalCollectionCard />
+                    {notYet.map(e => <TerminalCollectionCard/>)}
                     <span className="create-collection-navs" id="create-not-you" onClick={() => navigate('/terminal/create/collection')}>+ 새로 만들기</span>
                 </div>
                 <div className="collection-on-process collection-box">
@@ -44,8 +56,7 @@ const TerminalCollection = () => {
                         <PlayCircleOutlineIcon style={{ color : "rgb(99,155,191)" }}/>
                         <span className="collection-box-title" id="collection-process">진행 중</span>
                     </div>
-                    <TerminalCollectionCard />
-                    <TerminalCollectionCard />
+                    {ongoing.map(e => <TerminalCollectionCard/>)}
                     <span className="create-collection-navs" id="create-on-process" onClick={() => navigate('/terminal/create/collection')}>+ 새로 만들기</span>
                 </div>
                 <div className="collection-done collection-box">
@@ -53,7 +64,7 @@ const TerminalCollection = () => {
                         <CheckCircleOutlineIcon style={{ color : "rgb(107,155,125)" }} />
                         <span className="collection-box-title" id="collection-done">완료</span>
                     </div>
-                    <TerminalCollectionCard />
+                    {completed.map(e => <TerminalCollectionCard/>)}
                     <span className="create-collection-navs" id="create-done" onClick={() => navigate('/terminal/create/collection')}>+ 새로 만들기</span>
                 </div>
             </div>

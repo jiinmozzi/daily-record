@@ -1,5 +1,6 @@
 import {useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
+import { DiaryType } from "../../../types";
 import renderCalendar from "../../../utils/renderCalender";
 
 import "./DiaryCalendar.scss";
@@ -32,13 +33,23 @@ const DiaryCalendar = ({diaries} : any) => {
                 <span className="today-day">{day}</span>
             </div>
             <div className="diary-dates">
-            {   dates.map(e => {
+            {   dates.map((e, idx) => {
                 return new Date().getMonth() === month-1 && new Date().getDate() === e ? (
-                    <div className="diary-date-indicator highlight">{e}</div>
-                ) : <div className="diary-date-indicator" style={{ color : 
-                    new Date(year, month-1, e).getDay() === 0 ? "red" :
-                    new Date(year, month-1, e).getDay() === 6 ? "#368dd2"
-                    : "black" }}>{e}</div>
+                    <div className="diary-emoji-summary-wrapper">
+                        <div className="diary-date-indicator highlight">
+                            {e}
+                        </div>
+                        <div className="diary-recorded-emoji">{diaries.find((e : DiaryType) => new Date(e.date).getFullYear() === year && new Date(e.date).getMonth() === month - 1 && new Date(e.date).getDate() === idx+1)?.emoji }</div>
+                    </div>
+                ) : 
+                <div className="diary-emoji-summary-wrapper">
+                    <div className="diary-date-indicator" style={{ color : 
+                        new Date(year, month-1, e).getDay() === 0 ? "red" :
+                        new Date(year, month-1, e).getDay() === 6 ? "#368dd2"
+                        : "black" }}>{e}
+                    </div>
+                    <div className="diary-recorded-emoji">{diaries.find((e : DiaryType) => new Date(e.date).getFullYear() === year && new Date(e.date).getMonth() === month - 1 && new Date(e.date).getDate() === idx+1)?.emoji }</div>
+                </div>
             })
             }
             </div>

@@ -32,7 +32,7 @@ router.get('/diaries', setAuth, async(req : IUserRequest, res : Response) => {
 })
 router.post('/diary', setAuth, async(req : IUserRequest, res : Response) => {
     const user = req.user;
-    const {date, title, content, emojiCode, isPublic} = req.body;
+    const {date, title, content, emoji, isPublic} = req.body;
     console.log(req.body)
     const createdAt = new Date();
     try {
@@ -41,7 +41,7 @@ router.post('/diary', setAuth, async(req : IUserRequest, res : Response) => {
             date,
             title,
             content,
-            emojiCode,
+            emoji,
             createdAt,
             isPublic,
         })
@@ -132,14 +132,14 @@ router.get('/emoji', setAuth, async(req : IUserRequest, res : Response) => {
 
 router.post('/emoji', setAuth, async(req : IUserRequest, res : Response) => {
     const user = req.user;
-    const {emojiCode} = req.body;
-    user.emoji.push(emojiCode);
+    const {emoji} = req.body;
+    user.emoji.push(emoji);
     try{
         await user.save()
         return res.status(200).send({
             message : "OK",
             status : 200,
-            data : emojiCode
+            data : emoji
         })
     }   catch (err){
         return res.status(400).send({

@@ -50,6 +50,14 @@ const BookDetail = () => {
                         <span className="book-detail-text">내용</span>
                         <span className="book-detail-info">{book.contents}</span>
                     </div>
+                    <div className="book-detail-content" id="book-detail-content-author">
+                        <span className="book-detail-text">저자</span>
+                        <span className="book-detail-info">{book.authors.toString()}</span>
+                    </div>
+                    <div className="book-detail-content" id="book-detail-content-date">
+                        <span className="book-detail-text">출간일</span>
+                        <span className="book-detail-info">{book.datetime.toString().split('T')[0]}</span>
+                    </div>
                 </div>
             </div>
             {/* { bookISBN !== "" && book && <SearchedBookCard authors={book.authors} title={book.title} contents={book.contents} price={book.price} thumbnail={book.thumbnail} datetime={book.datetime} isbn={book.isbn}/> }

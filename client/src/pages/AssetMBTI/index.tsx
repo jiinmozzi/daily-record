@@ -7,7 +7,7 @@ import mbtiQuestion from "../../assets/mbtiQuestion.json";
 import mbtiResult from "../../assets/mbtiResult.json";
 const AssetMBTI = () => {
     const [answers, setAnswers] = useState<number[]>([0,0,0,0,0,0,0,0]);
-    
+    const [page, setPage] = useState<number>(0);
     const navigate = useNavigate();
     // const submitMBTIQuestionnaire = (e : ) => {}
     return (
@@ -16,7 +16,10 @@ const AssetMBTI = () => {
                 <span id="mbti-questionnaire-title">투자 MBTI</span>
                 <div id="mbti-progress-indicator">
                     <span id="mbti-progress-span">1 / 8</span>
-                    <div id="mbti-progress-bar"></div>
+                    <div id="mbti-progress-bar">
+                        <div id="mbti-progress-percent" style={{ width : `${page * 12.5}%` }}></div>
+                    </div>
+                    
                 </div>
                 <div id="mbti-question-number"></div>
                 <div id="mbti-question"></div>

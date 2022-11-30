@@ -18,7 +18,7 @@ export type DiaryType = {
     date : Date,
     title : string,
     content : string,
-    emojiCode : string,
+    emoji : string,
     createdAt : Date,
     isPublic : boolean,
     _id : string,

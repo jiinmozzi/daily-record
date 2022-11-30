@@ -17,7 +17,7 @@ const UserSchema = new Schema({
     books : [{type : Schema.Types.ObjectId, ref : "Book"}],
     bookWishLists : [{type : Schema.Types.ObjectId, ref : "BookWishList"}],
     outsourcings : [{type : Schema.Types.ObjectId, ref : "Outsourcing"}],
-    prgrammingPortfolios : [{type : Schema.Types.ObjectId, ref : "ProgrammingPortfolio"}],
+    programmingPortfolios : [{type : Schema.Types.ObjectId, ref : "ProgrammingPortfolio"}],
     programmingStudies : [{type : Schema.Types.ObjectId, ref : "ProgrammingStudy"}],
     programmingDailies : [{type : Schema.Types.ObjectId, ref : "ProgrammingDaily"}],
     keyboard : [{type : Schema.Types.ObjectId, ref : "Keyboard"}],

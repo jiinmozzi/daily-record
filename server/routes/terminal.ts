@@ -10,7 +10,11 @@ interface IUserRequest extends Request {
 }
 router.get('/portfolio', setAuth, async(req : IUserRequest, res : Response) => {
     const user = req.user;
-    const portfolios = user.prgrammingPortfolios;
+    console.log(user);
+    
+    const portfolios = user.programmingPortfolios;
+    
+    console.log(user.programmingPortfolios);
     const userPortfolios : any[] = [];
     try {
         for (let i=0; i<portfolios.length; i++){
@@ -22,6 +26,7 @@ router.get('/portfolio', setAuth, async(req : IUserRequest, res : Response) => {
             message : "OK"
         })
     }   catch (err){
+        console.log(err)
         return res.send({
             status : 500,
             message : "FAIL",
