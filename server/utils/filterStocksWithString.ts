@@ -44,7 +44,7 @@ const filterStocksWithString = (input : string) => {
         e[0].toLowerCase().includes(input.toLowerCase()) || 
         e[1].toLowerCase().includes(input.toLowerCase())
     );
-    console.log({'NASDAQ' : [...nasdaqResult], 'NYSE' : [...nyseResult]}, {'KOSPI' : [...kospiResult]}, {'KOSDAQ': [...kosdaqResult]}, {'AMEX' : [...amexResult]});
+    // console.log({'NASDAQ' : [...nasdaqResult], 'NYSE' : [...nyseResult]}, {'KOSPI' : [...kospiResult]}, {'KOSDAQ': [...kosdaqResult]}, {'AMEX' : [...amexResult]});
     return {'NASDAQ' : [...nasdaqResult], 'NYSE' : [...nyseResult], 'KOSPI' : [...kospiResult], 'KOSDAQ': [...kosdaqResult], 'AMEX' : [...amexResult]};
 }
 

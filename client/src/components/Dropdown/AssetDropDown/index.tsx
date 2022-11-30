@@ -5,7 +5,7 @@ import AssetSummaryItem from "../../Item/AssetSummaryItem";
 
 import "./AssetDropDown.scss";
 
-const AssetDropDown = ({assetSuggestions} : any) => {
+const AssetDropDown = ({assetSuggestions, focused, setFocused} : any) => {
     const [assetCount, setAssetCount] = useState<number>(0);
     
 
@@ -20,7 +20,7 @@ const AssetDropDown = ({assetSuggestions} : any) => {
 
 
     return (
-        <div className="asset-dropdown-wrapper" style={{ height : assetCount > 0 ? "280px" : "80px"}}>
+        <div className="asset-dropdown-wrapper" style={{ height : assetCount > 0 ? "280px" : "80px"}} onClick={() => setFocused(false)}>
         {assetSuggestions && 
             <>
                 {assetSuggestions.NASDAQ && assetSuggestions.NASDAQ.slice(0, 10).map((e : string[]) => <AssetSummaryItem ticker={e[0]} name={e[1]} country={'US'}/>)}            

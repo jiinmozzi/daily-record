@@ -6,7 +6,7 @@ import AssetSearchSection from "../../components/Section/AssetSearchSection";
 import AssetMbtiSection from "../../components/Section/AssetMbtiSection";
 import AssetIndexSection from "../../components/Section/AssetIndexSection";
 import AssetMarketCapSection from "../../components/Section/AssetMarketCapSection";
-import AssetDividendSection from "../../components/Section/AssetDividendSection";
+import AssetNewsSection from "../../components/Section/AssetNewsSection";
 
 import "./Asset.scss";
 
@@ -22,7 +22,7 @@ const Asset = () => {
             <AssetMbtiSection />
             <AssetIndexSection />
             <AssetMarketCapSection />
-            <AssetDividendSection />
+            <AssetNewsSection />
         </div>
     )
 }

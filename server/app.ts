@@ -4,12 +4,12 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const app : Application= express();
 
-
+const NewsAPI = require('newsapi');
 const AWS = require('aws-sdk');
-
-const mongoose = require('mongoose');
 const cors = require('cors');
 
+const mongoose = require('mongoose');
+const {News} = require("./models");
 AWS.config.update({
     accessKeyId : process.env.S3_ACCESS_KEY_ID,
     secretAccessKey : process.env.S3_SECRET_ACCESS_KEY,
@@ -47,5 +47,25 @@ const port = process.env.PORT;
 
 const server = app.listen(port, () => {
     console.log(`Listening at port ${port}`);
+    // const newsapi = new NewsAPI(process.env.NEWS_API_KEY);
+    // newsapi.v2.topHeadlines({
+    //     q: 'ethereum',
+    //     category: 'business',
+    //     language: 'en',
+    //     country: 'us',
+    //   }).then(async(response : any)=> {
+    //     if (Number(response.totalResults > 0)){
+    //         const {title, author, description, publishedAt, url, urlToImage} = response.articles[0];
+    //         const news = new News({
+    //             title,
+    //             author,
+    //             description,
+    //             publishedAt,
+    //             url,
+    //             urlToImage,
+    //         })
+    //         await news.save();
+    //         console.log(response);
+    //     }
+    //   });
 })
-

@@ -11,6 +11,7 @@ import AssetSearchBar from "../../components/SearchBar/AssetSearchBar";
 import AssetSearchSection from "../../components/Section/AssetSearchSection";
 
 import "./AssetDetail.scss";
+import getStockInfo from "../../api/getStock";
 
 const AssetDetail = () => {
     const [assetData, setAssetData] = useState<any[]>([]);
@@ -23,9 +24,8 @@ const AssetDetail = () => {
     useCallback(() => {
         if ( ticker && ticker.length > 0 ){
             const fetch = async() => {
-                const res = await axios.get(`http://localhost:3002/asset/${ticker}`);
+                const res = await getStockInfo(ticker);
                 setAssetData(res.data.data);
-                console.log(res);
             }
             fetch();
         }

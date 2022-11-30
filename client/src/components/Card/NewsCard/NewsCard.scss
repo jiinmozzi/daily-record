@@ -1,0 +1,29 @@
+.news-card-wrapper{
+    display : flex;
+    flex-direction : column;
+    width : 300px;
+    border-radius : 15px;
+    margin-top : 50px;
+    .news-card-thumbnail{
+        width : 100%;
+        border-radius : 15px    ;
+        height : 200px;
+        transition: 0.2s ease-in-out;
+        &:hover{
+            transform : translateY(40px);
+            transform : scale(1.05);
+            cursor : pointer;
+        }
+    }
+    .news-card-title{
+        margin-top : 10px;
+        
+        font-size : 16px;
+        font-weight : bold;
+    }
+    .news-card-author{
+        font-weight : bold;
+        font-size : 12px;
+        margin-top : 3px;
+    }
+}

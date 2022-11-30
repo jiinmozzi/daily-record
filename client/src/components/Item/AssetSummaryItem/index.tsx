@@ -33,7 +33,6 @@ const AssetSummaryItem = ({ticker, name, country} : AssetSummaryItemPropsType) =
     }
 
     const setImageOnError = (e : React.SyntheticEvent<HTMLImageElement, Event>) => {
-        console.log('hello')
         e.currentTarget.src = stockError;
     }
     return (

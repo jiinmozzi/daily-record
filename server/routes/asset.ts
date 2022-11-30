@@ -9,7 +9,7 @@ import getExchangeRate from "../utils/getExchangeRate";
 import getAssetFullName from "../utils/getAssetFullname";
 import getTodayEightDigitDate from "../utils/getTodayEightDigitDate";
 import filterStocksWithString from "../utils/filterStocksWithString";
-const {Asset, AssetTradeHistory} = require('../models');
+const {Asset, AssetTradeHistory, News} = require('../models');
 const router = express.Router();
 
 
@@ -137,15 +137,7 @@ router.get('/marketcap', async(req : Request, res : Response) => {
     });
 }) 
 
-router.get('/:stock', (req : Request, res : Response) => {
-    const {stock} = req.params;
-    
-    return res.status(200).send({
-        message : "OK",
-        data : filterStocksWithString(stock),
-        status : 200,
-    })
-}) 
+
 
 
 
@@ -264,6 +256,23 @@ router.post('/sell/stock', async( req : IUserRequest, res : Response ) => {
     }
     // adjust balance ;    
 })
+router.get('/news', async(req : Request, res : Response) => {
+    try {
+        const news = await News.find({});
+        console.log(news);
+        return res.status(200).send({
+            message : "OK",
+            status : 200,
+            data : news,
+        })    
+    }   catch (err){
+        return res.status(400).send({
+            message : "FAIL",
+            status : 400,
+        })
+    }
+    
+})
 
 router.post('/mbti', setAuth, (req : IUserRequest, res : Response) => {
     const user = req.user;
@@ -284,7 +293,15 @@ router.post('/mbti', setAuth, (req : IUserRequest, res : Response) => {
     }
 })
 
-
+router.get('/:stock', (req : Request, res : Response) => {
+    const {stock} = req.params;
+    
+    return res.status(200).send({
+        message : "OK",
+        data : filterStocksWithString(stock),
+        status : 200,
+    })
+}) 
 
 
 

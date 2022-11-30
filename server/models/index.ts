@@ -20,6 +20,7 @@ const Travel = require('./Travel');
 const TravelWishList = require('./TravelWishList');
 const Fitness = require('./Fitness');
 const WeeklySchedule = require('./WeeklySchedule');
+const News = require('./News');
 // import {User} from './User';
 
 require('dotenv').config();
@@ -46,5 +47,5 @@ switch(mongoose.connection.readyState){
 }
 
 
-module.exports = {Asset, Book, BookWishList, BucketList, BucketWishList, Coin, CoinTradeHistory, Diary, Outsourcing, ProgrammingPortfolio, ProgrammingStudy, ProgrammingDaily, Schedule, Travel, TravelWishList, User, Keyboard, Fitness, WeeklySchedule};
+module.exports = {Asset, Book, BookWishList, BucketList, BucketWishList, Coin, CoinTradeHistory, Diary, Outsourcing, ProgrammingPortfolio, ProgrammingStudy, ProgrammingDaily, Schedule, Travel, TravelWishList, User, Keyboard, Fitness, WeeklySchedule, News};
 // export {}

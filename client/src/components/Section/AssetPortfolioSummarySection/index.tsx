@@ -8,10 +8,6 @@ type AssetPortfolioSummarySectionPropsType = {
 
 const AssetPortfolioSummarySection = ({assetPortfolio} : AssetPortfolioSummarySectionPropsType) => {
 
-    useEffect(() => {
-        console.log('hello', assetPortfolio);
-    }, []) 
-
     return (
         <div className="asset-portfolio-summary-section-wrapper">
             <div className="asset-portfolio-summary-section-inner">
