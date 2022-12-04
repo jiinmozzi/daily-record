@@ -3,4 +3,10 @@
     height : 920px;
     background-color : green;
     color : white;
+    display : flex;
+    flex-direction: column;
+    align-items: center;
+    flex-flow : column-wrap;
+    padding-top : 20px;
+    gap : 20px;
 }

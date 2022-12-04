@@ -49,19 +49,19 @@ const AssetPortfolio = () => {
         if (fetched && exchangeRate > 1 && assetPortfolio.length > 0){
             Object.keys(nonKosdaq).forEach((ticker) =>  {
                 if (ticker.indexOf('.KS') !== -1){
-                    sum += Number(nonKosdaq[ticker][1].close) * assetPortfolio.find((e : any) => e.ticker === ticker.replace('.KS', '')).balance;
+                    sum += Number(nonKosdaq[ticker][0].close) * assetPortfolio.find((e : any) => e.ticker === ticker.replace('.KS', '')).balance;
                     // console.log("---------------------------------------")
                     // console.log(`${ticker}, ${assetPortfolio.find((e: any) => e.ticker === ticker.replace('.KS', '')).balance}, ${nonKosdaq[ticker][1].close}`)
                     // console.log("---------------------------------------")
                 }   else {
-                    sum += Number(nonKosdaq[ticker][1].close) * assetPortfolio.find((e:any) => e.ticker === ticker).balance * exchangeRate;
+                    sum += Number(nonKosdaq[ticker][0].close) * assetPortfolio.find((e:any) => e.ticker === ticker).balance * exchangeRate;
                     // console.log("---------------------------------------")
                     // console.log(`${ticker}, ${assetPortfolio.find((e: any) => e.ticker === ticker).balance}, ${nonKosdaq[ticker][1].close * exchangeRate}`)
                     // console.log("---------------------------------------")
                 }
             })
             Object.keys(kosdaq).forEach((ticker) => {
-                sum += kosdaq[ticker][kosdaq[ticker].length -2][4] * assetPortfolio.find((e:any) => e.ticker === ticker).balance;
+                sum += kosdaq[ticker][kosdaq[ticker].length - 1][4] * assetPortfolio.find((e:any) => e.ticker === ticker).balance;
                 // console.log("---------------------------------------")
                 // console.log(`${kosdaq[ticker][kosdaq[ticker].length -2][4] * assetPortfolio.find((e:any) => e.ticker === ticker).balance}`)
                 // console.log("---------------------------------------")
@@ -84,7 +84,7 @@ const AssetPortfolio = () => {
                     <AssetPortfolioGraphSection assetPortfolio={assetPortfolio}/>
                 </div>
                 <div id="asset-portfolio-bottom-right-wrapper">
-                    <AssetPortfolioDetailSection assetPortfolio={assetPortfolio}/>
+                    <AssetPortfolioDetailSection assetPortfolio={assetPortfolio} kosdaq={kosdaq} nonKosdaq={nonKosdaq}/>
                 </div>
             </div>
         </div>
