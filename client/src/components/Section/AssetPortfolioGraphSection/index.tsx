@@ -2,10 +2,9 @@ import {useState, useEffect} from "react";
 
 import "./AssetPortfolioGraphSection.scss";
 
-import { AssetPortfolioType } from "../../../pages/AssetPortfolio";
 
 type AssetPortfolioGraphSectionPropsType = {
-    assetPortfolio : AssetPortfolioType[],
+    assetPortfolio : any[],
 }
 
 const AssetPortfolioGraphSection = ({assetPortfolio} : AssetPortfolioGraphSectionPropsType) => {

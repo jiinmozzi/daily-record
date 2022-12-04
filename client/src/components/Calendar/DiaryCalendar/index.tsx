@@ -26,6 +26,10 @@ const DiaryCalendar = ({diaries} : any) => {
         setDate(date);
         setDay(dayList[day]);
     }, [])
+
+    useEffect(() => {
+        console.log(diaries);
+    }, [diaries])
     return (
         <div className="diary-calendar-wrapper">
             <div className="today">
@@ -39,7 +43,7 @@ const DiaryCalendar = ({diaries} : any) => {
                         <div className="diary-date-indicator highlight">
                             {e}
                         </div>
-                        <div className="diary-recorded-emoji">{diaries.find((e : DiaryType) => new Date(e.date).getFullYear() === year && new Date(e.date).getMonth() === month - 1 && new Date(e.date).getDate() === idx+1)?.emoji }</div>
+                        {/* <div className="diary-recorded-emoji">{diaries.find((e : DiaryType) => new Date(e.date).getFullYear() === year && new Date(e.date).getMonth() === month - 1 && new Date(e.date).getDate() === idx+1)?.emoji }</div> */}
                     </div>
                 ) : 
                 <div className="diary-emoji-summary-wrapper">
@@ -48,7 +52,7 @@ const DiaryCalendar = ({diaries} : any) => {
                         new Date(year, month-1, e).getDay() === 6 ? "#368dd2"
                         : "black" }}>{e}
                     </div>
-                    <div className="diary-recorded-emoji">{diaries.find((e : DiaryType) => new Date(e.date).getFullYear() === year && new Date(e.date).getMonth() === month - 1 && new Date(e.date).getDate() === idx+1)?.emoji }</div>
+                    {/* <div className="diary-recorded-emoji">{diaries.length > 0 && diaries.find((e : DiaryType) => new Date(e.date).getFullYear() === year && new Date(e.date).getMonth() === month - 1 && new Date(e.date).getDate() === idx+1)?.emoji }</div> */}
                 </div>
             })
             }

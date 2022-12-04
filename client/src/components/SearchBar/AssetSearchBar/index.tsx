@@ -10,7 +10,8 @@ const AssetSearchBar = () => {
     const [asset, setAsset] = useState<string>("");
     const [focused, setFocused] = useState<boolean>(false);
     const [assetSuggestions, setAssetSuggestions] = useState<any>({});
-    
+    const [currentAsset, setCurrentAsset] = useState<string>("");
+
     useEffect(() => {
         console.log(assetSuggestions);
     }, [assetSuggestions])
@@ -34,7 +35,7 @@ const AssetSearchBar = () => {
 
     const onSubmit = async( e : React.FormEvent ) => {
         e.preventDefault();
-        navigate(`/asset/${asset}`)
+        // navigate(`/asset/${asset}`)
         // const res = await getAssetInfo(asset);
         // console.log(res);
     }

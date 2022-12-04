@@ -8,8 +8,6 @@ const AssetSchema = new Schema({
     averagePrice : Number,
     sector : String,
     balance : Number,
-    exchangeRate : Number,
-    currency : String,
     market : String,
 })
 

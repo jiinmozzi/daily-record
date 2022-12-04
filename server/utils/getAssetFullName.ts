@@ -1,11 +1,14 @@
 const fs = require('fs');
 
+const path = require('path');
+const dirPath = path.resolve(__dirname, '../data');
+
 const getAssetFullName = (ticker : string) => {
-    const kospi = fs.readFileSync('../data/kospi.json');
-    const kosdaq = fs.readFileSync('../data/kosdaq.json');
-    const nyse = fs.readFileSync('../data/nyse.json');
-    const nasdaq = fs.readFileSync('../data/nasdaq.json');
-    const amex = fs.readFileSync('../data/amex.json');
+    const kospi = fs.readFileSync(`${dirPath}/kospi.json`);
+    const kosdaq = fs.readFileSync(`${dirPath}/kosdaq.json`);
+    const nyse = fs.readFileSync(`${dirPath}/nyse.json`);
+    const nasdaq = fs.readFileSync(`${dirPath}/nasdaq.json`);
+    const amex = fs.readFileSync(`${dirPath}/amex.json`);
 
     const kospiJson = JSON.parse(kospi);
     const kosdaqJson = JSON.parse(kosdaq);
@@ -47,8 +50,8 @@ const getAssetFullName = (ticker : string) => {
         stockName : amexExists[1],
         market : "AMEX"
     }
-
     return null;
+    // throw new Error(`NO TICKER IN JSON FILE ${ticker}`);
 }
 
 export default getAssetFullName;

@@ -31,15 +31,12 @@ const CountrySearchBar = ({selectedCountry, setSelectedCountry, usersTravelHisto
         setCountryList(_countryList);
     }, [countries]);
     
-    useEffect(() => {
-        console.log(usersTravelHistory);
-    }, [usersTravelHistory])
-    
     const onChange = (e : React.SyntheticEvent) => {
         const target = e.target as HTMLElement;
-        setSelectedCountry(target.innerHTML);
+        // setSelectedCountry(target.innerHTML);
+        setSelectedCountry(target.innerText);
     } 
-
+    
     const toggleVisited = async(e : React.MouseEvent) => {
         const _toggleTravelHistory = async() => {
             return await toggleTravelHistory(accessToken, selectedCountry, "VISITED");
@@ -72,16 +69,19 @@ const CountrySearchBar = ({selectedCountry, setSelectedCountry, usersTravelHisto
         }
         _toggleTravelHistory().then(res => console.log(res));
     }
+    
+    
 
     return countryList && usersTravelHistory && (
         <div className="country-search-bar-wrapper">
             <Autocomplete
-            disablePortal
-            id="combo-box-demo"
-            options={countryList}
-            sx={{ width: 300}}
-            renderInput={(params) => <TextField {...params} label="Search Country..." />}
-            onChange={onChange}
+                disablePortal
+                id="combo-box-demo"
+                options={countryList}
+                sx={{ width: 300}}
+                renderInput={(params) => <TextField {...params} label="Search Country..." />}
+                onChange={onChange}
+                
             />
             {
                 selectedCountry &&

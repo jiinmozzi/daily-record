@@ -8,12 +8,11 @@ const getExchangeRate = async() : Promise<any> => {
 
     const res = await yahooFinance.historical({
         symbol : 'USDKRW=X',
-        from : `${month === 0 ? year-1 : year}-${month === 0 ? 12 : month}-${date}`,
-        to : `${year}-${month+1}-${date}`
+        from : `${year-2}-${String(month + 1).padStart(2, '0')}-${String(date).padStart(2, '0')}`,
+        to : `${year}-${String(month + 1).padStart(2, '0')}-${String(date).padStart(2, '0')}`
     }, (err : Error, quotes : any[]) => {
-        console.log(typeof quotes[0]);
         if (err) return null;
-        return quotes[0].adjClose;
+        return quotes;
     })
     return res;
 }

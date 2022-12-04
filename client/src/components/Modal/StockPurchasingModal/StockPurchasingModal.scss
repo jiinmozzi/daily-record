@@ -1,0 +1,214 @@
+.stock-purchasing-modal-wrapper{
+    position : fixed;
+    top : 0;
+    left : 0;
+    width : 100vw;
+    height : 100vh;
+    background-color : rgba(0,0,0,0.7);
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    .stock-purchasing-modal-inner{
+        width : 400px;
+        height : 600px;
+        background-color : #fff;
+        border-radius : 10px;
+        position : relative;
+        display : flex;
+        flex-direction: column;
+        color : black;
+        .close-icon{
+            fill : black;
+            position : absolute;
+            top : 20px;
+            right : 20px;
+            &:hover{
+                cursor : pointer;
+            }
+        }
+        #currency-selection-part{
+            display : flex;
+            width : 320px;
+            height : 40px;
+            margin-top : 60px;
+            margin-left : 40px;
+            border-top : 2px solid #999;
+            border-bottom : 2px solid #999;
+            .currency{
+                width : 160px;
+                display : flex;
+                justify-content: center;
+                align-items: center;
+                color : black;
+                font-weight : bold;
+                &:hover{
+                    cursor : pointer;
+                }
+            }
+            #currency-usd{
+                border-right : 2px solid #999;
+            }
+        }
+        #purchasing-asset-ticker{
+            margin-left : 40px;
+            color : rgb(246,150,54);
+            margin-top : 20px;   
+            font-size : 20px;
+            font-weight : bold;
+            display : flex;
+            #purchasing-ticker{
+                font-size : 20px;
+                font-weight : bold;
+                display : flex;
+                flex-direction : column-reverse;
+            }
+            #purchasing-assetname{
+                display : flex;
+                margin-left : 5px;
+                flex-direction : column-reverse;
+                font-size : 12px;
+                color : #999;
+            }
+        }
+        #currency-exchange-rate{
+            margin-top : 10px;
+            margin-left : 40px;
+            font-size : 18px;
+            font-weight : bold; 
+        }
+        #purchasing-quantity-wrapper{
+            margin-top : 30px;
+            margin-left : 40px;
+            display : flex;
+            align-items : center;
+            #purchasing-quantity-text{
+                font-size : 16px;
+                font-weight : bold;
+            }
+            #quantity-input{
+                margin-left : 20px;
+                text-align: right;
+                padding-right : 5px;
+                font-weight : bold;
+            }
+            #quantity-input::-webkit-outer-spin-button,
+            #quantity-input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                // margin: 0;
+            }
+            .quantity-controller{
+                width : 28px;
+                height : 28px;
+                display : flex;
+                justify-content: center;
+                align-items: center;
+                border-top : 1px solid black;
+                border-bottom : 1px solid black;
+                border-right : 1px solid black;
+                &:hover{
+                    cursor : pointer;
+                }
+            }
+        }
+        #purchasing-price-wrapper{
+            margin-top : 20px;
+            margin-left : 40px;
+            display : flex;
+            #purchasing-price-text{
+                font-size : 16px;
+                font-weight : bold;
+            }
+            #price-input{
+                margin-left : 20px;
+                text-align: right;
+                padding-right : 5px;
+                font-weight : bold;
+            }
+            #price-input::-webkit-outer-spin-button,
+            #price-input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                // margin: 0;
+            }
+            .price-controller{
+                width : 28px;
+                height : 28px;
+                display : flex;
+                justify-content: center;
+                align-items: center;
+                border-top : 1px solid black;
+                border-bottom : 1px solid black;
+                border-right : 1px solid black;
+                &:hover{
+                    cursor : pointer;
+                }
+            }
+            #price-span{
+                display : flex;
+                justify-content : center;
+                align-items: center;
+            }
+        }
+        #purchasing-dollar-wrapper{
+            margin-top : 20px;
+            margin-left : 40px;
+            display : flex;
+            #purchasing-dollar-text{
+                font-size : 16px;
+                font-weight : bold;
+            }
+            #dollar-input{
+                margin-left : 20px;
+                text-align: right;
+                padding-right : 5px;
+                font-weight : bold;
+            }
+            #dollar-input::-webkit-outer-spin-button,
+            #dollar-input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                // margin: 0;
+            }
+            #dollar-span{
+                display : flex;
+                justify-content : center;
+                align-items: center;
+            }
+        }
+        #purchasing-sum-wrapper{
+            margin-top : 20px;
+            margin-left : 40px;
+            display : flex;
+            #purchasing-sum-text{
+                font-size : 16px;
+                font-weight : bold;
+            }
+            #sum-input{
+                margin-left : 20px;
+                text-align: right;
+                padding-right : 5px;
+                font-weight : bold;
+            }
+            #sum-input::-webkit-outer-spin-button,
+            #sum-input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                // margin: 0;
+            }
+            #sum-span{
+                display : flex;
+                justify-content : center;
+                align-items: center;
+            }
+            
+        }
+        #purchase-btn{
+            margin-left : 40px;
+            margin-top : 20px;
+            width : 80px;
+            height : 40px;
+            outline : none;
+            border : none;
+            background-color : rgb(246,150,54);
+            border-radius : 5px;
+            font-weight : bold;
+        }
+    }
+}

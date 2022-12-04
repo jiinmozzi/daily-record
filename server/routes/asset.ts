@@ -48,71 +48,92 @@ router.get('/portfolio', setAuth, async(req : IUserRequest, res : Response) => {
     const user = req.user;
     const userPortfolio = user.asset;
        
-    // const {stock} = req.params;
-    // const year = new Date().getFullYear();
-    // const month = new Date().getMonth() + 1;
-    // const date = new Date().getDate(); 
+    const year = new Date().getFullYear();
+    const month = new Date().getMonth() + 1;
+    const date = new Date().getDate(); 
     
-    // yahooFinance.historical(
-    // {
-    //     symbols : [stock,"TSLA","V","IONQ"],
-    //     period : "d",
-    //     from : `${year-3}-${month}-${date}`,
-    //     to : `${year}-${month}-${date}`, 
-        
-    // }, (err : any, quotes : any) => {
-    //     if (err){
-    //         return res.send({
-    //             status : 500,
-    //             message : "NOT GOOD",
-    //         })
-    //     }   else {
-    //         return res.send({
-    //             status : 200,
-    //             message : "OK",
-    //             data : quotes,
-    //         })
-    //     }
-    // })
     const portfolios : any[] = [];
     for (let i=0; i<userPortfolio.length; i++){
         portfolios.push(await Asset.findById(userPortfolio[i].toString()));
     }
-
-    const portfolio = [];
-    
+    console.log(portfolios)
     const kosdaqStocks : any[] = [];
     const nonKosdaqStocks : any[] = [];
-
+    
     for (let i=0; i<portfolios.length; i++){
-        const stock = getAssetFullName(portfolios[i]);
+        const stock = portfolios[i];
+        if (!stock?.market) continue;
         if (stock?.market === "KOSDAQ") kosdaqStocks.push(stock.ticker);
+        else if (stock?.market === "KOSPI") nonKosdaqStocks.push(stock.ticker + ".KS");
         else nonKosdaqStocks.push(stock?.ticker);
     }
 
     const today = getTodayEightDigitDate();
-    
+    console.log(today);
     const fetchKosdaqStock = async(ticker : string) => {
-        const requestURL = `https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=${process.env.GO_DATA_SERVICE_KEY}&likeSrtnCd=${ticker}&beginBasDt=${today-30000}&endBasDt=${today}&numOfRows=800&resultType=json`;
-        return await axios.get(requestURL);
+        // const requestURL = `https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=${process.env.GO_DATA_SERVICE_KEY}&likeSrtnCd=${ticker}&beginBasDt=${today-30000}&endBasDt=${today}&numOfRows=800&resultType=json`;
+        const requestURL = `https://api.finance.naver.com/siseJson.naver?symbol=${ticker}&requestType=1&startTime=${today-30000}&endTime=${today}&timeframe=day`
+        const res = await axios.get(requestURL);
+        let data = res.data.split('\t\t\n').slice(1);
+        data = data.slice(0, data.length - 1);
+        data.forEach((stock:string) => stock.replace('\n', ''));
+        data = data.map((e : string) => e.split(',\n')[0]);
+        data = data.map((e : string) => JSON.parse(e));
+        return data;
     }
     
     const fetchKosdaqStocks = async() => {
-        const arr : any[] = [];
+        const obj : any = {};
         for await (let stock of kosdaqStocks){
             await fetchKosdaqStock(stock).then(res => {
+                obj[stock] = res;
                 // console.log(res.data.response.body.items.item);
-                arr.push(res?.data?.response?.body?.items?.item);
+                // obj.push(res?.data?.response?.body?.items?.item);
             });
         }
-        return arr;
+        
+        return obj;
     }
-    fetchKosdaqStocks().then(res => console.log(res));
+    fetchKosdaqStocks().then(response => {
+        // console.log(response);
+        yahooFinance.historical({
+            symbols : nonKosdaqStocks,
+            period : "d",
+            from : `${year-3}-${month}-${date}`,
+            to : `${year}-${month}-${date}`, 
+            
+        }, (err : any, quotes : any) => {
+            if (err){
+                return res.send({
+                    status : 500,
+                    message : "NOT GOOD",
+                })
+            }   
+            else {
+                return res.send({
+                    status : 200,
+                    message : "OK",
+                    data : {kosdaq : response, nonKosdaq : quotes, portfolios : portfolios}
+                })
+            }
+        })
+    })
+});
+
+router.get('/fullname/:ticker', (req : Request, res : Response) => {
+    const {ticker} = req.params;
+    const assetName = getAssetFullName(ticker)?.stockName;
+    return res.status(200).send({
+        status : 200,
+        data : assetName,
+        message : "OK"
+    })
+
 })
 
 router.get('/today/exchange', async(req : Request, res : Response) => {
     const response = await getExchangeRate();
-    console.log(response);
+   
     if (response.length === 0){
         return res.send({
             message : "FAIL",
@@ -121,7 +142,7 @@ router.get('/today/exchange', async(req : Request, res : Response) => {
     }
     return res.send({
         message : "OK",
-        data : response[0].adjClose,
+        data : response[0].adjClose ? response[0].adjClose : response[1].adjClose ? response[1].adjClose : response[2].adjClose
     }) 
 })
 
@@ -144,7 +165,7 @@ router.get('/marketcap', async(req : Request, res : Response) => {
 router.post('/purchase/stock', setAuth, async( req : IUserRequest, res : Response ) => {
     const user = req.user;
     const userAsset = user.asset;
-    const {ticker, quantity, price, currency, exchangeRate} = req.body;
+    const {ticker, quantity, price} = req.body;
     const assets : any[] = [];
 
     // retrieve req.user's asset account
@@ -157,10 +178,8 @@ router.post('/purchase/stock', setAuth, async( req : IUserRequest, res : Respons
     try {
         if (asset){
             asset.averagePrice = (asset.averagePrice * asset.balance + price * quantity) / (asset.balance + quantity);
-            asset.exchangeRate = (asset.exchangeRate * asset.balance + exchangeRate * quantity) / (asset.balance + quantity); 
             asset.balance = asset.balance + quantity;
             await asset.save();
-
         }   
         else {
             const newAsset = new Asset({
@@ -170,9 +189,7 @@ router.post('/purchase/stock', setAuth, async( req : IUserRequest, res : Respons
                 averagePrice : price,            
                 sector : "",
                 balance : quantity,
-                exchangeRate,
-                currency,
-                marget : getAssetFullName(ticker)?.market,
+                market : getAssetFullName(ticker)?.market,
             });
             await newAsset.save();
 
@@ -200,6 +217,7 @@ router.post('/purchase/stock', setAuth, async( req : IUserRequest, res : Respons
             }
         })
     }   catch (err){
+        console.log(err);
         return res.send({
             message : "FAIL",
             err,
@@ -211,7 +229,7 @@ router.post('/purchase/stock', setAuth, async( req : IUserRequest, res : Respons
 router.post('/sell/stock', async( req : IUserRequest, res : Response ) => {
     const user = req.user;
     const userAsset = user.asset;
-    const {ticker, quantity, price, currency, exchangeRate} = req.body;
+    const {ticker, quantity, price} = req.body;
     const assets : any[] = [];
     
     for (let i=0; i<userAsset.lenght; i++){
@@ -295,7 +313,6 @@ router.post('/mbti', setAuth, (req : IUserRequest, res : Response) => {
 
 router.get('/:stock', (req : Request, res : Response) => {
     const {stock} = req.params;
-    
     return res.status(200).send({
         message : "OK",
         data : filterStocksWithString(stock),

@@ -47,5 +47,5 @@ switch(mongoose.connection.readyState){
 }
 
 
-module.exports = {Asset, Book, BookWishList, BucketList, BucketWishList, Coin, CoinTradeHistory, Diary, Outsourcing, ProgrammingPortfolio, ProgrammingStudy, ProgrammingDaily, Schedule, Travel, TravelWishList, User, Keyboard, Fitness, WeeklySchedule, News};
+module.exports = {Asset, AssetTradeHistory, Book, BookWishList, BucketList, BucketWishList, Coin, CoinTradeHistory, Diary, Outsourcing, ProgrammingPortfolio, ProgrammingStudy, ProgrammingDaily, Schedule, Travel, TravelWishList, User, Keyboard, Fitness, WeeklySchedule, News};
 // export {}
