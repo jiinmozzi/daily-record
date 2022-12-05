@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import SocialDropDown from "../DropDown/SocialDropDown";
+// import SocialDropDown from "../DropDown/SocialDropDown";
 import logo from "../../assets/logo.png";
 import Navigation from "../Navigation";
 import AuthButton from "../Button/AuthButton";
@@ -8,7 +8,6 @@ import "../../styles/Reset.scss";
 import "./Header.scss";
 import { useRecoilState } from "recoil";
 import { isLoggedInState } from "../../store/atom";
-
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import LogoutIcon from '@mui/icons-material/Logout';
 
@@ -32,7 +31,7 @@ const Header = () => {
                 <div className="auth-nav">
                     <AuthButton type="Sign in"/>
                     
-                    <SocialDropDown />
+                    {/* <SocialDropDown /> */}
                 </div> 
                 )}
             </div>
