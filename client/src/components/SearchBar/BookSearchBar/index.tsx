@@ -84,6 +84,7 @@ const BookSearchBar = ({showDropDown, setShowDropDown} : BookSearchBarPropsType)
             
         </div>
     )
+    
 }
 
 export default BookSearchBar;

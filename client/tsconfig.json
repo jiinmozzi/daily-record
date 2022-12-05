@@ -23,8 +23,7 @@
   "include": [
     "src",
     "src/index.d.ts",
-    "src/**/*.ts",
-    "tests/**/*.ts"
-  ],
-  "exclude": ["node_modules", ".vscode"]
+    "src/**/*.tsx",
+    "src/**/*/*.tsx",
+  ]
 }
