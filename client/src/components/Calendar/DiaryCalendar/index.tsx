@@ -1,6 +1,6 @@
 import {useState, useEffect} from "react";
-import { useNavigate } from "react-router-dom";
-import { DiaryType } from "../../../types";
+// import { useNavigate } from "react-router-dom";
+// import { DiaryType } from "../../../types";
 import renderCalendar from "../../../utils/renderCalender";
 
 import "./DiaryCalendar.scss";

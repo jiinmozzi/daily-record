@@ -1,6 +1,6 @@
-import { relative } from "path";
+// import { relative } from "path";
 import React, {useState, useEffect} from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import getWeeklySchedules from "../../../api/getWeeklySchedules";
 import { accessTokenState } from "../../../store/atom";
