@@ -7,17 +7,13 @@ import "./AssetDropDown.scss";
 
 const AssetDropDown = ({assetSuggestions, focused, setFocused} : any) => {
     const [assetCount, setAssetCount] = useState<number>(0);
-    
 
     useEffect(() => {
         console.log(assetSuggestions);
         if (Object.values(assetSuggestions).length > 0){
             setAssetCount( assetSuggestions.NASDAQ.length + assetSuggestions.NYSE.length + assetSuggestions.KOSDAQ.length + assetSuggestions.KOSPI.length + assetSuggestions.AMEX.length);
         }
-        
-    }, [assetSuggestions]
-    )
-
+    }, [assetSuggestions])
 
     return (
         <div className="asset-dropdown-wrapper" style={{ height : assetCount > 0 ? "280px" : "80px"}} onClick={() => setFocused(false)}>
