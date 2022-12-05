@@ -1,4 +1,4 @@
-import AssetDropDown from "../../DropDown/AssetDropDown";
+import AssetDropDown from "../../../components/DropDown/AssetDropDown";
 import React, {useState, useEffect, useCallback} from "react";
 import { useNavigate } from "react-router-dom";
 import "./AssetSearchBar.scss";

@@ -16,7 +16,8 @@ const BookDropDown = ({suggestions, bookTitle, showDropDown, setShowDropDown} : 
     
     useEffect(() => {
         console.log(suggestions);
-    }, [suggestions])
+    }, [suggestions]);
+
     const onMouseDown = (e : React.MouseEvent) => {
         e.preventDefault();
     }
