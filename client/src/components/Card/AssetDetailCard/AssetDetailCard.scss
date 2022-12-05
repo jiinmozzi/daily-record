@@ -1,10 +1,14 @@
 .asset-detail-card-wrapper{
     width : 90%;
-    height : 130px;
-    background-color : white;
+    height : 150px;
+    background-color : rgb(32,38,55);
     display : flex;
     flex-direction: column;
     border-radius: 5px;
+    .asset-detail-card-text{
+        color : rgb(114,125,134);
+        font-size : 14px;
+    }
     #asset-detail-card-upper{
         width : 100%;
         margin-left : 10px;
@@ -21,21 +25,47 @@
         .asset-detail-ticker-info{
             display : flex;
             flex-direction: column;
-            color : black;
+            // color : black;
             margin-left : 20px;
+            .asset-detail-card-name{
+                color : rgb(114,125,134);
+            }
+        }
+        .asset-detail-card-ticker-text{
+            color : rgb(241,177,60);
+            font-size : 18px;
+            font-weight: bold;
         }
         .asset-detail-quantity{
             position : absolute;
             right : 30px;
             bottom : 0px;
             color : black;
+            .asset-detail-quantity-text{
+                color : rgb(114,125,134);
+            }
+            .asset-detail-quantity-count{
+                color : white;
+                margin-left : 10px;
+            }
         }
     }
     #asset-detail-card-financial{
+        width : 100%;
+        margin-left : 10px;
+        display : flex;
+        color : black;
+        justify-content: space-between;
+        margin-top : 20px;
         .asset-detail-card-financial-upper{
             .asset-detail-sum{}
             .asset-detail-return{}
             .asset-detail-dividend{}
+        }
+        .asset-detail-card-finanial-bottom{
+            .asset-detail-buy-price{}
+            .asset-detail-current-price{}
+            .asset-dividend-rate{}
         }
     }
 }
