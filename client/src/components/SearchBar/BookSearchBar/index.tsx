@@ -25,10 +25,12 @@ type BookSearchBarPropsType = {
     setShowDropDown : (bool : boolean) => void,
 }
 const BookSearchBar = ({showDropDown, setShowDropDown} : BookSearchBarPropsType) => {
+    const navigate = useNavigate();
     const [bookTitle, setBookTitle] = useState<string>("");
     const [isbn, setIsbn] = useState<string>("");
     const [suggestions, setSuggestions] = useState<BookType[]>([]);
-    const navigate = useNavigate();
+    const [focused, setFocused] = useState<boolean>(false);
+    
     const bookRef = useRef();
 
     const fetchBooks = (e : React.ChangeEvent) => {
@@ -52,7 +54,7 @@ const BookSearchBar = ({showDropDown, setShowDropDown} : BookSearchBarPropsType)
         if (suggestions.length > 0 && suggestions[0] && suggestions[0].isbn)
         setIsbn(suggestions[0].isbn);
     }, [suggestions])
-    const [focused, setFocused] = useState<boolean>(false);
+    
     return (
         <div className="book-search-bar-wrapper">
             <Paper
