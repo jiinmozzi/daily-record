@@ -4,7 +4,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const app : Application= express();
 
-const NewsAPI = require('newsapi');
+// const NewsAPI = require('newsapi');
 const AWS = require('aws-sdk');
 const cors = require('cors');
 
