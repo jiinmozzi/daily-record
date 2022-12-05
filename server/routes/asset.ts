@@ -6,7 +6,7 @@ import {Request, Response} from "express";
 import axios from "axios";
 import setAuth from "../middlewares/setAuth";
 import getExchangeRate from "../utils/getExchangeRate";
-import getAssetFullName from "../utils/getAssetFullname";
+import getAssetFullName from "../utils/getAssetFullName";
 import getTodayEightDigitDate from "../utils/getTodayEightDigitDate";
 import filterStocksWithString from "../utils/filterStocksWithString";
 const {Asset, AssetTradeHistory, News} = require('../models');

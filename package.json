@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+
   "scripts": {
     "server": "cd server && nodemon app.ts",
     "client": "cd client && npm start",
