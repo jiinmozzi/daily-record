@@ -23,7 +23,6 @@ const sendRequest = (url : string, method : string, data : any, loginRequired = 
     //     finalUrl += "/" + url;
     // }
     const finalUrl = `${baseUrl}/${url}`;
-    console.log(finalUrl);
     // if (loginRequired) {
     //     return axios({ url : finalUrl , method : method, data : data, withCredentials : true}).then((res) => res.data);
     // }
