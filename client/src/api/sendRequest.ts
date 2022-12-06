@@ -1,11 +1,12 @@
 import axios from "axios";
 
 
-const baseUrl = process.env.NODE_ENV === 'production' 
-    ? process.env.REACT_APP_PRODUCTION_URL
-    : process.env.REACT_APP_DEVELOPMENT_ENV;
+const baseUrl = process.env.NODE_ENV === 'development' 
+    ? process.env.REACT_APP_DEVELOPMENT_URL
+    : process.env.REACT_APP_PRODUCTION_URL;
 
-
+console.log(process.env.NODE_ENV === "development")
+console.log(baseUrl);
 const baseHeaders = {};
 
 type RequestParamsType = {
@@ -22,7 +23,7 @@ const sendRequest = (url : string, method : string, data : any, loginRequired = 
     //     finalUrl += "/" + url;
     // }
     const finalUrl = `${baseUrl}/${url}`;
-
+    console.log(finalUrl);
     // if (loginRequired) {
     //     return axios({ url : finalUrl , method : method, data : data, withCredentials : true}).then((res) => res.data);
     // }

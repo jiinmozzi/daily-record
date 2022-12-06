@@ -9,7 +9,9 @@ type AssetPortfolioSummarySectionPropsType = {
 }
 
 const AssetPortfolioSummarySection = ({assetPortfolio, currentEvaluatedAmount, totalInvestmentAmount} : AssetPortfolioSummarySectionPropsType) => {
-
+    useEffect(() => {
+        console.log(currentEvaluatedAmount);
+    }, [currentEvaluatedAmount])
     return (
         <div className="asset-portfolio-summary-section-wrapper">
             <div className="asset-portfolio-summary-section-inner">
