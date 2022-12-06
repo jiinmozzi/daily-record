@@ -1,6 +1,13 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:3002";
+let baseUrl = "";
+console.log(process.env.NODE_ENV);
+if ( process.env.NODE_ENV === "development"){
+    baseUrl = process.env.REACT_APP_PRODUCTION_URL || ""
+}   else if (process.env.NODE_ENV === "production"){
+    baseUrl = process.env.REACT_APP_DEVELOPMENT_URL || "";
+}
+// const baseUrl = "http://localhost:3002";
 const baseHeaders = {};
 
 type RequestParamsType = {
