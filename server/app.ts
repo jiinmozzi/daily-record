@@ -21,7 +21,7 @@ app.use(cookieParser());
 app.use(express.json());
 
 app.use(cors({
-    origin: ["http://localhost:3000", "http://13.209.227.43:3000", "*"],
+    origin: ["http://localhost:3000", "http://13.209.227.43:3000", "http://dailyrecord.me", "*"],
     credentials: true,
     sameSite: "none",
 }));

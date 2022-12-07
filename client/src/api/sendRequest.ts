@@ -5,8 +5,8 @@ const baseUrl = process.env.NODE_ENV === 'development'
     ? process.env.REACT_APP_DEVELOPMENT_URL
     : process.env.REACT_APP_PRODUCTION_URL;
 
-console.log(process.env.NODE_ENV === "development")
-console.log(baseUrl);
+// console.log(process.env.NODE_ENV === "development")
+// console.log(baseUrl);
 const baseHeaders = {};
 
 type RequestParamsType = {

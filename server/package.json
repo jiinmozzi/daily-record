@@ -52,7 +52,8 @@
     "yargs-parser": "^21.1.1"
   },
   "scripts": {
-    "server": "nodemon app.ts"
+    "server": "nodemon app.ts",
+    "build" : "tsc --build"
   },
   "repository": {
     "type": "git",
