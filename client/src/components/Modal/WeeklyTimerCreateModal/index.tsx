@@ -1,12 +1,11 @@
-import React, {useRef, useState, useEffect} from "react";
-import {useNavigate} from "react-router-dom";
+import React, { useState } from "react";
+
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 
 import "./WeeklyTimerCreateModal.scss";
 import createWeeklySchedule from "../../../api/createWeeklySchedule";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../store/atom";
-import getWeeklySchedules from "../../../api/getWeeklySchedules";
 
 type WeeklyTimerCreateModalPropsType = {
     setShowModal : (bool : boolean) => void

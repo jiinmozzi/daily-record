@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+
 import axios from "axios";
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 
 import "./BucketlistCreateModal.scss";
 import FileButton from "../../FileButton";
 import MenuItem from "@mui/material/MenuItem/MenuItem";
-import { FormControl, InputLabel, Select, SelectChangeEvent } from "@mui/material";
+// import { FormControl, InputLabel, Select, SelectChangeEvent } from "@mui/material";
 import createBucketlist from "../../../api/creaetBucketlist";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../store/atom";

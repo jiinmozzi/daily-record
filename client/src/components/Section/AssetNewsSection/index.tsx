@@ -1,5 +1,4 @@
 import {useState, useEffect} from "react";
-import {useNavigate} from "react-router-dom";
 import getAssetNews from "../../../api/getAssetNews";
 import NewsCard from "../../Card/NewsCard";
 import "./AssetNewsSection.scss";

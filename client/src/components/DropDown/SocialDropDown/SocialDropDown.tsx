@@ -1,5 +1,3 @@
-import { useNavigate } from "react-router-dom";
-
 const SocialDropDown = () => {
     return (
     <div className="btn-group">
