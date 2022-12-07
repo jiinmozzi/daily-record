@@ -69,15 +69,15 @@ router.post('/signin', async(req : Request, res : Response) => {
      
     user.refreshToken = refreshToken;
 
-    res.cookie('refreshToken', refreshToken, {maxAge : 90 * 24 * 60 * 60 * 1000, httpOnly : true});
-    res.cookie('_refreshToken', fakeRefreshToken, {maxAge : 90 * 24 * 60 * 60 * 1000});
+    res.cookie('refreshToken', refreshToken, {maxAge : 90 * 24 * 60 * 60 * 1000, httpOnly : true,  domain: 'dailyrecord.me', path: '/'});
+    res.cookie('_refreshToken', fakeRefreshToken, {maxAge : 90 * 24 * 60 * 60 * 1000, domain : 'dailyrecord.me', path : '/'});
 
     if ( autoLogin ){
         const randomSessionId = crypto.randomBytes(16).toString('base64');
         const fakeRandomSessionId = crypto.randomBytes(16).toString('base64');
         user.sessionId = randomSessionId;
-        res.cookie('sid', randomSessionId, { maxAge : 7 * 24 * 60 * 60 * 1000, httpOnly : true });
-        res.cookie('_sid', fakeRandomSessionId, {maxAge : 7 * 24 * 60 * 60 * 1000});
+        res.cookie('sid', randomSessionId, { maxAge : 7 * 24 * 60 * 60 * 1000, httpOnly : true, domain: 'dailyrecord.me', path: '/' });
+        res.cookie('_sid', fakeRandomSessionId, {maxAge : 7 * 24 * 60 * 60 * 1000, domain: 'dailyrecord.me', path: '/'});
     }
     await user.save();
     
