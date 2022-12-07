@@ -1,7 +1,6 @@
 import axios from "axios";
 import {useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
-import AssetSearchBar from "../../components/SearchBar/AssetSearchBar";
 import AssetSearchSection from "../../components/Section/AssetSearchSection";
 import AssetMbtiSection from "../../components/Section/AssetMbtiSection";
 import AssetIndexSection from "../../components/Section/AssetIndexSection";
