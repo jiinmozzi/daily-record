@@ -10,7 +10,8 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment : main
+    environment:
+      - main
     strategy:
       matrix:
         node-version: [16.x]
