@@ -52,7 +52,8 @@
   },
   "scripts": {
     "server": "nodemon app.ts",
-    "build": "tsc --build"
+    "build": "tsc --build",
+    "start": "./node_modules/.bin/pm2 start app.ts"
   },
   "repository": {
     "type": "git",
