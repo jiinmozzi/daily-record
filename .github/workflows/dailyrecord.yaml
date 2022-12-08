@@ -55,6 +55,7 @@ jobs:
         run : |
           cd client
           CI=false npm run build
+          echo "Client Built"
 
       - name : Open server
         run : |
