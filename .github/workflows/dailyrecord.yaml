@@ -10,8 +10,7 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment:
-      - main
+    
     strategy:
       matrix:
         node-version: [16.x]
@@ -68,9 +67,9 @@ jobs:
           npx pm2 start app.ts
 
       - name : Open client
-      run : |
-        cd client
-        npx pm2 serve build 3000 client --spa
+        run : |
+          cd client
+          npx pm2 serve build 3000 client --spa
 
       - name : Deploy
         uses : appleboy/ssh-action@master
