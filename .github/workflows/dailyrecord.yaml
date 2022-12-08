@@ -65,6 +65,7 @@ jobs:
       - name : Open server
         run : |
           cd server
+          interpreter: './node_modules/.bin/ts-node'
           npx  ./node_modules/.bin/pm2 start app.ts
 
       - name : Deploy
