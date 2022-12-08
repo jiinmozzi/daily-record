@@ -78,5 +78,4 @@ jobs:
         env :
           host : ${{ secrets.SSH_REMOTE_IP }}
           username : ${{ secrets.SSH_REMOTE_ID }}
-          password : ${{ secrets.SSH_REMOTE_PASSWORD }}
           key : ${{ secrets.SSH_SECRET_KEY }}
