@@ -51,6 +51,11 @@ jobs:
       - name : Install outdir dependencies
         run : npm install
 
+      - name : Insall pm2 in server
+        run : |
+          cd server
+          ./node_modules/.bin/pm2 install typescript
+
       - name : Build client
         run : |
           cd client
