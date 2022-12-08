@@ -57,15 +57,15 @@ jobs:
           CI=false npm run build
           echo "Client Built"
 
-      - name : Open server
-        run : |
-          cd server
-          npx  ./node_modules/.bin/pm2 start app.ts
-
       - name : Open client
         run : |
           cd client
           npx pm2 serve build 3000 client --spa
+
+      - name : Open server
+        run : |
+          cd server
+          npx  ./node_modules/.bin/pm2 start app.ts
 
       - name : Deploy
         uses : appleboy/ssh-action@master
