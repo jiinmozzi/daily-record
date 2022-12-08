@@ -64,7 +64,7 @@ jobs:
       - name : Open server
         run : |
           cd server
-          pm2 start app.ts
+          npx pm2 start app.ts
 
       - name : Deploy
         uses : appleboy/ssh-action@master
