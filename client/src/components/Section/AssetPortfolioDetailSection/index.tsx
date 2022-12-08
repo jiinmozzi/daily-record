@@ -1,5 +1,5 @@
-import {useState, useEffect} from "react";
-import { SymbolInfo } from "react-ts-tradingview-widgets";
+import {useEffect} from "react";
+// import { SymbolInfo } from "react-ts-tradingview-widgets";
 
 import './AssetPortfolioDetailSection.scss';
 import AssetDetailCard from "../../../components/Card/AssetDetailCard";
