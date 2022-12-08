@@ -5,8 +5,7 @@ on:
 
 defaults:
   run:
-    shell : bash
-    working-directory: ./jino/daily-record
+    working-directory: ./
 
 jobs:
   build:
@@ -56,7 +55,6 @@ jobs:
         run : |
           cd client
           CI=false npm run build
-          echo "Client Built"
 
       - name : Open client
         run : |
@@ -66,8 +64,7 @@ jobs:
       - name : Open server
         run : |
           cd server
-          interpreter: './node_modules/.bin/ts-node'
-          npx  ./node_modules/.bin/pm2 start app.ts
+          npx pm2 start app.ts
 
       - name : Deploy
         uses : appleboy/ssh-action@master
