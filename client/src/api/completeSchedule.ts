@@ -5,3 +5,4 @@ const completeSchedule = async(token : string, _id : string) => {
 }
 
 export default completeSchedule;
+
