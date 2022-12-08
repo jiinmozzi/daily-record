@@ -5,7 +5,8 @@ on:
 
 defaults:
   run:
-    working-directory: ./
+    shell : bash
+    working-directory: ./jino/daily-record
 
 jobs:
   build:
