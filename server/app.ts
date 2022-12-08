@@ -27,6 +27,7 @@ app.use(cors({
     sameSite: "none",
 }));
 
+
 app.use('/', require('./routes'));
 app.use('/auth', require('./routes/auth'));
 app.use('/asset', require('./routes/asset'));
@@ -40,6 +41,8 @@ app.use('/user', require('./routes/user'));
 app.use('/fitness', require('./routes/fitness'));
 app.use('/test', require('./routes/test'));
 app.use('/image', require('./routes/image'));
+
+
 
 
 
