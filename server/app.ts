@@ -27,7 +27,6 @@ app.use(cors({
     sameSite: "none",
 }));
 
-
 app.use('/', require('./routes'));
 app.use('/auth', require('./routes/auth'));
 app.use('/asset', require('./routes/asset'));

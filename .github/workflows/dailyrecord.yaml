@@ -10,7 +10,8 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    environment: main
+    
     strategy:
       matrix:
         node-version: [16.x]
@@ -61,15 +62,15 @@ jobs:
           cd client
           CI=false npm run build
 
-      - name : Open client
-        run : |
-          cd client
-          npx pm2 serve build 3000 client --spa
-
       - name : Open server
         run : |
           cd server
           npx pm2 start app.ts
+
+      - name : Open client
+      run : |
+        cd client
+        npx pm2 serve build 3000 client --spa
 
       - name : Deploy
         uses : appleboy/ssh-action@master
@@ -78,4 +79,5 @@ jobs:
         env :
           host : ${{ secrets.SSH_REMOTE_IP }}
           username : ${{ secrets.SSH_REMOTE_ID }}
+          password : ${{ secrets.SSH_REMOTE_PASSWORD }}
           key : ${{ secrets.SSH_SECRET_KEY }}
