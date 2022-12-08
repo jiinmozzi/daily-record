@@ -60,7 +60,7 @@ jobs:
       - name : Open server
         run : |
           cd server
-          npx pm2 start app.ts
+          npx  ./node_modules/.bin/pm2 start app.ts
 
       - name : Open client
         run : |
