@@ -16,7 +16,7 @@ AWS.config.update({
     region : 'ap-northeast-2',
 });
 
-app.set('trust proxy', 1)
+// app.set('trust proxy', 1)
 app.use(express.urlencoded({extended : true}));
 app.use(cookieParser());
 app.use(express.json());
