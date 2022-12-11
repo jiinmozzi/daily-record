@@ -14,6 +14,7 @@ const getExchangeRate = async() : Promise<any> => {
         if (err) return null;
         return quotes;
     })
+    console.log(res);
     return res;
 }
 

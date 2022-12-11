@@ -133,7 +133,7 @@ router.get('/fullname/:ticker', (req : Request, res : Response) => {
 
 router.get('/today/exchange', async(req : Request, res : Response) => {
     const response = await getExchangeRate();
-   
+    console.log('exchange : ', response) ;
     if (response.length === 0){
         return res.send({
             message : "FAIL",

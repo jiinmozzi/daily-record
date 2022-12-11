@@ -19,9 +19,11 @@ const Test = () => {
     }, [rate])
     return (
         <>
+        <Loading />
         {/* <ScheduleCreateModal /> */}
         {/* <TravelCard />
         <FileButton />
+        
         <Loading /> */}s
         {/* <BucketlistCard /> */}
         {/* <FileButton /> */}

@@ -181,7 +181,15 @@ router.delete('/story/delete/:id', setAuth, async(req : IUserRequest, res : Resp
             status : 400,
         })
     }
-    
+})
+
+router.post('/map', async(req : IUserRequest, res : Response) => {
+    const {location} = req.body;
+    console.log(location);
+    return res.send({
+        status : 200,
+        message : "OK"
+    })
 })
 
 module.exports = router;

@@ -35,7 +35,6 @@ const WeeklyCalendar = () => {
             }
             fetchSchedules().then(res => {
                 setWeeklySchedules(res.data);
-                console.log(res.data);
             });
             
         }

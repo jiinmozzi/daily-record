@@ -13,6 +13,8 @@ import encryptPassword from "../utils/encryptPassword";
 import generateRefreshToken from  "../utils/generateRefreshToken";
 import generateAccessToken from  "../utils/generateAccessToken";
 
+const NODE_ENV = process.env.NODE_ENV || 'development';
+
 router.post('/signup', async(req : Request, res : Response) => {
     // const {name, id, password, email,birthday } = req.body;
     const password = req.body.password;
@@ -68,16 +70,27 @@ router.post('/signin', async(req : Request, res : Response) => {
     const refreshToken = generateRefreshToken(name, email);
      
     user.refreshToken = refreshToken;
-
-    res.cookie('refreshToken', refreshToken, {maxAge : 90 * 24 * 60 * 60 * 1000, httpOnly : true,  domain: 'dailyrecord.me', path: '/'});
-    res.cookie('_refreshToken', fakeRefreshToken, {maxAge : 90 * 24 * 60 * 60 * 1000, domain : 'dailyrecord.me', path : '/'});
+    
+    if (NODE_ENV === "production"){
+        res.cookie('refreshToken', refreshToken, {maxAge : 90 * 24 * 60 * 60 * 1000, httpOnly : true,  domain: 'dailyrecord.me', path: '/'});
+        res.cookie('_refreshToken', fakeRefreshToken, {maxAge : 90 * 24 * 60 * 60 * 1000, domain : 'dailyrecord.me', path : '/'});
+    }   else {
+        res.cookie('refreshToken', refreshToken, {maxAge : 90 * 24 * 60 * 60 * 1000, httpOnly : true});
+        res.cookie('_refreshToken', fakeRefreshToken, {maxAge : 90 * 24 * 60 * 60 * 1000});
+    }
+    
 
     if ( autoLogin ){
         const randomSessionId = crypto.randomBytes(16).toString('base64');
         const fakeRandomSessionId = crypto.randomBytes(16).toString('base64');
         user.sessionId = randomSessionId;
-        res.cookie('sid', randomSessionId, { maxAge : 7 * 24 * 60 * 60 * 1000, httpOnly : true, domain: 'dailyrecord.me', path: '/' });
-        res.cookie('_sid', fakeRandomSessionId, {maxAge : 7 * 24 * 60 * 60 * 1000, domain: 'dailyrecord.me', path: '/'});
+        if (NODE_ENV === "production"){
+            res.cookie('sid', randomSessionId, { maxAge : 7 * 24 * 60 * 60 * 1000, httpOnly : true, domain: 'dailyrecord.me', path: '/' });
+            res.cookie('_sid', fakeRandomSessionId, {maxAge : 7 * 24 * 60 * 60 * 1000, domain: 'dailyrecord.me', path: '/'});
+        }   else {
+            res.cookie('sid', randomSessionId, { maxAge : 7 * 24 * 60 * 60 * 1000, httpOnly : true});
+            res.cookie('_sid', fakeRandomSessionId, {maxAge : 7 * 24 * 60 * 60 * 1000});
+        }
     }
     await user.save();
     
@@ -127,11 +140,6 @@ router.post('/reissue/access', async(req : Request, res : Response) => {
     })
 })
 router.get('/signout', async(req : Request, res : Response) => {
-    // const { sid, _sid, refreshToken, _refreshToken } = req.cookies;
-    // console.log(req.cookies.sid);
-    // console.log(req.cookies._sid); 
-    // console.log(req.cookies.refreshToken);
-    // console.log(req.cookies._refreshToken);
     res.clearCookie('sid')
     res.clearCookie('_sid')
     res.clearCookie("_refreshToken");

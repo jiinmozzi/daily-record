@@ -19,7 +19,7 @@ type StockSellingModalPropsType = {
 const StockSellingModal = ({ setShowSellingModal, ticker } : StockSellingModalPropsType ) => {
     const [accessToken, setAccessToken] = useRecoilState<string>(accessTokenState);
     const [currency, setCurrency] = useState<string>("usd");
-    const [exchangeRate, setExchangeRate] = useState<number>(1);
+    const [exchangeRate, setExchangeRate] = useState<number>(1301.23);
     const [assetName, setAssetName] = useState<string>("");
     const [quantity, setQuantity] = useState<number>(1);
     const [price, setPrice] = useState<number>(1);
@@ -27,7 +27,7 @@ const StockSellingModal = ({ setShowSellingModal, ticker } : StockSellingModalPr
 
     useEffect(() => {
         const fetchExchangeRate = async() => await getTodayExchangeRate();
-        fetchExchangeRate().then(res => setExchangeRate(res.data.data));
+        fetchExchangeRate().then(res => setExchangeRate(res.data));
     }, [])
 
     const changeQuantity = (e : React.ChangeEvent) => {

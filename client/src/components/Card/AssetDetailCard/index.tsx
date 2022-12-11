@@ -3,18 +3,26 @@ import { useNavigate } from "react-router-dom";
 
 import "./AssetDetailCard.scss";
 
-const AssetDetailCard = () => {
+type AssetDetailCardPropsType = {
+    ticker : string,
+    name : string,
+    balance : number
+    currentPrice : number,
+    averagePrice : number,
+}
+
+const AssetDetailCard = ({ ticker, name, balance, currentPrice, averagePrice } : AssetDetailCardPropsType) => {
     return (
         <div className="asset-detail-card-wrapper">
             <div id="asset-detail-card-upper">
                 <img className="asset-detail-card-image" src={`https://images.therich.io/images/logo/us/AAPL.png`} alt="" />
                 <div className="asset-detail-ticker-info">
-                    <div className="asset-detail-card-ticker asset-detail-card-ticker-text">AAPL</div>
-                    <div className="asset-detail-card-name">apple</div>                    
+                    <div className="asset-detail-card-ticker asset-detail-card-ticker-text">{ticker}</div>
+                    <div className="asset-detail-card-name">{name}</div>                    
                 </div>
                 <div className="asset-detail-quantity">
                     <span className="asset-detail-quantity-text">수량</span>
-                    <span className="asset-detail-quantity-count">10</span>
+                    <span className="asset-detail-quantity-count">{balance}</span>
                 </div>
             </div>
             <div id="asset-detail-card-financial">

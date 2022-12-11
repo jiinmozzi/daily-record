@@ -25,7 +25,7 @@ const AssetPortfolioDetailSection = ({assetPortfolio, kosdaq, nonKosdaq} : Asset
     }, [kosdaq])
     return (
         <div className="asset-portfolio-detail-section-wrapper">
-            <AssetDetailCard  />
+            {assetPortfolio.map((e : any) => <AssetDetailCard ticker={e.ticker} name={e.name} balance={e.balance} currentPrice={1} averagePrice={1} />)}
         </div>
     )
 }

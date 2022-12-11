@@ -1,6 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-// import SocialDropDown from "../DropDown/SocialDropDown";
 import logo from "../../assets/logo.png";
 import Navigation from "../Navigation";
 import AuthButton from "../Button/AuthButton";
@@ -10,10 +8,22 @@ import { useRecoilState } from "recoil";
 import { isLoggedInState } from "../../store/atom";
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import LogoutIcon from '@mui/icons-material/Logout';
+import signout from "../../api/signout";
 
 const Header = () => {
     const [isLoggedIn, setIsLoggedIn] = useRecoilState<boolean>(isLoggedInState);
-
+    const signOut = async(e : React.MouseEvent ) => {
+        e.preventDefault();
+        const logout = async() => await signout();
+        logout().then((res : any) => {
+            if (res.message === "OK"){
+                setIsLoggedIn(false);
+                sessionStorage.removeItem("isLoggedIn");
+                window.location.href="/";
+            }
+        })
+        
+    }
     return (
         <div className="header-wrapper">
             
@@ -24,9 +34,7 @@ const Header = () => {
                 </div>
                 {isLoggedIn ?   (
                 <div className="auth-nav">
-                    <LogoutIcon />
-                    {/* <AuthButton type="Sign out"/> */}
-                    {/* <SocialDropDown /> */}
+                    <LogoutIcon className="sign-out-btn" onClick={signOut}/>
                 </div>) : ( 
                 <div className="auth-nav">
                     <AuthButton type="Sign in"/>

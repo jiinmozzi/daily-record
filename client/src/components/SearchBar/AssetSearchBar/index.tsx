@@ -13,9 +13,6 @@ const AssetSearchBar = () => {
     const [assetSuggestions, setAssetSuggestions] = useState<any>({});
     const [currentAsset, setCurrentAsset] = useState<string>("");
 
-    useEffect(() => {
-        console.log(assetSuggestions);
-    }, [assetSuggestions])
 
     const fetchAssets = (e : React.ChangeEvent) => {
         const target = e.target as HTMLInputElement;

@@ -38,6 +38,8 @@ import sendRequest from "./api/sendRequest";
 import { UserType } from "./types";
 import axios from "axios";
 import CreateTerminalCollection from "./pages/CreateTerminalCollection";
+import CreateTravelStory from "./pages/CreateTravelStory";
+import CreateTravelWishStory from "./pages/CreateTravelWishStory";
 
 
 function App() {
@@ -109,8 +111,6 @@ function App() {
   
   // periodically re-issue access token
   useEffect(() => {
-    // console.log('set access token') 
-    // console.log('accessToken : ', accessToken);
     const reIssueUserAccessToken = async() => {
       return await reIssueAccessToken(accessToken);
     }
@@ -131,17 +131,6 @@ function App() {
     }
   }, [accessToken])
 
-  // useEffect(() => {  
-  //   const test = async() => {
-  //     return await sendRequest('', "GET", {accessToken : accessToken}, true, accessToken);
-  //   }
-  //   if (accessToken !== ""){
-  //     test().then(res => console.log(res));
-  //   }
-  // }, [accessToken])
-
-  
-
   return (
     <div className="App">
         <BrowserRouter>
@@ -161,6 +150,8 @@ function App() {
               <Route path="/asset/portfolio" element={<AssetPortfolio />}></Route>
               <Route path="/asset/:ticker" element={<AssetDetail />}></Route>
               <Route path="/travel" element={<Travel />}></Route>
+              <Route path="/travel/story/create" element={<CreateTravelStory />}></Route>
+              <Route path="/travel/wish/create" element={<CreateTravelWishStory />}></Route>
               <Route path="/bucketlist" element={<BucketList />}></Route>
               <Route path="/terminal" element={<Terminal />}></Route>
               <Route path="/terminal/create/collection" element={<CreateTerminalCollection />}></Route>

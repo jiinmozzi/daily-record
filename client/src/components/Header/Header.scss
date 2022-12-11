@@ -36,7 +36,9 @@
         .auth-nav{
             width : 33.33vw;
             display : flex;
-            
+            .sign-out-btn{
+                cursor : pointer;
+            }
         }
     }
     .header-lower{

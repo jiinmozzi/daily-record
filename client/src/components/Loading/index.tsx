@@ -2,9 +2,6 @@ import PacmanLoader from "react-spinners/PacmanLoader";
 import { useEffect } from "react";
 import "./Loading.scss";
 const Loading = () => {
-    useEffect(() => {
-        console.log("loading entered")
-    }, [])
     
     return (
         <div className="spinner-wrapper">

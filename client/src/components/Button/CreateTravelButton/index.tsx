@@ -1,13 +1,10 @@
 import React, {useState, useEffect} from "react";
+import { useNavigate } from "react-router-dom";
 import "./CreateTravelButton.scss";
 const CreateTravelButton = () => {
-    const [showCreateTravelModal, setShowCraeteTravelModal] = useState<boolean>(false);
-    const createTravel = (e : React.MouseEvent) => {
-        e.preventDefault();
-        setShowCraeteTravelModal(true);
-    }
+    const navigate = useNavigate();
     return (
-        <button className="create-travel-button-wrapper" onClick={createTravel}>
+        <button className="create-travel-button-wrapper" onClick={() => navigate('/travel/story/create')}>
             여행 스토리 추가하기
         </button>
     )

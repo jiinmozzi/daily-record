@@ -14,9 +14,6 @@ type NewsCardPropsType = {
 
 const NewsCard = ({title, author, description, publishedAt, url, urlToImage} : NewsCardPropsType) => {
     
-    useEffect(() => {
-        console.log(urlToImage);
-    }, [])
     return (
         <div className="news-card-wrapper">
             <img className="news-card-thumbnail" src={urlToImage} alt="thumbnail" onClick={() =>  window.open(url, '_blank', 'noopener,noreferrer')}/>
