@@ -1,6 +1,8 @@
+import "./CreateTravelWishStory.scss";
+
 const CreateTravelWishStory = () => {
     return (
-        <div></div>
+        <div className="create-travel-wish-story-wrapper"></div>
     )
 }
 

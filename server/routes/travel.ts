@@ -1,4 +1,5 @@
 const express = require('express');
+import axios from "axios";
 import {Request, Response} from "express";
 const router = express.Router();
 const {Travel, TravelWishList, User} = require("../models");
@@ -183,14 +184,29 @@ router.delete('/story/delete/:id', setAuth, async(req : IUserRequest, res : Resp
     }
 })
 
-router.post('/map', async(req : IUserRequest, res : Response) => {
-    const {location} = req.body;
-    console.log(location);
-    return res.send({
-        status : 200,
-        message : "OK"
+router.get('/google/map/:searchQuery', async(req : Request, res : Response) => {
+    const {searchQuery} = req.params;
+    const fetch = async() => await axios.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${encodeURIComponent(searchQuery)}&inputtype=textquery&language=ko&fields=formatted_address%2Cname%2Crating%2Copening_hours%2Cgeometry&key=${process.env.GOOGLE_MAP_API_KEY}`);
+    fetch().then((response) => {
+        console.log(response)
+        const json = JSON.stringify(response.data);
+        
+        const data = JSON.parse(json);
+        return res.send({
+            message : "OK",
+            data : data,
+            status : 200,
+        })
     })
 })
+// router.post('/map', async(req : IUserRequest, res : Response) => {
+//     const {location} = req.body;
+//     console.log(location);
+//     return res.send({
+//         status : 200,
+//         message : "OK"
+//     })
+// })
 
 module.exports = router;
-
+// findplacefromtext

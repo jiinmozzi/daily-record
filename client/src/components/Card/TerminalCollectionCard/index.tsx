@@ -6,7 +6,7 @@ import "./TerminalCollectionCard.scss";
 const TerminalCollectionCard = () => {
     return (
         <div className="terminal-collection-card-wrapper">
-
+            
         </div>
     )
 }
