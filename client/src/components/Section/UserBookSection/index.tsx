@@ -1,7 +1,7 @@
 import {useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { userState } from "../../../store/atom";
+import { accessTokenState, userState } from "../../../store/atom";
 import { UserType } from "../../../types";
 
 import bookshelf from "../../../assets/bookshelf.jpg";
@@ -13,6 +13,7 @@ import "./UserBookSection.scss";
 
 const UserBookSection = () => {
     const navigate = useNavigate();
+    const [accessToken, setAccessToken] = useRecoilState<string>(accessTokenState);
     const [user, setUser] = useRecoilState<UserType>(userState);
 
     return (

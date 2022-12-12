@@ -9,13 +9,12 @@ import "./MapSearchBar.scss";
 import MapDropDown from "../../DropDown/MapDropDown";
 
 const MapSearchBar = ({map, mapApi} : any) => {
-    const inputRef = useRef<HTMLInputElement>(null)
     const [focused, setFocused] = useState<boolean>(false);
     const [searchQuery, setSearchQuery] = useState<string>("");
-    const [searchedResult, setSearchedResult] = useState<any>([]);
-    const [searchBox, setSearchBox] = useState<any>();
+    const [searchedResult, setSearchedResult] = useState<any[]>([]);
     const [input, setInput] = useState<any>();
     const [scrolled, setScrolled] = useState<boolean>(false);
+    const [addedLocation, setAddedLocation] = useState<any[]>([]);
     useEffect(() => {
         console.log("map: ", map);   
         console.log("googleMaps: ", mapApi);
@@ -59,7 +58,9 @@ const MapSearchBar = ({map, mapApi} : any) => {
                 onKeyDown={onKeyDown}
             />
             <SearchIcon id="map-search-icon"/>
-            { searchedResult.length > 0 && searchedResult.map((e: any) => <MapDropDown formattedAddress={e.formatted_address} location={e.geometry.location} name={e.name} />)}
+            { searchedResult.length > 0 && searchQuery.length > 0 && focused && searchedResult.map((e: any) => <MapDropDown formattedAddress={e.formatted_address} location={e.geometry.location} name={e.name} addedLocation={addedLocation} setAddedLocation={setAddedLocation} />)}
+            { (searchQuery.length === 0 || !focused) && <div id="added-introducing-text">현재 추가된 플레이스입니다.</div> }
+            { (searchQuery.length === 0 || !focused) && addedLocation.map((e : any) => <MapDropDown formattedAddress={e.formattedAddress} location={e.location} name={e.name} addedLocation={addedLocation} setAddedLocation={setAddedLocation} />)}
         </div>
     )
 }

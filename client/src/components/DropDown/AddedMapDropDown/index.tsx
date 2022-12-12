@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import "./MapDropDown.scss";
+import "./AddedMapDropDown.scss";
 
 type MapDropDownPropsType = {
     formattedAddress : string,
@@ -12,7 +12,7 @@ type MapDropDownPropsType = {
     setAddedLocation : any,
 }
 
-const MapDropDown = ({formattedAddress, location, name, addedLocation, setAddedLocation} : MapDropDownPropsType) => {
+const AddedMapDropDown = ({formattedAddress, location, name, addedLocation, setAddedLocation} : MapDropDownPropsType) => {
     useEffect(() => {
         console.log(location.lat);
         console.log(location.lng);
@@ -25,12 +25,13 @@ const MapDropDown = ({formattedAddress, location, name, addedLocation, setAddedL
     const addLocation = (e : React.MouseEvent) => {
         setAddedLocation((addedLocation : any) => [...addedLocation, {formattedAddress, location, name}]);
     }
+
     return (
-        <div className="map-dropdown-wrapper" onMouseDown={onMouseDown} onClick={addLocation}>
-            <div className="map-dropdown-name">🚀&nbsp;&nbsp;{name}</div>
-            <div className="map-dropdown-address">{formattedAddress}</div>
+        <div className="added-map-dropdown-wrapper" onMouseDown={onMouseDown} onClick={addLocation}>
+            <div className="added-map-dropdown-name">🚀&nbsp;&nbsp;{name}</div>
+            <div className="added-map-dropdown-address">{formattedAddress}</div>
         </div>
     )
 }
 
-export default MapDropDown;
+export default AddedMapDropDown;

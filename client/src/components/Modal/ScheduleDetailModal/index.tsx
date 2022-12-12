@@ -49,7 +49,7 @@ const ScheduleDetailModal = ({detailModalShow, setDetailModalShow, schedules, se
     return (
         <div className="schedule-detail-modal-outer-wrapper" style={{display : detailModalShow}} onClick={onClickOutsideModal}>
             <div className="schedule-detail-modal-inner-wrapper" ref={detailModalRef}>
-                <span className="schedule-detail-date-indicator">{target.substr(0, 4)}/{target.substr(4, 2)}/{target.substr(6, 2)} </span>
+                <span className="schedule-detail-date-indicator">{target.substr(0, 4)}/{Number(target.substr(4, 2)) + 1}/{target.substr(6, 2)} </span>
                 {currentSchedules.map(e => <ScheduleDetailCard schedule={e} schedules={schedules} setSchedules={setSchedules}/>)}    
             </div>
         </div>

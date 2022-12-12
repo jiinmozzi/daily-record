@@ -81,7 +81,6 @@ const BookSearchBar = ({showDropDown, setShowDropDown} : BookSearchBarPropsType)
             </Paper>
             {/* needs to implement on focus display Only */}
             {focused && showDropDown && <BookDropDown suggestions={suggestions} bookTitle={bookTitle} showDropDown={showDropDown} setShowDropDown={setShowDropDown}/>}
-            
         </div>
     )
 
