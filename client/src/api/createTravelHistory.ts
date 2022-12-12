@@ -1,8 +1,8 @@
 import sendRequest from "./sendRequest";
 
 export type TravelHistoryType = {
-    country : string
-    city : string,
+    country : string[]
+    city : string[],
     createdAt : Date,
     title : string,
     imageUrl : string,    

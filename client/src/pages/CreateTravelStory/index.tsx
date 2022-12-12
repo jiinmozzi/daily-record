@@ -3,6 +3,8 @@ import GoogleMap from "google-map-react";
 
 import "./CreateTravelStory.scss";
 import MapSearchBar from "../../components/SearchBar/MapSearchBar";
+import MapMarker from "../../components/Marker/MapMarker";
+import TravelCreateTemplate from "../../components/FormTemplate/TravelCreateTemplate";
 type Coordinate = {
     lat : number,
     lng : number
@@ -21,8 +23,13 @@ const CreateTravelStory = () => {
     }
     
     useEffect(() => {
-        
-    }, [])
+        if (map && googleMaps)
+        new google.maps.Marker({
+            position : center,
+            map,
+            title : "Hello world",
+        })        
+    }, [map, googleMaps])
     return (
         <div className="create-travel-story-wrapper">
             <h5 id="add-location-text">플레이스 추가하기</h5>
@@ -36,10 +43,12 @@ const CreateTravelStory = () => {
                     defaultCenter={center}
                     yesIWantToUseGoogleMapApiInternals
                     onGoogleApiLoaded={({map, maps} : any) => handleApiLoaded(map, maps)}
-                ></GoogleMap>
+                >
+                
+                </GoogleMap>
                 {map && googleMaps && <MapSearchBar map={map} mapApi={googleMaps}/>}
             </div>
-            
+            <TravelCreateTemplate />
         </div>
     )
 }

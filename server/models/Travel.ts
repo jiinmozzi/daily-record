@@ -3,8 +3,8 @@ const {Schema} = mongoose;
 
 const TravelSchema = new Schema({
     user : {type : Schema.Types.ObjectId, required : true},
-    country : {type : String, required : true},
-    city : {type : String, required : true},
+    country : [{type : String, required : true}],
+    city : [{type : String, required : true}],
     imageUrl : [{type : String}],
     createdAt : { type : Date, default : Date.now() },
     

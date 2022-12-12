@@ -70,7 +70,13 @@ const CountrySearchBar = ({selectedCountry, setSelectedCountry, usersTravelHisto
         _toggleTravelHistory().then(res => console.log(res));
     }
     
-    
+    const onAutoComplete = (e : React.KeyboardEvent) => {
+        console.log(e);
+        const target = e.target as HTMLInputElement;
+        if (e.key === "Enter"){
+            setSelectedCountry((prev : any) => target?.value);
+        }
+    }
 
     return countryList && usersTravelHistory && (
         <div className="country-search-bar-wrapper">
@@ -79,7 +85,7 @@ const CountrySearchBar = ({selectedCountry, setSelectedCountry, usersTravelHisto
                 id="combo-box-demo"
                 options={countryList}
                 sx={{ width: 300}}
-                renderInput={(params) => <TextField {...params} label="Search Country..." />}
+                renderInput={(params) => <TextField {...params} label="Search Country..." onKeyDown={onAutoComplete}/>}
                 onChange={onChange}
                 
             />
