@@ -7,7 +7,7 @@ const TravelSchema = new Schema({
     city : [{type : String, required : true}],
     imageUrl : [{type : String}],
     createdAt : { type : Date, default : Date.now() },
-    
+    locations : [{ lat : Number, lng : Number}],
     title : String,
     comment : String,
     departureDate : Date,

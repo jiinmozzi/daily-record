@@ -1,3 +1,76 @@
 .travel-create-template-wrapper{
+    color : rgb(34,34,34);
+    #travel-content-textarea{
+        resize : none;
+        height : 140px;
+    }
+    .MuiInputBase-input{
+        color : rgba(119,94,226, 0.7);
+        
+    }
+    .MuiButtonBase-root{
+        background-color : rgba(119,94,226, 0.7);
+        color : white;
+    }
+    .MuiFormLabel-root{
+        color : rgba(119,94,226, 0.7);
+    }
+    #create-travel-title-form{
+        width : 280px;
+        
+    }
+    .create-travel-flex-column{
+        display : flex;
+        flex-direction: column;
+        font-size : 16px;
+        font-weight : bold;
+    }
+    .create-travel-text{
+        margin-bottom : 5px;
+        letter-spacing: 1px;
+        color : rgba(119,94,226, 0.7);
+        margin-top : 15px;
+    }
+    .create-travel-date-text{
+        margin-bottom : 15px;
+        letter-spacing: 1px;
+        color : rgba(119,94,226, 0.7);
+        margin-top : 15px;
+    }
+    .create-travel-form{
+        outline : none;
+        border : 1px solid rgba(119,94,226, 0.7);
+        font-size : 14px;
+        padding-left : 5px;
+        &:focus{
+            border : 1px solid rgb(119,94,226);
+            box-shadow: rgba(119, 94, 226, 0.3) 0px 4px 12px;
+        }
+    }
+    #visited-country{
+        margin-top : 20px;
+        font-weight : bold;
+        font-size : 16px;
+        color : rgba(119,94,226, 0.7);
+        letter-spacing : 1px;
+        margin-bottom : 8px;
+    }
+    #visited-city{
+        margin-top : 20px;
+        
+        
+        #city{
+            width : 450px;
+            height : 30px;
+            outline : none;
+            border : 1px solid rgba(119,94,226, 0.7);
+            padding-left : 10px;    
+            font-size : 14px;
+        }
+        #city-label{
+            font-size : 12px;
+            color : rgba(119,94,226, 0.7);
+        }
+    }    
     
 }
