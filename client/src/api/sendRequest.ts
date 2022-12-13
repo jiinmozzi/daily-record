@@ -1,11 +1,7 @@
 import axios from "axios";
-
-
 // const baseUrl = process.env.NODE_ENV === 'development' 
 //     ? process.env.REACT_APP_DEVELOPMENT_URL
 //     : process.env.REACT_APP_PRODUCTION_URL;
-
-
 const baseUrl = "http://localhost:3002";
 // console.log(process.env.NODE_ENV === "development")
 // console.log(baseUrl);
@@ -19,15 +15,7 @@ type RequestParamsType = {
     accessToken : string | "",
 }
 const sendRequest = (url : string, method : string, data : any, loginRequired = false, accessToken = "") => {
-    // let queryString : string = "";
-    // let finalUrl = baseUrl;
-    // if ( url !== "" ){
-    //     finalUrl += "/" + url;
-    // }
     const finalUrl = `${baseUrl}/${url}`;
-    // if (loginRequired) {
-    //     return axios({ url : finalUrl , method : method, data : data, withCredentials : true}).then((res) => res.data);
-    // }
     if (loginRequired === true){
         return axios({
             url : finalUrl,

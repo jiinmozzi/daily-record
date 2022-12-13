@@ -15,6 +15,9 @@ const TravelCreateTemplate = () => {
 
     const titleRef = useRef<HTMLInputElement>(null);
     const contentRef = useRef<HTMLTextAreaElement>(null);
+    const cityRef = useRef<HTMLInputElement>(null); 
+    const [countries, setCountries] = useState<string[]>([]);
+
     const [dateTo, setDateTo] = useState<Date>(new Date());
     const [dateFrom, setDateFrom] = useState<Date>(new Date());
     const [formData, setFormData] = useState<FormData>(new FormData());
@@ -38,13 +41,28 @@ const TravelCreateTemplate = () => {
         }
     };
 
-    useEffect(() => {
-        console.log(country);
-    }, [])
-
+    const onChangeCountry = (e : React.SyntheticEvent) => {
+        const target = e.target as HTMLElement;
+        if (target?.textContent){
+            setCountries([...countries, target?.textContent]);
+        }
+    }
+    const createTravelHistory = (e : React.FormEvent) => {
+        e.preventDefault();
+        const title = titleRef?.current?.value;
+        const content = contentRef?.current?.value;
+        let cities : string[] = [];
+        const _cities = cityRef?.current?.value;
+        if (_cities){
+            cities = _cities.replaceAll(" ", "").split(',');
+        }
+        
+        console.log(title, content, cities, countries);
+    }
+    
     return (
         <div className="travel-create-template-wrapper">
-            <form>
+            <form onSubmit={createTravelHistory}>
                 <label id="visited-country" htmlFor="country">다녀온 국가</label>
                 <Stack spacing={2} sx={{ width: 450 }}>
                     <Autocomplete
@@ -52,27 +70,24 @@ const TravelCreateTemplate = () => {
                         id="tags-standard"
                         options={country}
                         limitTags={3}
-                        
-                        defaultValue={[country[0]]}
+                        onChange={onChangeCountry}
                         renderInput={(params) => (
-                        <TextField
-                            {...params}
-                            variant="standard"
-                            // label="Multiple values"
-                            placeholder="Visited"
-                            
-                        />
+                            <TextField
+                                {...params}
+                                variant="standard"
+                                // label="Multiple values"
+                                placeholder="Visited"
+                                
+                            />
                         )}
                     />
                 </Stack>
 
                 <div id="visited-city" className="create-travel-flex-column">
                     <div className="create-travel-text">다녀온 도시</div>
-                    <input name="city" id="city" type="text" />
+                    <input name="city" id="city" type="text" ref={cityRef}/>
                     <label htmlFor="city" id="city-label">여러 개의 도시일 경우, 쉼표로 구분하여 기입해주세요.( ex. 파리,뮌헨,빈 )</label>
                 </div>
-                
-                
                 <div className="create-travel-text">스토리 썸네일</div>
                 <FileButton formData={formData} setFormData={setFormData} backgroundColor={"rgba(119,94,226, 0.7)"}/>
                 <div className="create-travel-text" >스토리 제목</div>
@@ -106,7 +121,9 @@ const TravelCreateTemplate = () => {
                             />
                         </LocalizationProvider>
                     </div>
+                    
                 </div>
+                <button type="submit" id="create-travel-submit-btn">제출하기</button>
             </form>
         </div>
     )

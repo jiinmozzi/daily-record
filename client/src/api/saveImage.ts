@@ -1,7 +1,7 @@
-import axios from "axios";
+import sendRequest from "./sendRequest";
 
 const saveImage = async(formData : FormData) => {
-    return await axios.post('http://localhost:3002/image/create', formData);
+    return await sendRequest('image', 'POST', {formData}, false);
 }
 
 export default saveImage;

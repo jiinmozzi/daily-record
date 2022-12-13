@@ -12,7 +12,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import FileButton from "../../FileButton";
 import axios from "axios";
 import createTerminalPortfolio from "../../../api/createTerminalPortfolio";
-
+import saveImage from "../../../api/saveImage";
 const TerminalCollectionForm = () => {
     const titleRef = useRef<HTMLInputElement>(null);
     const contentRef = useRef<HTMLTextAreaElement>(null);
@@ -31,8 +31,7 @@ const TerminalCollectionForm = () => {
 
     const onCreateCollection = async( e : React.FormEvent ) => {
         e.preventDefault();
-        const imageRes = await axios.post('http://localhost:3002/image', formData);
-
+        const imageRes = await saveImage(formData);
         const imageUrl = imageRes.data.url;
         const title = titleRef?.current?.value ? titleRef.current.value : "";
         const content = contentRef?.current?.value ? contentRef.current.value : "";
