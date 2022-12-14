@@ -7,14 +7,15 @@ import SearchedBookCard from "../../components/Card/SearchedBookCard";
 import BookSearchBar from "../../components/SearchBar/BookSearchBar";
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-
+import FavoriteBorderIcon from '@mui/icons-material/Favorite';
 import "./BookDetail.scss";
 import getBookWithISBN from "../../api/getBookWithISBN";
 import setBookToLibrary from "../../api/setBookToLibrary";
 import { useRecoilState } from "recoil";
 import { accessTokenState, userState } from "../../store/atom";
 import setBookToBookmark from "../../api/setBookToBookmark";
-import { Alert } from "@mui/material";
+import { Alert, Rating, Typography } from "@mui/material";
+
 import getUserBooks from "../../api/getUserBooks";
 const BookDetail = () => {
     const summayRef = useRef<HTMLTextAreaElement>(null);
@@ -158,8 +159,17 @@ const BookDetail = () => {
                     <div className="book-report-plot-text">💕 &nsbp;&nbsp;마음에 드는 문장</div>
                     <textarea id="book-report-plot-textarea" placeholder="ex) p 13. 한 여름날.."></textarea>
                 </div>
-                
-                <button id="book-report-submit-btn" onClick={submitBookReport}></button>
+                <Typography id="rating-wrapper-text" component="legend">평점 남기기</Typography>
+                <Rating
+                className="rating-heart"
+                name="customized-color"
+                defaultValue={2}
+                getLabelText={(value: number) => `${value} Heart${value !== 1 ? 's' : ''}`}
+                precision={0.5}
+                icon={<FavoriteIcon fontSize="inherit" />}
+                emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
+                />
+                <button id="book-report-submit-btn" onClick={submitBookReport}>저장</button>
             </div>
             </>
             )}
