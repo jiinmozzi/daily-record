@@ -106,19 +106,20 @@ router.post('/history/toggle', setAuth, async(req : IUserRequest, res : Response
 })
 
 
-router.post('/story/visited/create', setAuth, async(req : PhotoRequest, res : Response) => {
+router.post('/story/visited', setAuth, async(req : PhotoRequest, res : Response) => {
     const user = req.user;
-    const {country, city, createdAt, title, comment, departureDate, arrivalDate, duration, isPublic, imageUrl} = req.body;
-    
+    const {country, city, title, locations, comment, departureDate, arrivalDate, duration, isPublic, imageUrl} = req.body;
+    const createdAt = new Date(Date.now());
     try {
         const newTravelHistory = new Travel({
             user : user._id,
             country,
             city,
             imageUrl,
-            createdAt,
+            locations,
             title,
             comment,
+            createdAt,
             departureDate,
             arrivalDate,
             duration,

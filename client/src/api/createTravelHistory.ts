@@ -3,7 +3,6 @@ import sendRequest from "./sendRequest";
 export type TravelHistoryType = {
     country : string[]
     city : string[],
-    createdAt : Date,
     title : string,
     imageUrl : string,    
     comment : string,
@@ -12,8 +11,8 @@ export type TravelHistoryType = {
     duration : number,
     isPublic : boolean,
 }
-const createTravelHistory = async(token : string, {country, city,  createdAt, title, comment, departureDate, duration, isPublic = true, imageUrl} : TravelHistoryType) => {
-    return await sendRequest('travel/story/visited/create', "POST", {country, city, createdAt, title, comment, departureDate, duration, isPublic, imageUrl}, true, token);
+const createTravelHistory = async(token : string, {country, city, title, comment, departureDate, arrivalDate, duration, isPublic = true, imageUrl} : TravelHistoryType) => {
+    return await sendRequest('travel/story/visited', "POST", {country, city, title, comment, departureDate, arrivalDate, duration, isPublic, imageUrl}, true, token);
 }
 
 export default createTravelHistory;

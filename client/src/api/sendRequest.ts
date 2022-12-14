@@ -5,6 +5,7 @@ const baseUrl = process.env.REACT_APP_ENV === 'development'
 // const baseUrl = "http://localhost:3002";
 // console.log(process.env.NODE_ENV === "development")
 // console.log(baseUrl);
+console.log(process.env.REACT_APP_ENV);
 const baseHeaders = {};
 
 type RequestParamsType = {

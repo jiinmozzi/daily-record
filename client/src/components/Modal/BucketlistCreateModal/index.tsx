@@ -11,6 +11,7 @@ import createBucketlist from "../../../api/creaetBucketlist";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../store/atom";
 import createWishlist from "../../../api/createWishlist";
+import saveImage from "../../../api/saveImage";
 // imageUrl, createdAt, title, comment, field,isCompleted, isPublic
 
 type BucketlistCreateFormType = {
@@ -37,7 +38,7 @@ const BucketlistCreateModal = ({setShowModal} : BucketlistCreateFormType) => {
     const onSubmit = async( e : React.MouseEvent ) => {
         e.preventDefault();
         // send image
-        const imageRes = await axios.post('http://localhost:3002/image', formData);
+        const imageRes = await saveImage(formData);
         const imageUrl = imageRes.data.url;
         if (creatingObject === "bucketlist"){
             const res = await createBucketlist(accessToken, {imageUrl, title, comment, isPublic, isCompleted : false, field})

@@ -14,6 +14,8 @@ const CreateTravelStory = () => {
     const [map, setMap] = useState<any>(null);
     const [googleMaps, setGoogleMaps] = useState<any>(null);
     const [center, setCenter] = useState<Coordinate>({lat : 37.5, lng : 127});
+
+    
     const handleApiLoaded = (map : any, maps : any) => {
         if (map && maps){
             setApiReady(true);

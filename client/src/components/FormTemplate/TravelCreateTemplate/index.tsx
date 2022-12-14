@@ -9,6 +9,8 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { Autocomplete, Stack, TextField } from "@mui/material";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../store/atom";
+import saveImage from "../../../api/saveImage";
+import createTravelHistory from "../../../api/createTravelHistory";
 
 const TravelCreateTemplate = () => {
     const [accessToken, setAccessToken] = useRecoilState<string>(accessTokenState);
@@ -47,22 +49,49 @@ const TravelCreateTemplate = () => {
             setCountries([...countries, target?.textContent]);
         }
     }
-    const createTravelHistory = (e : React.FormEvent) => {
+    const createTravel = async(e : React.FormEvent) => {
         e.preventDefault();
+        // send image
+        const imageRes = await saveImage(formData);
+        const imageUrl = imageRes.data.url;
+        
         const title = titleRef?.current?.value;
         const content = contentRef?.current?.value;
+
+        if (!title || !content) return;
+        
         let cities : string[] = [];
         const _cities = cityRef?.current?.value;
         if (_cities){
             cities = _cities.replaceAll(" ", "").split(',');
         }
-        
-        console.log(title, content, cities, countries);
+
+        let _dateFrom : Date = new Date(Date.now());
+        let _dateTo : Date = new Date(Date.now());
+        if ( dateFrom ){
+            _dateFrom = new Date(dateFrom.toString());
+        }
+        if ( dateTo ){
+            _dateTo = new Date(dateTo.toString());
+        }
+        const duration = Math.ceil((_dateTo.getTime() - _dateFrom.getTime()) / (3600*24*1000) + 1);
+        const res = await createTravelHistory(accessToken, {
+            country : countries,
+            city : cities, 
+            title : title, 
+            comment : content,
+            departureDate : _dateFrom,
+            arrivalDate : _dateTo,
+            duration,
+            isPublic : false,
+            imageUrl,
+        })
+        console.log(res);
     }
     
     return (
         <div className="travel-create-template-wrapper">
-            <form onSubmit={createTravelHistory}>
+            <form onSubmit={createTravel}>
                 <label id="visited-country" htmlFor="country">다녀온 국가</label>
                 <Stack spacing={2} sx={{ width: 450 }}>
                     <Autocomplete

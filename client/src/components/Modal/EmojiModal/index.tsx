@@ -70,6 +70,7 @@ const EmojiModal = ({showEmojiModal, setShowEmojiModal, emojiManageRef, setEmoji
             setTimeout(() => {
                 setShowAlert(false);
             }, 1500)
+            window.location.href="/diary";
         }
         return;
     }
